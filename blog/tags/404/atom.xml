@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: 404 | Coconauts]]></title>
+<link href="http://coconauts.github.io/blog/tags/404/atom.xml" rel="self"/>
+<link href="http://coconauts.github.io/"/>
+<updated>2016-02-27T16:12:36+00:00</updated>
+<id>http://coconauts.github.io/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Updates on 404-games]]></title>
+<link href="http://coconauts.github.io/blog/2015/08/08/404-updates/"/>
+<updated>2015-08-08T23:00:00+01:00</updated>
+<id>http://coconauts.github.io/blog/2015/08/08/404-updates</id>
+<content type="html"><![CDATA[<p>Last week we implemented <a href="/projects/404games">gamified 404 pages</a> into
+coconauts. Everytime you hit a 404, instead of getting a boring
+image and cursing for your misfortune, you&rsquo;ll now get a classic videogame
+to make you forget your disappointment.</p>
+
+<p>We initially implemented pacman and space-invaders style games, but
+we&rsquo;ve now added a snake game on top of them, and not only that, the
+source code for them is now public on
+<a href="https://github.com/coconauts/404-games">a github repo</a>, so you can
+use them in your own website if you want.</p>
+
+<p><a href="http://coconauts.net/404">Happy mislinking</a>.</p>
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[404 Games]]></title>
+<link href="http://coconauts.github.io/blog/2015/07/31/404-games/"/>
+<updated>2015-07-31T00:52:00+01:00</updated>
+<id>http://coconauts.github.io/blog/2015/07/31/404-games</id>
+<content type="html"><![CDATA[<p>Getting a <a href="http://coconauts.net/404">404</a> page is not something enjoyable,
+that&rsquo;s why we wanted to build something nice for anyone that lands in this
+unexpected place.</p>
+
+<p>So we built a few simple classic games in HTML5 + Canvas, and you will get randomly
+one of these everytime you land in our <a href="http://coconauts.net/404">404</a> page.</p>
+
+<!--more-->
+
+
+<p>All our 404 games will be published in our <a href="/projects/404games">project page</a></p>
+
+<h2>Space invaders</h2>
+
+<p><img src="http://coconauts.github.io/projects/404games/space-invaders.png" class="screenshot" /></p>
+
+<p><a href="http://coconauts.net/html5/space-invaders">Test me</a></p>
+
+<h2>Pacman</h2>
+
+<p><img src="http://coconauts.github.io/projects/404games/pacman.png" class="screenshot" /></p>
+
+<p><a href="http://coconauts.net/html5/pacman">Test me</a></p>
+
+<p>Fortunately, 404 pages don&rsquo;t happen too often in <a href="http://coconauts.net">Coconauts</a>,
+but still, this is an improvement over the previous version,
+and we had fun building this.</p>
+]]></content>
+</entry>
+
+</feed>
