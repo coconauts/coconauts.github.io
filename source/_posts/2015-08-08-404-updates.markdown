@@ -1,0 +1,27 @@
+---
+layout: post
+title: "Updates on 404-games"
+date: 2015-08-08 22:00:00 +0000
+comments: true
+sharing: true
+author: Mar Bartolome
+featured: false
+published: true
+categories: games
+tags: games 404 classic html5 canvas pacman space-invaders snake
+keywords: games,404,classic,html5,canvas,pacman,space-invaders,opensource,snake
+description: "Opensource classic HTML5 and Canvas 404 games like pacman or space-invaders"
+---
+
+Last week we implemented [gamified 404 pages](/projects/404games) into
+coconauts. Everytime you hit a 404, instead of getting a boring
+image and cursing for your misfortune, you'll now get a classic videogame
+to make you forget your disappointment.
+
+We initially implemented pacman and space-invaders style games, but
+we've now added a snake game on top of them, and not only that, the
+source code for them is now public on
+[a github repo](https://github.com/coconauts/404-games), so you can
+use them in your own website if you want.
+
+[Happy mislinking](http://coconauts.net/404).

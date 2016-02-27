@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <link href="{{ root_url }}/favicon.png" rel="icon">
+    <meta name="author" content="{{ site.author }}">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <title>{{ site.title }}</title>
+    <meta name="description" content="{{ site.description }}">
+    <link rel="canonical" href="{{ canonical }}">
+    <link rel="shortlink" href="{{ canonical }}">
+    <link href="{{ site.subscribe_rss }}" rel="alternate" title="{{site.title}}" type="application/atom+xml">
+
+    <meta property="og:locale" content="en_UK">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ site.title }}">
+    <meta property="og:description" content="{{ site.description }}">
+    <meta property="og:url" content="{{ canonical }}">
+    <meta property="og:site_name" content="coconauts">
+
+    <meta name="twitter:site" content="@coconauts">
+    <meta name="twitter:domain" content="Coconauts">
+    <meta name="twitter:creator" content="@coconauts">
+
+    {% include google_analytics.html %}
+
+   <link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.min.css">
+   <link rel="stylesheet" type="text/css" href="stylesheets/index.css">
+   <link rel="stylesheet" type="text/css" href="stylesheets/projects.css">
+   <link rel="stylesheet" type="text/css" href="stylesheets/common.css">
+
+   <script type="text/javascript" src="javascripts/libs/jquery.min.js"></script>
+   <script type="text/javascript" src="javascripts/bootstrap.min.js"></script>
+   <script type="text/javascript" src="javascripts/jquery.stellar.min.js"></script>
+   <script type="text/javascript" src="javascripts/sticky.js"></script>
+
+</head>
+<body >
+   <div id='main' data-stellar-background-ratio="0.2" class="visible-md visible-lg">
+      <div class="container">
+         <div class="row">
+            <div class="col-sm-6 col-lg-6 column text-right">
+               <img src="images/logo.png"/></td>
+            </div>
+            <div>
+               <p class='title'>{{ site.title }}</p>
+               <p class='subtitle'>{{ site.subtitle }}</p>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div id='menu'>
+      <div class="container visible-md visible-lg">
+         <div class="row">
+            <div class="col-sm-6 col-lg-6 column">
+               <img src="images/logo-32.png" />
+               <a href='#projects' >Main Projects</a>
+               <a href='#about' > About</a>
+               <a href='#featured-posts' > Featured posts</a>
+               <a href='#contact' > Contact</a>
+            </div>
+            <div class="col-sm-6 col-lg-6 column right-text">
+               <a href='blog' > Blog</a>
+               <a href='projects' > All projects</a>
+               <a target="_blank" href="mailto:contact@coconauts.net" class="social-footer-email"></a>
+               <a target="_blank" href="http://twitter.com/coconauts" class="social-footer-twitter"></a>
+               <a target="_blank" href="https://www.facebook.com/pages/Coconauts/268867943273399" class="social-footer-facebook"></a>
+               <a target="_blank" href="https://www.youtube.com/channel/UC-L-wHR5HUG_nABI4aiMPuw" class="social-footer-youtube"></a>
+
+            </div>
+         </div>
+      </div>
+      <div class="hidden-md hidden-lg menu-mobile">
+         <img src="images/logo-32.png" />
+	 <span>{{ site.title }}</span>
+         <div class='right'>
+	    <a href='blog' > Blog</a>
+	    <a href='projects' > All projects</a>
+         </div>
+      </div>
+   </div>
+   </div>
+   <div id="projects" data-stellar-background-ratio="0.2" class='section' >
+      <div class="container">
+         <h2>Main Projects</h2>
+         <div class="row">
+            <div class="col-sm-3 col-lg-3 column">
+               <h3>Watchduino 2</h3>
+               <div class='circular project'>
+                  <a target='_self' href='/projects/watchduino2' class='project-watchduino2'></a>
+               </div>
+               <p>WatchDuino 2 is a SmartWatch built in Arduino that uses Bluetooth for sending messages to Android</p>
+            </div>
+            <div class="col-sm-3 col-lg-3 column">
+               <h3>Exploding Bunnies</h3>
+               <div class='circular project'>
+                  <a target='_self' href='/projects/timebomb2' class='project-timebomb2'></a>
+               </div>
+               <p>Old-school arcade game with bunnies and explosions, with achievements, unlockable items, etc</p>
+            </div>
+            <div class="col-sm-3 col-lg-3 column">
+               <h3>Gramola</h3>
+               <div class='circular project'>
+                  <a target='_self' href='/projects/gramola' class='project-gramola'></a>
+               </div>
+               <p>Lightweight online music player, powered by JPlayer with tons of features</p>
+            </div>
+            <div class="col-sm-3 col-lg-3 column">
+               <h3>Game Manager</h3>
+               <div class='circular project'>
+                  <a target='_self' href='/projects/game-manager' class='project-game-manager'></a>
+               </div>
+               <p>App built with nodejs for managing local game repositories and emulators</p>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div id="about"  class='section'>
+      <div class="container">
+         <h3>About Coconauts</h3>
+         <div class="row">
+            <div class="col-sm-12 col-lg-8 column">
+               <p>Coconauts is how we refer to ourselves as a team. It’s a made-up word mixing the concepts of astronauts and coconuts.
+               What? How do they relate to each other? In no way whatsoever,
+               but we just thought it sounded kinda cool! It also evokes us of a group of space adventurers exploring the universe for fun and for a living,
+               while not taking things too seriously. Much like the guys driving the Serenity, the Bebop, or the TARDIS, to name just a few!
+               </p><p>
+               Together we invest our time and effort into creating things that we think are useful, needed, or fun. Who knows, we might end up taking over the world someday!
+               </p>
+            </div>
+            <div class="col-sm-6 col-lg-2 column center">
+               <img class="team circular" src="images/mar-avatar.png"/><br/>
+               <a href='http://twitter.com/marbu' title='@marbu'>Mar Bartolome</a>
+            </div>
+            <div class="col-sm-6 col-lg-2 column center">
+               <img class="team circular" src="images/javi-avatar.png"/><br/>
+               <a href='http://twitter.com/rephus' title='@rephus'>Javier Rengel</a>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div id="featured-posts" data-stellar-background-ratio="0.2"  class='section'>
+      <div class="container">
+         <h2>Featured posts</h2>
+         {% include featured_posts.html %}
+      </div>
+   </div>
+   <div id="contact" >
+      <div class="container">
+         <div class="row">
+            <div class="col-sm-12 col-lg-6 column">
+               <span class="copyright">Copyright &copy; {{ site.time | date: "%Y" }} - {{ site.author }} -</span>
+               <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+            </div>
+         </div>
+      </div>
+   </div>
+   <script type="text/javascript">
+      $.stellar( );
+      $("#menu").sticky({topSpacing:0});
+   </script>
+</body>
+</html>

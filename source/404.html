@@ -1,0 +1,48 @@
+---
+layout: page
+comments: false
+sharing: false
+footer: false
+---
+
+<link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.min.css">
+
+<style>
+  #div-404 {
+    width:100%;
+    text-align:center;
+  }
+  #div-404 img {
+    border:0px !important;
+    box-shadow:none !important;
+    width:100%;
+    max-width:256px;
+  }
+</style>
+
+<div id="div-404">
+
+  <h3> Oops... we couldn't find the page you were looking for, but here you have a nice way of wasting your time... </h3>
+   <iframe id='404-game' src="" width="520" height="520" scrolling="none" frameborder="0"></iframe>
+   <p>Like these 404 games? They are open source, check out the <a href="http://github.com/coconauts/404-games/">Github repo</a>.</p>
+    <h3>... Or you could take a look at some other featured posts in or blog </h3>
+
+    <div id="featured-posts" class='section'>
+        {% include featured_posts.html %}
+    </div>
+</div>
+
+<script>
+
+  var randomBetween = function(f, to){
+    return Math.floor(Math.random() * to) + f;
+  }
+  var randomGame = function(){
+    var games = ["pacman", "space-invaders", "snake"];
+    var randomGame = randomBetween(0,games.length);
+    return games[randomGame];
+  }
+  var src = "https://www.coconauts.net/html5/" + randomGame();
+  $("#404-game").attr('src', src);
+
+</script>
