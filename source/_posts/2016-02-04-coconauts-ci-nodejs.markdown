@@ -3,7 +3,7 @@ layout: post
 title: "Coconauts CI, a lightweight CI built on NodeJS"
 date: 2016-02-04 23:00:00 +0000
 comments: true
-tags: nodejs,ci,redis
+tags: nodejs ci redis
 sharing: true
 categories: software
 keywords: coconauts,ci,nodejs,continuous integration,raspberry pi,jenkins
