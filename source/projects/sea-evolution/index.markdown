@@ -29,5 +29,5 @@ Also, you can play or see how the evolution happens in the sea.
 
 ## Links
 
-* [Sea Evolution game](http://home.coconauts.net/html5/evolution5/) 
+* [Sea Evolution game](http://html5.coconauts.net/evolution5/) 
 * [Ludum Dare post](http://www.ludumdare.com/compo/ludum-dare-24/?action=preview&uid=16605)
