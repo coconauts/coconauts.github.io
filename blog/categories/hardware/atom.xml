@@ -1,0 +1,668 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Hardware | Coconauts]]></title>
+  <link href="http://coconauts.net/blog/categories/hardware/atom.xml" rel="self"/>
+  <link href="http://coconauts.net/"/>
+  <updated>2016-03-14T20:36:49+00:00</updated>
+  <id>http://coconauts.net/</id>
+  <author>
+    <name><![CDATA[Coconauts]]></name>
+    <email><![CDATA[admin@coconauts.net]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Honey, I Shrunk the Watchduino]]></title>
+    <link href="http://coconauts.net/blog/2015/10/20/honey-i-shrunk-the-watchduino/"/>
+    <updated>2015-10-20T22:40:34+01:00</updated>
+    <id>http://coconauts.net/blog/2015/10/20/honey-i-shrunk-the-watchduino</id>
+    <content type="html"><![CDATA[<p>Last weekend we attended
+<a href="http://hackathon.pchintl.com/hackathons/london/2015/10/16/">a hardware hackathon organised by PCH in London</a>.
+The theme of the hackathon was &ldquo;Take your prototype to the
+next stage in 54 hours&rdquo;, so in our case we brought our
+Watchduino prototype and focused on trying to make it closer
+to how it would look if it were a commercial product.</p>
+
+<p>The best part is that at the hackathon there was a set of
+mentors, people who are experts in different areas of IoT,
+which were giving us useful advice about our product
+direction, design optimizations or the ins and outs of
+manufacturing.</p>
+
+<p>By the end of the hackathon, we had a functional (at least
+theorethically) design for Watchduino that looks this
+awesome:</p>
+
+<p><img src=https://farm1.staticflickr.com/772/22314247456_e69a4e1275_z_d.jpg' /></p>
+
+<!-- more -->
+
+
+<p>The first step to getting a hardware product into manufacturing is integrating all the electronics into a PCB. This not only makes the system easier to put together, it&rsquo;s also smaller, and likely to be more energetically efficient.</p>
+
+<p>So we designed a PCB that would mainly replace the Arduino
+Mini, breaking out the pins of the ATMega processor and
+leaving space to surface mount the rest of the components.
+To completely replace the Arduino board, a 8Mhz crystal
+oscillator needs to be added on top of our current
+components, as well as breaking out the RX and TX pins for
+reprogrammation. It&rsquo;s pretty similar to
+<a href="https://bitbucket.org/rephus/watchduino/src/master/docs/how_to_replicate.md">the process we  were following in our first Watchduino</a>.</p>
+
+<p>The board was designed with
+<a href="http://fritzing.org">Fritzing</a>,
+which we were already
+using for our schematic. We were recommended Eagle, which
+appears to be the industry standard software, and has
+a bigger component library and tons of support online.
+But Fritzing is simpler and open source, so it suited
+our purposes for the time being. You can find the file
+<a href="https://github.com/coconauts/watchduino2/tree/master/schema">on the Github repo</a>.
+In the future we would like to try out Eagle though.</p>
+
+<p>By sacrificing the buzzer (which is not really very useful having the vibrator motor) and the USB charching module (to be replaced by a custom connector, as commercial smartwatches usually have) we were able to make our PCB exactly 1 square inch in area. Pretty sweet!</p>
+
+<p><img src='https://farm6.staticflickr.com/5788/21719276463_73d93089ea_o_d.png'/></p>
+
+<p>Being able to mount all the electronics in this small
+area mean there&rsquo;s no longer the need to spread them across the strap as they were before. The whole design is
+completely compact, and small enough to fit in it&rsquo;s
+entirety into a watch head; battery and everything.</p>
+
+<p>In consequence, we redesigned our 3D case into a simpler
+shape, looking now very much like a conventional watch!</p>
+
+<p><img src=https://farm6.staticflickr.com/5640/21719246863_26ed9e4423_m_d.jpg' /></p>
+
+<p>We are cheating a little bit, because we are reusing
+<a href="https://www.decathlon.co.uk/strap-m-swip-watch-strap-black-id_8243023.html">an existing strap from a Geonaute watch</a>.
+These watches are sold at Decathlon stores, and just
+happen to have a so handy sliding mechanism for
+interchangeable straps.</p>
+
+<p><img src=https://farm6.staticflickr.com/5660/22154594199_2a668aec02_m_d.jpg' /></p>
+
+<p>So we designed our new 3D case
+with the same shape, and made it compatible with the
+Geonatue straps. Once we figure out how to print with
+flexible filament we&rsquo;ll replicate the strap with the
+same connector.</p>
+
+<p>There&rsquo;s just one thing missing: our sexy new prototype
+can&rsquo;t be functional until the PCB is printed (the image
+above I&rsquo;m afraid is a dramatization with a screenshot
+pasted on it). Printing PCBs can be done manually, but it&rsquo;s handier, better, and often cheaper to just
+<a href="http://hackaday.com/2015/09/21/why-are-you-still-making-pcbs/">get a manufacturer to do the job</a>.</p>
+
+<p>When you design a PCB, either with Fritzing, Eagle, or
+other software, you can export the result as <em>Gerber files</em>,
+which contain all the different layers of your design.
+You can provide any PCB manufacturer with this format,
+and they&rsquo;ll be able to fabricate a production-quality
+version of your board.</p>
+
+<p>So we&rsquo;ve done just that: we ordered a 3-board batch of PCBs to
+<a href="https://oshpark.com/">OSH Park</a>, for the outrageous price of just £1 each. We can&rsquo;t wait for them to arrive and see if we can get our first mini production-run of Watchduinos!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Why You Shouldn't Use Arduino UNO]]></title>
+    <link href="http://coconauts.net/blog/2015/05/18/why-you-should-not-use-arduino-uno/"/>
+    <updated>2015-05-18T22:53:19+01:00</updated>
+    <id>http://coconauts.net/blog/2015/05/18/why-you-should-not-use-arduino-uno</id>
+    <content type="html"><![CDATA[<p>Arduino is an awesome platform, that allows you to create almost
+everything you can imagine with a really tiny investment and some
+basic hardware knowledge.</p>
+
+<p>Everyone starts using Arduino UNO for development, and we see
+<em>a lot</em> of projects using this board, but there are a few good
+reasons why you shouldn&rsquo;t use UNO&hellip;</p>
+
+<p><img src="http://coconauts.net/images/posts/why-not-uno/arduino_hand.jpg" /></p>
+
+<!--more-->
+
+
+<h2>Arduino UNO is expensive</h2>
+
+<p>Arduino UNO is one of the most expensive boards that features the
+ATMega328 compared with other Arduino models like Mini, Micro,
+or Lilypad. There are
+<a href="http://www.arduino.cc/en/Main/Products">tons of them to choose from</a>)!</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th> Model       </th>
+<th> Price (on store.arduino.cc) </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td> UNO         </td>
+<td> 20€</td>
+</tr>
+<tr>
+<td></td>
+<td> Micro       </td>
+<td> 18€</td>
+</tr>
+<tr>
+<td></td>
+<td> Mini        </td>
+<td> 14€</td>
+</tr>
+<tr>
+<td></td>
+<td> Lillypad    </td>
+<td> 16€</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>Note that these prices come from the
+<a href="http://store.arduino.cc">oficial Arduino store</a>. However you can
+easily find compatible clonic boards on Amazon, Ebay or Aliexpress,
+at a fraction of the price.</p>
+
+<p>You could also use a bare ATMega328 like we did in our
+<a href="https://www.coconauts.net/projects/watchduino/">first Watchduino</a>
+or in our
+<a href="https://www.coconauts.net/blog/2014/10/18/arduino-radio-improvements-low-consumption/">light sensor with RF24 radio module</a>.</p>
+
+<h2>Arduino UNO is big</h2>
+
+<p>Arduino UNO is a big board, and you probably going to use a bread board
+next to it, which makes your whole development prototype really complex.</p>
+
+<p>Instead of that, use a Nano or Micro attached to a bread board directly.</p>
+
+<p><img src="http://coconauts.net/images/posts/why-not-uno/uno_vs_nano.jpeg" /></p>
+
+<h2>Arduino UNO is not power-efficient</h2>
+
+<p>Most of the projects built with Arduino will be wireless and
+battery-powered, so the device should be power-efficient,
+but Arduino UNO is not.</p>
+
+<p>Because Arduino UNO has a lot of hardware you don&rsquo;t need, it consumes
+<em>a lot</em> more than its brothers:</p>
+
+<ul>
+<li>USB controller</li>
+<li>Too many leds</li>
+</ul>
+
+
+<p>However, boards like Lilypad or Mini don&rsquo;t have a USB controller,
+which reduces its normal consumption a few mAh, eg:</p>
+
+<ul>
+<li>Standalone consumption for UNO: 28mAh</li>
+<li>Standalone consumption for Mini: 13mAh</li>
+</ul>
+
+
+<p>This measures have been taken when running a dummy sketch
+that does nothing (not even blinking a LED). If you make
+heavier computations or put the Arduino to sleep, measurements
+will vary.</p>
+
+<h2>Arduino UNO uses USB-B connector</h2>
+
+<p>Seriously?? in this day and age?</p>
+
+<h2>Arduino UNO is not designed for production</h2>
+
+<p>Because it&rsquo;s big, and has a very high consumption, you shouldn&rsquo;t
+ever use it in a prototype, like a remote controlled device, or a
+batery-powered-sensor, or a
+ <a href="https://www.coconauts.net/projects/watchduino2/">smartwatch</a>.</p>
+
+<p>Also, you probably don&rsquo;t want to develop in a hardware that won&rsquo;t
+match the final product specs, do you ?</p>
+
+<h2>Conclussions</h2>
+
+<p>The only reason why you could want to use UNO is to use a shield,
+but in most of the cases they&rsquo;re not worth it.</p>
+
+<p>Our personal preference is Arduino Mini: it&rsquo;s small, cheap and has
+the lowest consumption in its family.</p>
+
+<p>So do yourself a favor and use any of the other boards available
+instead of using UNO again.</p>
+
+<p><img src="http://coconauts.net/images/posts/why-not-uno/arduino_family.jpg" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Simple Automatic Watering System With Arduino]]></title>
+    <link href="http://coconauts.net/blog/2015/04/22/simple-automatic-watering-system-arduino/"/>
+    <updated>2015-04-22T22:57:19+01:00</updated>
+    <id>http://coconauts.net/blog/2015/04/22/simple-automatic-watering-system-arduino</id>
+    <content type="html"><![CDATA[<p>Summer is comming and we may need to water our plants almost everyday,
+but we should take advantage of technology and let machines water our plants for us.</p>
+
+<p>Today we will show you how to build a simple and smart watering system using Arduino.</p>
+
+<!--more-->
+
+
+
+
+<table class='summary' border=1>
+<tr><th>Description</th><th>Materials</th></tr>
+<tr>
+<td>
+
+  In this tutorial we will create a simple watering system using basic Arduino code,
+  with sensors and some digital outputs.
+  
+  <img src="http://coconauts.net/images/posts/automatic-watering/final.jpg" style="width:400px"/>
+  
+</td>
+<td>
+
+<ul>
+  <li>A water pump</li>
+  <li>A humidity sensor (optional)</li>
+  <li>Arduino (Mini, Nano, UNO, etc)</li>
+  <li>An NPN transistor</li>
+  <li>Water</li>
+  <li>Plants (optional)</li>
+</ul>
+
+<strong> Links </strong><br/>
+
+<ul>
+  <li><a href='https://github.com/coconauts/automatic-watering'>Source</a></li>
+</ul>
+
+<strong> Difficulty </strong>
+
+<div class='rating-2'></div>
+
+</td>
+</tr>
+</table>
+
+
+<br/>
+
+
+<p>  <iframe width="100%" height="450" src="https://www.youtube.com/embed/2DbnXBLUOXo" frameborder="0" allowfullscreen></iframe></p>
+
+<p>First you need to enable your water pump from Arduino.
+Some of them may have different current requirements, mine works on  current: 0.05A~0.12A.
+However, Arduino I/O pins have
+some <a href="http://playground.arduino.cc/Main/ArduinoPinCurrentLimitations">current limitations</a> (up to 40.0 mA),
+therefore we will use a transistor as a switching device, connected directly to VCC.</p>
+
+<p>You can see all the details in the schema below.</p>
+
+<p><img src="https://raw.githubusercontent.com/coconauts/automatic-watering/master/automatic-watering_bb.png"/></p>
+
+<p>Another thing to mention is that we want our automatic watering system to have two different functions:</p>
+
+<ul>
+<li>Time-based: Water the plants every <code>x</code> seconds during <code>y</code> seconds.</li>
+<li>Humidity-based: Water the plants everytime it hits a threshold.</li>
+</ul>
+
+
+<p>To pick either of the methods we will use a normal switch that we will read inside the loop in our code.</p>
+
+<p>Here&rsquo;s the Arduino sketch, also available on <a href="https://github.com/coconauts/automatic-watering">github</a></p>
+
+<p>```</p>
+
+<h1>define HUMIDITY_SENSOR 10</h1>
+
+<h1>define WATER_PUMP 9</h1>
+
+<h1>define MODE 4</h1>
+
+<h1>define LED 13  //For notification</h1>
+
+<h1>define HUMIDITY_THRESHOLD 50</h1>
+
+<h1>define PUMP_FREQUENCY 1000</h1>
+
+<h1>define PUMP_ENABLE_TIME 1000 // Time to be enabled (in ms)</h1>
+
+<p>int mode;
+int humidityRead;
+long lastTimeActive;
+bool pumpEnabled;</p>
+
+<p>void setup(){
+  pinMode(HUMIDITY_SENSOR, INPUT);
+  pinMode(WATER_PUMP, OUTPUT);
+  pinMode(LED, OUTPUT);</p>
+
+<p>  pinMode(MODE, INPUT); digitalWrite(MODE,HIGH);</p>
+
+<p>  disablePump();
+}</p>
+
+<p>void loop(){
+  mode = digitalRead(MODE);</p>
+
+<p>  if (mode == HIGH) { //time mode</p>
+
+<pre><code>if (!pumpEnabled &amp;&amp; millis() &gt; lastTimeActive + PUMP_FREQUENCY) {
+  enablePump();
+  lastTimeActive = millis();
+} 
+if (pumpEnabled &amp;&amp; millis() &gt; lastTimeActive + PUMP_ENABLE_TIME) {
+  disablePump();
+  lastTimeActive = millis();
+}
+</code></pre>
+
+<p>  } else { //Humidity mode</p>
+
+<pre><code>humidityRead = analogRead(A0);
+
+if (humidityRead &lt; HUMIDITY_THRESHOLD) {
+  if (!pumpEnabled) enablePump();
+} else {
+  if (pumpEnabled) disablePump();
+}
+</code></pre>
+
+<p>  }</p>
+
+<p>  delay(1000);
+}</p>
+
+<p>void enablePump() {</p>
+
+<pre><code>digitalWrite(WATER_PUMP, HIGH); 
+digitalWrite(LED, HIGH); 
+
+pumpEnabled = true;
+</code></pre>
+
+<p>}</p>
+
+<p>void disablePump() {</p>
+
+<p>  digitalWrite(WATER_PUMP, LOW);
+  digitalWrite(LED, LOW);</p>
+
+<p>  pumpEnabled = false;
+}</p>
+
+<p>```</p>
+
+<p>If you don&rsquo;t have a humidity sensor (or don&rsquo;t want to use one),
+you can remove both (the switch and the sensor) from the schema.</p>
+
+<p>But also, you can use this for watering multiple plants,
+or you could use this project for your pets or to wake  up in the morning covered by water in your bed.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Watchduino 2 First Prototype]]></title>
+    <link href="http://coconauts.net/blog/2015/02/26/watchduino2-first-prototype/"/>
+    <updated>2015-02-26T20:42:14+00:00</updated>
+    <id>http://coconauts.net/blog/2015/02/26/watchduino2-first-prototype</id>
+    <content type="html"><![CDATA[<p>Five weeks have passed since I built the first wearable prototype of Watchduino 2,
+and I would like to share with you my impressions, its current features and its possible improvements.</p>
+
+<p><img src="http://coconauts.net/images/posts/watchduino2-prototype/all-3.jpg" /></p>
+
+<!--more-->
+
+
+<h2>Software</h2>
+
+<p>The software is running in an Arduino Mini Pro v2 3.3v 8Mhz and spans across 1588 lines of code, 17 files and 9 different classes.</p>
+
+<p>This code takes 28.212 bytes of the ATMega328&rsquo;s ROM and everything uses 1200 bytes of RAM when running.</p>
+
+<p>Apart from that, there is an Android app for comunication which provides cool features like a a Twitter client for our smartwatch.</p>
+
+<h2>Hardware</h2>
+
+<p>We need to talk about new hardware for Watchduino 2,
+as it is very different from its <a href="http://www.coconauts.net/projects/watchduino/">first version</a>
+which makes this new version smaller, prettier and more useful.</p>
+
+<ul>
+<li>Arduino mini pro 2 8Mhz 3.3v</li>
+<li>LIPO battery 240mah</li>
+<li>0.96" I2C 128X64 OLED (Various colors)</li>
+<li>3 x 6 x 4.3mm Push Button 2 Pin</li>
+<li>0.06A Micro Vibrator Motor</li>
+<li>Micro USB LIPO charger</li>
+<li>Bluetooth 3.0 module HC-06</li>
+</ul>
+
+
+<p>We have built 2 (and a half) prototypes following the same specification.</p>
+
+<h2>Features</h2>
+
+<p>Thanks to this new hardware, we managed to add new features to this new version.
+Most of them were mentioned in the <a href="http://www.coconauts.net/blog/2014/11/22/watchduino-2-dot-0-roadmap/">Watchduino roadmap post</a>,
+but you can have another look here:</p>
+
+<h3>Companion app (Android)</h3>
+
+<p><img src="http://coconauts.net/images/posts/watchduino2-prototype/manager.png" class="screenshot" /></p>
+
+<p>This is a big one, thanks to the bluetooth module we are able to send and receive messages from and to Android
+in realtime. This is a list of the features already available.</p>
+
+<ul>
+<li>Time sync: Set up the time sending a short message from the phone with the current timestamp, bye bye RTC.</li>
+<li>Weather information: Use weather APIs in the phone to get weather information (temperature, sky, humidity, etc)</li>
+<li>Twitter client: Read your twitter timeline from your watch (Awesome!!)</li>
+</ul>
+
+
+<p><img src="http://coconauts.net/images/posts/watchduino2-prototype/twitter.jpg" class="screenshot" /></p>
+
+<ul>
+<li>Notifications: Get notifications on your watch (emails, twits, whatsapp&hellip;)
+using the recent NotificationListener feature in Android.</li>
+<li>Debug: Great for debugging, send any message from the watch to your phone.</li>
+<li>Battery: Send battery messages from the watch to the phone to watch how the battery decreases with time</li>
+</ul>
+
+
+<p><img src="http://coconauts.net/images/posts/watchduino2-prototype/battery.png" class="screenshot" /></p>
+
+<p>But honestly, you can build whatever feature you want using your phone and a few APIs.
+Facebook client maybe ? Automatic whatsapp responses ?</p>
+
+<p>Actually, we are working in the following features:</p>
+
+<ul>
+<li>Bus notifications (see how long does your bus take to arrive, using the Transport For London APIs)</li>
+<li>Settings: Managed from the android app, and stored in the phone.</li>
+</ul>
+
+
+<h3>Screens</h3>
+
+<p>New screens, new resolution (128x64) and new style, with dynamic in-screen information for the buttons.</p>
+
+<p><img src="http://coconauts.net/images/posts/watchduino2-prototype/watch.jpg" class="screenshot"/></p>
+
+<p>Screen navigation is easier now with this simple menu.</p>
+
+<p><img src="http://coconauts.net/images/posts/watchduino2-prototype/menu.jpg" class="screenshot" /></p>
+
+<h3>Notifications</h3>
+
+<p>A vibrator and a tiny buzzer will alert you when a notification arrives.</p>
+
+<p>Also, the buzzer can play short melodies for alarms and whatnot.</p>
+
+<h3>Battery life</h3>
+
+<p>Using a tiny 240mah battery and without any kind of energy optimization (on-screen, bluetooth always on)
+a single charge last around 10 hours.</p>
+
+<p>Also, you can always look at your remaining battery in the top bar of the screen (like in phones).</p>
+
+<p>The charging time is less than 20 minutes.</p>
+
+<p>The problem here is the bluetooth module (HC-06), I was able to reduce its consumption to 4mA in sleep mode,
+but even so, the device would last up to 40 hours, which is not enough.
+No more optimisations can be performed from our side,
+so at this point I think the only option would be to try with <a href="http://en.wikipedia.org/wiki/Bluetooth_low_energy">Bluetooth BLE</a>.</p>
+
+<h2>Possible improvements</h2>
+
+<p>It works cool so far, but it can be improved a lot (there are still a few bugs).
+However that may require some time and maybe a new prototype.
+In short term, this are the things we are going to focus in the next weeks.</p>
+
+<ul>
+<li>Better case (3D printed?).</li>
+<li>Fix missing characters from Watchduino to Android.</li>
+<li>New charging system.</li>
+<li>Improve Battery life with Bluetooth BLE.</li>
+<li>Save settings in Android.</li>
+<li>Bring back the alarm / countdown features from Watchduino v1.</li>
+<li>Memory ROM and RAM can be optimized.</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Easily Draw Bitmaps in Arduino]]></title>
+    <link href="http://coconauts.net/blog/2015/01/19/easy-draw-bitmaps-arduino/"/>
+    <updated>2015-01-19T19:57:38+00:00</updated>
+    <id>http://coconauts.net/blog/2015/01/19/easy-draw-bitmaps-arduino</id>
+    <content type="html"><![CDATA[<p>When you want to draw an image in a screen using Arduino you must convert the image to <code>PROGMEM const unsigned char</code> first.
+In order to achieve that, there are some tools available like <code>image2code</code> or <code>LCD Assistant</code>,
+but in this tutorial we will show an easier and friendlier way, using the GIMP image editor.</p>
+
+<table border=0>
+<tr>
+<td>
+
+  <img src="http://coconauts.net/images/posts/easy-draw-bitmap-arduino/coconauts.png" />
+
+</td>
+<td style='background-color:#ccc; font-size:xx-small;padding:5px'>
+
+static unsigned char coconauts_bits[] = {
+   0x00, 0xc0, 0x7f, 0x00, 0xc0, 0xff, 0x00, 0x00, 0xf8, 0xff, 0x03, 0x20,
+   0xf0, 0x01, 0x00, 0xfe, 0xe0, 0x0f, 0x10, 0xc0, 0x01, 0x00, 0x7f, 0xc0,
+   0x1f, 0x7c, 0x80, 0x01, 0xc0, 0xff, 0xe0, 0x7f, 0xfc, 0x01, 0x01, 0xe0,
+   0xff, 0xff, 0xff, 0xf8, 0x01, 0x01, 0xf0, 0xff, 0xff, 0xff, 0xf1, 0xf1,
+   0x03, 0xf0, 0x83, 0x1f, 0xfc, 0xc1, 0xd9, 0x06, 0xf8, 0x01, 0x0f, 0xf8,
+   0x03, 0x9b, 0x04, 0xfc, 0x83, 0x1f, 0xfc, 0x07, 0xde, 0x0e, 0xfc, 0xff,
+   0xff, 0xff, 0x07, 0x78, 0x0b, 0xfe, 0xff, 0xff, 0xff, 0x0f, 0x08, 0x08,
+   0xfe, 0xff, 0xff, 0xff, 0x0f, 0x08, 0x08, 0xfe, 0xff, 0xff, 0xff, 0x0f,
+   0x10, 0x08, 0xff, 0xff, 0xff, 0xff, 0x1f, 0x10, 0x18, 0xff, 0xff, 0xff,
+   0xff, 0x1f, 0x10, 0x10, 0xff, 0xff, 0xff, 0xff, 0x1f, 0x20, 0x10, 0xff,
+   0xff, 0xff, 0xff, 0x1f, 0x20, 0x10, 0xff, 0xff, 0xff, 0xff, 0x1f, 0x20,
+   0x10, 0xff, 0xff, 0xff, 0xff, 0x1f, 0x20, 0x10, 0xff, 0xff, 0xff, 0xff,
+   0x1f, 0x20, 0x10, 0xff, 0xff, 0xff, 0xff, 0x1f, 0x20, 0x10, 0xff, 0xff,
+   0xff, 0xff, 0x1f, 0x20, 0x10, 0xfe, 0xff, 0xff, 0xff, 0x1f, 0x20, 0x10,
+   0xfe, 0xff, 0xff, 0xff, 0x1f, 0x10, 0x08, 0xfe, 0xff, 0xff, 0xff, 0x1f,
+   0x10, 0x08, 0xfc, 0xff, 0xff, 0xff, 0x0f, 0x10, 0x08, 0xfc, 0xff, 0xff,
+   0xff, 0x0f, 0x08, 0x08, 0xfc, 0xff, 0xff, 0xff, 0x07, 0x08, 0x04, 0xf0,
+   0xff, 0xff, 0xff, 0x01, 0x04, 0x04, 0xf0, 0xff, 0xff, 0xff, 0x01, 0x06,
+   0x02, 0xe0, 0xff, 0xff, 0xff, 0x00, 0x03, 0x02, 0xe0, 0xff, 0xff, 0x7f,
+   0x00, 0x01, 0x01, 0x20, 0xff, 0xff, 0x1f, 0x80, 0x80, 0x00, 0x40, 0xfe,
+   0xff, 0x0f, 0x60, 0x80, 0x00, 0x40, 0xf8, 0xff, 0x03, 0x20, 0x40, 0x00,
+   0x80, 0xf1, 0x7f, 0x00, 0x18, 0x20, 0x00, 0x00, 0xc1, 0x03, 0x00, 0x06,
+   0x10, 0x00, 0x00, 0x02, 0x1e, 0xf0, 0x01, 0x08, 0x00, 0x00, 0x0c, 0xf0,
+   0x1f, 0x00, 0x06, 0x00, 0x00, 0x10, 0x00, 0x00, 0x80, 0x01, 0x00, 0x00,
+   0xe0, 0x01, 0x00, 0xc0, 0x00, 0x00, 0x00, 0x00, 0x07, 0x00, 0x38, 0x00,
+   0x00, 0x00, 0x00, 0x3c, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00, 0xe0, 0xff,
+   0x00, 0x00, 0x00 };
+
+</td>
+</tr>
+</table>
+
+
+
+
+<!--more-->
+
+
+
+
+<table class='summary' border=1>
+<tr>
+<td>
+
+  <strong> Description </strong><br/>
+
+  In this tutorial we will export a black and white image to a format Arduino graphic libraries can digest.
+
+</td>
+<td>
+
+<strong> Software </strong><br/>
+
+<ul>
+  <li><a href='http://www.gimp.org'>GIMP</a></li>
+</ul>
+
+<strong> Difficulty </strong>
+
+<div class='rating-1'></div>
+
+</td>
+</tr>
+</table>
+
+
+<p>We will start designing the image in black and white colors using GIMP (or just use whatever program you like, and then import the image into GIMP), so it looks like this:</p>
+
+<p><img src="http://coconauts.net/images/posts/easy-draw-bitmap-arduino/bluetooth.png" /></p>
+
+<p>Then, we will export the image to XBM format.</p>
+
+<pre><code>File &gt; Export as... &gt; name: image.xbm
+</code></pre>
+
+<p>Now, here comes the fun part. Open the image as text (using gedit, kate, sublime, notepad&hellip;), and you will see something like this:</p>
+
+<p>```</p>
+
+<h1>define bluetooth_width 6</h1>
+
+<h1>define bluetooth_height 11</h1>
+
+<p>static unsigned char bluetooth_bits[] = { 0x04, 0x0c, 0x14, 0x25, 0x16, 0x0c, 0x16, 0x25, 0x14, 0x0c, 0x04 };
+```</p>
+
+<p>All you need to do is add that code to Arduino ( you can add PROGMEM to it if you want)
+and draw the image using u8glib or Adafruit_GFX, e.g:</p>
+
+<pre><code> #Adafruit_GFX
+ display.drawBitmap(x, y, bluetooth_bits, bluetooth_width, bluetooth_height, BLACK);
+
+ #U8glib
+ display.drawXBMP(x,y, bluetooth_width,bluetooth_height,bluetooth_bits);
+</code></pre>
+
+<p>As simple as that.</p>
+
+<p>Now you can open the same image in XBM format using GIMP to edit the image directly, without doing any conversion.</p>
+]]></content>
+  </entry>
+  
+</feed>
