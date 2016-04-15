@@ -10,7 +10,7 @@ keywords: pi,3dprint,cookies
 description: "Happy Pi day"
 author: Mar Bartolome
 published: true
-featured: true
+featured: false
 ---
 
 Do you know what day is today? It's 3.14, and because it matches the
