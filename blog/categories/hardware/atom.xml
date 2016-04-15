@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Hardware | Coconauts]]></title>
   <link href="http://coconauts.net/blog/categories/hardware/atom.xml" rel="self"/>
   <link href="http://coconauts.net/"/>
-  <updated>2016-03-14T22:14:31+00:00</updated>
+  <updated>2016-04-15T23:41:47+01:00</updated>
   <id>http://coconauts.net/</id>
   <author>
     <name><![CDATA[Coconauts]]></name>
@@ -12,6 +12,61 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Build a Smart Home Using Raspberry Pi and Energenie]]></title>
+    <link href="http://coconauts.net/blog/2016/04/15/energinie-and-raspberry-pi-setup/"/>
+    <updated>2016-04-15T23:51:00+01:00</updated>
+    <id>http://coconauts.net/blog/2016/04/15/energinie-and-raspberry-pi-setup</id>
+    <content type="html"><![CDATA[<p>We recently discovered <a href="https://energenie4u.co.uk/">Energenie</a> (thanks to <a href="https://twitter.com/Man0jN">Manoj</a>) a nice and cheap remote controlled socket
+which also provides a custom shield for Raspberry Pi, you can use it to
+programatically control those sockets. This allows endless possibilities:
+from temporized sockets, to a socket that automatically turns on when
+detects presence using a PIR sensor, or triggered by a website or a phone app.</p>
+
+<p><img src='https://www.flickr.com/photos/136662316@N07/25845471424/sizes/m/'/></p>
+
+<!-- more -->
+
+
+<p>You can buy 2 different types of Energenie, some <a href="https://energenie4u.co.uk/catalogue/product/ENER002-4">individual sockets</a>
+or an <a href="https://energenie4u.co.uk/catalogue/product/ENER010">extension lead socket with 4 individually controlled</a>.
+You can also find them cheaper on Amazon or <a href="http://www.ebay.co.uk/itm/161972721449?_trksid=p2060353.m2749.l2649&amp;ssPageName=STRK%3AMEBIDX%3AIT">Ebay</a>.</p>
+
+<p>Every Energenie comes with a remote that you can use to power on or off those sockets using radio
+(no need to point with the controller to the socket like an infrared remote).
+You can use them just like this, but of course the really fun part is to be able
+to program them with your Raspberry Pi. For this, you&rsquo;ll need the
+<a href="https://energenie4u.co.uk/catalogue/product/ENER314">control board shield</a>
+as well.</p>
+
+<p>You can download a library for Python to use with Raspberry Pi from <a href="http://pythonhosted.org/energenie/">their website</a>, and check some examples of basic usage.</p>
+
+<p>In our case, as our first project, we built a website so you can control all
+sockets in the extension lead from your
+computer. In one of them we added some Cinema style lights under our sofa using a
+LED strip connected to a 12V supplier on the socket.</p>
+
+<p><img src='https://farm2.staticflickr.com/1704/26449115715_b672c53b20_z_d.jpg'/>
+<img src='https://farm2.staticflickr.com/1652/26449115515_60a9fd10a7_z_d.jpg'/></p>
+
+<p>The interface looks like this:</p>
+
+<p><img src='https://farm2.staticflickr.com/1630/26423191956_b64967a883_o_d.png'/></p>
+
+<p>You can check the source code in our <a href="https://github.com/rephus/energenie-manager">Github</a>.</p>
+
+<h3>Warnings and limitations</h3>
+
+<p>Each Raspberry PI board or remote allows you to use 4 different sockets
+(or 1 extension lead)  maximum. Which means you can&rsquo;t have for example 5 sockets
+controlled with a single Raspberry Pi.</p>
+
+<p>Each socket can only be paired with 2 controllers maximum, which means you can&rsquo;t control a socket with a remote and 2 Raspberry Pis. Every time you pair a new socket, the oldest one will get unpaired. Also, remember to pair every device before using it or it won&rsquo;t work.</p>
+
+<p>Do you have more ideas to implement with Energenie? we&rsquo;d like to hear about them in the comments.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Honey, I Shrunk the Watchduino]]></title>
@@ -541,127 +596,6 @@ In short term, this are the things we are going to focus in the next weeks.</p>
 <li>Memory ROM and RAM can be optimized.</li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Easily Draw Bitmaps in Arduino]]></title>
-    <link href="http://coconauts.net/blog/2015/01/19/easy-draw-bitmaps-arduino/"/>
-    <updated>2015-01-19T19:57:38+00:00</updated>
-    <id>http://coconauts.net/blog/2015/01/19/easy-draw-bitmaps-arduino</id>
-    <content type="html"><![CDATA[<p>When you want to draw an image in a screen using Arduino you must convert the image to <code>PROGMEM const unsigned char</code> first.
-In order to achieve that, there are some tools available like <code>image2code</code> or <code>LCD Assistant</code>,
-but in this tutorial we will show an easier and friendlier way, using the GIMP image editor.</p>
-
-<table border=0>
-<tr>
-<td>
-
-  <img src="http://coconauts.net/images/posts/easy-draw-bitmap-arduino/coconauts.png" />
-
-</td>
-<td style='background-color:#ccc; font-size:xx-small;padding:5px'>
-
-static unsigned char coconauts_bits[] = {
-   0x00, 0xc0, 0x7f, 0x00, 0xc0, 0xff, 0x00, 0x00, 0xf8, 0xff, 0x03, 0x20,
-   0xf0, 0x01, 0x00, 0xfe, 0xe0, 0x0f, 0x10, 0xc0, 0x01, 0x00, 0x7f, 0xc0,
-   0x1f, 0x7c, 0x80, 0x01, 0xc0, 0xff, 0xe0, 0x7f, 0xfc, 0x01, 0x01, 0xe0,
-   0xff, 0xff, 0xff, 0xf8, 0x01, 0x01, 0xf0, 0xff, 0xff, 0xff, 0xf1, 0xf1,
-   0x03, 0xf0, 0x83, 0x1f, 0xfc, 0xc1, 0xd9, 0x06, 0xf8, 0x01, 0x0f, 0xf8,
-   0x03, 0x9b, 0x04, 0xfc, 0x83, 0x1f, 0xfc, 0x07, 0xde, 0x0e, 0xfc, 0xff,
-   0xff, 0xff, 0x07, 0x78, 0x0b, 0xfe, 0xff, 0xff, 0xff, 0x0f, 0x08, 0x08,
-   0xfe, 0xff, 0xff, 0xff, 0x0f, 0x08, 0x08, 0xfe, 0xff, 0xff, 0xff, 0x0f,
-   0x10, 0x08, 0xff, 0xff, 0xff, 0xff, 0x1f, 0x10, 0x18, 0xff, 0xff, 0xff,
-   0xff, 0x1f, 0x10, 0x10, 0xff, 0xff, 0xff, 0xff, 0x1f, 0x20, 0x10, 0xff,
-   0xff, 0xff, 0xff, 0x1f, 0x20, 0x10, 0xff, 0xff, 0xff, 0xff, 0x1f, 0x20,
-   0x10, 0xff, 0xff, 0xff, 0xff, 0x1f, 0x20, 0x10, 0xff, 0xff, 0xff, 0xff,
-   0x1f, 0x20, 0x10, 0xff, 0xff, 0xff, 0xff, 0x1f, 0x20, 0x10, 0xff, 0xff,
-   0xff, 0xff, 0x1f, 0x20, 0x10, 0xfe, 0xff, 0xff, 0xff, 0x1f, 0x20, 0x10,
-   0xfe, 0xff, 0xff, 0xff, 0x1f, 0x10, 0x08, 0xfe, 0xff, 0xff, 0xff, 0x1f,
-   0x10, 0x08, 0xfc, 0xff, 0xff, 0xff, 0x0f, 0x10, 0x08, 0xfc, 0xff, 0xff,
-   0xff, 0x0f, 0x08, 0x08, 0xfc, 0xff, 0xff, 0xff, 0x07, 0x08, 0x04, 0xf0,
-   0xff, 0xff, 0xff, 0x01, 0x04, 0x04, 0xf0, 0xff, 0xff, 0xff, 0x01, 0x06,
-   0x02, 0xe0, 0xff, 0xff, 0xff, 0x00, 0x03, 0x02, 0xe0, 0xff, 0xff, 0x7f,
-   0x00, 0x01, 0x01, 0x20, 0xff, 0xff, 0x1f, 0x80, 0x80, 0x00, 0x40, 0xfe,
-   0xff, 0x0f, 0x60, 0x80, 0x00, 0x40, 0xf8, 0xff, 0x03, 0x20, 0x40, 0x00,
-   0x80, 0xf1, 0x7f, 0x00, 0x18, 0x20, 0x00, 0x00, 0xc1, 0x03, 0x00, 0x06,
-   0x10, 0x00, 0x00, 0x02, 0x1e, 0xf0, 0x01, 0x08, 0x00, 0x00, 0x0c, 0xf0,
-   0x1f, 0x00, 0x06, 0x00, 0x00, 0x10, 0x00, 0x00, 0x80, 0x01, 0x00, 0x00,
-   0xe0, 0x01, 0x00, 0xc0, 0x00, 0x00, 0x00, 0x00, 0x07, 0x00, 0x38, 0x00,
-   0x00, 0x00, 0x00, 0x3c, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00, 0xe0, 0xff,
-   0x00, 0x00, 0x00 };
-
-</td>
-</tr>
-</table>
-
-
-
-
-<!--more-->
-
-
-
-
-<table class='summary' border=1>
-<tr>
-<td>
-
-  <strong> Description </strong><br/>
-
-  In this tutorial we will export a black and white image to a format Arduino graphic libraries can digest.
-
-</td>
-<td>
-
-<strong> Software </strong><br/>
-
-<ul>
-  <li><a href='http://www.gimp.org'>GIMP</a></li>
-</ul>
-
-<strong> Difficulty </strong>
-
-<div class='rating-1'></div>
-
-</td>
-</tr>
-</table>
-
-
-<p>We will start designing the image in black and white colors using GIMP (or just use whatever program you like, and then import the image into GIMP), so it looks like this:</p>
-
-<p><img src="http://coconauts.net/images/posts/easy-draw-bitmap-arduino/bluetooth.png" /></p>
-
-<p>Then, we will export the image to XBM format.</p>
-
-<pre><code>File &gt; Export as... &gt; name: image.xbm
-</code></pre>
-
-<p>Now, here comes the fun part. Open the image as text (using gedit, kate, sublime, notepad&hellip;), and you will see something like this:</p>
-
-<p>```</p>
-
-<h1>define bluetooth_width 6</h1>
-
-<h1>define bluetooth_height 11</h1>
-
-<p>static unsigned char bluetooth_bits[] = { 0x04, 0x0c, 0x14, 0x25, 0x16, 0x0c, 0x16, 0x25, 0x14, 0x0c, 0x04 };
-```</p>
-
-<p>All you need to do is add that code to Arduino ( you can add PROGMEM to it if you want)
-and draw the image using u8glib or Adafruit_GFX, e.g:</p>
-
-<pre><code> #Adafruit_GFX
- display.drawBitmap(x, y, bluetooth_bits, bluetooth_width, bluetooth_height, BLACK);
-
- #U8glib
- display.drawXBMP(x,y, bluetooth_width,bluetooth_height,bluetooth_bits);
-</code></pre>
-
-<p>As simple as that.</p>
-
-<p>Now you can open the same image in XBM format using GIMP to edit the image directly, without doing any conversion.</p>
 ]]></content>
   </entry>
   

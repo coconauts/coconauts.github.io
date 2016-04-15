@@ -4,7 +4,7 @@
   <title><![CDATA[Coconauts]]></title>
   <link href="http://coconauts.net/atom.xml" rel="self"/>
   <link href="http://coconauts.net/"/>
-  <updated>2016-03-14T22:14:31+00:00</updated>
+  <updated>2016-04-15T23:41:47+01:00</updated>
   <id>http://coconauts.net/</id>
   <author>
     <name><![CDATA[Coconauts]]></name>
@@ -12,6 +12,61 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Build a Smart Home Using Raspberry Pi and Energenie]]></title>
+    <link href="http://coconauts.net/blog/2016/04/15/energinie-and-raspberry-pi-setup/"/>
+    <updated>2016-04-15T23:51:00+01:00</updated>
+    <id>http://coconauts.net/blog/2016/04/15/energinie-and-raspberry-pi-setup</id>
+    <content type="html"><![CDATA[<p>We recently discovered <a href="https://energenie4u.co.uk/">Energenie</a> (thanks to <a href="https://twitter.com/Man0jN">Manoj</a>) a nice and cheap remote controlled socket
+which also provides a custom shield for Raspberry Pi, you can use it to
+programatically control those sockets. This allows endless possibilities:
+from temporized sockets, to a socket that automatically turns on when
+detects presence using a PIR sensor, or triggered by a website or a phone app.</p>
+
+<p><img src='https://www.flickr.com/photos/136662316@N07/25845471424/sizes/m/'/></p>
+
+<!-- more -->
+
+
+<p>You can buy 2 different types of Energenie, some <a href="https://energenie4u.co.uk/catalogue/product/ENER002-4">individual sockets</a>
+or an <a href="https://energenie4u.co.uk/catalogue/product/ENER010">extension lead socket with 4 individually controlled</a>.
+You can also find them cheaper on Amazon or <a href="http://www.ebay.co.uk/itm/161972721449?_trksid=p2060353.m2749.l2649&amp;ssPageName=STRK%3AMEBIDX%3AIT">Ebay</a>.</p>
+
+<p>Every Energenie comes with a remote that you can use to power on or off those sockets using radio
+(no need to point with the controller to the socket like an infrared remote).
+You can use them just like this, but of course the really fun part is to be able
+to program them with your Raspberry Pi. For this, you&rsquo;ll need the
+<a href="https://energenie4u.co.uk/catalogue/product/ENER314">control board shield</a>
+as well.</p>
+
+<p>You can download a library for Python to use with Raspberry Pi from <a href="http://pythonhosted.org/energenie/">their website</a>, and check some examples of basic usage.</p>
+
+<p>In our case, as our first project, we built a website so you can control all
+sockets in the extension lead from your
+computer. In one of them we added some Cinema style lights under our sofa using a
+LED strip connected to a 12V supplier on the socket.</p>
+
+<p><img src='https://farm2.staticflickr.com/1704/26449115715_b672c53b20_z_d.jpg'/>
+<img src='https://farm2.staticflickr.com/1652/26449115515_60a9fd10a7_z_d.jpg'/></p>
+
+<p>The interface looks like this:</p>
+
+<p><img src='https://farm2.staticflickr.com/1630/26423191956_b64967a883_o_d.png'/></p>
+
+<p>You can check the source code in our <a href="https://github.com/rephus/energenie-manager">Github</a>.</p>
+
+<h3>Warnings and limitations</h3>
+
+<p>Each Raspberry PI board or remote allows you to use 4 different sockets
+(or 1 extension lead)  maximum. Which means you can&rsquo;t have for example 5 sockets
+controlled with a single Raspberry Pi.</p>
+
+<p>Each socket can only be paired with 2 controllers maximum, which means you can&rsquo;t control a socket with a remote and 2 Raspberry Pis. Every time you pair a new socket, the oldest one will get unpaired. Also, remember to pair every device before using it or it won&rsquo;t work.</p>
+
+<p>Do you have more ideas to implement with Energenie? we&rsquo;d like to hear about them in the comments.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Happy Pi Day!]]></title>
@@ -670,6 +725,8 @@ with this content:</p>
 
 <div class="row">
    
+   
+       
    
        
           
@@ -1442,88 +1499,6 @@ of tutorials and documentation about all things chiptune and tracking.</li>
 
 <p>Don&rsquo;t forget though that there&rsquo;s a saner way to do it, we&rsquo;ve shown you how in the
 <a href="https://www.coconauts.net/blog/2015/02/02/creating-chiptune-style-music-with-ubuntu/">previous post</a>!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Exploding Bunnies]]></title>
-    <link href="http://coconauts.net/blog/2015/03/21/exploding-bunnies/"/>
-    <updated>2015-03-21T15:53:19+00:00</updated>
-    <id>http://coconauts.net/blog/2015/03/21/exploding-bunnies</id>
-    <content type="html"><![CDATA[<p>It&rsquo;s been half a year since
-<a href="http://www.coconauts.net/projects/timebomb2/">Super Time Bomb</a>
-was released. During this
-time, we&rsquo;ve been closely following it&rsquo;s reception, and gathering user
-feedback. Today we released an update with major gameplay changes,
-including a name change!</p>
-
-<!--more-->
-
-
-<h2>New name</h2>
-
-<p>The game is now named <em>Exploding Bunnies</em>, in the hope that this is
-a more unique name, making it easier to search on the Play Store.
-Before it was appearing over the 10th position in the search result,
-whereas now it&rsquo;s showing up the forth, you don&rsquo;t even need to scroll
-to see it.</p>
-
-<p><img src="http://coconauts.net/images/posts/exploding-bunnies/store.png" /></p>
-
-<h2>More fun difficulty curve</h2>
-
-<p>We&rsquo;ve made the difficulty curve more stable. Previously, the difficulty
-in both game modes was set to be strictly incremental: it started
-really slow and easy, and difficult went up at a constant rate. But
-after a few minutes it turned out to be humanely impossible to survive.
-This made for a frustrating experience, with short gameplays, boring time
-after every restart, and no incentive for players to try to last longer
-and longer, since it was physically impossible.</p>
-
-<p>We&rsquo;ve heavily tuned the difficulty curve so that now starts out a little
-bit more upbeat, so you won&rsquo;t be bored with every game restart. Then it
-goes up  until it reaches a limit at 5 minutes of gameplay, after which
-point it will stabilize. This allows for in theory infinite gameplays,
-giving the players an incentive to keep trying to beat their high scores.</p>
-
-<p><img src="http://coconauts.net/images/posts/exploding-bunnies/difficulty.png" /></p>
-
-<h2>One game mode to rule them all</h2>
-
-<p>The original Super Time Bomb included two game modes: wave and continous.
-For this revision, however, we&rsquo;ve decided to say goodbyde to the wave mode
-and keep the continous one. The wave mode wasn&rsquo;t that different from the
-continous one, so it was a bit redundant to begin with. The difficulty
-curve problem mentioned earlier was also more accused in the wave mode
-than in the continous one. It also confused new users trying out the game
-to have to pick between two game modes.</p>
-
-<p>So now we have one big &ldquo;PLAY&rdquo; button instead, which will take you to
-the formerly continous mode gameplay. Unite and conquer!</p>
-
-<p><img src="http://coconauts.net/images/posts/exploding-bunnies/mainmenu.png" /></p>
-
-<h2>Death from above</h2>
-
-<p>Since we&rsquo;ve limited the difficulty in terms of quantity of bombs in the
-screen, we&rsquo;ve decided to add a new type of bomb to increase the complexity
-a little bit. Now, aside from the regular bombs, mines, and wall lasers,
-we have a new dropping bomb that falls from the sky. The difference is that
-for this type of bomb there is no counter! You&rsquo;ll just see a warning and
-a shadow where the bomb will fall.</p>
-
-<p><img src="http://coconauts.net/images/posts/exploding-bunnies/airbomb.png" /></p>
-
-<h2>Go play it!</h2>
-
-<p>It&rsquo;s difficult to make a star game in your first shot. Usually most
-great games come from successive iterations over the same idea (just
-have a look at the metal gear games for instance!).</p>
-
-<p>So go and give a try to the new
-<a href="https://play.google.com/store/apps/details?id=net.coconauts.timebomb2">Exploding Bunnies</a>
-and see how you like it! Please give us feedback: we welcome every
-comment, and we&rsquo;ll try to make the next iteration even better.</p>
 ]]></content>
   </entry>
   
