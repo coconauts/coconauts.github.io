@@ -4,7 +4,7 @@
   <title><![CDATA[Coconauts]]></title>
   <link href="http://coconauts.net/atom.xml" rel="self"/>
   <link href="http://coconauts.net/"/>
-  <updated>2016-04-15T23:43:50+01:00</updated>
+  <updated>2016-05-19T22:16:10+01:00</updated>
   <id>http://coconauts.net/</id>
   <author>
     <name><![CDATA[Coconauts]]></name>
@@ -729,15 +729,6 @@ with this content:</p>
        
    
        
-          
-           <div class="col-sm-4 col-lg-4 column">
-              <a class='post-link' href="http://coconauts.net/blog/2016/03/14/happy-pi-day/">Happy Pi Day!</a>
-              <p>Do you know what day is today? It&#8217;s 3.14, and because it matches the
-decimals in the most beloved irrational number ever, it&#8217;s been called an
-[official celebration of number Pi](https://en.wikipedia.org/wiki/Pi_Day). Actually last year it was a most special instance, as it was 3.14.15; an
-event &hellip;</p>
-           </div>
-       
    
        
           
@@ -758,6 +749,16 @@ jenkins instance in our server for a few years already, and we have some
            </div>
        
    
+       
+          
+           <div class="col-sm-4 col-lg-4 column">
+              <a class='post-link' href="http://coconauts.net/blog/2016/01/01/year-retrospective/">Coconauts 2015 Retrospective</a>
+              <p>Year 2015 has come to an end, and as it turns out we do have
+[hoverboards](https://en.wikipedia.org/wiki/Self-balancing_two-wheeled_board),
+[holograms/augmented reality](https://www.youtube.com/watch?v=vZRFcGrrsyc),
+yet for some reason hip-kids insist in dressing as lumberjacks rather than
+in &hellip;</p>
+           </div>
        
    
        
