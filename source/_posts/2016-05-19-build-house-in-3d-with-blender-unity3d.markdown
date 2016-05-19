@@ -9,7 +9,7 @@ categories: games
 keywords: unity3d,blender,game,house,fps
 description: "We built our house with Unity3D and Blender"
 author: Javier Rengel
-published: false
+published: true
 featured: true
 ---
 
