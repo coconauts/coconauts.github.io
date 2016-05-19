@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Games | Coconauts]]></title>
+  <link href="http://coconauts.net/blog/categories/games/atom.xml" rel="self"/>
+  <link href="http://coconauts.net/"/>
+  <updated>2016-04-15T23:43:50+01:00</updated>
+  <id>http://coconauts.net/</id>
+  <author>
+    <name><![CDATA[Coconauts]]></name>
+    <email><![CDATA[admin@coconauts.net]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[RTS Game Template on Unity3d: StarCraft for Mobile]]></title>
+    <link href="http://coconauts.net/blog/2016/01/30/starcraft-mobile-unity3d/"/>
+    <updated>2016-01-30T20:16:34+00:00</updated>
+    <id>http://coconauts.net/blog/2016/01/30/starcraft-mobile-unity3d</id>
+    <content type="html"><![CDATA[<p>We have been just <em>playing</em> with Unity3D for a few months, but we have already tried to build something: a new RTS (Real Time Strategy) game for Desktop and Mobile. But we want to make this game abstract and adaptable, so that it works like an engine, which means we could easily change the models, behaviour and statistics from the objects in the scene to make a completely new game, a clone of <a href="https://www.youtube.com/watch?v=0Wkrd594k4k">Star Wars Galactic Battlegrounds Clone Campaings</a> maybe ? or maybe completely new strategy game featuring plants vs zombies, pirates vs ninjas, angels vs demons or monkeys vs giraffes.</p>
+
+<p><img src='https://farm2.staticflickr.com/1636/24079670424_3275b9c5f1_z_d.jpg'/></p>
+
+<p>In our case, we&rsquo;ve started by using the 3D models, animations from StarCraft II game
+and reverse engineered the behaviour of this game to make our strategy game template.</p>
+
+<!-- more -->
+
+
+<p><img src='https://farm2.staticflickr.com/1502/24614331371_6e4c44e84e_z_d.jpg'/></p>
+
+<p>Please note that this is just a technical demo and it&rsquo;s not made to replace
+StarCraft or make any money with their work in any way, we are just trying to follow their path because we love this game.</p>
+
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/MqGj5grWYG8" frameborder="0" allowfullscreen></iframe>
+
+
+<h2>What we have achieved</h2>
+
+<p>This is the list of features we have developed to simulate a basic gameplay from Starcraft.
+They together implement the featureset from StarCraft games, but it can be easily applied to fit any other strategy gameplay. Do you want to have 4 different resource types instead of 2 like in SWGB ? just update the Resources class and you&rsquo;re done.</p>
+
+<p><img src='https://farm2.staticflickr.com/1534/24707844895_74afa1c9af_z_d.jpg'/></p>
+
+<ul>
+<li>3D models and animations</li>
+<li>Background music, sounds and reactions (<em>For Adun!</em>)</li>
+<li>Buildings and units training queue</li>
+<li>Special building behaviour (like gas extractor or supply depots)</li>
+<li>Ground and flying units (Zerg and Terran)</li>
+<li>Researches</li>
+<li>Resources (Mineral, gas and supplies)</li>
+<li>Import maps using image heightmap</li>
+<li>Mouse and touch controls</li>
+<li>Camera movement and zoom</li>
+<li>Completely new simple interface for touch devices</li>
+<li>New survival gameplay mode</li>
+<li>Basic AI</li>
+<li>Minimap</li>
+<li>Pathfinding (using free A* pathfinding)</li>
+</ul>
+
+
+<p><img src='https://farm2.staticflickr.com/1452/24681642176_2a5f191b10_z_d.jpg'/></p>
+
+<h2> What is missing</h2>
+
+<p>This are things we haven&rsquo;t build for this prototype but we will probably do in the future.</p>
+
+<ul>
+<li>Multiplayer mode</li>
+<li>Better AI</li>
+<li>Local avoidance</li>
+<li>Protoss</li>
+<li>More units and buildings (like bunkers)</li>
+<li>Wireframe support on OpenGL devices or equivalent</li>
+<li>Unit visibility filter</li>
+<li>Team coloring</li>
+<li>Healing units, shields or Zerg restoration feature.</li>
+</ul>
+
+
+<p>We are planning to release this engine in the future (without the StarCraft assets),
+but in the meantime let us know any thoughts in the comments.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Synthesizing Chiptune Music Programatically]]></title>
+    <link href="http://coconauts.net/blog/2015/10/04/creating-chiptune-music-programatically/"/>
+    <updated>2015-10-04T20:35:34+01:00</updated>
+    <id>http://coconauts.net/blog/2015/10/04/creating-chiptune-music-programatically</id>
+    <content type="html"><![CDATA[<p>We&rsquo;ve shown you in the past how to create chiptune-style music both
+<a href="https://coconauts.net/blog/2015/02/02/creating-chiptune-style-music-with-ubuntu/">with a DAW program</a>,
+and <a href="https://coconauts.net/blog/2015/04/19/creating-trve-chiptune-with-a-tracker/">with old-school trackers</a>.</p>
+
+<p>There&rsquo;s still another way to do it: via code. Particularly suitable for
+videogame music in particular, as you can have fine-grained control
+over the music that you autogenerate, giving it the ability to be
+dynamic.</p>
+
+<p>Every programming language worth their name will have a basic sound
+synthesizing library, which will be more than what to need to
+make chiptune sounds.</p>
+
+<!--more-->
+
+
+<p>The basics are these: you&rsquo;ll need something called an oscillator,
+which is nothing more than a device (in our case it will be a software
+device, but a device nonetheless) capable of generating <a href="http://public.wsu.edu/~jkrug/MUS364/audio/Waveforms.htm">basic sound
+waves</a>:
+sine, square, triangle and sawtooth.</p>
+
+<p><img src="http://coconauts.net/images/posts/chiptune/waveforms.png" /></p>
+
+<p>Then' you&rsquo;ll combine several sound waves together to form your sound.
+This technique is known as additive synthesis, and it&rsquo;s illustrated
+just below.</p>
+
+<p><img src="http://coconauts.net/images/posts/chiptune/additive.jpg" /></p>
+
+<p>Once you have a timbre that you like, the synthesizing library should
+have functions to alter its frequency, which will result in
+different tones being produced (this is called FM, or frequency modulation,
+synthesis), and then you have all you need to make any melody.</p>
+
+<p>There&rsquo;s something that you have to take into account, and is that you
+should limit yourself a bit with the kind and number of waves that
+you&rsquo;re using, to try to replicate the limitations of the hardware of
+old, and thus achieve convincing chiptune sounds.
+In <a href="http://opengameart.org/forumtopic/kickin-it-old-school-setting-up-nes-style-chiptunes">this forum post</a>
+the author recommends using nothing more than square, triangle and
+sawtooth waves (avoiding sine), and limiting yourself to four
+simultaneous instruments (as old sound cards didn&rsquo;t come with many
+audio channels). Have in mind though that these are just guidelines,
+in practice you should experiment with everything and pick whatever
+you think sounds good and convincingly chiptuneish.</p>
+
+<p>Synthesizing your
+own game music programatically has several important advantages:
+you wont waste any space storing your music assets (when your game is
+going on mobile phones this is an important aspect to consider!), and
+it allows for unlimited flexibility if your music is going to be
+dynamic. So we personally are keen in exploring this approach in a
+future game.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[WatchDuino 2 Is Semifinalist on the 2015 Hackaday Prize]]></title>
+    <link href="http://coconauts.net/blog/2015/08/24/watchduino-2-is-semifinalist-on-the-2015-hackaday-prize/"/>
+    <updated>2015-08-24T20:18:35+01:00</updated>
+    <id>http://coconauts.net/blog/2015/08/24/watchduino-2-is-semifinalist-on-the-2015-hackaday-prize</id>
+    <content type="html"><![CDATA[<p><img src="http://coconauts.net/images/posts/hackaday_semifinal.png" /></p>
+
+<p>We are really excited to announce that <a href="https://www.coconauts.net/projects/watchduino2/">WatchDuino 2</a> has passed to
+<a href="http://hackaday.com/2015/08/24/100-semifinalists-for-the-2015-hackaday-prize/">the semi-finals of the 2015 edition of the Hackaday Prize</a>!
+It was selected amongst the best 100 of a total of more than 900 projects.
+To see this kind of recognition out of a community that we admire is
+absolutely thrilling, thank you so much =)</p>
+
+<p>This means that now we will have to give our best we want to be good enough
+to be in the finals. Many other excellent projects are competing!</p>
+
+<p>Keep an eye on the <a href="https://hackaday.io/project/7244-watchduino2">project page on Hackaday</a>,
+as it is likely to be holding exciting updates and advancements during the
+following month. And give us your skulls and likes if you have an account! =)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Updates on 404-games]]></title>
+    <link href="http://coconauts.net/blog/2015/08/08/404-updates/"/>
+    <updated>2015-08-08T23:00:00+01:00</updated>
+    <id>http://coconauts.net/blog/2015/08/08/404-updates</id>
+    <content type="html"><![CDATA[<p>Last week we implemented <a href="/projects/404games">gamified 404 pages</a> into
+coconauts. Everytime you hit a 404, instead of getting a boring
+image and cursing for your misfortune, you&rsquo;ll now get a classic videogame
+to make you forget your disappointment.</p>
+
+<p>We initially implemented pacman and space-invaders style games, but
+we&rsquo;ve now added a snake game on top of them, and not only that, the
+source code for them is now public on
+<a href="https://github.com/coconauts/404-games">a github repo</a>, so you can
+use them in your own website if you want.</p>
+
+<p><a href="http://coconauts.net/404">Happy mislinking</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[404 Games]]></title>
+    <link href="http://coconauts.net/blog/2015/07/31/404-games/"/>
+    <updated>2015-07-31T00:52:00+01:00</updated>
+    <id>http://coconauts.net/blog/2015/07/31/404-games</id>
+    <content type="html"><![CDATA[<p>Getting a <a href="http://coconauts.net/404">404</a> page is not something enjoyable,
+that&rsquo;s why we wanted to build something nice for anyone that lands in this
+unexpected place.</p>
+
+<p>So we built a few simple classic games in HTML5 + Canvas, and you will get randomly
+one of these everytime you land in our <a href="http://coconauts.net/404">404</a> page.</p>
+
+<!--more-->
+
+
+<p>All our 404 games will be published in our <a href="/projects/404games">project page</a></p>
+
+<h2>Space invaders</h2>
+
+<p><img src="http://coconauts.net/projects/404games/space-invaders.png" class="screenshot" /></p>
+
+<p><a href="http://coconauts.net/html5/space-invaders">Test me</a></p>
+
+<h2>Pacman</h2>
+
+<p><img src="http://coconauts.net/projects/404games/pacman.png" class="screenshot" /></p>
+
+<p><a href="http://coconauts.net/html5/pacman">Test me</a></p>
+
+<p>Fortunately, 404 pages don&rsquo;t happen too often in <a href="http://coconauts.net">Coconauts</a>,
+but still, this is an improvement over the previous version,
+and we had fun building this.</p>
+]]></content>
+  </entry>
+  
+</feed>
