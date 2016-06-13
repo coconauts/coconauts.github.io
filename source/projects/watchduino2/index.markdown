@@ -7,9 +7,15 @@ sharing: true
 footer: true
 ---
 
-This is our Watchduino 2 project: a smatwatch powered with Arduino and a revision our previous [Watchduino project](http://www.coconauts.net/projects/watchduino/).
+A smartwatch powered with Arduino, and a revision our previous [Watchduino project](http://www.coconauts.net/projects/watchduino/).
 
 <img src="/projects/watchduino2/watch1.jpg" />
+
+Featured in:
+
+- [Atmel](http://blog.atmel.com/2015/09/02/tell-time-and-more-on-this-open-source-bluetooth-enabled-watch/)
+- [MakerNews](http://makernews.info/featured/2015/09/watchduino-2-an-arduino-based-smartwatch-that-doesnt-look-like-a-bomb.html)
+- Semifinalist in the [Hackaday Prize 2015](http://hackaday.com/2015/08/24/100-semifinalists-for-the-2015-hackaday-prize/)
 
 The Watchduino project started as an attempt to build a smartwatch at the reach of everyone: inexpensive and open. So that anyone can afford one, or even build it from scratch. And at the same time, so that anyone can built their custom applications for it.
 
@@ -18,6 +24,7 @@ The [first version of Watchduino](http://www.coconauts.net/projects/watchduino/)
 Since then, we've been working on version 2, which we intend to be as fully featured as a regular commercial smartwatch. By including a BLE into the watch, we are able to pair the device with an Android phone, and send and make notifications flow between the two. It is still a work in progress, but we already have a prototype with some of the functionality, that we are ready to show the world.
 
 <img src="/projects/watchduino2/watch2.jpg" class="screenshot" />
+
 
 ## Software
 
