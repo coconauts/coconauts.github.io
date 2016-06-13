@@ -9,7 +9,7 @@ categories: games
 keywords: unity3d,blender,game,house,fps
 description: "We built our house with Unity3D and Blender"
 author: Javier Rengel
-published: false
+published: true
 featured: true
 ---
 
@@ -47,7 +47,6 @@ like you are at home.
 
 <img src='https://farm8.staticflickr.com/7554/27083819136_dd3a9a50d3_z_d.jpg'/>
 
-If you are interested, you can [play](http://unity3d.coconauts.net/welwyn)
-on our 3D model we made, please feel at home.
+If you are interested, you can play on our 3D model we made, please feel at home.
 
-<iframe width="630" height="520" scrolling="none" frameborder="0" src='http://unity3d.coconauts.net/welwyn'> </iframe>
+[Play it here!](http://unity3d.coconauts.net/welwyn)
