@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Games | Coconauts]]></title>
   <link href="http://coconauts.net/blog/categories/games/atom.xml" rel="self"/>
   <link href="http://coconauts.net/"/>
-  <updated>2016-06-12T19:48:44+01:00</updated>
+  <updated>2016-06-13T21:32:07+01:00</updated>
   <id>http://coconauts.net/</id>
   <author>
     <name><![CDATA[Coconauts]]></name>
@@ -12,6 +12,46 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Lightning-dodge-O-matic]]></title>
+    <link href="http://coconauts.net/blog/2016/06/13/lightning-dodge-o-matic/"/>
+    <updated>2016-06-13T21:51:00+01:00</updated>
+    <id>http://coconauts.net/blog/2016/06/13/lightning-dodge-o-matic</id>
+    <content type="html"><![CDATA[<p>If you have played Final Fantasy X, either its original version for PS2 or its remastered version
+for PS4 and PSVita, you might remember Thunder Plains and its lightning dodge challenge
+to get the Mars sigil.</p>
+
+<p>It&rsquo;s quite challenging and it might take a while. I once got it (and I have a PS2 memory card to prove it),
+but I was not in the mood to do it again on the remastered version.</p>
+
+<p>That&rsquo;s why I decided to build a simple machine to do the job for me.
+Because constantly processing inputs to produce outputs is what machines do best.</p>
+
+<blockquote class="twitter-video" data-lang="en"><p lang="en" dir="ltr">Lightning dancing like a machine. Presenting lightning-dodge-O-matic <a href="https://twitter.com/hashtag/FFX?src=hash">#FFX</a> <a href="https://twitter.com/hashtag/Lulu?src=hash">#Lulu</a> <a href="https://twitter.com/hashtag/Arduino?src=hash">#Arduino</a> <a href="https://t.co/WMLX1CRwSN">pic.twitter.com/WMLX1CRwSN</a></p>&mdash; Javi Rengel (@rephus) <a href="https://twitter.com/rephus/status/742057060456648709">June 12, 2016</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+
+<!--more-->
+
+
+<p>Just by using a LDR, a servo and an Arduino you can dodge lightnings like a Pro too.</p>
+
+<p>You can download the script and the schema in <a href="https://github.com/rephus/lightning-dodge-O-matic/blob/master/README.md">Github</a></p>
+
+<p><img src="https://farm8.staticflickr.com/7335/27042150163_732cb2c99b_z_d.jpg" alt="Schema" /></p>
+
+<p>By building this, you can avoid not only 200 lightnings but as many you like, I did 1066 in a few hours.</p>
+
+<p><img src="https://farm8.staticflickr.com/7423/27042150153_b6daeed7d5_z_d.jpg" alt="record" /></p>
+
+<p>Happy gaming.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[We Built Our House With Unity3D and Blender]]></title>
@@ -218,26 +258,6 @@ to be in the finals. Many other excellent projects are competing!</p>
 <p>Keep an eye on the <a href="https://hackaday.io/project/7244-watchduino2">project page on Hackaday</a>,
 as it is likely to be holding exciting updates and advancements during the
 following month. And give us your skulls and likes if you have an account! =)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Updates on 404-games]]></title>
-    <link href="http://coconauts.net/blog/2015/08/08/404-updates/"/>
-    <updated>2015-08-08T23:00:00+01:00</updated>
-    <id>http://coconauts.net/blog/2015/08/08/404-updates</id>
-    <content type="html"><![CDATA[<p>Last week we implemented <a href="/projects/404games">gamified 404 pages</a> into
-coconauts. Everytime you hit a 404, instead of getting a boring
-image and cursing for your misfortune, you&rsquo;ll now get a classic videogame
-to make you forget your disappointment.</p>
-
-<p>We initially implemented pacman and space-invaders style games, but
-we&rsquo;ve now added a snake game on top of them, and not only that, the
-source code for them is now public on
-<a href="https://github.com/coconauts/404-games">a github repo</a>, so you can
-use them in your own website if you want.</p>
-
-<p><a href="http://coconauts.net/404">Happy mislinking</a>.</p>
 ]]></content>
   </entry>
   

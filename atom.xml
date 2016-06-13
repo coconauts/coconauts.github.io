@@ -4,7 +4,7 @@
   <title><![CDATA[Coconauts]]></title>
   <link href="http://coconauts.net/atom.xml" rel="self"/>
   <link href="http://coconauts.net/"/>
-  <updated>2016-06-12T19:48:44+01:00</updated>
+  <updated>2016-06-13T21:32:07+01:00</updated>
   <id>http://coconauts.net/</id>
   <author>
     <name><![CDATA[Coconauts]]></name>
@@ -12,6 +12,46 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Lightning-dodge-O-matic]]></title>
+    <link href="http://coconauts.net/blog/2016/06/13/lightning-dodge-o-matic/"/>
+    <updated>2016-06-13T21:51:00+01:00</updated>
+    <id>http://coconauts.net/blog/2016/06/13/lightning-dodge-o-matic</id>
+    <content type="html"><![CDATA[<p>If you have played Final Fantasy X, either its original version for PS2 or its remastered version
+for PS4 and PSVita, you might remember Thunder Plains and its lightning dodge challenge
+to get the Mars sigil.</p>
+
+<p>It&rsquo;s quite challenging and it might take a while. I once got it (and I have a PS2 memory card to prove it),
+but I was not in the mood to do it again on the remastered version.</p>
+
+<p>That&rsquo;s why I decided to build a simple machine to do the job for me.
+Because constantly processing inputs to produce outputs is what machines do best.</p>
+
+<blockquote class="twitter-video" data-lang="en"><p lang="en" dir="ltr">Lightning dancing like a machine. Presenting lightning-dodge-O-matic <a href="https://twitter.com/hashtag/FFX?src=hash">#FFX</a> <a href="https://twitter.com/hashtag/Lulu?src=hash">#Lulu</a> <a href="https://twitter.com/hashtag/Arduino?src=hash">#Arduino</a> <a href="https://t.co/WMLX1CRwSN">pic.twitter.com/WMLX1CRwSN</a></p>&mdash; Javi Rengel (@rephus) <a href="https://twitter.com/rephus/status/742057060456648709">June 12, 2016</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+
+<!--more-->
+
+
+<p>Just by using a LDR, a servo and an Arduino you can dodge lightnings like a Pro too.</p>
+
+<p>You can download the script and the schema in <a href="https://github.com/rephus/lightning-dodge-O-matic/blob/master/README.md">Github</a></p>
+
+<p><img src="https://farm8.staticflickr.com/7335/27042150163_732cb2c99b_z_d.jpg" alt="Schema" /></p>
+
+<p>By building this, you can avoid not only 200 lightnings but as many you like, I did 1066 in a few hours.</p>
+
+<p><img src="https://farm8.staticflickr.com/7423/27042150153_b6daeed7d5_z_d.jpg" alt="record" /></p>
+
+<p>Happy gaming.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[We Built Our House With Unity3D and Blender]]></title>
@@ -780,6 +820,16 @@ with this content:</p>
        
           
            <div class="col-sm-4 col-lg-4 column">
+              <a class='post-link' href="http://coconauts.net/blog/2016/06/13/lightning-dodge-o-matic/">Lightning-dodge-O-matic</a>
+              <p>If you have played Final Fantasy X, either its original version for PS2 or its remastered version
+for PS4 and PSVita, you might remember Thunder Plains and its lightning dodge challenge
+to get the Mars sigil. It&#8217;s quite challenging and it might take a while. I once got it (and I have a PS2 memory &hellip;</p>
+           </div>
+       
+   
+       
+          
+           <div class="col-sm-4 col-lg-4 column">
               <a class='post-link' href="http://coconauts.net/blog/2016/05/19/build-house-in-3d-with-blender-unity3d/">We Built Our House With Unity3D and Blender</a>
               <p>We moved home a few months ago to a beautiful house in the country side in UK,
 outside the expensive area of London, but close enough to commute daily. As soon as we moved in, we built a simple version of our home in 3D on Blender to help us decorate. And then we integrated the 3D model into &hellip;</p>
@@ -801,12 +851,6 @@ jenkins instance in our server for a few years already, and we have some
            </div>
        
    
-       
-          
-           <div class="col-sm-4 col-lg-4 column">
-              <a class='post-link' href="http://coconauts.net/blog/2016/01/30/starcraft-mobile-unity3d/">RTS Game Template on Unity3d: StarCraft for Mobile</a>
-              <p>We have been just _playing_ with Unity3D for a few months, but we have already tried to build something: a new RTS (Real Time Strategy) game for Desktop and Mobile. But we want to make this game abstract and adaptable, so that it works like an engine, which means we could easily change the models, &hellip;</p>
-           </div>
        
    
        
@@ -1275,228 +1319,6 @@ the lowest consumption in its family.</p>
 instead of using UNO again.</p>
 
 <p><img src="http://coconauts.net/images/posts/why-not-uno/arduino_family.jpg" /></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Simple Automatic Watering System With Arduino]]></title>
-    <link href="http://coconauts.net/blog/2015/04/22/simple-automatic-watering-system-arduino/"/>
-    <updated>2015-04-22T22:57:19+01:00</updated>
-    <id>http://coconauts.net/blog/2015/04/22/simple-automatic-watering-system-arduino</id>
-    <content type="html"><![CDATA[<p>Summer is comming and we may need to water our plants almost everyday,
-but we should take advantage of technology and let machines water our plants for us.</p>
-
-<p>Today we will show you how to build a simple and smart watering system using Arduino.</p>
-
-<!--more-->
-
-
-
-
-<table class='summary' border=1>
-<tr><th>Description</th><th>Materials</th></tr>
-<tr>
-<td>
-
-  In this tutorial we will create a simple watering system using basic Arduino code,
-  with sensors and some digital outputs.
-  
-  <img src="http://coconauts.net/images/posts/automatic-watering/final.jpg" style="width:400px"/>
-  
-</td>
-<td>
-
-<ul>
-  <li>A water pump</li>
-  <li>A humidity sensor (optional)</li>
-  <li>Arduino (Mini, Nano, UNO, etc)</li>
-  <li>An NPN transistor</li>
-  <li>Water</li>
-  <li>Plants (optional)</li>
-</ul>
-
-<strong> Links </strong><br/>
-
-<ul>
-  <li><a href='https://github.com/coconauts/automatic-watering'>Source</a></li>
-</ul>
-
-<strong> Difficulty </strong>
-
-<div class='rating-2'></div>
-
-</td>
-</tr>
-</table>
-
-
-<br/>
-
-
-<p>  <iframe width="100%" height="450" src="https://www.youtube.com/embed/2DbnXBLUOXo" frameborder="0" allowfullscreen></iframe></p>
-
-<p>First you need to enable your water pump from Arduino.
-Some of them may have different current requirements, mine works on  current: 0.05A~0.12A.
-However, Arduino I/O pins have
-some <a href="http://playground.arduino.cc/Main/ArduinoPinCurrentLimitations">current limitations</a> (up to 40.0 mA),
-therefore we will use a transistor as a switching device, connected directly to VCC.</p>
-
-<p>You can see all the details in the schema below.</p>
-
-<p><img src="https://raw.githubusercontent.com/coconauts/automatic-watering/master/automatic-watering_bb.png"/></p>
-
-<p>Another thing to mention is that we want our automatic watering system to have two different functions:</p>
-
-<ul>
-<li>Time-based: Water the plants every <code>x</code> seconds during <code>y</code> seconds.</li>
-<li>Humidity-based: Water the plants everytime it hits a threshold.</li>
-</ul>
-
-
-<p>To pick either of the methods we will use a normal switch that we will read inside the loop in our code.</p>
-
-<p>Here&rsquo;s the Arduino sketch, also available on <a href="https://github.com/coconauts/automatic-watering">github</a></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-<span class='line-number'>60</span>
-<span class='line-number'>61</span>
-<span class='line-number'>62</span>
-<span class='line-number'>63</span>
-<span class='line-number'>64</span>
-<span class='line-number'>65</span>
-<span class='line-number'>66</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>#define HUMIDITY_SENSOR 10
-</span><span class='line'>#define WATER_PUMP 9
-</span><span class='line'>#define MODE 4 
-</span><span class='line'>#define LED 13  //For notification
-</span><span class='line'>
-</span><span class='line'>#define HUMIDITY_THRESHOLD 50
-</span><span class='line'>#define PUMP_FREQUENCY 1000
-</span><span class='line'>#define PUMP_ENABLE_TIME 1000 // Time to be enabled (in ms)
-</span><span class='line'>
-</span><span class='line'>int mode;
-</span><span class='line'>int humidityRead;
-</span><span class='line'>long lastTimeActive;
-</span><span class='line'>bool pumpEnabled;
-</span><span class='line'>
-</span><span class='line'>void setup(){
-</span><span class='line'>  pinMode(HUMIDITY_SENSOR, INPUT);
-</span><span class='line'>  pinMode(WATER_PUMP, OUTPUT); 
-</span><span class='line'>  pinMode(LED, OUTPUT); 
-</span><span class='line'>
-</span><span class='line'>  pinMode(MODE, INPUT); digitalWrite(MODE,HIGH);
-</span><span class='line'>  
-</span><span class='line'>  disablePump();
-</span><span class='line'>}
-</span><span class='line'>
-</span><span class='line'>void loop(){
-</span><span class='line'>  mode = digitalRead(MODE);
-</span><span class='line'>  
-</span><span class='line'>  if (mode == HIGH) { //time mode
-</span><span class='line'>    if (!pumpEnabled && millis() &gt; lastTimeActive + PUMP_FREQUENCY) {
-</span><span class='line'>      enablePump();
-</span><span class='line'>      lastTimeActive = millis();
-</span><span class='line'>    } 
-</span><span class='line'>    if (pumpEnabled && millis() &gt; lastTimeActive + PUMP_ENABLE_TIME) {
-</span><span class='line'>      disablePump();
-</span><span class='line'>      lastTimeActive = millis();
-</span><span class='line'>    }
-</span><span class='line'>  } else { //Humidity mode
-</span><span class='line'>
-</span><span class='line'>    humidityRead = analogRead(A0);
-</span><span class='line'>    
-</span><span class='line'>    if (humidityRead &lt; HUMIDITY_THRESHOLD) {
-</span><span class='line'>      if (!pumpEnabled) enablePump();
-</span><span class='line'>    } else {
-</span><span class='line'>      if (pumpEnabled) disablePump();
-</span><span class='line'>    }
-</span><span class='line'>  }
-</span><span class='line'>  
-</span><span class='line'>  delay(1000);
-</span><span class='line'>}
-</span><span class='line'>
-</span><span class='line'>void enablePump() {
-</span><span class='line'>
-</span><span class='line'>    digitalWrite(WATER_PUMP, HIGH); 
-</span><span class='line'>    digitalWrite(LED, HIGH); 
-</span><span class='line'>
-</span><span class='line'>    pumpEnabled = true;
-</span><span class='line'>}
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>void disablePump() {
-</span><span class='line'>
-</span><span class='line'>  digitalWrite(WATER_PUMP, LOW); 
-</span><span class='line'>  digitalWrite(LED, LOW); 
-</span><span class='line'>
-</span><span class='line'>  pumpEnabled = false;
-</span><span class='line'>}
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>If you don&rsquo;t have a humidity sensor (or don&rsquo;t want to use one),
-you can remove both (the switch and the sensor) from the schema.</p>
-
-<p>But also, you can use this for watering multiple plants,
-or you could use this project for your pets or to wake  up in the morning covered by water in your bed.</p>
 ]]></content>
   </entry>
   

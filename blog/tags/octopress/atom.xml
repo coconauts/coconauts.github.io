@@ -3,7 +3,7 @@
 <title><![CDATA[Tag: octopress | Coconauts]]></title>
 <link href="http://coconauts.net/blog/tags/octopress/atom.xml" rel="self"/>
 <link href="http://coconauts.net/"/>
-<updated>2016-06-12T19:48:44+01:00</updated>
+<updated>2016-06-13T21:32:07+01:00</updated>
 <id>http://coconauts.net/</id>
 <author>
 <name><![CDATA[Coconauts]]></name>
@@ -78,6 +78,16 @@ with this content:</p>
        
           
            <div class="col-sm-4 col-lg-4 column">
+              <a class='post-link' href="/blog/2016/06/13/lightning-dodge-o-matic/">Lightning-dodge-O-matic</a>
+              <p>If you have played Final Fantasy X, either its original version for PS2 or its remastered version
+for PS4 and PSVita, you might remember Thunder Plains and its lightning dodge challenge
+to get the Mars sigil. It&rsquo;s quite challenging and it might take a while. I once got it (and I have a PS2 &hellip;</p>
+           </div>
+       
+   
+       
+          
+           <div class="col-sm-4 col-lg-4 column">
               <a class='post-link' href="/blog/2016/05/19/build-house-in-3d-with-blender-unity3d/">We Built Our House With Unity3D and Blender</a>
               <p>We moved home a few months ago to a beautiful house in the country side in UK,
 outside the expensive area of London, but close enough to commute daily. As soon as we moved in, we built a simple version of our home in 3D on Blender to help us decorate. And then we integrated the 3D model into &hellip;</p>
@@ -99,12 +109,6 @@ interesting things with it. However, we have &hellip;</p>
            </div>
        
    
-       
-          
-           <div class="col-sm-4 col-lg-4 column">
-              <a class='post-link' href="/blog/2016/01/30/starcraft-mobile-unity3d/">RTS Game Template on Unity3d: StarCraft for Mobile</a>
-              <p>We have been just playing with Unity3D for a few months, but we have already tried to build something: a new RTS (Real Time Strategy) game for Desktop and Mobile. But we want to make this game abstract and adaptable, so that it works like an engine, which means we could easily change the models, &hellip;</p>
-           </div>
        
    
        
