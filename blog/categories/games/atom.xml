@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Games | Coconauts]]></title>
+  <link href="http://coconauts.net/blog/categories/games/atom.xml" rel="self"/>
+  <link href="http://coconauts.net/"/>
+  <updated>2016-06-29T23:29:39+01:00</updated>
+  <id>http://coconauts.net/</id>
+  <author>
+    <name><![CDATA[Coconauts]]></name>
+    <email><![CDATA[admin@coconauts.net]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Lightning-dodge-O-matic]]></title>
+    <link href="http://coconauts.net/blog/2016/06/13/lightning-dodge-o-matic/"/>
+    <updated>2016-06-13T21:51:00+01:00</updated>
+    <id>http://coconauts.net/blog/2016/06/13/lightning-dodge-o-matic</id>
+    <content type="html"><![CDATA[<p>If you have played Final Fantasy X, either its original version for PS2 or its remastered version
+for PS4 and PSVita, you might remember Thunder Plains and its lightning dodge challenge
+to get the Mars sigil.</p>
+
+<p>It&rsquo;s quite challenging and it might take a while. I once got it (and I have a PS2 memory card to prove it),
+but I was not in the mood to do it again on the remastered version.</p>
+
+<p>That&rsquo;s why I decided to build a simple machine to do the job for me.
+Because constantly processing inputs to produce outputs is what machines do best.</p>
+
+<blockquote class="twitter-video" data-lang="en"><p lang="en" dir="ltr">Lightning dancing like a machine. Presenting lightning-dodge-O-matic <a href="https://twitter.com/hashtag/FFX?src=hash">#FFX</a> <a href="https://twitter.com/hashtag/Lulu?src=hash">#Lulu</a> <a href="https://twitter.com/hashtag/Arduino?src=hash">#Arduino</a> <a href="https://t.co/WMLX1CRwSN">pic.twitter.com/WMLX1CRwSN</a></p>&mdash; Javi Rengel (@rephus) <a href="https://twitter.com/rephus/status/742057060456648709">June 12, 2016</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+
+<!--more-->
+
+
+<p>Just by using a LDR, a servo and an Arduino you can dodge lightnings like a Pro too.</p>
+
+<p>You can download the script and the schema in <a href="https://github.com/rephus/lightning-dodge-O-matic/blob/master/README.md">Github</a></p>
+
+<p><img src="https://farm8.staticflickr.com/7335/27042150163_732cb2c99b_z_d.jpg" alt="Schema" /></p>
+
+<p>By building this, you can avoid not only 200 lightnings but as many you like, I did 1066 in a few hours.</p>
+
+<p><img src="https://farm8.staticflickr.com/7423/27042150153_b6daeed7d5_z_d.jpg" alt="record" /></p>
+
+<p>Happy gaming.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[We Built Our House With Unity3D and Blender]]></title>
+    <link href="http://coconauts.net/blog/2016/05/19/build-house-in-3d-with-blender-unity3d/"/>
+    <updated>2016-05-19T23:51:00+01:00</updated>
+    <id>http://coconauts.net/blog/2016/05/19/build-house-in-3d-with-blender-unity3d</id>
+    <content type="html"><![CDATA[<p>We moved home a few months ago to a beautiful house in the country side in UK,
+outside the expensive area of London, but close enough to commute daily.</p>
+
+<p>As soon as we moved in, we built a simple version of our home in 3D on Blender
+ to help us decorate. And then we integrated the 3D model into Unity3D and build
+a game on top of it, on this case, a FPS or more like a FPW: First Person Walker,
+a FPS without shooting, not as fun as it sounds.</p>
+
+<p>We posted an image on Twitter a few months ago about our first prototype:</p>
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">I finally created a First person game of my new home with <a href="https://twitter.com/hashtag/unity3D?src=hash">#unity3D</a> and <a href="https://twitter.com/hashtag/blender?src=hash">#blender</a> . Looks better than real life! <a href="https://t.co/JjSPPP1835">pic.twitter.com/JjSPPP1835</a></p>&mdash; Javi Rengel (@rephus) <a href="https://twitter.com/rephus/status/698998470280089600">February 14, 2016</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+
+<!-- more -->
+
+
+<p>And this is how our place looks after we bought all the furniture.</p>
+
+<p><img src='https://farm8.staticflickr.com/7236/26513350403_4ac3cc142c_z_d.jpg'/>
+<img src='https://farm8.staticflickr.com/7714/27083818276_36950ff772_z_d.jpg'/></p>
+
+<p><img src='https://farm8.staticflickr.com/7715/27083819056_acb9ae8fa5_z_d.jpg'/>
+<img src='https://farm8.staticflickr.com/7348/27083818686_12b5f68383_z_d.jpg'/></p>
+
+<p><img src='https://farm8.staticflickr.com/7211/27083819206_727a82707c_z_d.jpg'/>
+<img src='https://farm8.staticflickr.com/7434/26513349443_4d9df59b0d_z_d.jpg'/></p>
+
+<p><img src='https://farm8.staticflickr.com/7750/27083819266_15ca7674e5_z_d.jpg'/>
+<img src='https://farm8.staticflickr.com/7054/27083818506_f84f07ba12_z_d.jpg'/></p>
+
+<p>The game is also a good chance to try out VR, perfect to use with Google VR to feel
+like you are at home.</p>
+
+<p><img src='https://farm8.staticflickr.com/7554/27083819136_dd3a9a50d3_z_d.jpg'/></p>
+
+<p>If you are interested, you can play on our 3D model we made, please feel at home.</p>
+
+<p><a href="http://unity3d.coconauts.net/welwyn">Play it here!</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[RTS Game Template on Unity3d: StarCraft for Mobile]]></title>
+    <link href="http://coconauts.net/blog/2016/01/30/starcraft-mobile-unity3d/"/>
+    <updated>2016-01-30T20:16:34+00:00</updated>
+    <id>http://coconauts.net/blog/2016/01/30/starcraft-mobile-unity3d</id>
+    <content type="html"><![CDATA[<p>We have been just <em>playing</em> with Unity3D for a few months, but we have already tried to build something: a new RTS (Real Time Strategy) game for Desktop and Mobile. But we want to make this game abstract and adaptable, so that it works like an engine, which means we could easily change the models, behaviour and statistics from the objects in the scene to make a completely new game, a clone of <a href="https://www.youtube.com/watch?v=0Wkrd594k4k">Star Wars Galactic Battlegrounds Clone Campaings</a> maybe ? or maybe completely new strategy game featuring plants vs zombies, pirates vs ninjas, angels vs demons or monkeys vs giraffes.</p>
+
+<p><img src='https://farm2.staticflickr.com/1636/24079670424_3275b9c5f1_z_d.jpg'/></p>
+
+<p>In our case, we&rsquo;ve started by using the 3D models, animations from StarCraft II game
+and reverse engineered the behaviour of this game to make our strategy game template.</p>
+
+<!-- more -->
+
+
+<p><img src='https://farm2.staticflickr.com/1502/24614331371_6e4c44e84e_z_d.jpg'/></p>
+
+<p>Please note that this is just a technical demo and it&rsquo;s not made to replace
+StarCraft or make any money with their work in any way, we are just trying to follow their path because we love this game.</p>
+
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/MqGj5grWYG8" frameborder="0" allowfullscreen></iframe>
+
+
+<h2>What we have achieved</h2>
+
+<p>This is the list of features we have developed to simulate a basic gameplay from Starcraft.
+They together implement the featureset from StarCraft games, but it can be easily applied to fit any other strategy gameplay. Do you want to have 4 different resource types instead of 2 like in SWGB ? just update the Resources class and you&rsquo;re done.</p>
+
+<p><img src='https://farm2.staticflickr.com/1534/24707844895_74afa1c9af_z_d.jpg'/></p>
+
+<ul>
+<li>3D models and animations</li>
+<li>Background music, sounds and reactions (<em>For Adun!</em>)</li>
+<li>Buildings and units training queue</li>
+<li>Special building behaviour (like gas extractor or supply depots)</li>
+<li>Ground and flying units (Zerg and Terran)</li>
+<li>Researches</li>
+<li>Resources (Mineral, gas and supplies)</li>
+<li>Import maps using image heightmap</li>
+<li>Mouse and touch controls</li>
+<li>Camera movement and zoom</li>
+<li>Completely new simple interface for touch devices</li>
+<li>New survival gameplay mode</li>
+<li>Basic AI</li>
+<li>Minimap</li>
+<li>Pathfinding (using free A* pathfinding)</li>
+</ul>
+
+
+<p><img src='https://farm2.staticflickr.com/1452/24681642176_2a5f191b10_z_d.jpg'/></p>
+
+<h2> What is missing</h2>
+
+<p>This are things we haven&rsquo;t build for this prototype but we will probably do in the future.</p>
+
+<ul>
+<li>Multiplayer mode</li>
+<li>Better AI</li>
+<li>Local avoidance</li>
+<li>Protoss</li>
+<li>More units and buildings (like bunkers)</li>
+<li>Wireframe support on OpenGL devices or equivalent</li>
+<li>Unit visibility filter</li>
+<li>Team coloring</li>
+<li>Healing units, shields or Zerg restoration feature.</li>
+</ul>
+
+
+<p>We are planning to release this engine in the future (without the StarCraft assets),
+but in the meantime let us know any thoughts in the comments.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Synthesizing Chiptune Music Programatically]]></title>
+    <link href="http://coconauts.net/blog/2015/10/04/creating-chiptune-music-programatically/"/>
+    <updated>2015-10-04T20:35:34+01:00</updated>
+    <id>http://coconauts.net/blog/2015/10/04/creating-chiptune-music-programatically</id>
+    <content type="html"><![CDATA[<p>We&rsquo;ve shown you in the past how to create chiptune-style music both
+<a href="https://coconauts.net/blog/2015/02/02/creating-chiptune-style-music-with-ubuntu/">with a DAW program</a>,
+and <a href="https://coconauts.net/blog/2015/04/19/creating-trve-chiptune-with-a-tracker/">with old-school trackers</a>.</p>
+
+<p>There&rsquo;s still another way to do it: via code. Particularly suitable for
+videogame music in particular, as you can have fine-grained control
+over the music that you autogenerate, giving it the ability to be
+dynamic.</p>
+
+<p>Every programming language worth their name will have a basic sound
+synthesizing library, which will be more than what to need to
+make chiptune sounds.</p>
+
+<!--more-->
+
+
+<p>The basics are these: you&rsquo;ll need something called an oscillator,
+which is nothing more than a device (in our case it will be a software
+device, but a device nonetheless) capable of generating <a href="http://public.wsu.edu/~jkrug/MUS364/audio/Waveforms.htm">basic sound
+waves</a>:
+sine, square, triangle and sawtooth.</p>
+
+<p><img src="http://coconauts.net/images/posts/chiptune/waveforms.png" /></p>
+
+<p>Then' you&rsquo;ll combine several sound waves together to form your sound.
+This technique is known as additive synthesis, and it&rsquo;s illustrated
+just below.</p>
+
+<p><img src="http://coconauts.net/images/posts/chiptune/additive.jpg" /></p>
+
+<p>Once you have a timbre that you like, the synthesizing library should
+have functions to alter its frequency, which will result in
+different tones being produced (this is called FM, or frequency modulation,
+synthesis), and then you have all you need to make any melody.</p>
+
+<p>There&rsquo;s something that you have to take into account, and is that you
+should limit yourself a bit with the kind and number of waves that
+you&rsquo;re using, to try to replicate the limitations of the hardware of
+old, and thus achieve convincing chiptune sounds.
+In <a href="http://opengameart.org/forumtopic/kickin-it-old-school-setting-up-nes-style-chiptunes">this forum post</a>
+the author recommends using nothing more than square, triangle and
+sawtooth waves (avoiding sine), and limiting yourself to four
+simultaneous instruments (as old sound cards didn&rsquo;t come with many
+audio channels). Have in mind though that these are just guidelines,
+in practice you should experiment with everything and pick whatever
+you think sounds good and convincingly chiptuneish.</p>
+
+<p>Synthesizing your
+own game music programatically has several important advantages:
+you wont waste any space storing your music assets (when your game is
+going on mobile phones this is an important aspect to consider!), and
+it allows for unlimited flexibility if your music is going to be
+dynamic. So we personally are keen in exploring this approach in a
+future game.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[WatchDuino 2 Is Semifinalist on the 2015 Hackaday Prize]]></title>
+    <link href="http://coconauts.net/blog/2015/08/24/watchduino-2-is-semifinalist-on-the-2015-hackaday-prize/"/>
+    <updated>2015-08-24T20:18:35+01:00</updated>
+    <id>http://coconauts.net/blog/2015/08/24/watchduino-2-is-semifinalist-on-the-2015-hackaday-prize</id>
+    <content type="html"><![CDATA[<p><img src="http://coconauts.net/images/posts/hackaday_semifinal.png" /></p>
+
+<p>We are really excited to announce that <a href="https://www.coconauts.net/projects/watchduino2/">WatchDuino 2</a> has passed to
+<a href="http://hackaday.com/2015/08/24/100-semifinalists-for-the-2015-hackaday-prize/">the semi-finals of the 2015 edition of the Hackaday Prize</a>!
+It was selected amongst the best 100 of a total of more than 900 projects.
+To see this kind of recognition out of a community that we admire is
+absolutely thrilling, thank you so much =)</p>
+
+<p>This means that now we will have to give our best we want to be good enough
+to be in the finals. Many other excellent projects are competing!</p>
+
+<p>Keep an eye on the <a href="https://hackaday.io/project/7244-watchduino2">project page on Hackaday</a>,
+as it is likely to be holding exciting updates and advancements during the
+following month. And give us your skulls and likes if you have an account! =)</p>
+]]></content>
+  </entry>
+  
+</feed>
