@@ -44,7 +44,7 @@ table {  width:100%}
 
 /* 1 ,2, 3  ,4  ,5  ,6  ,7
  * 48,96,144,192,240,288,336
- * 64,128,192,256,320,384*/
+ * 64,128,192,256,320,384, 448*/
 
 .project-coconauts{ background-position:0px 0px;}
 .project-astroship{ background-position:-64px 0px;}
@@ -79,11 +79,10 @@ table {  width:100%}
 .project-octopress{ background-position:-64px -384px;}
 .project-hardware{ background-position:-128px -384px;}
 
-.project-3d-island-demo{
-  /*TODO Move image to projects*/
-  background-size: 64px 64px;
-  background-image:url('3d-island-demo.png') !important ;
-}
+.project-3d-island-demo{background-position:-256px -384px;}
+
+.project-3dhouse { background-position:-0px -448px;}
+
 
 .title{font-weight:bold;}
 .gray{color:gray;}

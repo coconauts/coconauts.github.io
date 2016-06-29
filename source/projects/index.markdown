@@ -20,6 +20,21 @@ footer: true
 
 <script language="javascript">
 
+add("3d-house", 2016, released,
+    "3D house",
+    "3D playable model of our house",
+    "Unity3D, Blender");
+
+add("starcraft-unity3d", 2016, released,
+    "StarCraft Unity3D",
+    "3D playable model of our house",
+    "Unity3D, Blender");
+
+add("coconauts-ci", 2016, released,
+    "Coconauts CI",
+    "Lightweight CI app",
+    "NodeJS, Redis");
+
 add("404games", 2015, released,
     "404 games",
     "Collection of small HTML5 games for our 404 page",
