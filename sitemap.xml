@@ -200,7 +200,7 @@
     </url>
     <url>
         <loc>http://coconauts.net/</loc>
-        <lastmod>2016-05-19T22:17:15+01:00</lastmod>
+        <lastmod>2016-06-29T23:11:53+01:00</lastmod>
     </url>
     <url>
         <loc>http://coconauts.net/blog/archives/</loc>
@@ -219,6 +219,10 @@
         <lastmod>2016-05-19T22:17:15+01:00</lastmod>
     </url>
     <url>
+        <loc>http://coconauts.net/press/</loc>
+        <lastmod>2016-06-29T23:11:53+01:00</lastmod>
+    </url>
+    <url>
         <loc>http://coconauts.net/projects/sea-evolution/</loc>
         <lastmod>2016-05-19T22:17:15+01:00</lastmod>
     </url>
@@ -228,7 +232,7 @@
     </url>
     <url>
         <loc>http://coconauts.net/projects/watchduino/</loc>
-        <lastmod>2016-06-12T19:48:16+01:00</lastmod>
+        <lastmod>2016-06-29T23:11:53+01:00</lastmod>
     </url>
     <url>
         <loc>http://coconauts.net/projects/timebomb/</loc>
@@ -252,7 +256,7 @@
     </url>
     <url>
         <loc>http://coconauts.net/projects/hardware/</loc>
-        <lastmod>2016-05-19T22:17:15+01:00</lastmod>
+        <lastmod>2016-06-29T23:11:53+01:00</lastmod>
     </url>
     <url>
         <loc>http://coconauts.net/projects/piano-legend/</loc>
@@ -267,6 +271,14 @@
         <lastmod>2016-05-19T22:17:15+01:00</lastmod>
     </url>
     <url>
+        <loc>http://coconauts.net/projects/3d-house/</loc>
+        <lastmod>2016-06-29T23:11:53+01:00</lastmod>
+    </url>
+    <url>
+        <loc>http://coconauts.net/projects/coconauts-ci/</loc>
+        <lastmod>2016-06-29T23:11:53+01:00</lastmod>
+    </url>
+    <url>
         <loc>http://coconauts.net/projects/cleope/</loc>
         <lastmod>2016-05-19T22:17:15+01:00</lastmod>
     </url>
@@ -279,6 +291,10 @@
         <lastmod>2016-05-19T22:17:15+01:00</lastmod>
     </url>
     <url>
+        <loc>http://coconauts.net/projects/starcraft-unity3d/</loc>
+        <lastmod>2016-06-29T23:11:53+01:00</lastmod>
+    </url>
+    <url>
         <loc>http://coconauts.net/projects/spend/</loc>
         <lastmod>2016-05-19T22:17:15+01:00</lastmod>
     </url>
@@ -288,7 +304,7 @@
     </url>
     <url>
         <loc>http://coconauts.net/projects/watchduino2/</loc>
-        <lastmod>2016-06-12T19:47:48+01:00</lastmod>
+        <lastmod>2016-06-29T23:11:53+01:00</lastmod>
     </url>
     <url>
         <loc>http://coconauts.net/projects/water-rings2/</loc>
@@ -296,7 +312,7 @@
     </url>
     <url>
         <loc>http://coconauts.net/projects/</loc>
-        <lastmod>2016-05-19T22:17:15+01:00</lastmod>
+        <lastmod>2016-06-29T23:11:53+01:00</lastmod>
     </url>
     <url>
         <loc>http://coconauts.net/projects/astroship/</loc>
