@@ -12,12 +12,13 @@ connectivity, and a better look and feel. [Check it out!](https://www.coconauts.
 
 <iframe width="770" height="480" src="//www.youtube.com/embed/CtgR1YiwnEY" frameborder="0" allowfullscreen></iframe>
 
-Featured in:
+## Featured in
 
 - [Hackaday](http://hackaday.com/2014/05/06/tell-time-and-blink-an-led-on-your-wrist-with-watchduino/)
 - [Atmel](http://blog.atmel.com/2014/05/08/atmega328-powers-open-source-watchduino/)
 - [electronics-lab](http://www.electronics-lab.com/watchduino-arduino-watch/)
 - Winner of the [Biicode contest 2014](http://blog.bricogeek.com/noticias/programacion/resultados-y-ganadores-de-biicode-contest-2014/)
+- [Semageek (French)](http://www.semageek.com/watchduino-une-montre-open-hardware-sous-arduino/)
 
 WatchDuino is an open hardware project that combines inexpensive electronic components and a complex Arduino (C++) code to build a useful and reprogrammable smart watch.
 
