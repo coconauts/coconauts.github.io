@@ -20,6 +20,11 @@ footer: true
 
 <script language="javascript">
 
+add("retrophies", 2016, released,
+    "Retrophies",
+    "Achievements system for Emulators",
+    "Javascript");
+
 add("3d-house", 2016, released,
     "3D house",
     "3D playable model of our house",
