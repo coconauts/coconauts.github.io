@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: emulation | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/emulation/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2016-08-01T20:45:05+01:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Retrophies: achievements system for emulators]]></title>
+<link href="http://coconauts.net/blog/2016/08/01/retrophies/"/>
+<updated>2016-08-01T21:51:00+01:00</updated>
+<id>http://coconauts.net/blog/2016/08/01/retrophies</id>
+<content type="html"><![CDATA[<p><img src="https://farm9.staticflickr.com/8876/28646429026_9f0441b7dd_z_d.jpg" alt="web" /></p>
+
+<p><a href="http://retrophies.win/">Play now at retrophies.win!</a></p>
+
+<p>If there&rsquo;s one thing that has become a de-facto standard in the gaming industry
+during the last decade this is game achievements, trophies, or whatever you may
+call them. Not only on console games, but Apple and Android also provide facilities
+to integrate this features in games published on their platforms. Many games even
+implement a custom achievements system specific for that game in isolation.</p>
+
+<p>There seems to be an exception though. Retro games. Obviously a game from 20
+years ago was not designed with achievements in mind, but even when companies
+re-edit old games, they seem to be happy enough charging you current day
+prices for what it is often an effort-less dump of the classic game, which
+you may even wonder if they&rsquo;re running though an emulator.
+Do you expect the new <a href="https://www.nintendo.com/nes-classic">mini-NES</a>
+will be anything more than this?</p>
+
+<p>At Coconauts we love classic games, as well as emulators.
+So we&rsquo;ve wondered&hellip; how would it be if your
+favourite emulators had some of the functions of today&rsquo;s game platforms, like
+achievements?</p>
+
+<p>This what Retrophies is trying to achieve. And for the first
+proof of concept we&rsquo;re bringing achievements to Super Mario Bros.</p>
+
+<!--more-->
+
+
+<p>You can see Retrophies in action <a href="http://retrophies.win/">here</a>.
+A rom of Super Mario Bros for NES is running on a forked version of
+JSNES, implementing Retrophies. If you play for a little bit, you should
+start seeing some notifications for unlocking some achievements, after
+certain events occur in the game. How many can you get?</p>
+
+<p><img src="https://farm9.staticflickr.com/8674/28062483653_c8da6e86ea_z_d.jpg" alt="achievement" /></p>
+
+<p>You may be wondering how all this works. No romhacking is involved,
+or at least not in the game rom itself.
+Retrophies is nothing more than a collection of memory registers and values. The emulator
+implementing Retrophies needs to be constantly inspecting those register in the running
+game RAM. When the correct value is up, the achievement should be triggered.</p>
+
+<p>```
+var achievements = [</p>
+
+<pre><code>//[Memory (0), Value (1) , Title (2), Description (3), Img (4), Triggered (5)]
+[0x0770, 1, "Enjoy Retrophies", "Play Super Mario Bros", "mario", false],
+[0x0748, 10, "Gold mine", "Collect 10 coins", "coin", false],
+[0x075A, 7, "More lives than a cat", "Get 8 lives", "1up", false],
+...
+</code></pre>
+
+<p>]
+```</p>
+
+<p>As you see, the system itself is quite simple. The difficult part comes when figuring
+out the list of memory values that should trigger achievements. This of course
+has to be custom-tailored for each individual game, in a reverse engineering process
+of trial and error, similar to what it takes to discover cheat codes for Game Genie.</p>
+
+<p>Game-hacking utilities come handy for this task. The SMB achievements were obtained
+using an emulator called FCEUX, which
+<a href="http://www.fceux.com/web/help/fceux.html?ROMHacking.html">comes with a good bunch of tools</a>
+used by rom hackers, or speedrunners. Particularly useful for our purposes are
+a <a href="https://www.youtube.com/watch?v=jfnqxxwlIyo">real time hex editor</a>(pictured below)
+or the <a href="http://tasvideos.org/EmulatorResources/RamSearch.html">RAM search tool</a>.</p>
+
+<p><img src="https://farm9.staticflickr.com/8835/28600323071_60e66949c8_z_d.jpg" alt="fceux" /></p>
+
+<p>We can also take advantage of the
+<a href="http://gamehacking.org/game/31010">plenty of already existing game cheat codes</a>
+that people have already deciphered for the game.
+If we have a cheat code for invincivility setting a
+particular value in a particular register, we already know the register and
+the value that we have to inspect if we want to trigger an achievement when
+getting an invincivility star. There are different formats for game codes,
+but there are conversors around that will map them in the end to one or several
+memory locations.</p>
+
+<p>Our Retrophies implementation has only been done for now on the JSNES emulator,
+as a proof of concept. However, as the system is very simple, as well as
+<a href="https://github.com/rephus/retrophies">open source</a>, it should be
+easy for other emulators to implement. Achievement codes can also be obtained
+for any ROM, given some time and dedication. Watch this space for further news.</p>
+]]></content>
+</entry>
+
+</feed>

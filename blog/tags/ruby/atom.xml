@@ -3,7 +3,7 @@
 <title><![CDATA[Tag: ruby | Coconauts]]></title>
 <link href="http://coconauts.net/blog/tags/ruby/atom.xml" rel="self"/>
 <link href="http://coconauts.net/"/>
-<updated>2016-06-29T23:37:04+01:00</updated>
+<updated>2016-08-01T20:45:05+01:00</updated>
 <id>http://coconauts.net/</id>
 <author>
 <name><![CDATA[Coconauts]]></name>
@@ -78,6 +78,17 @@ with this content:</p>
        
           
            <div class="col-sm-4 col-lg-4 column">
+              <a class='post-link' href="/blog/2016/08/01/retrophies/">Retrophies: Achievements System for Emulators</a>
+              <p>Play now at retrophies.win! If there&rsquo;s one thing that has become a de-facto standard in the gaming industry
+during the last decade this is game achievements, trophies, or whatever you may
+call them. Not only on console games, but Apple and Android also provide facilities
+to integrate this &hellip;</p>
+           </div>
+       
+   
+       
+          
+           <div class="col-sm-4 col-lg-4 column">
               <a class='post-link' href="/blog/2016/06/13/lightning-dodge-o-matic/">Lightning-dodge-O-matic</a>
               <p>If you have played Final Fantasy X, either its original version for PS2 or its remastered version
 for PS4 and PSVita, you might remember Thunder Plains and its lightning dodge challenge
@@ -98,15 +109,6 @@ outside the expensive area of London, but close enough to commute daily. As soon
    
        
    
-       
-          
-           <div class="col-sm-4 col-lg-4 column">
-              <a class='post-link' href="/blog/2016/02/04/coconauts-ci-nodejs/">Coconauts CI, a Lightweight CI Built on NodeJS</a>
-              <p>CIs are good, as soon as your projects grow, having a continuous integration software
-that manages all your apps and deployments is really useful. We have been using a self-hosted
-jenkins instance in our server for a few years already, and we have some
-interesting things with it. However, we have &hellip;</p>
-           </div>
        
    
        
