@@ -15,12 +15,12 @@ featured: false
 
 In a few of our projects, we wanted to get notifications from our phone into our web apps easily. So we thought about building a simple Android app in Cordova to redirect notifications to a webhook.
 
-![Notification icon](TODO)
+![Notification icon](https://github.com/rephus/notification-webhook/blob/master/www/img/logo.png?raw=true)
 
 <!--more-->
 That's how we built NotificationHook, you can download it from the [Play store](TODO) or build and upload your own version from [Github](https://github.com/rephus/notification-webhook)
 
-![Screenshot](TODO)
+![Screenshot](https://github.com/rephus/notification-webhook/blob/master/screens/screen-small.png)
 
 Once installed, you need to give permissions to the app in
 `Settings > Notification > Notification Access`

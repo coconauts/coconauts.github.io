@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Smartwatch prototype with ESP8266: ESPmartwatch"
-date: 2016-06-13 20:51:00 +0000
+date: 2016-09-08 23:44:00 +0000
 comments: true
 tags: esp8266 smartwatch
 sharing: true
@@ -15,7 +15,7 @@ featured: true
 
 It's been a while since we built and deprecated our [Watchduino 2](http://coconauts/projects/watchduino2) smartwatch built with Arduino and BLE technology. The reason why we stopped developing the prototype was because it was not as optimal as we expected, and the bluetooth communication was unstable in practice; this is probably something we could have solved with time, but we just decided it was not worth it.
 
-![](https://photos.google.com/share/AF1QipOEfKO-t2YQuWrAs3JquDRCcmUcTJPXFBhZgx-xf4I0IaHE9-GfODI-dCLvhUBUSg/photo/AF1QipNlfph4kU3MMJHV-ioySjQdrdukdhoglP3bV7lh?key=Y0xneWNXRW04cnpUM0R3UTh6OTVZcWhrWFZmS0RR)
+![](https://farm9.staticflickr.com/8284/29441586932_55059378bc_z_d.jpg)
 
 However, with the "new" ESP8266 we decided to try a quick prototype to see how it behaves as in a smartwatch, and we did a lot of things in just a couple of days, this are the list of features of our new  `ESPmartwatch`:
 
@@ -44,6 +44,6 @@ But still, a lot of things are left to do like:
 
 So at this point we decided that it was not worth to continue with the project, specially when just the new [ESP32 has been released](http://hackaday.com/2016/09/05/new-part-day-the-esp32-has-been-released/)
 
-All our code is available on [Github](TODO) so if you want to continue our work, or look at how we use some of the libraries, give it a go.
+All our code is available on [Github](https://github.com/rephus/ESP8266-OLED-Websocket) so if you want to continue our work, or look at how we use some of the libraries, give it a go.
 
 Who knows, we might probably continue with the development at some point, so watch this space.
