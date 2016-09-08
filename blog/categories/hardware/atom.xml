@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Hardware | Coconauts]]></title>
   <link href="http://coconauts.net/blog/categories/hardware/atom.xml" rel="self"/>
   <link href="http://coconauts.net/"/>
-  <updated>2016-08-01T20:47:31+01:00</updated>
+  <updated>2016-09-08T23:51:58+01:00</updated>
   <id>http://coconauts.net/</id>
   <author>
     <name><![CDATA[Coconauts]]></name>
@@ -12,6 +12,58 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Smartwatch Prototype With ESP8266: ESPmartwatch]]></title>
+    <link href="http://coconauts.net/blog/2016/09/09/smartwatch-prototype-with-esp8266/"/>
+    <updated>2016-09-09T00:44:00+01:00</updated>
+    <id>http://coconauts.net/blog/2016/09/09/smartwatch-prototype-with-esp8266</id>
+    <content type="html"><![CDATA[<p>It&rsquo;s been a while since we built and deprecated our <a href="http://coconauts/projects/watchduino2">Watchduino 2</a> smartwatch built with Arduino and BLE technology. The reason why we stopped developing the prototype was because it was not as optimal as we expected, and the bluetooth communication was unstable in practice; this is probably something we could have solved with time, but we just decided it was not worth it.</p>
+
+<p><img src="https://farm9.staticflickr.com/8284/29441586932_55059378bc_z_d.jpg" alt="" /></p>
+
+<p>However, with the &ldquo;new&rdquo; ESP8266 we decided to try a quick prototype to see how it behaves as in a smartwatch, and we did a lot of things in just a couple of days, this are the list of features of our new  <code>ESPmartwatch</code>:</p>
+
+<!--more-->
+
+
+<ul>
+<li>ESP8266 model ESP-01</li>
+<li>Wifi connection</li>
+<li>I2C OLED model SSD1306 128X64</li>
+<li>Send and receive messages via Websockets</li>
+<li>All messages are using JSON (being parsed on C++ too)</li>
+<li>Sync time and display on screen</li>
+<li>Display notifications from phone on screen using <a href="https://github.com/rephus/notification-webhook">Notification webhook</a></li>
+</ul>
+
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Doing web development with JSON and websockets in C++ on ESP8266, exciting! <a href="https://t.co/v2ZU4hNZO5">pic.twitter.com/v2ZU4hNZO5</a></p>&mdash; Javi Rengel (@rephus) <a href="https://twitter.com/rephus/status/772901218414891008">September 5, 2016</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>On the way, we faced a few unexpected issues that took us some time to fix (more than implementing communication with websockets) like the ESP8266 restarting itself every 5 mins because the WDT.</p>
+
+<p>But still, a lot of things are left to do like:</p>
+
+<ul>
+<li>Reduced consumption by enabling deep sleep mode while using websockets</li>
+<li>Lack of GPIO pins on ESP-01, need to try with a different ESP model</li>
+<li>Better OLED SSD1306 screen controller, u8glib seems incompatible, maybe Adafruit ?</li>
+<li>A way to introduce SSID and passwords from the watch (input required)</li>
+<li>Secure communication on websockets</li>
+</ul>
+
+
+<p>So at this point we decided that it was not worth to continue with the project, specially when just the new <a href="http://hackaday.com/2016/09/05/new-part-day-the-esp32-has-been-released/">ESP32 has been released</a></p>
+
+<p>All our code is available on <a href="https://github.com/rephus/ESP8266-OLED-Websocket">Github</a> so if you want to continue our work, or look at how we use some of the libraries, give it a go.</p>
+
+<p>Who knows, we might probably continue with the development at some point, so watch this space.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Lightning-dodge-O-matic]]></title>
@@ -335,175 +387,6 @@ the lowest consumption in its family.</p>
 instead of using UNO again.</p>
 
 <p><img src="http://coconauts.net/images/posts/why-not-uno/arduino_family.jpg" /></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Simple Automatic Watering System With Arduino]]></title>
-    <link href="http://coconauts.net/blog/2015/04/22/simple-automatic-watering-system-arduino/"/>
-    <updated>2015-04-22T22:57:19+01:00</updated>
-    <id>http://coconauts.net/blog/2015/04/22/simple-automatic-watering-system-arduino</id>
-    <content type="html"><![CDATA[<p>Summer is comming and we may need to water our plants almost everyday,
-but we should take advantage of technology and let machines water our plants for us.</p>
-
-<p>Today we will show you how to build a simple and smart watering system using Arduino.</p>
-
-<!--more-->
-
-
-
-
-<table class='summary' border=1>
-<tr><th>Description</th><th>Materials</th></tr>
-<tr>
-<td>
-
-  In this tutorial we will create a simple watering system using basic Arduino code,
-  with sensors and some digital outputs.
-  
-  <img src="http://coconauts.net/images/posts/automatic-watering/final.jpg" style="width:400px"/>
-  
-</td>
-<td>
-
-<ul>
-  <li>A water pump</li>
-  <li>A humidity sensor (optional)</li>
-  <li>Arduino (Mini, Nano, UNO, etc)</li>
-  <li>An NPN transistor</li>
-  <li>Water</li>
-  <li>Plants (optional)</li>
-</ul>
-
-<strong> Links </strong><br/>
-
-<ul>
-  <li><a href='https://github.com/coconauts/automatic-watering'>Source</a></li>
-</ul>
-
-<strong> Difficulty </strong>
-
-<div class='rating-2'></div>
-
-</td>
-</tr>
-</table>
-
-
-<br/>
-
-
-<p>  <iframe width="100%" height="450" src="https://www.youtube.com/embed/2DbnXBLUOXo" frameborder="0" allowfullscreen></iframe></p>
-
-<p>First you need to enable your water pump from Arduino.
-Some of them may have different current requirements, mine works on  current: 0.05A~0.12A.
-However, Arduino I/O pins have
-some <a href="http://playground.arduino.cc/Main/ArduinoPinCurrentLimitations">current limitations</a> (up to 40.0 mA),
-therefore we will use a transistor as a switching device, connected directly to VCC.</p>
-
-<p>You can see all the details in the schema below.</p>
-
-<p><img src="https://raw.githubusercontent.com/coconauts/automatic-watering/master/automatic-watering_bb.png"/></p>
-
-<p>Another thing to mention is that we want our automatic watering system to have two different functions:</p>
-
-<ul>
-<li>Time-based: Water the plants every <code>x</code> seconds during <code>y</code> seconds.</li>
-<li>Humidity-based: Water the plants everytime it hits a threshold.</li>
-</ul>
-
-
-<p>To pick either of the methods we will use a normal switch that we will read inside the loop in our code.</p>
-
-<p>Here&rsquo;s the Arduino sketch, also available on <a href="https://github.com/coconauts/automatic-watering">github</a></p>
-
-<p>```</p>
-
-<h1>define HUMIDITY_SENSOR 10</h1>
-
-<h1>define WATER_PUMP 9</h1>
-
-<h1>define MODE 4</h1>
-
-<h1>define LED 13  //For notification</h1>
-
-<h1>define HUMIDITY_THRESHOLD 50</h1>
-
-<h1>define PUMP_FREQUENCY 1000</h1>
-
-<h1>define PUMP_ENABLE_TIME 1000 // Time to be enabled (in ms)</h1>
-
-<p>int mode;
-int humidityRead;
-long lastTimeActive;
-bool pumpEnabled;</p>
-
-<p>void setup(){
-  pinMode(HUMIDITY_SENSOR, INPUT);
-  pinMode(WATER_PUMP, OUTPUT);
-  pinMode(LED, OUTPUT);</p>
-
-<p>  pinMode(MODE, INPUT); digitalWrite(MODE,HIGH);</p>
-
-<p>  disablePump();
-}</p>
-
-<p>void loop(){
-  mode = digitalRead(MODE);</p>
-
-<p>  if (mode == HIGH) { //time mode</p>
-
-<pre><code>if (!pumpEnabled &amp;&amp; millis() &gt; lastTimeActive + PUMP_FREQUENCY) {
-  enablePump();
-  lastTimeActive = millis();
-} 
-if (pumpEnabled &amp;&amp; millis() &gt; lastTimeActive + PUMP_ENABLE_TIME) {
-  disablePump();
-  lastTimeActive = millis();
-}
-</code></pre>
-
-<p>  } else { //Humidity mode</p>
-
-<pre><code>humidityRead = analogRead(A0);
-
-if (humidityRead &lt; HUMIDITY_THRESHOLD) {
-  if (!pumpEnabled) enablePump();
-} else {
-  if (pumpEnabled) disablePump();
-}
-</code></pre>
-
-<p>  }</p>
-
-<p>  delay(1000);
-}</p>
-
-<p>void enablePump() {</p>
-
-<pre><code>digitalWrite(WATER_PUMP, HIGH); 
-digitalWrite(LED, HIGH); 
-
-pumpEnabled = true;
-</code></pre>
-
-<p>}</p>
-
-<p>void disablePump() {</p>
-
-<p>  digitalWrite(WATER_PUMP, LOW);
-  digitalWrite(LED, LOW);</p>
-
-<p>  pumpEnabled = false;
-}</p>
-
-<p>```</p>
-
-<p>If you don&rsquo;t have a humidity sensor (or don&rsquo;t want to use one),
-you can remove both (the switch and the sensor) from the schema.</p>
-
-<p>But also, you can use this for watering multiple plants,
-or you could use this project for your pets or to wake  up in the morning covered by water in your bed.</p>
 ]]></content>
   </entry>
   

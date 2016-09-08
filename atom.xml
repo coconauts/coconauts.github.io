@@ -4,7 +4,7 @@
   <title><![CDATA[Coconauts]]></title>
   <link href="http://coconauts.net/atom.xml" rel="self"/>
   <link href="http://coconauts.net/"/>
-  <updated>2016-08-01T20:47:31+01:00</updated>
+  <updated>2016-09-08T23:51:58+01:00</updated>
   <id>http://coconauts.net/</id>
   <author>
     <name><![CDATA[Coconauts]]></name>
@@ -12,6 +12,58 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Smartwatch Prototype With ESP8266: ESPmartwatch]]></title>
+    <link href="http://coconauts.net/blog/2016/09/09/smartwatch-prototype-with-esp8266/"/>
+    <updated>2016-09-09T00:44:00+01:00</updated>
+    <id>http://coconauts.net/blog/2016/09/09/smartwatch-prototype-with-esp8266</id>
+    <content type="html"><![CDATA[<p>It&rsquo;s been a while since we built and deprecated our <a href="http://coconauts/projects/watchduino2">Watchduino 2</a> smartwatch built with Arduino and BLE technology. The reason why we stopped developing the prototype was because it was not as optimal as we expected, and the bluetooth communication was unstable in practice; this is probably something we could have solved with time, but we just decided it was not worth it.</p>
+
+<p><img src="https://farm9.staticflickr.com/8284/29441586932_55059378bc_z_d.jpg" alt="" /></p>
+
+<p>However, with the &ldquo;new&rdquo; ESP8266 we decided to try a quick prototype to see how it behaves as in a smartwatch, and we did a lot of things in just a couple of days, this are the list of features of our new  <code>ESPmartwatch</code>:</p>
+
+<!--more-->
+
+
+<ul>
+<li>ESP8266 model ESP-01</li>
+<li>Wifi connection</li>
+<li>I2C OLED model SSD1306 128X64</li>
+<li>Send and receive messages via Websockets</li>
+<li>All messages are using JSON (being parsed on C++ too)</li>
+<li>Sync time and display on screen</li>
+<li>Display notifications from phone on screen using <a href="https://github.com/rephus/notification-webhook">Notification webhook</a></li>
+</ul>
+
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Doing web development with JSON and websockets in C++ on ESP8266, exciting! <a href="https://t.co/v2ZU4hNZO5">pic.twitter.com/v2ZU4hNZO5</a></p>&mdash; Javi Rengel (@rephus) <a href="https://twitter.com/rephus/status/772901218414891008">September 5, 2016</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>On the way, we faced a few unexpected issues that took us some time to fix (more than implementing communication with websockets) like the ESP8266 restarting itself every 5 mins because the WDT.</p>
+
+<p>But still, a lot of things are left to do like:</p>
+
+<ul>
+<li>Reduced consumption by enabling deep sleep mode while using websockets</li>
+<li>Lack of GPIO pins on ESP-01, need to try with a different ESP model</li>
+<li>Better OLED SSD1306 screen controller, u8glib seems incompatible, maybe Adafruit ?</li>
+<li>A way to introduce SSID and passwords from the watch (input required)</li>
+<li>Secure communication on websockets</li>
+</ul>
+
+
+<p>So at this point we decided that it was not worth to continue with the project, specially when just the new <a href="http://hackaday.com/2016/09/05/new-part-day-the-esp32-has-been-released/">ESP32 has been released</a></p>
+
+<p>All our code is available on <a href="https://github.com/rephus/ESP8266-OLED-Websocket">Github</a> so if you want to continue our work, or look at how we use some of the libraries, give it a go.</p>
+
+<p>Who knows, we might probably continue with the development at some point, so watch this space.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Retrophies: Achievements System for Emulators]]></title>
@@ -916,6 +968,14 @@ with this content:</p>
        
           
            <div class="col-sm-4 col-lg-4 column">
+              <a class='post-link' href="http://coconauts.net/blog/2016/09/09/smartwatch-prototype-with-esp8266/">Smartwatch Prototype With ESP8266: ESPmartwatch</a>
+              <p>It&#8217;s been a while since we built and deprecated our [Watchduino 2](http://coconauts/projects/watchduino2) smartwatch built with Arduino and BLE technology. The reason why we stopped developing the prototype was because it was not as optimal as we expected, and the bluetooth communication was &hellip;</p>
+           </div>
+       
+   
+       
+          
+           <div class="col-sm-4 col-lg-4 column">
               <a class='post-link' href="http://coconauts.net/blog/2016/08/01/retrophies/">Retrophies: Achievements System for Emulators</a>
               <p>![web](https://farm9.staticflickr.com/8876/28646429026_9f0441b7dd_z_d.jpg) [Play now at retrophies.win!](http://retrophies.win/) If there&#8217;s one thing that has become a de-facto standard in the gaming industry
 during the last decade this is game achievements, trophies, or whatever you may
@@ -933,13 +993,6 @@ to get the Mars sigil. It&#8217;s quite challenging and it might take a while. I
            </div>
        
    
-       
-          
-           <div class="col-sm-4 col-lg-4 column">
-              <a class='post-link' href="http://coconauts.net/blog/2016/05/19/build-house-in-3d-with-blender-unity3d/">We Built Our House With Unity3D and Blender</a>
-              <p>We moved home a few months ago to a beautiful house in the country side in UK,
-outside the expensive area of London, but close enough to commute daily. As soon as we moved in, we built a simple version of our home in 3D on Blender to help us decorate. And then we integrated the 3D model into &hellip;</p>
-           </div>
        
    
        
@@ -1240,47 +1293,6 @@ usual value, and the channels to just one.</p>
 It shouldn&rsquo;t hurt the music quality and it will noticeably reduce the
 size of your assets, something you surely want if you&rsquo;re doing mobile
 development.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Building 3D Virtual Reality Games With Unity3D]]></title>
-    <link href="http://coconauts.net/blog/2015/06/20/3d-virtual-reality-demo-with-unity/"/>
-    <updated>2015-06-20T16:53:19+01:00</updated>
-    <id>http://coconauts.net/blog/2015/06/20/3d-virtual-reality-demo-with-unity</id>
-    <content type="html"><![CDATA[<p>All the big companies like Samsung, Sony and even Facebook are doing their best to build the
-ultimate Virtual Reality headset and make it standard.</p>
-
-<p>Once they are in the market, we (indie game developers) need to be ready to build VR games
-so everyone can enjoy their fancy expensive devices.</p>
-
-<p>So, in order to start playing with them, you could either pay 350$ dollars for a <a href="https://www.oculus.com/order/">Oculus Rift developing kit</a>,
-or you could get one of those cheap kits from <a href="http://www.aliexpress.com/item/High-quality-DIY-Google-Cardboard-Virtual-Reality-VR-Mobile-Phone-3D-Glasses-for-5-0-Screen/32301733749.html?s=p">Google</a>
-or even <a href="https://twitter.com/rephus/status/587297530045714432">build your own</a>, and start building games in Unity3D.</p>
-
-<p><img src="http://coconauts.net/images/posts/3d-island-demo/img1.png" /></p>
-
-<!--more-->
-
-
-<p>We recently built a VR technical demo in Unity and it&rsquo;s available on <a href="https://play.google.com/store/apps/details?id=net.coconauts.island3d">Play store</a>.
-The purpose of this demo was built to test the performance of a Virtual Reality environment in Unity3D.</p>
-
-<p><img src="http://coconauts.net/images/posts/3d-island-demo/img2.png" /></p>
-
-<p>It uses the scene and models from the <a href="http://unity3d.com/showcase/live-demos#tropical-paradise">Tropical Paradise Unity demo</a>,</p>
-
-<p>But because this demo was built for Unity v3 and we use 4.6 we had to fix some parts of the code to make it compatible,
-also we replaced the water effect completely with a new one for the free version.</p>
-
-<p>Also, it&rsquo;s optimized for mobile platforms and we included some simple features to make it VR ready.</p>
-
-<p>We noticed that the game runs great in PC, and OK (~30FPS) in a modern phone even with high resolution and good quality.
-The bottleneck is the number of details and shadows in the scene, or drawCalls in unity.</p>
-
-<p>But you can try by your own by <a href="https://play.google.com/store/apps/details?id=net.coconauts.island3d">downloading</a> the game into your phone.</p>
-
-<p>If you have a question or want more details about our demo, please let us know in the comments.</p>
 ]]></content>
   </entry>
   
