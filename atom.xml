@@ -1,0 +1,1253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Coconauts]]></title>
+  <link href="http://coconauts.net/atom.xml" rel="self"/>
+  <link href="http://coconauts.net/"/>
+  <updated>2016-10-05T21:19:48+01:00</updated>
+  <id>http://coconauts.net/</id>
+  <author>
+    <name><![CDATA[Coconauts]]></name>
+    <email><![CDATA[admin@coconauts.net]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Smartwatch Prototype With ESP8266: ESPmartwatch]]></title>
+    <link href="http://coconauts.net/blog/2016/09/09/smartwatch-prototype-with-esp8266/"/>
+    <updated>2016-09-09T00:44:00+01:00</updated>
+    <id>http://coconauts.net/blog/2016/09/09/smartwatch-prototype-with-esp8266</id>
+    <content type="html"><![CDATA[<p>It&rsquo;s been a while since we built and deprecated our <a href="http://coconauts/projects/watchduino2">Watchduino 2</a> smartwatch built with Arduino and BLE technology. The reason why we stopped developing the prototype was because it was not as optimal as we expected, and the bluetooth communication was unstable in practice; this is probably something we could have solved with time, but we just decided it was not worth it.</p>
+
+<p><img src="https://farm9.staticflickr.com/8284/29441586932_55059378bc_z_d.jpg" alt="" /></p>
+
+<p>However, with the &ldquo;new&rdquo; ESP8266 we decided to try a quick prototype to see how it behaves as in a smartwatch, and we did a lot of things in just a couple of days, this are the list of features of our new  <code>ESPmartwatch</code>:</p>
+
+<!--more-->
+
+
+<ul>
+<li>ESP8266 model ESP-01</li>
+<li>Wifi connection</li>
+<li>I2C OLED model SSD1306 128X64</li>
+<li>Send and receive messages via Websockets</li>
+<li>All messages are using JSON (being parsed on C++ too)</li>
+<li>Sync time and display on screen</li>
+<li>Display notifications from phone on screen using <a href="https://github.com/rephus/notification-webhook">Notification webhook</a></li>
+</ul>
+
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Doing web development with JSON and websockets in C++ on ESP8266, exciting! <a href="https://t.co/v2ZU4hNZO5">pic.twitter.com/v2ZU4hNZO5</a></p>&mdash; Javi Rengel (@rephus) <a href="https://twitter.com/rephus/status/772901218414891008">September 5, 2016</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>On the way, we faced a few unexpected issues that took us some time to fix (more than implementing communication with websockets) like the ESP8266 restarting itself every 5 mins because the WDT.</p>
+
+<p>But still, a lot of things are left to do like:</p>
+
+<ul>
+<li>Reduced consumption by enabling deep sleep mode while using websockets</li>
+<li>Lack of GPIO pins on ESP-01, need to try with a different ESP model</li>
+<li>Better OLED SSD1306 screen controller, u8glib seems incompatible, maybe Adafruit ?</li>
+<li>A way to introduce SSID and passwords from the watch (input required)</li>
+<li>Secure communication on websockets</li>
+</ul>
+
+
+<p>So at this point we decided that it was not worth to continue with the project, specially when just the new <a href="http://hackaday.com/2016/09/05/new-part-day-the-esp32-has-been-released/">ESP32 has been released</a></p>
+
+<p>All our code is available on <a href="https://github.com/rephus/ESP8266-OLED-Websocket">Github</a> so if you want to continue our work, or look at how we use some of the libraries, give it a go.</p>
+
+<p>Who knows, we might probably continue with the development at some point, so watch this space.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Retrophies: Achievements System for Emulators]]></title>
+    <link href="http://coconauts.net/blog/2016/08/01/retrophies/"/>
+    <updated>2016-08-01T21:54:19+01:00</updated>
+    <id>http://coconauts.net/blog/2016/08/01/retrophies</id>
+    <content type="html"><![CDATA[<p>Play now at <a href="http://retrophies.win">retrophies.win</a>!</p>
+
+<p>If there’s one thing that has become a de-facto standard in the gaming industry during the last decade this is game achievements, trophies, or whatever you may call them. Not only on console games, but Apple and Android also provide facilities to integrate this features in games published on their platforms. Many games even implement a custom achievements system specific for that game in isolation.</p>
+
+<p>There seems to be an exception though. Retro games. Obviously a game from 20 years ago was not designed with achievements in mind, but even when companies re-edit old games, they seem to be happy enough charging you current day prices for what it is often an effort-less dump of the classic game, which you may even wonder if they’re running though an emulator. Do you expect the new <a href="https://www.nintendo.com/nes-classic">mini-NES</a> will be anything more than this?</p>
+
+<p>At Coconauts we love classic games, as well as emulators. So we’ve wondered… how would it be if your favourite emulators had some of the functions of today’s game platforms, like achievements?</p>
+
+<p>This what Retrophies is trying to achieve. And for the first proof of concept we’re bringing achievements to Super Mario Bros.</p>
+
+<!--more-->
+
+
+<p>You can see Retrophies in action <a href="http://retrophies.win">here</a>. A rom of Super Mario Bros for NES is running on a forked version of JSNES, implementing Retrophies. If you play for a little bit, you should start seeing some notifications for unlocking some achievements, after certain events occur in the game. How many can you get?</p>
+
+<p><img src="https://farm9.staticflickr.com/8674/28062483653_c8da6e86ea_z_d.jpg" alt="achievement"></p>
+
+<p>You may be wondering how all this works. No romhacking is involved, or at least not in the game rom itself. Retrophies is nothing more than a collection of memory registers and values. The emulator implementing Retrophies needs to be constantly inspecting those register in the running game RAM. When the correct value is up, the achievement should be triggered.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>var achievements = [
+</span><span class='line'>    //[Memory (0), Value (1) , Title (2), Description (3), Img (4), Triggered (5)]
+</span><span class='line'>    [0x0770, 1, "Enjoy Retrophies", "Play Super Mario Bros", "mario", false],
+</span><span class='line'>    [0x0748, 10, "Gold mine", "Collect 10 coins", "coin", false],
+</span><span class='line'>    [0x075A, 7, "More lives than a cat", "Get 8 lives", "1up", false],
+</span><span class='line'>    ...
+</span><span class='line'>]</span></code></pre></td></tr></table></div></figure>
+
+
+<p>As you see, the system itself is quite simple. The difficult part comes when figuring out the list of memory values that should trigger achievements. This of course has to be custom-tailored for each individual game, in a reverse engineering process of trial and error, similar to what it takes to discover cheat codes for Game Genie.</p>
+
+<p>Game-hacking utilities come handy for this task. The SMB achievements were obtained using an emulator called FCEUX, which <a href="http://www.fceux.com/web/help/fceux.html?ROMHacking.html">comes with a good bunch of tools</a> used by rom hackers, or speedrunners. Particularly useful for our purposes are a <a href="https://www.youtube.com/watch?v=jfnqxxwlIyo">real time hex editor</a>(pictured below) or the <a href="http://tasvideos.org/EmulatorResources/RamSearch.html">RAM search tool</a>.</p>
+
+<p><img src="https://farm9.staticflickr.com/8835/28600323071_60e66949c8_z_d.jpg" alt="fceux"></p>
+
+<p>We can also take advantage of the <a href="http://gamehacking.org/game/31010">plenty of already existing game cheat codes</a> that people have already deciphered for the game. If we have a cheat code for invincivility setting a particular value in a particular register, we already know the register and the value that we have to inspect if we want to trigger an achievement when getting an invincivility star. There are different formats for game codes, but there are conversors around that will map them in the end to one or several memory locations.</p>
+
+<p>Our Retrophies implementation has only been done for now on the JSNES emulator, as a proof of concept. However, as the system is very simple, as well as <a href="https://github.com/rephus/retrophies">open source</a>, it should be easy for other emulators to implement. Achievement codes can also be obtained for any ROM, given some time and dedication. Watch this space for further news.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Lightning-dodge-O-matic]]></title>
+    <link href="http://coconauts.net/blog/2016/06/13/lightning-dodge-o-matic/"/>
+    <updated>2016-06-13T21:51:00+01:00</updated>
+    <id>http://coconauts.net/blog/2016/06/13/lightning-dodge-o-matic</id>
+    <content type="html"><![CDATA[<p>If you have played Final Fantasy X, either its original version for PS2 or its remastered version
+for PS4 and PSVita, you might remember Thunder Plains and its lightning dodge challenge
+to get the Mars sigil.</p>
+
+<p>It&rsquo;s quite challenging and it might take a while. I once got it (and I have a PS2 memory card to prove it),
+but I was not in the mood to do it again on the remastered version.</p>
+
+<p>That&rsquo;s why I decided to build a simple machine to do the job for me.
+Because constantly processing inputs to produce outputs is what machines do best.</p>
+
+<blockquote class="twitter-video" data-lang="en"><p lang="en" dir="ltr">Lightning dancing like a machine. Presenting lightning-dodge-O-matic <a href="https://twitter.com/hashtag/FFX?src=hash">#FFX</a> <a href="https://twitter.com/hashtag/Lulu?src=hash">#Lulu</a> <a href="https://twitter.com/hashtag/Arduino?src=hash">#Arduino</a> <a href="https://t.co/WMLX1CRwSN">pic.twitter.com/WMLX1CRwSN</a></p>&mdash; Javi Rengel (@rephus) <a href="https://twitter.com/rephus/status/742057060456648709">June 12, 2016</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+
+<!--more-->
+
+
+<p>Just by using a LDR, a servo and an Arduino you can dodge lightnings like a Pro too.</p>
+
+<p>You can download the script and the schema in <a href="https://github.com/rephus/lightning-dodge-O-matic/blob/master/README.md">Github</a></p>
+
+<p><img src="https://farm8.staticflickr.com/7335/27042150163_732cb2c99b_z_d.jpg" alt="Schema" /></p>
+
+<p>By building this, you can avoid not only 200 lightnings but as many you like, I did 1066 in a few hours.</p>
+
+<p><img src="https://farm8.staticflickr.com/7423/27042150153_b6daeed7d5_z_d.jpg" alt="record" /></p>
+
+<p>Happy gaming.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[We Built Our House With Unity3D and Blender]]></title>
+    <link href="http://coconauts.net/blog/2016/05/19/build-house-in-3d-with-blender-unity3d/"/>
+    <updated>2016-05-19T23:51:00+01:00</updated>
+    <id>http://coconauts.net/blog/2016/05/19/build-house-in-3d-with-blender-unity3d</id>
+    <content type="html"><![CDATA[<p>We moved home a few months ago to a beautiful house in the country side in UK,
+outside the expensive area of London, but close enough to commute daily.</p>
+
+<p>As soon as we moved in, we built a simple version of our home in 3D on Blender
+ to help us decorate. And then we integrated the 3D model into Unity3D and build
+a game on top of it, on this case, a FPS or more like a FPW: First Person Walker,
+a FPS without shooting, not as fun as it sounds.</p>
+
+<p>We posted an image on Twitter a few months ago about our first prototype:</p>
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">I finally created a First person game of my new home with <a href="https://twitter.com/hashtag/unity3D?src=hash">#unity3D</a> and <a href="https://twitter.com/hashtag/blender?src=hash">#blender</a> . Looks better than real life! <a href="https://t.co/JjSPPP1835">pic.twitter.com/JjSPPP1835</a></p>&mdash; Javi Rengel (@rephus) <a href="https://twitter.com/rephus/status/698998470280089600">February 14, 2016</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+
+<!-- more -->
+
+
+<p>And this is how our place looks after we bought all the furniture.</p>
+
+<p><img src='https://farm8.staticflickr.com/7236/26513350403_4ac3cc142c_z_d.jpg'/>
+<img src='https://farm8.staticflickr.com/7714/27083818276_36950ff772_z_d.jpg'/></p>
+
+<p><img src='https://farm8.staticflickr.com/7715/27083819056_acb9ae8fa5_z_d.jpg'/>
+<img src='https://farm8.staticflickr.com/7348/27083818686_12b5f68383_z_d.jpg'/></p>
+
+<p><img src='https://farm8.staticflickr.com/7211/27083819206_727a82707c_z_d.jpg'/>
+<img src='https://farm8.staticflickr.com/7434/26513349443_4d9df59b0d_z_d.jpg'/></p>
+
+<p><img src='https://farm8.staticflickr.com/7750/27083819266_15ca7674e5_z_d.jpg'/>
+<img src='https://farm8.staticflickr.com/7054/27083818506_f84f07ba12_z_d.jpg'/></p>
+
+<p>The game is also a good chance to try out VR, perfect to use with Google VR to feel
+like you are at home.</p>
+
+<p><img src='https://farm8.staticflickr.com/7554/27083819136_dd3a9a50d3_z_d.jpg'/></p>
+
+<p>If you are interested, you can play on our 3D model we made, please feel at home.</p>
+
+<p><a href="http://unity3d.coconauts.net/welwyn">Play it here!</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Build a Smart Home Using Raspberry Pi and Energenie]]></title>
+    <link href="http://coconauts.net/blog/2016/04/15/energinie-and-raspberry-pi-setup/"/>
+    <updated>2016-04-15T23:51:00+01:00</updated>
+    <id>http://coconauts.net/blog/2016/04/15/energinie-and-raspberry-pi-setup</id>
+    <content type="html"><![CDATA[<p>We recently discovered <a href="https://energenie4u.co.uk/">Energenie</a> (thanks to <a href="https://twitter.com/Man0jN">Manoj</a>) a nice and cheap remote controlled socket
+which also provides a custom shield for Raspberry Pi, you can use it to
+programatically control those sockets. This allows endless possibilities:
+from temporized sockets, to a socket that automatically turns on when
+detects presence using a PIR sensor, or triggered by a website or a phone app.</p>
+
+<p><img src='https://c2.staticflickr.com/2/1545/25845471424_d600499717_d.jpg'/></p>
+
+<!-- more -->
+
+
+<p>You can buy 2 different types of Energenie, some <a href="https://energenie4u.co.uk/catalogue/product/ENER002-4">individual sockets</a>
+or an <a href="https://energenie4u.co.uk/catalogue/product/ENER010">extension lead socket with 4 individually controlled</a>.
+You can also find them cheaper on Amazon or <a href="http://www.ebay.co.uk/itm/161972721449?_trksid=p2060353.m2749.l2649&amp;ssPageName=STRK%3AMEBIDX%3AIT">Ebay</a>.</p>
+
+<p>Every Energenie comes with a remote that you can use to power on or off those sockets using radio
+(no need to point with the controller to the socket like an infrared remote).
+You can use them just like this, but of course the really fun part is to be able
+to program them with your Raspberry Pi. For this, you&rsquo;ll need the
+<a href="https://energenie4u.co.uk/catalogue/product/ENER314">control board shield</a>
+as well.</p>
+
+<p>You can download a library for Python to use with Raspberry Pi from <a href="http://pythonhosted.org/energenie/">their website</a>, and check some examples of basic usage.</p>
+
+<p>In our case, as our first project, we built a website so you can control all
+sockets in the extension lead from your
+computer. In one of them we added some Cinema style lights under our sofa using a
+LED strip connected to a 12V supplier on the socket.</p>
+
+<p><img src='https://farm2.staticflickr.com/1704/26449115715_b672c53b20_z_d.jpg'/>
+<img src='https://farm2.staticflickr.com/1652/26449115515_60a9fd10a7_z_d.jpg'/></p>
+
+<p>The interface looks like this:</p>
+
+<p><img src='https://farm2.staticflickr.com/1630/26423191956_b64967a883_o_d.png'/></p>
+
+<p>You can check the source code in our <a href="https://github.com/rephus/energenie-manager">Github</a>.</p>
+
+<h3>Warnings and limitations</h3>
+
+<p>Each Raspberry PI board or remote allows you to use 4 different sockets
+(or 1 extension lead)  maximum. Which means you can&rsquo;t have for example 5 sockets
+controlled with a single Raspberry Pi.</p>
+
+<p>Each socket can only be paired with 2 controllers maximum, which means you can&rsquo;t control a socket with a remote and 2 Raspberry Pis. Every time you pair a new socket, the oldest one will get unpaired. Also, remember to pair every device before using it or it won&rsquo;t work.</p>
+
+<p>Do you have more ideas to implement with Energenie? we&rsquo;d like to hear about them in the comments.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Happy Pi Day!]]></title>
+    <link href="http://coconauts.net/blog/2016/03/14/happy-pi-day/"/>
+    <updated>2016-03-14T12:00:00+00:00</updated>
+    <id>http://coconauts.net/blog/2016/03/14/happy-pi-day</id>
+    <content type="html"><![CDATA[<p>Do you know what day is today? It&rsquo;s 3.14, and because it matches the
+decimals in the most beloved irrational number ever, it&rsquo;s been called an
+<a href="https://en.wikipedia.org/wiki/Pi_Day">official celebration of number Pi</a>.</p>
+
+<p>Actually last year it was a most special instance, as it was 3.14.15; an
+event that won&rsquo;t occur again for another 100 years! To celebrate, and to
+give some use to our newly bought 3D printer, we printed some <a href="http://www.thingiverse.com/thing:28882">Pi-shaped
+cookie-cutters we found off Thingiverse</a>,
+and baked some delicious Pi&hellip; cookies.</p>
+
+<p><img src="https://thingiverse-production-new.s3.amazonaws.com/renders/42/94/15/17/a7/IMG_20150312_223708_preview_featured.jpg" /></p>
+
+<p>This year still feels special, as it is 3.14.16, the decimals of <em>rounded</em> Pi.
+If you wanna celebrate, and have a 3D printer yourself, have a look at
+<a href="http://www.thingiverse.com/thing:28882">this neat collection</a> they&rsquo;ve put
+together, and print yourself something awesome.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Coconauts CI, a Lightweight CI Built on NodeJS]]></title>
+    <link href="http://coconauts.net/blog/2016/02/04/coconauts-ci-nodejs/"/>
+    <updated>2016-02-04T23:00:00+00:00</updated>
+    <id>http://coconauts.net/blog/2016/02/04/coconauts-ci-nodejs</id>
+    <content type="html"><![CDATA[<p>CIs are good, as soon as your projects grow, having a continuous integration software
+that manages all your apps and deployments is really useful. We have been using a self-hosted
+jenkins instance in our server for a few years already, and we have some
+<a href="http://coconauts.net/blog/2014/09/09/background-tasks-in-jenkins-ipchange">interesting things with it</a>.</p>
+
+<p>However, we have always known that jenkins is too heavy, it consumes too much memory and it
+has a slow interface, as it is written on Java.</p>
+
+<p>So we were really looking for a lightweight self-hosted CI that could run easily on a Raspberry PI,
+but we couldn&rsquo;t find any existing solution, so we decided to build our own, and it was easier that we expected.</p>
+
+<p><img src='https://farm2.staticflickr.com/1443/24822031815_fcc099fc04_z_d.jpg'/></p>
+
+<!-- more -->
+
+
+<p>This project, called <code>Coconauts CI</code> is still an experiment in progress, but we decided to share it
+on a early stage.</p>
+
+<p>You can download the project on our Github: <a href="https://github.com/coconauts/coconauts-ci">https://github.com/coconauts/coconauts-ci</a></p>
+
+<h2>Characteristics</h2>
+
+<ul>
+<li>Node.js and the <a href="http://expressjs.com/">Express framework</a> for the backend</li>
+<li>JQuery for the frontend</li>
+<li>Powered by Redis database</li>
+</ul>
+
+
+<h2>Key features</h2>
+
+<ul>
+<li>Simple 1-page only dashboard</li>
+<li>Easily add or update projects in 2 clicks</li>
+<li>Execute tasks periodically</li>
+<li>Clone and update repositories from git (github , bitbucket, etc)</li>
+<li>Run projects without repository to execute tasks periodically.</li>
+<li>Slack integration using webhooks</li>
+<li>Look at previous build logs</li>
+</ul>
+
+
+<p><img src='https://farm2.staticflickr.com/1639/24704187222_47dc02eaaa_z_d.jpg'/></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[RTS Game Template on Unity3d: StarCraft for Mobile]]></title>
+    <link href="http://coconauts.net/blog/2016/01/30/starcraft-mobile-unity3d/"/>
+    <updated>2016-01-30T20:16:34+00:00</updated>
+    <id>http://coconauts.net/blog/2016/01/30/starcraft-mobile-unity3d</id>
+    <content type="html"><![CDATA[<p>We have been just <em>playing</em> with Unity3D for a few months, but we have already tried to build something: a new RTS (Real Time Strategy) game for Desktop and Mobile. But we want to make this game abstract and adaptable, so that it works like an engine, which means we could easily change the models, behaviour and statistics from the objects in the scene to make a completely new game, a clone of <a href="https://www.youtube.com/watch?v=0Wkrd594k4k">Star Wars Galactic Battlegrounds Clone Campaings</a> maybe ? or maybe completely new strategy game featuring plants vs zombies, pirates vs ninjas, angels vs demons or monkeys vs giraffes.</p>
+
+<p><img src='https://farm2.staticflickr.com/1636/24079670424_3275b9c5f1_z_d.jpg'/></p>
+
+<p>In our case, we&rsquo;ve started by using the 3D models, animations from StarCraft II game
+and reverse engineered the behaviour of this game to make our strategy game template.</p>
+
+<!-- more -->
+
+
+<p><img src='https://farm2.staticflickr.com/1502/24614331371_6e4c44e84e_z_d.jpg'/></p>
+
+<p>Please note that this is just a technical demo and it&rsquo;s not made to replace
+StarCraft or make any money with their work in any way, we are just trying to follow their path because we love this game.</p>
+
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/MqGj5grWYG8" frameborder="0" allowfullscreen></iframe>
+
+
+<h2>What we have achieved</h2>
+
+<p>This is the list of features we have developed to simulate a basic gameplay from Starcraft.
+They together implement the featureset from StarCraft games, but it can be easily applied to fit any other strategy gameplay. Do you want to have 4 different resource types instead of 2 like in SWGB ? just update the Resources class and you&rsquo;re done.</p>
+
+<p><img src='https://farm2.staticflickr.com/1534/24707844895_74afa1c9af_z_d.jpg'/></p>
+
+<ul>
+<li>3D models and animations</li>
+<li>Background music, sounds and reactions (<em>For Adun!</em>)</li>
+<li>Buildings and units training queue</li>
+<li>Special building behaviour (like gas extractor or supply depots)</li>
+<li>Ground and flying units (Zerg and Terran)</li>
+<li>Researches</li>
+<li>Resources (Mineral, gas and supplies)</li>
+<li>Import maps using image heightmap</li>
+<li>Mouse and touch controls</li>
+<li>Camera movement and zoom</li>
+<li>Completely new simple interface for touch devices</li>
+<li>New survival gameplay mode</li>
+<li>Basic AI</li>
+<li>Minimap</li>
+<li>Pathfinding (using free A* pathfinding)</li>
+</ul>
+
+
+<p><img src='https://farm2.staticflickr.com/1452/24681642176_2a5f191b10_z_d.jpg'/></p>
+
+<h2> What is missing</h2>
+
+<p>This are things we haven&rsquo;t build for this prototype but we will probably do in the future.</p>
+
+<ul>
+<li>Multiplayer mode</li>
+<li>Better AI</li>
+<li>Local avoidance</li>
+<li>Protoss</li>
+<li>More units and buildings (like bunkers)</li>
+<li>Wireframe support on OpenGL devices or equivalent</li>
+<li>Unit visibility filter</li>
+<li>Team coloring</li>
+<li>Healing units, shields or Zerg restoration feature.</li>
+</ul>
+
+
+<p>We are planning to release this engine in the future (without the StarCraft assets),
+but in the meantime let us know any thoughts in the comments.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Coconauts 2015 Retrospective]]></title>
+    <link href="http://coconauts.net/blog/2016/01/01/year-retrospective/"/>
+    <updated>2016-01-01T14:00:00+00:00</updated>
+    <id>http://coconauts.net/blog/2016/01/01/year-retrospective</id>
+    <content type="html"><![CDATA[<p>Year 2015 has come to an end, and as it turns out we do have
+<a href="https://en.wikipedia.org/wiki/Self-balancing_two-wheeled_board">hoverboards</a>,
+<a href="https://www.youtube.com/watch?v=vZRFcGrrsyc">holograms/augmented reality</a>,
+yet for some reason hip-kids insist in dressing as lumberjacks rather than
+in futuristic clothing.</p>
+
+<p>It feels just like yesterday when we were writing
+<a href="https://coconauts.net/blog/2014/12/31/coconauts-2014-retrospective/">our retrospective post</a>
+last year. Time does fly! So how did we fare this year in comparison?</p>
+
+<!-- more -->
+
+
+<ul>
+<li>The <a href="https://coconauts.net/projects/watchduino2/">second version of Watchduino</a>
+was an absolute smash. We managed to get a functional prototype with
+Bluetooth connectivity, plus a phone companion app. It&rsquo;s starting to
+look something like a real smartwatch, and it was awarded
+<a href="https://coconauts.net/blog/2015/08/24/watchduino-2-is-semifinalist-on-the-2015-hackaday-prize/">semifinalist in the Hackaday Prize</a>.</li>
+<li>Our second big release of the year, even if it was a bit last minute,
+was the long promised open sourcing of
+<a href="https://coconauts.net/blog/2015/12/31/gramola-release/">Gramola</a>,
+a web-based music player.</li>
+<li>Smaller projects, but let&rsquo;s not forget about:
+<a href="https://coconauts.net/blog/2015/10/13/notification-listener-android-cordova/">a notification listener plugin for Cordova</a>,
+<a href="https://coconauts.net/blog/2015/04/22/simple-automatic-watering-system-arduino/">an Arduino automated watering system</a>,
+our <a href="https://coconauts.net/blog/2015/07/31/404-games/">404-games</a>.</li>
+<li>Seems like we still aren&rsquo;t blogging as much as we should, as we have some
+extra small projects that we didn&rsquo;t tell you about in the blog:
+<a href="https://github.com/coconauts/image-to-json">an image-to-json</a> converter,
+<a href="http://itch.io/jam/procjam/rate/43682">a generative game</a> made for the
+<a href="http://www.procjam.com/">PROCJAM</a> game jam, and
+<a href="https://github.com/coconauts/find-open">a webapp to find open restaurants near you</a>.</li>
+<li>We didn&rsquo;t blog as much as we would have liked, but even so we brought
+you a bunch of tutorials about
+<a href="https://coconauts.net/blog/tags/arduino/">Arduino</a>,
+<a href="https://coconauts.net/blog/tags/unity3d/">Unity3D</a>, or
+<a href="https://coconauts.net/blog/tags/chiptune/">chiptune music</a>, among others.</li>
+</ul>
+
+
+<p>The year certainly felt as packed as the year before, so we definitely
+want to keep the momentum going for 2016. Here&rsquo;s our immediate plans for
+the year to come:</p>
+
+<ul>
+<li>We didn&rsquo;t do as much gamedev as we would have liked during 2015, so we
+would like to finish a Unity3D game during the next year. Specially now that
+<a href="http://blogs.unity3d.com/es/2015/08/26/unity-comes-to-linux-experimental-build-now-available/">Unity3D is available for Linux</a>,
+there&rsquo;s no better time!</li>
+<li>Once again, we want to aim to do more and better posting. 2015 saw
+regular blog updates until october, but for this year we want to do
+even better.</li>
+<li>To help fatten our blog and Github account, we want to commit to talk
+about our projects even while in an early stage. Instead of doing the
+development of a game or project in the dark until it is polished enough to
+show (as done with <a href="https://coconauts.net/projects/timebomb2/">Exploding Bunnies</a>
+or <a href="https://coconauts.net/projects/gramola/">Gramola</a>)
+we want to to show prototypes and betas as early as we
+have them, and keep our development more open
+(as we have done with <a href="https://coconauts.net/projects/watchduino2/">Watchduino2</a>).</li>
+<li>Speaking of Watchduino2, we plan to continue it&rsquo;s development due to
+popular demand, albeit perhaps at a slower pace than we did during 2015.</li>
+</ul>
+
+
+<p>Wishing a happy and exciting 2016 for all our followers!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Introducing Gramola, a Lightweight Web Music Player]]></title>
+    <link href="http://coconauts.net/blog/2015/12/31/gramola-release/"/>
+    <updated>2015-12-31T12:00:00+00:00</updated>
+    <id>http://coconauts.net/blog/2015/12/31/gramola-release</id>
+    <content type="html"><![CDATA[<p><img src="https://farm2.staticflickr.com/1513/24000467331_46d15821da_b_d.jpg" /></p>
+
+<p>You may have noticed a mysterious project that has been since the dawn of time
+in our front page: <em>&ldquo;Gramola, lightweight online music player,
+powered by JPlayer with tons of features&rdquo;</em>. We even have a detailed
+<a href="https://coconauts.net/projects/gramola/">project page</a> about it&hellip;
+yet disapointingly, you would find no download links or source code there.</p>
+
+<p>We built (and <em>rebuilt</em>!) Gramola some time ago, and we&rsquo;ve been wanting
+to find some time to give it some polish and open source it. In fact,
+at the begining of the year
+<a href="https://coconauts.net/blog/2014/12/31/coconauts-2014-retrospective/">we promised you</a>
+that we would get it out in 2015. So to honor our words, here it is!</p>
+
+<p>Read details about it on the <a href="https://coconauts.net/projects/gramola/">project page</a>,
+or head directly to the <a href="https://github.com/coconauts/gramola">Github repository</a>
+for code and install instructions.</p>
+
+<p>Happy music listening in 2016!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Honey, I Shrunk the Watchduino]]></title>
+    <link href="http://coconauts.net/blog/2015/10/20/honey-i-shrunk-the-watchduino/"/>
+    <updated>2015-10-20T22:40:34+01:00</updated>
+    <id>http://coconauts.net/blog/2015/10/20/honey-i-shrunk-the-watchduino</id>
+    <content type="html"><![CDATA[<p>Last weekend we attended
+<a href="http://hackathon.pchintl.com/hackathons/london/2015/10/16/">a hardware hackathon organised by PCH in London</a>.
+The theme of the hackathon was &ldquo;Take your prototype to the
+next stage in 54 hours&rdquo;, so in our case we brought our
+Watchduino prototype and focused on trying to make it closer
+to how it would look if it were a commercial product.</p>
+
+<p>The best part is that at the hackathon there was a set of
+mentors, people who are experts in different areas of IoT,
+which were giving us useful advice about our product
+direction, design optimizations or the ins and outs of
+manufacturing.</p>
+
+<p>By the end of the hackathon, we had a functional (at least
+theorethically) design for Watchduino that looks this
+awesome:</p>
+
+<p><img src=https://farm1.staticflickr.com/772/22314247456_e69a4e1275_z_d.jpg' /></p>
+
+<!-- more -->
+
+
+<p>The first step to getting a hardware product into manufacturing is integrating all the electronics into a PCB. This not only makes the system easier to put together, it&rsquo;s also smaller, and likely to be more energetically efficient.</p>
+
+<p>So we designed a PCB that would mainly replace the Arduino
+Mini, breaking out the pins of the ATMega processor and
+leaving space to surface mount the rest of the components.
+To completely replace the Arduino board, a 8Mhz crystal
+oscillator needs to be added on top of our current
+components, as well as breaking out the RX and TX pins for
+reprogrammation. It&rsquo;s pretty similar to
+<a href="https://bitbucket.org/rephus/watchduino/src/master/docs/how_to_replicate.md">the process we  were following in our first Watchduino</a>.</p>
+
+<p>The board was designed with
+<a href="http://fritzing.org">Fritzing</a>,
+which we were already
+using for our schematic. We were recommended Eagle, which
+appears to be the industry standard software, and has
+a bigger component library and tons of support online.
+But Fritzing is simpler and open source, so it suited
+our purposes for the time being. You can find the file
+<a href="https://github.com/coconauts/watchduino2/tree/master/schema">on the Github repo</a>.
+In the future we would like to try out Eagle though.</p>
+
+<p>By sacrificing the buzzer (which is not really very useful having the vibrator motor) and the USB charching module (to be replaced by a custom connector, as commercial smartwatches usually have) we were able to make our PCB exactly 1 square inch in area. Pretty sweet!</p>
+
+<p><img src='https://farm6.staticflickr.com/5788/21719276463_73d93089ea_o_d.png'/></p>
+
+<p>Being able to mount all the electronics in this small
+area mean there&rsquo;s no longer the need to spread them across the strap as they were before. The whole design is
+completely compact, and small enough to fit in it&rsquo;s
+entirety into a watch head; battery and everything.</p>
+
+<p>In consequence, we redesigned our 3D case into a simpler
+shape, looking now very much like a conventional watch!</p>
+
+<p><img src=https://farm6.staticflickr.com/5640/21719246863_26ed9e4423_m_d.jpg' /></p>
+
+<p>We are cheating a little bit, because we are reusing
+<a href="https://www.decathlon.co.uk/strap-m-swip-watch-strap-black-id_8243023.html">an existing strap from a Geonaute watch</a>.
+These watches are sold at Decathlon stores, and just
+happen to have a so handy sliding mechanism for
+interchangeable straps.</p>
+
+<p><img src=https://farm6.staticflickr.com/5660/22154594199_2a668aec02_m_d.jpg' /></p>
+
+<p>So we designed our new 3D case
+with the same shape, and made it compatible with the
+Geonatue straps. Once we figure out how to print with
+flexible filament we&rsquo;ll replicate the strap with the
+same connector.</p>
+
+<p>There&rsquo;s just one thing missing: our sexy new prototype
+can&rsquo;t be functional until the PCB is printed (the image
+above I&rsquo;m afraid is a dramatization with a screenshot
+pasted on it). Printing PCBs can be done manually, but it&rsquo;s handier, better, and often cheaper to just
+<a href="http://hackaday.com/2015/09/21/why-are-you-still-making-pcbs/">get a manufacturer to do the job</a>.</p>
+
+<p>When you design a PCB, either with Fritzing, Eagle, or
+other software, you can export the result as <em>Gerber files</em>,
+which contain all the different layers of your design.
+You can provide any PCB manufacturer with this format,
+and they&rsquo;ll be able to fabricate a production-quality
+version of your board.</p>
+
+<p>So we&rsquo;ve done just that: we ordered a 3-board batch of PCBs to
+<a href="https://oshpark.com/">OSH Park</a>, for the outrageous price of just £1 each. We can&rsquo;t wait for them to arrive and see if we can get our first mini production-run of Watchduinos!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Notification Listener Plugin for Android With Cordova]]></title>
+    <link href="http://coconauts.net/blog/2015/10/13/notification-listener-android-cordova/"/>
+    <updated>2015-10-13T21:16:34+01:00</updated>
+    <id>http://coconauts.net/blog/2015/10/13/notification-listener-android-cordova</id>
+    <content type="html"><![CDATA[<p>When we were developing <a href="http://coconauts.net/projects/watchduino2">Watchduino2</a> we required to forward messages for all notifications we receive in our phone by using
+the <a href="https://developer.android.com/reference/android/service/notification/NotificationListenerService.html">NotificationListenerService</a> available on Android.</p>
+
+<p>We managed to do this in the first version of our companion app on native code, unfortunatelly, we realised this feature was not available <em>yet</em> on Cordova, the new framework we use for building
+our cool responsive companion app.</p>
+
+<p>The solution? Roll our own Cordova plugin to provide this functionality!</p>
+
+<!-- more-->
+
+
+<h3>How it works</h3>
+
+<p>The basic idea of this plugin is to create a callback from JavaScript that will be triggered everytime you get a notification
+on Android.</p>
+
+<h3>How to install</h3>
+
+<p>Installing this plugin is really simple, and it&rsquo;s like installing any other plugin on Cordova.</p>
+
+<pre><code>cordova plugin add https://github.com/coconauts/NotificationListener-cordova
+</code></pre>
+
+<h3>How to use</h3>
+
+<p>Simply  create a listener from javascript using this method inside the Cordova initialization code.</p>
+
+<pre><code>notificationListener.listen(onNotification,onError);
+</code></pre>
+
+<p>Sample code:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>var app = {
+</span><span class='line'>    initialize: function() {
+</span><span class='line'>        this.bindEvents();
+</span><span class='line'>    },
+</span><span class='line'>    bindEvents: function() {
+</span><span class='line'>      document.addEventListener('deviceready', this.onDeviceReady, false);
+</span><span class='line'>    },
+</span><span class='line'>    onDeviceReady: function() {
+</span><span class='line'>      log("Cordova start", "Device ready");
+</span><span class='line'>
+</span><span class='line'>      notificationListener.listen(function(n){
+</span><span class='line'>          console.log("Received notification " + JSON.stringify(n) );
+</span><span class='line'>        }, function(e){
+</span><span class='line'>          console.log("Notification Error " + e);
+</span><span class='line'>        })
+</span><span class='line'>    }
+</span><span class='line'>};
+</span><span class='line'>
+</span><span class='line'>app.initialize();
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Disclaimer</h3>
+
+<p>As far as I know, listening for notifications is only supported by Android phones (from version 4.0), and we haven&rsquo;t done any IOS development in the past, so I don&rsquo;t thing is
+possible to port this plugin to IOS. But feel free to contribute to our project if you think it can be extended to other platforms.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Hackaday Price 2015 Retrospective]]></title>
+    <link href="http://coconauts.net/blog/2015/10/06/hackaday-price-2015-retrospective/"/>
+    <updated>2015-10-06T22:40:34+01:00</updated>
+    <id>http://coconauts.net/blog/2015/10/06/hackaday-price-2015-retrospective</id>
+    <content type="html"><![CDATA[<p><img src='https://farm1.staticflickr.com/584/21381222983_a64f947c8d_o_d.png' align='right'/></p>
+
+<p>You may have noticed that the blog has been quite quiet during the last month.
+The reason being we were focusing our efforts on doing some epic Watchduino
+development, as <a href="https://hackaday.io/project/7244-watchduino2">contestants for the Hackaday Prize 2015</a>.
+Sad news in the end though, as we didn&rsquo;t make it to the finals.</p>
+
+<p>But that&rsquo;s ok though. Regardless of the result, this has been a good excercise
+for us, and the contest has pushed us to keep working hard on the
+<a href="http://coconauts.net/projects/watchduino2">Watchduino</a> project. That&rsquo;s why we want to
+sum up all we have learned and all we have improved on the project during
+the course of the contest.</p>
+
+<!-- more -->
+
+
+<h3>3D Case</h3>
+
+<p><img class='screenshot' src='https://farm1.staticflickr.com/760/21814249490_2bfe5bf2b9_z_d.jpg'/>
+<img class='screenshot' src='https://farm6.staticflickr.com/5717/21815509489_5531e2b080_z_d.jpg'/></p>
+
+<p>One of the things in our TODO list was to build a proper 3D case for our watch,
+and thanks to our <a href="https://twitter.com/rephus/status/571811583602647040">3D printer</a> we managed to build a wearable prototype.</p>
+
+<p>We also introduced the Smart Strap design which allows us to keep some of the
+electronic components spread along the strap, keeping the watch face smaller.</p>
+
+<p>Our first case design, from a few months ago, was done in <a href="https://www.blender.org/">Blender</a>,
+however we&rsquo;ve now switched to <a href="https://tinkercad.com/things/gG641gG1b4c">Tinkercad</a> as it&rsquo;s a great web platform for doing
+awesome 3D models really quickly.</p>
+
+<p>We also designed an additional strap prototype using a flexible strap, that we
+plan to 3D print soon enough.</p>
+
+<h3>Migration to Cordova</h3>
+
+<p><img class='screenshot' src='https://farm1.staticflickr.com/694/21815557799_9d65cd5172_z_d.jpg'/>
+<img class='screenshot' src='https://farm1.staticflickr.com/668/21814312750_9f80cebaa1_b_d.jpg'/></p>
+
+<p>A few weeks before we joined the contest, we started migrating the existing
+Android companion app, written natively, to the Cordova framework.</p>
+
+<p>The reason for this is because Cordova seems a better platform for us, based
+on HTML5 + JS, and multiplatform. It&rsquo;s easier and faster to develop with,
+the codebase is smaller, and in general we are quite happy with it!</p>
+
+<p>We finally migrated all the code with a better design by the end of August,
+and we even introduced new functionality.</p>
+
+<h3>Showcase videos</h3>
+
+<p>We made two videos to showcase the capabilities of the watch.</p>
+
+<iframe width="100%" height="500" src="https://www.youtube.com/embed/n-ubg1R2e-A" frameborder="0" allowfullscreen></iframe>
+
+
+
+
+<iframe width="100%" height="500" src="https://www.youtube.com/embed/LVE85OxWGzs" frameborder="0" allowfullscreen></iframe>
+
+
+<h3>Open source code and documentation</h3>
+
+<p>One of the requirements of the project was to release our code and build our
+documentation so everyone can create a new Watchduino from scratch.</p>
+
+<p>This has been in our roadmap for ages, so it was a good excuse to clean up
+the code a bit an make it public.</p>
+
+<p>Feel free to <a href="https://github.com/coconauts/watchduino2">clone our project</a>, and to make pull request to improve our own.</p>
+
+<p>Be warned though: the codebase is still under heavy development, so things
+might change drastically from one day to the next!</p>
+
+<h3>Next steps</h3>
+
+<p>The community also helped us to improve our watch architecture and we are keen on
+trying different approaches so Watchduino can be even better than it&rsquo;s now.</p>
+
+<p>One of the main objectives is to improve the Bluetooth connectivity and
+the power consumption. Another one is to make an app creation framework that is
+lean and easy to use.</p>
+
+<p>Stay tuned for more updates, are we are definitely not done with our
+Watchduino development!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Synthesizing Chiptune Music Programatically]]></title>
+    <link href="http://coconauts.net/blog/2015/10/04/creating-chiptune-music-programatically/"/>
+    <updated>2015-10-04T20:35:34+01:00</updated>
+    <id>http://coconauts.net/blog/2015/10/04/creating-chiptune-music-programatically</id>
+    <content type="html"><![CDATA[<p>We&rsquo;ve shown you in the past how to create chiptune-style music both
+<a href="https://coconauts.net/blog/2015/02/02/creating-chiptune-style-music-with-ubuntu/">with a DAW program</a>,
+and <a href="https://coconauts.net/blog/2015/04/19/creating-trve-chiptune-with-a-tracker/">with old-school trackers</a>.</p>
+
+<p>There&rsquo;s still another way to do it: via code. Particularly suitable for
+videogame music in particular, as you can have fine-grained control
+over the music that you autogenerate, giving it the ability to be
+dynamic.</p>
+
+<p>Every programming language worth their name will have a basic sound
+synthesizing library, which will be more than what to need to
+make chiptune sounds.</p>
+
+<!--more-->
+
+
+<p>The basics are these: you&rsquo;ll need something called an oscillator,
+which is nothing more than a device (in our case it will be a software
+device, but a device nonetheless) capable of generating <a href="http://public.wsu.edu/~jkrug/MUS364/audio/Waveforms.htm">basic sound
+waves</a>:
+sine, square, triangle and sawtooth.</p>
+
+<p><img src="http://coconauts.net/images/posts/chiptune/waveforms.png" /></p>
+
+<p>Then&#8217; you&rsquo;ll combine several sound waves together to form your sound.
+This technique is known as additive synthesis, and it&rsquo;s illustrated
+just below.</p>
+
+<p><img src="http://coconauts.net/images/posts/chiptune/additive.jpg" /></p>
+
+<p>Once you have a timbre that you like, the synthesizing library should
+have functions to alter its frequency, which will result in
+different tones being produced (this is called FM, or frequency modulation,
+synthesis), and then you have all you need to make any melody.</p>
+
+<p>There&rsquo;s something that you have to take into account, and is that you
+should limit yourself a bit with the kind and number of waves that
+you&rsquo;re using, to try to replicate the limitations of the hardware of
+old, and thus achieve convincing chiptune sounds.
+In <a href="http://opengameart.org/forumtopic/kickin-it-old-school-setting-up-nes-style-chiptunes">this forum post</a>
+the author recommends using nothing more than square, triangle and
+sawtooth waves (avoiding sine), and limiting yourself to four
+simultaneous instruments (as old sound cards didn&rsquo;t come with many
+audio channels). Have in mind though that these are just guidelines,
+in practice you should experiment with everything and pick whatever
+you think sounds good and convincingly chiptuneish.</p>
+
+<p>Synthesizing your
+own game music programatically has several important advantages:
+you wont waste any space storing your music assets (when your game is
+going on mobile phones this is an important aspect to consider!), and
+it allows for unlimited flexibility if your music is going to be
+dynamic. So we personally are keen in exploring this approach in a
+future game.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Add List of Featured Posts to Octopress]]></title>
+    <link href="http://coconauts.net/blog/2015/09/08/add-featured-posts-to-octopress/"/>
+    <updated>2015-09-08T20:03:19+01:00</updated>
+    <id>http://coconauts.net/blog/2015/09/08/add-featured-posts-to-octopress</id>
+    <content type="html"><![CDATA[<p>A few months ago we were requested to add a list of featured posts to an index page in Octopress.
+So we did a bit of research about how Octopress + Jekyll + Lyquid template internally works.
+And we ended up with a nice solution that you can easily replicate in your own blog.</p>
+
+<p>In this post we will show you how to add your own custom list of featured octopress posts like in <a href="http://coconauts.net#featured-posts">Coconauts</a></p>
+
+<!--more-->
+
+
+<p>The first thing you need to do is to add a new custom tag to your posts, we will call it <code>featured</code></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>---
+</span><span class='line'>layout: post
+</span><span class='line'>author: Javier Rengel
+</span><span class='line'>published: true
+</span><span class='line'>featured: true
+</span><span class='line'>---</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Create a new template file called <code>featured_posts.html</code> inside your <code>source/_includes</code> folder,
+with this content:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;div class="row"&gt;
+</span><span class='line'>   {% assign featured_count = '' %}
+</span><span class='line'>   {% for post in site.posts %}
+</span><span class='line'>       {% if post.featured and featured_count.size &lt; 3 %}
+</span><span class='line'>          {% capture featured_count %}{{ featured_count }}*{% endcapture %}
+</span><span class='line'>           &lt;div class="col-sm-4 col-lg-4 column featured-post"&gt;
+</span><span class='line'>              &lt;a class='post-link' href="{{ root_url }}{{ post.url }}"&gt;{{ post.title | titlecase }}&lt;/a&gt;
+</span><span class='line'>              &lt;p&gt;{{ post.content | strip_html | condense_spaces | truncate:300 }}&lt;/p&gt;
+</span><span class='line'>           &lt;/div&gt;
+</span><span class='line'>       {% endif %}
+</span><span class='line'>   {% endfor %}
+</span><span class='line'>&lt;/div&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then you can list your three most recent featured posts in every page you want just by adding this code to your markdown or HTML file:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{% include featured_posts.html %}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Just remember to adapt your HTML code and your CSS to your needs (this one is based on <a href="http://getbootstrap.com/">bootstrap</a>).</p>
+
+<h3>Featured posts</h3>
+
+<div class="row">
+   
+   
+       
+          
+           <div class="col-sm-4 col-lg-4 column">
+              <a class='post-link' href="http://coconauts.net/blog/2016/09/09/smartwatch-prototype-with-esp8266/">Smartwatch Prototype With ESP8266: ESPmartwatch</a>
+              <p>It&#8217;s been a while since we built and deprecated our [Watchduino 2](http://coconauts/projects/watchduino2) smartwatch built with Arduino and BLE technology. The reason why we stopped developing the prototype was because it was not as optimal as we expected, and the bluetooth communication was &hellip;</p>
+           </div>
+       
+   
+       
+          
+           <div class="col-sm-4 col-lg-4 column">
+              <a class='post-link' href="http://coconauts.net/blog/2016/08/01/retrophies/">Retrophies: Achievements System for Emulators</a>
+              <p>Play now at [retrophies.win](http://retrophies.win)! If there’s one thing that has become a de-facto standard in the gaming industry during the last decade this is game achievements, trophies, or whatever you may call them. Not only on console games, but Apple and Android also provide facilities to &hellip;</p>
+           </div>
+       
+   
+       
+          
+           <div class="col-sm-4 col-lg-4 column">
+              <a class='post-link' href="http://coconauts.net/blog/2016/06/13/lightning-dodge-o-matic/">Lightning-dodge-O-matic</a>
+              <p>If you have played Final Fantasy X, either its original version for PS2 or its remastered version
+for PS4 and PSVita, you might remember Thunder Plains and its lightning dodge challenge
+to get the Mars sigil. It&#8217;s quite challenging and it might take a while. I once got it (and I have a PS2 memory &hellip;</p>
+           </div>
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+</div>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[WatchDuino 2 Is Semifinalist on the 2015 Hackaday Prize]]></title>
+    <link href="http://coconauts.net/blog/2015/08/24/watchduino-2-is-semifinalist-on-the-2015-hackaday-prize/"/>
+    <updated>2015-08-24T20:18:35+01:00</updated>
+    <id>http://coconauts.net/blog/2015/08/24/watchduino-2-is-semifinalist-on-the-2015-hackaday-prize</id>
+    <content type="html"><![CDATA[<p><img src="http://coconauts.net/images/posts/hackaday_semifinal.png" /></p>
+
+<p>We are really excited to announce that <a href="https://www.coconauts.net/projects/watchduino2/">WatchDuino 2</a> has passed to
+<a href="http://hackaday.com/2015/08/24/100-semifinalists-for-the-2015-hackaday-prize/">the semi-finals of the 2015 edition of the Hackaday Prize</a>!
+It was selected amongst the best 100 of a total of more than 900 projects.
+To see this kind of recognition out of a community that we admire is
+absolutely thrilling, thank you so much =)</p>
+
+<p>This means that now we will have to give our best we want to be good enough
+to be in the finals. Many other excellent projects are competing!</p>
+
+<p>Keep an eye on the <a href="https://hackaday.io/project/7244-watchduino2">project page on Hackaday</a>,
+as it is likely to be holding exciting updates and advancements during the
+following month. And give us your skulls and likes if you have an account! =)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Updates on 404-games]]></title>
+    <link href="http://coconauts.net/blog/2015/08/08/404-updates/"/>
+    <updated>2015-08-08T23:00:00+01:00</updated>
+    <id>http://coconauts.net/blog/2015/08/08/404-updates</id>
+    <content type="html"><![CDATA[<p>Last week we implemented <a href="http://coconauts.net/projects/404games">gamified 404 pages</a> into
+coconauts. Everytime you hit a 404, instead of getting a boring
+image and cursing for your misfortune, you&rsquo;ll now get a classic videogame
+to make you forget your disappointment.</p>
+
+<p>We initially implemented pacman and space-invaders style games, but
+we&rsquo;ve now added a snake game on top of them, and not only that, the
+source code for them is now public on
+<a href="https://github.com/coconauts/404-games">a github repo</a>, so you can
+use them in your own website if you want.</p>
+
+<p><a href="http://coconauts.net/404">Happy mislinking</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Game Manager]]></title>
+    <link href="http://coconauts.net/blog/2015/08/01/game-manager/"/>
+    <updated>2015-08-01T16:53:19+01:00</updated>
+    <id>http://coconauts.net/blog/2015/08/01/game-manager</id>
+    <content type="html"><![CDATA[<p>This project has been available for a long time as a opensource software in <a href="https://github.com/coconauts/game-manager">github</a>,
+but we didn&rsquo;t do any official announcement or anything as we have been testing it and adding
+more features.</p>
+
+<p>Today we present a software for managing all your games and emulators in your computer.</p>
+
+<p><img src="http://coconauts.net/projects/game-manager/sim-city.png" /></p>
+
+<!--more-->
+
+
+<p>In the past we tried with software like XMBC Game collection,
+but it takes ages to download all the covers and info from the games.
+We also tried <a href="http://malafe.net/">MALA</a> a <a href="http://coconauts.net/projects/game-manager/old-arcade.png">long time ago</a>,
+and it was great, but a bit old and only available on Windows.
+So we decided to build one in Node.js with a lot of features that we wanted.</p>
+
+<h2>Features</h2>
+
+<ul>
+<li>Multiplatform lightweight app built in node.js and sqlite</li>
+<li>Immediately list all your games without indexing or downloading anything</li>
+<li>Mark games as &ldquo;In progress&rdquo;, &ldquo;Finished&rdquo; or &ldquo;Favorite&rdquo; for faster access</li>
+<li>Search by name</li>
+<li>Support keyboard controls</li>
+<li>Download info from the games in real time from <a href="http://thegamesdb.net/">thegamesdb.net</a></li>
+<li>Read covers and screens from disk</li>
+<li>Automatically download missing covers from Google</li>
+<li>Execute games from the app directly (you just need to set the exec argument)</li>
+<li>Works with everything (even MAME games, windows or scummvm )</li>
+<li>Open source</li>
+<li>Compact and simple design</li>
+<li>Record your gameplays</li>
+</ul>
+
+
+<h2>Demo</h2>
+
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/3ThvGbx2ku4" frameborder="0" allowfullscreen></iframe>
+
+
+<h2>How to run</h2>
+
+<p>You have the full documentation in the <a href="https://github.com/coconauts/game-manager">repo</a>.</p>
+
+<p>But as it&rsquo;s a Node.js application, as soon as you have node already installed in your machine
+you only need to do:</p>
+
+<pre><code>npm install &amp;&amp; node app.js
+</code></pre>
+
+<p>Once it&rsquo;s running, open a browser <code>localhost:8888</code> and start adding your platforms</p>
+
+<h2>Future plans</h2>
+
+<p>This application was the first thing we built in Node.js,
+so the code can be improved as we have leart a lot about this language in the last few months.</p>
+
+<p>The platform is quite useful and stable, but we can still work on new features like
+customizable skins, online storage for gamestates, or even online gameplay so you can run your Game manager server
+but play anywhere just like Sony or Steam do.</p>
+
+<p>Just let us know what&rsquo;s your favorite feature and we will focus on that!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[404 Games]]></title>
+    <link href="http://coconauts.net/blog/2015/07/31/404-games/"/>
+    <updated>2015-07-31T00:52:00+01:00</updated>
+    <id>http://coconauts.net/blog/2015/07/31/404-games</id>
+    <content type="html"><![CDATA[<p>Getting a <a href="http://coconauts.net/404">404</a> page is not something enjoyable,
+that&rsquo;s why we wanted to build something nice for anyone that lands in this
+unexpected place.</p>
+
+<p>So we built a few simple classic games in HTML5 + Canvas, and you will get randomly
+one of these everytime you land in our <a href="http://coconauts.net/404">404</a> page.</p>
+
+<!--more-->
+
+
+<p>All our 404 games will be published in our <a href="http://coconauts.net/projects/404games">project page</a></p>
+
+<h2>Space invaders</h2>
+
+<p><img src="http://coconauts.net/projects/404games/space-invaders.png" class="screenshot" /></p>
+
+<p><a href="http://coconauts.net/html5/space-invaders">Test me</a></p>
+
+<h2>Pacman</h2>
+
+<p><img src="http://coconauts.net/projects/404games/pacman.png" class="screenshot" /></p>
+
+<p><a href="http://coconauts.net/html5/pacman">Test me</a></p>
+
+<p>Fortunately, 404 pages don&rsquo;t happen too often in <a href="http://coconauts.net">Coconauts</a>,
+but still, this is an improvement over the previous version,
+and we had fun building this.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Easily Create 8-bit Sound Effects]]></title>
+    <link href="http://coconauts.net/blog/2015/07/06/easily-create-8-bit-sound-effects/"/>
+    <updated>2015-07-06T21:10:17+01:00</updated>
+    <id>http://coconauts.net/blog/2015/07/06/easily-create-8-bit-sound-effects</id>
+    <content type="html"><![CDATA[<p>In a past post we&rsquo;ve shown you <a href="https://www.coconauts.net/blog/2015/02/02/creating-chiptune-style-music-with-ubuntu/">how to make 8-bit music</a>,
+which you might want to use in a game. But of course, if you are having
+8-bit music, you&rsquo;ll want your game sound effects to match as well.</p>
+
+<p>In this post we&rsquo;ll show you how to generate 8-bit style sound effects for
+for games using a very simple free tool called <a href="http://www.bfxr.net/">bfxr</a>.
+No audio or DSP knowledge needed!</p>
+
+<!--more-->
+
+
+<p><a href="http://www.bfxr.net/">bfxr</a> is a generator for 8-bit style sound effects.
+It&rsquo;s also completely idiot proof, and you don&rsquo;t even need to install it,
+because it&rsquo;s available as a web app (though you can if you want to).</p>
+
+<p><img src="http://coconauts.net/images/posts/chiptune/bfxr.png" /></p>
+
+<p>Simply pick a category to generate a randomized sound that
+will look legit enough, and the parameters used to synthesize it will
+get filled out. In n00b mode you simply keep clicking until just the
+right sound appears, and if you&rsquo;re audio savvy you can even tune the
+parameters to your will. When you&rsquo;re satisfied, just save the sound in wav
+format and you&rsquo;re done.</p>
+
+<p>You&rsquo;ll probably want to do some format conversion with your bfxr
+generated sounds though, as wav is an uncompressed format that eats up a
+ridiculous amount of space. For this, use any audio converting tool, like
+ffmpeg:</p>
+
+<pre><code>ffmpeg -i audio.wav  -acodec libvorbis audio.ogg
+</code></pre>
+
+<p>Actually, since we don&rsquo;t care very much about the quality of the audio
+(if fact, the lower it is, it will look more authentic!), we can use
+the same tool to downsample the track (<code>-ar</code> flag sets the sample rate,
+and <code>-ab</code> sets the bitrate) and turn it to mono (<code>-ac</code> flag sets the
+number of channels):</p>
+
+<pre><code>ffmpeg -i audio.ogg -acodec libvorbis -ac 1 -ab 64000 -ar 22050 output.ogg
+</code></pre>
+
+<p>In this case we&rsquo;ve reduced the bitrate to 64k, the sample rate to half the
+usual value, and the channels to just one.</p>
+
+<p>The same downsampling process can also be applied to yor 8-bit game music actually.
+It shouldn&rsquo;t hurt the music quality and it will noticeably reduce the
+size of your assets, something you surely want if you&rsquo;re doing mobile
+development.</p>
+]]></content>
+  </entry>
+  
+</feed>

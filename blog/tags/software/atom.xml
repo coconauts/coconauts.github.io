@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: software | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/software/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2016-10-05T21:19:48+01:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Retrophies: Achievements System for Emulators]]></title>
+<link href="http://coconauts.net/blog/2016/08/01/retrophies/"/>
+<updated>2016-08-01T21:54:19+01:00</updated>
+<id>http://coconauts.net/blog/2016/08/01/retrophies</id>
+<content type="html"><![CDATA[<p>Play now at <a href="http://retrophies.win">retrophies.win</a>!</p>
+
+<p>If there’s one thing that has become a de-facto standard in the gaming industry during the last decade this is game achievements, trophies, or whatever you may call them. Not only on console games, but Apple and Android also provide facilities to integrate this features in games published on their platforms. Many games even implement a custom achievements system specific for that game in isolation.</p>
+
+<p>There seems to be an exception though. Retro games. Obviously a game from 20 years ago was not designed with achievements in mind, but even when companies re-edit old games, they seem to be happy enough charging you current day prices for what it is often an effort-less dump of the classic game, which you may even wonder if they’re running though an emulator. Do you expect the new <a href="https://www.nintendo.com/nes-classic">mini-NES</a> will be anything more than this?</p>
+
+<p>At Coconauts we love classic games, as well as emulators. So we’ve wondered… how would it be if your favourite emulators had some of the functions of today’s game platforms, like achievements?</p>
+
+<p>This what Retrophies is trying to achieve. And for the first proof of concept we’re bringing achievements to Super Mario Bros.</p>
+
+<!--more-->
+
+
+<p>You can see Retrophies in action <a href="http://retrophies.win">here</a>. A rom of Super Mario Bros for NES is running on a forked version of JSNES, implementing Retrophies. If you play for a little bit, you should start seeing some notifications for unlocking some achievements, after certain events occur in the game. How many can you get?</p>
+
+<p><img src="https://farm9.staticflickr.com/8674/28062483653_c8da6e86ea_z_d.jpg" alt="achievement"></p>
+
+<p>You may be wondering how all this works. No romhacking is involved, or at least not in the game rom itself. Retrophies is nothing more than a collection of memory registers and values. The emulator implementing Retrophies needs to be constantly inspecting those register in the running game RAM. When the correct value is up, the achievement should be triggered.</p>
+
+<p>```
+var achievements = [</p>
+
+<pre><code>//[Memory (0), Value (1) , Title (2), Description (3), Img (4), Triggered (5)]
+[0x0770, 1, "Enjoy Retrophies", "Play Super Mario Bros", "mario", false],
+[0x0748, 10, "Gold mine", "Collect 10 coins", "coin", false],
+[0x075A, 7, "More lives than a cat", "Get 8 lives", "1up", false],
+...
+</code></pre>
+
+<p>]
+```</p>
+
+<p>As you see, the system itself is quite simple. The difficult part comes when figuring out the list of memory values that should trigger achievements. This of course has to be custom-tailored for each individual game, in a reverse engineering process of trial and error, similar to what it takes to discover cheat codes for Game Genie.</p>
+
+<p>Game-hacking utilities come handy for this task. The SMB achievements were obtained using an emulator called FCEUX, which <a href="http://www.fceux.com/web/help/fceux.html?ROMHacking.html">comes with a good bunch of tools</a> used by rom hackers, or speedrunners. Particularly useful for our purposes are a <a href="https://www.youtube.com/watch?v=jfnqxxwlIyo">real time hex editor</a>(pictured below) or the <a href="http://tasvideos.org/EmulatorResources/RamSearch.html">RAM search tool</a>.</p>
+
+<p><img src="https://farm9.staticflickr.com/8835/28600323071_60e66949c8_z_d.jpg" alt="fceux"></p>
+
+<p>We can also take advantage of the <a href="http://gamehacking.org/game/31010">plenty of already existing game cheat codes</a> that people have already deciphered for the game. If we have a cheat code for invincivility setting a particular value in a particular register, we already know the register and the value that we have to inspect if we want to trigger an achievement when getting an invincivility star. There are different formats for game codes, but there are conversors around that will map them in the end to one or several memory locations.</p>
+
+<p>Our Retrophies implementation has only been done for now on the JSNES emulator, as a proof of concept. However, as the system is very simple, as well as <a href="https://github.com/rephus/retrophies">open source</a>, it should be easy for other emulators to implement. Achievement codes can also be obtained for any ROM, given some time and dedication. Watch this space for further news.</p>
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[Introducing Gramola, a lightweight web music player]]></title>
+<link href="http://coconauts.net/blog/2015/12/31/gramola-release/"/>
+<updated>2015-12-31T12:00:00+00:00</updated>
+<id>http://coconauts.net/blog/2015/12/31/gramola-release</id>
+<content type="html"><![CDATA[<p><img src="https://farm2.staticflickr.com/1513/24000467331_46d15821da_b_d.jpg" /></p>
+
+<p>You may have noticed a mysterious project that has been since the dawn of time
+in our front page: <em>&ldquo;Gramola, lightweight online music player,
+powered by JPlayer with tons of features&rdquo;</em>. We even have a detailed
+<a href="https://coconauts.net/projects/gramola/">project page</a> about it&hellip;
+yet disapointingly, you would find no download links or source code there.</p>
+
+<p>We built (and <em>rebuilt</em>!) Gramola some time ago, and we&rsquo;ve been wanting
+to find some time to give it some polish and open source it. In fact,
+at the begining of the year
+<a href="https://coconauts.net/blog/2014/12/31/coconauts-2014-retrospective/">we promised you</a>
+that we would get it out in 2015. So to honor our words, here it is!</p>
+
+<p>Read details about it on the <a href="https://coconauts.net/projects/gramola/">project page</a>,
+or head directly to the <a href="https://github.com/coconauts/gramola">Github repository</a>
+for code and install instructions.</p>
+
+<p>Happy music listening in 2016!</p>
+]]></content>
+</entry>
+
+</feed>

@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: games | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/games/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2016-10-05T21:19:48+01:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Retrophies: Achievements System for Emulators]]></title>
+<link href="http://coconauts.net/blog/2016/08/01/retrophies/"/>
+<updated>2016-08-01T21:54:19+01:00</updated>
+<id>http://coconauts.net/blog/2016/08/01/retrophies</id>
+<content type="html"><![CDATA[<p>Play now at <a href="http://retrophies.win">retrophies.win</a>!</p>
+
+<p>If there’s one thing that has become a de-facto standard in the gaming industry during the last decade this is game achievements, trophies, or whatever you may call them. Not only on console games, but Apple and Android also provide facilities to integrate this features in games published on their platforms. Many games even implement a custom achievements system specific for that game in isolation.</p>
+
+<p>There seems to be an exception though. Retro games. Obviously a game from 20 years ago was not designed with achievements in mind, but even when companies re-edit old games, they seem to be happy enough charging you current day prices for what it is often an effort-less dump of the classic game, which you may even wonder if they’re running though an emulator. Do you expect the new <a href="https://www.nintendo.com/nes-classic">mini-NES</a> will be anything more than this?</p>
+
+<p>At Coconauts we love classic games, as well as emulators. So we’ve wondered… how would it be if your favourite emulators had some of the functions of today’s game platforms, like achievements?</p>
+
+<p>This what Retrophies is trying to achieve. And for the first proof of concept we’re bringing achievements to Super Mario Bros.</p>
+
+<!--more-->
+
+
+<p>You can see Retrophies in action <a href="http://retrophies.win">here</a>. A rom of Super Mario Bros for NES is running on a forked version of JSNES, implementing Retrophies. If you play for a little bit, you should start seeing some notifications for unlocking some achievements, after certain events occur in the game. How many can you get?</p>
+
+<p><img src="https://farm9.staticflickr.com/8674/28062483653_c8da6e86ea_z_d.jpg" alt="achievement"></p>
+
+<p>You may be wondering how all this works. No romhacking is involved, or at least not in the game rom itself. Retrophies is nothing more than a collection of memory registers and values. The emulator implementing Retrophies needs to be constantly inspecting those register in the running game RAM. When the correct value is up, the achievement should be triggered.</p>
+
+<p>```
+var achievements = [</p>
+
+<pre><code>//[Memory (0), Value (1) , Title (2), Description (3), Img (4), Triggered (5)]
+[0x0770, 1, "Enjoy Retrophies", "Play Super Mario Bros", "mario", false],
+[0x0748, 10, "Gold mine", "Collect 10 coins", "coin", false],
+[0x075A, 7, "More lives than a cat", "Get 8 lives", "1up", false],
+...
+</code></pre>
+
+<p>]
+```</p>
+
+<p>As you see, the system itself is quite simple. The difficult part comes when figuring out the list of memory values that should trigger achievements. This of course has to be custom-tailored for each individual game, in a reverse engineering process of trial and error, similar to what it takes to discover cheat codes for Game Genie.</p>
+
+<p>Game-hacking utilities come handy for this task. The SMB achievements were obtained using an emulator called FCEUX, which <a href="http://www.fceux.com/web/help/fceux.html?ROMHacking.html">comes with a good bunch of tools</a> used by rom hackers, or speedrunners. Particularly useful for our purposes are a <a href="https://www.youtube.com/watch?v=jfnqxxwlIyo">real time hex editor</a>(pictured below) or the <a href="http://tasvideos.org/EmulatorResources/RamSearch.html">RAM search tool</a>.</p>
+
+<p><img src="https://farm9.staticflickr.com/8835/28600323071_60e66949c8_z_d.jpg" alt="fceux"></p>
+
+<p>We can also take advantage of the <a href="http://gamehacking.org/game/31010">plenty of already existing game cheat codes</a> that people have already deciphered for the game. If we have a cheat code for invincivility setting a particular value in a particular register, we already know the register and the value that we have to inspect if we want to trigger an achievement when getting an invincivility star. There are different formats for game codes, but there are conversors around that will map them in the end to one or several memory locations.</p>
+
+<p>Our Retrophies implementation has only been done for now on the JSNES emulator, as a proof of concept. However, as the system is very simple, as well as <a href="https://github.com/rephus/retrophies">open source</a>, it should be easy for other emulators to implement. Achievement codes can also be obtained for any ROM, given some time and dedication. Watch this space for further news.</p>
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[Retrophies: Achievements System for Emulators]]></title>
+<link href="http://coconauts.net/blog/2016/08/01/retrophies/"/>
+<updated>2016-08-01T21:54:19+01:00</updated>
+<id>http://coconauts.net/blog/2016/08/01/retrophies</id>
+<content type="html"><![CDATA[<p>Play now at <a href="http://retrophies.win">retrophies.win</a>!</p>
+
+<p>If there’s one thing that has become a de-facto standard in the gaming industry during the last decade this is game achievements, trophies, or whatever you may call them. Not only on console games, but Apple and Android also provide facilities to integrate this features in games published on their platforms. Many games even implement a custom achievements system specific for that game in isolation.</p>
+
+<p>There seems to be an exception though. Retro games. Obviously a game from 20 years ago was not designed with achievements in mind, but even when companies re-edit old games, they seem to be happy enough charging you current day prices for what it is often an effort-less dump of the classic game, which you may even wonder if they’re running though an emulator. Do you expect the new <a href="https://www.nintendo.com/nes-classic">mini-NES</a> will be anything more than this?</p>
+
+<p>At Coconauts we love classic games, as well as emulators. So we’ve wondered… how would it be if your favourite emulators had some of the functions of today’s game platforms, like achievements?</p>
+
+<p>This what Retrophies is trying to achieve. And for the first proof of concept we’re bringing achievements to Super Mario Bros.</p>
+
+<!--more-->
+
+
+<p>You can see Retrophies in action <a href="http://retrophies.win">here</a>. A rom of Super Mario Bros for NES is running on a forked version of JSNES, implementing Retrophies. If you play for a little bit, you should start seeing some notifications for unlocking some achievements, after certain events occur in the game. How many can you get?</p>
+
+<p><img src="https://farm9.staticflickr.com/8674/28062483653_c8da6e86ea_z_d.jpg" alt="achievement"></p>
+
+<p>You may be wondering how all this works. No romhacking is involved, or at least not in the game rom itself. Retrophies is nothing more than a collection of memory registers and values. The emulator implementing Retrophies needs to be constantly inspecting those register in the running game RAM. When the correct value is up, the achievement should be triggered.</p>
+
+<p>```
+var achievements = [</p>
+
+<pre><code>//[Memory (0), Value (1) , Title (2), Description (3), Img (4), Triggered (5)]
+[0x0770, 1, "Enjoy Retrophies", "Play Super Mario Bros", "mario", false],
+[0x0748, 10, "Gold mine", "Collect 10 coins", "coin", false],
+[0x075A, 7, "More lives than a cat", "Get 8 lives", "1up", false],
+...
+</code></pre>
+
+<p>]
+```</p>
+
+<p>As you see, the system itself is quite simple. The difficult part comes when figuring out the list of memory values that should trigger achievements. This of course has to be custom-tailored for each individual game, in a reverse engineering process of trial and error, similar to what it takes to discover cheat codes for Game Genie.</p>
+
+<p>Game-hacking utilities come handy for this task. The SMB achievements were obtained using an emulator called FCEUX, which <a href="http://www.fceux.com/web/help/fceux.html?ROMHacking.html">comes with a good bunch of tools</a> used by rom hackers, or speedrunners. Particularly useful for our purposes are a <a href="https://www.youtube.com/watch?v=jfnqxxwlIyo">real time hex editor</a>(pictured below) or the <a href="http://tasvideos.org/EmulatorResources/RamSearch.html">RAM search tool</a>.</p>
+
+<p><img src="https://farm9.staticflickr.com/8835/28600323071_60e66949c8_z_d.jpg" alt="fceux"></p>
+
+<p>We can also take advantage of the <a href="http://gamehacking.org/game/31010">plenty of already existing game cheat codes</a> that people have already deciphered for the game. If we have a cheat code for invincivility setting a particular value in a particular register, we already know the register and the value that we have to inspect if we want to trigger an achievement when getting an invincivility star. There are different formats for game codes, but there are conversors around that will map them in the end to one or several memory locations.</p>
+
+<p>Our Retrophies implementation has only been done for now on the JSNES emulator, as a proof of concept. However, as the system is very simple, as well as <a href="https://github.com/rephus/retrophies">open source</a>, it should be easy for other emulators to implement. Achievement codes can also be obtained for any ROM, given some time and dedication. Watch this space for further news.</p>
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[Updates on 404-games]]></title>
+<link href="http://coconauts.net/blog/2015/08/08/404-updates/"/>
+<updated>2015-08-08T23:00:00+01:00</updated>
+<id>http://coconauts.net/blog/2015/08/08/404-updates</id>
+<content type="html"><![CDATA[<p>Last week we implemented <a href="/projects/404games">gamified 404 pages</a> into
+coconauts. Everytime you hit a 404, instead of getting a boring
+image and cursing for your misfortune, you&rsquo;ll now get a classic videogame
+to make you forget your disappointment.</p>
+
+<p>We initially implemented pacman and space-invaders style games, but
+we&rsquo;ve now added a snake game on top of them, and not only that, the
+source code for them is now public on
+<a href="https://github.com/coconauts/404-games">a github repo</a>, so you can
+use them in your own website if you want.</p>
+
+<p><a href="http://coconauts.net/404">Happy mislinking</a>.</p>
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[Game manager]]></title>
+<link href="http://coconauts.net/blog/2015/08/01/game-manager/"/>
+<updated>2015-08-01T16:53:19+01:00</updated>
+<id>http://coconauts.net/blog/2015/08/01/game-manager</id>
+<content type="html"><![CDATA[<p>This project has been available for a long time as a opensource software in <a href="https://github.com/coconauts/game-manager">github</a>,
+but we didn&rsquo;t do any official announcement or anything as we have been testing it and adding
+more features.</p>
+
+<p>Today we present a software for managing all your games and emulators in your computer.</p>
+
+<p><img src="http://coconauts.net/projects/game-manager/sim-city.png" /></p>
+
+<!--more-->
+
+
+<p>In the past we tried with software like XMBC Game collection,
+but it takes ages to download all the covers and info from the games.
+We also tried <a href="http://malafe.net/">MALA</a> a <a href="/projects/game-manager/old-arcade.png">long time ago</a>,
+and it was great, but a bit old and only available on Windows.
+So we decided to build one in Node.js with a lot of features that we wanted.</p>
+
+<h2>Features</h2>
+
+<ul>
+<li>Multiplatform lightweight app built in node.js and sqlite</li>
+<li>Immediately list all your games without indexing or downloading anything</li>
+<li>Mark games as &ldquo;In progress&rdquo;, &ldquo;Finished&rdquo; or &ldquo;Favorite&rdquo; for faster access</li>
+<li>Search by name</li>
+<li>Support keyboard controls</li>
+<li>Download info from the games in real time from <a href="http://thegamesdb.net/">thegamesdb.net</a></li>
+<li>Read covers and screens from disk</li>
+<li>Automatically download missing covers from Google</li>
+<li>Execute games from the app directly (you just need to set the exec argument)</li>
+<li>Works with everything (even MAME games, windows or scummvm )</li>
+<li>Open source</li>
+<li>Compact and simple design</li>
+<li>Record your gameplays</li>
+</ul>
+
+
+<h2>Demo</h2>
+
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/3ThvGbx2ku4" frameborder="0" allowfullscreen></iframe>
+
+
+<h2>How to run</h2>
+
+<p>You have the full documentation in the <a href="https://github.com/coconauts/game-manager">repo</a>.</p>
+
+<p>But as it&rsquo;s a Node.js application, as soon as you have node already installed in your machine
+you only need to do:</p>
+
+<pre><code>npm install &amp;&amp; node app.js
+</code></pre>
+
+<p>Once it&rsquo;s running, open a browser <code>localhost:8888</code> and start adding your platforms</p>
+
+<h2>Future plans</h2>
+
+<p>This application was the first thing we built in Node.js,
+so the code can be improved as we have leart a lot about this language in the last few months.</p>
+
+<p>The platform is quite useful and stable, but we can still work on new features like
+customizable skins, online storage for gamestates, or even online gameplay so you can run your Game manager server
+but play anywhere just like Sony or Steam do.</p>
+
+<p>Just let us know what&rsquo;s your favorite feature and we will focus on that!</p>
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[404 Games]]></title>
+<link href="http://coconauts.net/blog/2015/07/31/404-games/"/>
+<updated>2015-07-31T00:52:00+01:00</updated>
+<id>http://coconauts.net/blog/2015/07/31/404-games</id>
+<content type="html"><![CDATA[<p>Getting a <a href="http://coconauts.net/404">404</a> page is not something enjoyable,
+that&rsquo;s why we wanted to build something nice for anyone that lands in this
+unexpected place.</p>
+
+<p>So we built a few simple classic games in HTML5 + Canvas, and you will get randomly
+one of these everytime you land in our <a href="http://coconauts.net/404">404</a> page.</p>
+
+<!--more-->
+
+
+<p>All our 404 games will be published in our <a href="/projects/404games">project page</a></p>
+
+<h2>Space invaders</h2>
+
+<p><img src="http://coconauts.net/projects/404games/space-invaders.png" class="screenshot" /></p>
+
+<p><a href="http://coconauts.net/html5/space-invaders">Test me</a></p>
+
+<h2>Pacman</h2>
+
+<p><img src="http://coconauts.net/projects/404games/pacman.png" class="screenshot" /></p>
+
+<p><a href="http://coconauts.net/html5/pacman">Test me</a></p>
+
+<p>Fortunately, 404 pages don&rsquo;t happen too often in <a href="http://coconauts.net">Coconauts</a>,
+but still, this is an improvement over the previous version,
+and we had fun building this.</p>
+]]></content>
+</entry>
+
+</feed>
