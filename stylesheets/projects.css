@@ -2,7 +2,7 @@ table {  width:100%}
 .iconCell {
     width:80px;
 }
-.status {
+.type {
 
     width:80px;
     font-size:small;
@@ -42,9 +42,9 @@ table {  width:100%}
   background-image:url('projects.png') ;
 }
 
-/* 1 ,2, 3  ,4  ,5  ,6  ,7
+/* 1 ,2, 3  ,4  ,5  ,6  ,7, 8
  * 48,96,144,192,240,288,336
- * 64,128,192,256,320,384,448*/
+ * 64,128,192,256,320,384,448,512 */
 
 .project-coconauts{ background-position:0px 0px;}
 .project-astroship{ background-position:-64px 0px;}
@@ -86,13 +86,14 @@ table {  width:100%}
 .project-coconauts-ci{ background-position:-128px -448px;}
 .project-retrophies{ background-position:-192px -448px;}
 
+.project-sea-life{ background-position:0px -512px;}
 
 .title{font-weight:bold;}
 .gray{color:gray;}
 
-.in-progress { color:green;}
-.deprecated { color:red;}
-.released {color:blue;}
+.games { color:green;}
+.hardware { color:red;}
+.software {color:blue;}
 
 .category p {
     font-weight:bold;
