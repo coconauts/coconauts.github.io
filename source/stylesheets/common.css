@@ -67,6 +67,12 @@
 .social-twitter {background-position:-145px -96px;}
 .social-email { background-position:-192px -96px;}
 .social-youtube {background-position:-240px -96px;}
+.social-patreon { background-image:url('/stylesheets/patreon.png');
+  background-size: 80%;
+  height: 50px;
+  width: 100%;
+  margin: 20px;
+}
 
 .social-footer-facebook {background-position:0px -48px; }
 .social-footer-gplus {background-position:-24px -48px;}
@@ -139,3 +145,6 @@
 .summary tr td ul {
  margin-left:20px;
 }
+
+/** OVERRIDE DEFAULT OCTOPRESS CSS */
+body>header{padding:0px}
