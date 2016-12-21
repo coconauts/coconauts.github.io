@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: emulators | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/emulators/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2016-12-21T17:30:32+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Game manager]]></title>
+<link href="http://coconauts.net/blog/2015/08/01/game-manager/"/>
+<updated>2015-08-01T15:53:19+00:00</updated>
+<id>http://coconauts.net/blog/2015/08/01/game-manager</id>
+<content type="html"><![CDATA[<p>This project has been available for a long time as a opensource software in <a href="https://github.com/coconauts/game-manager">github</a>,
+but we didn&rsquo;t do any official announcement or anything as we have been testing it and adding
+more features.</p>
+
+<p>Today we present a software for managing all your games and emulators in your computer.</p>
+
+<p><img src="http://coconauts.net/projects/game-manager/sim-city.png" /></p>
+
+<!--more-->
+
+
+<p>In the past we tried with software like XMBC Game collection,
+but it takes ages to download all the covers and info from the games.
+We also tried <a href="http://malafe.net/">MALA</a> a <a href="/projects/game-manager/old-arcade.png">long time ago</a>,
+and it was great, but a bit old and only available on Windows.
+So we decided to build one in Node.js with a lot of features that we wanted.</p>
+
+<h2>Features</h2>
+
+<ul>
+<li>Multiplatform lightweight app built in node.js and sqlite</li>
+<li>Immediately list all your games without indexing or downloading anything</li>
+<li>Mark games as &ldquo;In progress&rdquo;, &ldquo;Finished&rdquo; or &ldquo;Favorite&rdquo; for faster access</li>
+<li>Search by name</li>
+<li>Support keyboard controls</li>
+<li>Download info from the games in real time from <a href="http://thegamesdb.net/">thegamesdb.net</a></li>
+<li>Read covers and screens from disk</li>
+<li>Automatically download missing covers from Google</li>
+<li>Execute games from the app directly (you just need to set the exec argument)</li>
+<li>Works with everything (even MAME games, windows or scummvm )</li>
+<li>Open source</li>
+<li>Compact and simple design</li>
+<li>Record your gameplays</li>
+</ul>
+
+
+<h2>Demo</h2>
+
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/3ThvGbx2ku4" frameborder="0" allowfullscreen></iframe>
+
+
+<h2>How to run</h2>
+
+<p>You have the full documentation in the <a href="https://github.com/coconauts/game-manager">repo</a>.</p>
+
+<p>But as it&rsquo;s a Node.js application, as soon as you have node already installed in your machine
+you only need to do:</p>
+
+<pre><code>npm install &amp;&amp; node app.js
+</code></pre>
+
+<p>Once it&rsquo;s running, open a browser <code>localhost:8888</code> and start adding your platforms</p>
+
+<h2>Future plans</h2>
+
+<p>This application was the first thing we built in Node.js,
+so the code can be improved as we have leart a lot about this language in the last few months.</p>
+
+<p>The platform is quite useful and stable, but we can still work on new features like
+customizable skins, online storage for gamestates, or even online gameplay so you can run your Game manager server
+but play anywhere just like Sony or Steam do.</p>
+
+<p>Just let us know what&rsquo;s your favorite feature and we will focus on that!</p>
+]]></content>
+</entry>
+
+</feed>

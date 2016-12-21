@@ -1,0 +1,542 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Arduino Radio Improvements - Low Consumption - Coconauts</title>
+  <meta name="author" content="Coconauts"> 
+
+  
+  <meta name="description" content="Low consumption improvements for Arduino and Raspberry comunication using radio RF24">
+  <meta name="keywords" content="arduino,radio,raspberry,optimisation,consumption,battery-safe">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://coconauts.net/blog/2014/10/17/arduino-radio-improvements-low-consumption">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Coconauts" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+<link href="/stylesheets/common.css" rel="stylesheet" type="text/css">
+<link href="/stylesheets/sidebar.css" rel="stylesheet" type="text/css">
+<script languaje='javascript' src="/javascripts/common.js#2"></script> 
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-48590782-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+  <script type="text/javascript">
+  (function(e,t){var r=e.amplitude||{};var n=t.createElement("script");n.type="text/javascript";
+  n.async=true;n.src="https://d24n15hnbwhuhn.cloudfront.net/libs/amplitude-2.2.0-min.gz.js";
+  var s=t.getElementsByTagName("script")[0];s.parentNode.insertBefore(n,s);r._q=[];function a(e){
+  r[e]=function(){r._q.push([e].concat(Array.prototype.slice.call(arguments,0)))}}var i=["init","logEvent","logRevenue","setUserId","setUserProperties","setOptOut","setVersionName","setDomain","setDeviceId","setGlobalUserProperties"];
+  for(var o=0;o<i.length;o++){a(i[o])}e.amplitude=r})(window,document);
+
+  amplitude.init("656dcbc1cf186651ca698ac81709658d");
+
+  amplitude.logEvent(window.location.pathname);
+</script>
+
+
+  <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
+</head>
+
+<body   >
+  <header role="banner"><!-- no header-->
+<div class="modal"></div>
+<div id="image-container"></div>
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <!--<input type="hidden" name="q" value="site:coconauts.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>-->
+    
+     <input type="hidden" name="sitesearch" value="coconauts.net" />
+     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog">Blog</a></li>
+  <li><a href="/projects">Projects</a></li>
+  <li><a href="/press">Press</a></li>
+  <li><a href="/#about">About</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Arduino Radio Improvements - Low Consumption</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-10-17T23:00:00+00:00" pubdate data-updated="true">Oct 17<span>th</span>, 2014</time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://coconauts.net">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>In our previous post about how to <a href="http://www.coconauts.net/blog/2014/09/03/send-readings-from-arduino-to-raspberry-via-radio/">send Readings From Arduino to a Raspberry Pi via radio</a>
+we explained the basics of the Arduino-Raspberry Pi comunication and we shared a simple code.</p>
+
+<p>But there is more, with a mix of hardware and software, we managed to reduce its power
+consumption down to the minimum (between 1mAh and 0mAh while sleeping).
+Which means, your portable sensor will be able to function autonomously with an external
+battery for the longest time possible.</p>
+
+<p><img src="/images/posts/arduino-rf24-low-consumption/consumption.jpg" /></p>
+
+<!--more-->
+
+
+<h2>Things we improved</h2>
+
+<p>The key to this improvement is not only to sleep the Arduino for as much time as possible,
+but also to turn off all the devices we don&rsquo;t require while it&rsquo;s sleeping, things like the
+RF24 or even the Analog sensor.
+In order to achieve that, we need to change its configuration and use an additional digital pin to disable them all.</p>
+
+<h3>Hardware</h3>
+
+<p>First, lets have a look at the new schema</p>
+
+<p><img src="/images/posts/arduino-rf24-low-consumption/schema.png" /></p>
+
+<p>What&rsquo;s new: All VCC pins for our components (led, RF24, sensor) are connected
+to digital pin 8. This way we can enable and disable them via code by sending
+a LOW or HIGH signal through that pin. We will turn them on only when we need
+them, and disable them when the Arduino is in sleep mode.</p>
+
+<h3>Software</h3>
+
+<p>Our goal here is to turn down the RF24 device completely. As it turns out, when
+we start the radio via code with radio.begin(), some extra digital pins are
+automatically enabled by the library, and they stay like that even if we go
+to sleep mode.
+So what we&rsquo;ll do is to manually disable them before going to sleep, to lower
+the consumption. When we wake up again, at the beginning of the loop, we restart
+the radio by repeating the startup steps.</p>
+
+<p>Check the following code for more details or download it from the <a href="https://github.com/coconauts/light-rf24/blob/master/arduino_lowpower/arduino_lowpower.ino">GIT repository</a></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#include &lt;SPI.h&gt;
+</span><span class='line'>#include &lt;nRF24L01.h&gt;
+</span><span class='line'>#include &lt;RF24.h&gt;
+</span><span class='line'>#include &lt;JeeLib.h&gt;
+</span><span class='line'>
+</span><span class='line'>#define LDR 0 // Select input pin for the photocell light sensor.
+</span><span class='line'>#define FREQ 60000 //Frequency of readings (in ms)
+</span><span class='line'>
+</span><span class='line'>#define POWER 8 //power pin to reduce consumption while sleeping
+</span><span class='line'>
+</span><span class='line'>int val = 0; // Variable to store the value coming from the sensor.
+</span><span class='line'>
+</span><span class='line'>//rf24
+</span><span class='line'>#define DEVICE_ID 1
+</span><span class='line'>#define CHANNEL 1 //MAX 127
+</span><span class='line'>RF24 radio(9,10);
+</span><span class='line'>byte pipe[]= {"light"};
+</span><span class='line'> 
+</span><span class='line'>ISR(WDT_vect) { Sleepy::watchdogEvent(); }
+</span><span class='line'>
+</span><span class='line'>#define MAX_SENSOR_VALUE 1023
+</span><span class='line'>#define MAX_RADIO_VALUE 254
+</span><span class='line'>
+</span><span class='line'>void setup() {
+</span><span class='line'>    
+</span><span class='line'>  pinMode(LDR, INPUT); // Declare LDR as an input pin.
+</span><span class='line'>  pinMode(POWER, OUTPUT);  
+</span><span class='line'>}
+</span><span class='line'> 
+</span><span class='line'>void loop() {
+</span><span class='line'>  digitalWrite(POWER, HIGH);
+</span><span class='line'>  val = analogRead(LDR); // Read current value from the sensor.
+</span><span class='line'>  
+</span><span class='line'>  restartRadio();
+</span><span class='line'>  radio.write(&val , sizeof(val) ); //Send via radio
+</span><span class='line'>  stopRadio();
+</span><span class='line'>  
+</span><span class='line'>  digitalWrite(POWER, LOW);
+</span><span class='line'>  Sleepy::loseSomeTime(FREQ);
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>void stopRadio(){
+</span><span class='line'>  
+</span><span class='line'>  radio.powerDown();
+</span><span class='line'>  
+</span><span class='line'>  pinMode(13, LOW);
+</span><span class='line'>  pinMode(12, LOW);
+</span><span class='line'>  pinMode(11, LOW);
+</span><span class='line'>  pinMode(10, LOW);
+</span><span class='line'>  pinMode(9, LOW);
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>void restartRadio(){
+</span><span class='line'>  radio.begin(); // Start up the radio
+</span><span class='line'>  radio.setChannel(CHANNEL);
+</span><span class='line'>  radio.setAutoAck(1);     // Ensure autoACK is enabled
+</span><span class='line'>  radio.setRetries(15,15); // Max delay between retries & number of retries
+</span><span class='line'>  radio.openWritingPipe(pipe);
+</span><span class='line'>  radio.stopListening();
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Conclussions</h2>
+
+<p>This new version drastically improves the power consumption, allowing you to not having to worry about
+having to recharge your batteries in a very long time. Or you could even use cell batteries.</p>
+
+<p>We also created a fully assembled version for the sensor, with an optional led, removable RF24, and exchangeable
+sensors (so you can use any other analog sensor, like temperature); and this is the result.</p>
+
+<p><img src="/images/posts/arduino-rf24-low-consumption/assembled.jpg" /></p>
+
+<p>And just to prove the point we were mentioning just before, this assembled device has been running with the
+same battery charge for about a month now!</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Coconauts</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-10-17T23:00:00+00:00" pubdate data-updated="true">Oct 17<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/hardware/'>hardware</a>
+  
+</span>
+
+
+      
+
+<span class="tags">
+
+<a class='tag' href='/blog/tags/arduino/'>arduino</a>, <a class='tag' href='/blog/tags/optimisation/'>optimisation</a>, <a class='tag' href='/blog/tags/radio/'>radio</a>, <a class='tag' href='/blog/tags/raspberry/'>raspberry</a>
+
+</span>
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://coconauts.net/blog/2014/10/17/arduino-radio-improvements-low-consumption/" data-via="coconauts" data-counturl="http://coconauts.net/blog/2014/10/17/arduino-radio-improvements-low-consumption/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/09/28/iwatch-vs-arduino-comparison/" title="Previous Post: Apple Watch vs Watchduino: side by side comparison">&laquo; Apple Watch vs Watchduino: side by side comparison</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/10/30/super-time-bomb-halloween-updates/" title="Next Post: Super Time Bomb Halloween Updates">Super Time Bomb Halloween Updates &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>Get in touch</h1>
+    <a target="_blank" href="mailto:contact@coconauts.net" class="social-email"></a>
+    <a target="_blank" href="http://twitter.com/coconauts" class="social-twitter"></a>
+    <a target="_blank" href="https://www.facebook.com/pages/Coconauts/268867943273399" class="social-facebook"></a>
+    <a target="_blank" href="https://www.youtube.com/channel/UC-L-wHR5HUG_nABI4aiMPuw" class="social-youtube"></a>
+</section>
+<section>
+    <h1>Support us</h1>
+    <a target='_blank' href='https://www.patreon.com/coconauts' class='social-patreon'></a>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/10/05/sea-life-at-procjam/">Sea-Life: Game for ProcJam 2015</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/09/08/smartwatch-prototype-with-esp8266/">Smartwatch Prototype With ESP8266: ESPmartwatch</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/08/01/retrophies/">Retrophies: Achievements System for Emulators</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/06/13/lightning-dodge-o-matic/">Lightning-dodge-O-matic</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/05/19/build-house-in-3d-with-blender-unity3d/">We Built Our House With Unity3D and Blender</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/04/15/energinie-and-raspberry-pi-setup/">Build a Smart Home Using Raspberry Pi and Energenie</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/03/14/happy-pi-day/">Happy Pi Day!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/02/04/coconauts-ci-nodejs/">Coconauts CI, a Lightweight CI Built on NodeJS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/01/30/starcraft-mobile-unity3d/">RTS Game Template on Unity3d: StarCraft for Mobile</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/01/01/year-retrospective/">Coconauts 2015 Retrospective</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/games/'>games (18)</a></li><li><a href='/blog/categories/general/'>general (5)</a></li><li><a href='/blog/categories/hardware/'>hardware (19)</a></li><li><a href='/blog/categories/software/'>software (10)</a></li></ul>
+</section>
+<section>
+  <h1>Tag Cloud</h1>
+    <span id="tag-cloud"><a href='/blog/tags/3dprint' style='font-size: 58.333333333333336%'>3dprint(1)</a> <a href='/blog/tags/404' style='font-size: 66.66666666666667%'>404(2)</a> <a href='/blog/tags/android' style='font-size: 108.33333333333334%'>android(7)</a> <a href='/blog/tags/apple' style='font-size: 58.333333333333336%'>apple(1)</a> <a href='/blog/tags/applewatch' style='font-size: 58.333333333333336%'>applewatch(1)</a> <a href='/blog/tags/arduino' style='font-size: 150.0%'>arduino(12)</a> <a href='/blog/tags/automatic' style='font-size: 58.333333333333336%'>automatic(1)</a> <a href='/blog/tags/bitmap' style='font-size: 58.333333333333336%'>bitmap(1)</a> <a href='/blog/tags/blender' style='font-size: 58.333333333333336%'>blender(1)</a> <a href='/blog/tags/blog' style='font-size: 58.333333333333336%'>blog(1)</a> <a href='/blog/tags/bluetooth' style='font-size: 58.333333333333336%'>bluetooth(1)</a> <a href='/blog/tags/canvas' style='font-size: 66.66666666666667%'>canvas(2)</a> <a href='/blog/tags/chiptune' style='font-size: 75.0%'>chiptune(3)</a> <a href='/blog/tags/christmas' style='font-size: 58.333333333333336%'>christmas(1)</a> <a href='/blog/tags/chromium' style='font-size: 58.333333333333336%'>chromium(1)</a> <a href='/blog/tags/ci' style='font-size: 66.66666666666667%'>ci(2)</a> <a href='/blog/tags/classic' style='font-size: 66.66666666666667%'>classic(2)</a> <a href='/blog/tags/coconauts' style='font-size: 83.33333333333334%'>coconauts(4)</a> <a href='/blog/tags/collectd' style='font-size: 58.333333333333336%'>collectd(1)</a> <a href='/blog/tags/cordova' style='font-size: 58.333333333333336%'>cordova(1)</a> <a href='/blog/tags/cron' style='font-size: 58.333333333333336%'>cron(1)</a> <a href='/blog/tags/dashboard' style='font-size: 58.333333333333336%'>dashboard(1)</a> <a href='/blog/tags/dlc' style='font-size: 66.66666666666667%'>dlc(2)</a> <a href='/blog/tags/emulation' style='font-size: 66.66666666666667%'>emulation(2)</a> <a href='/blog/tags/emulators' style='font-size: 58.333333333333336%'>emulators(1)</a> <a href='/blog/tags/energenie' style='font-size: 58.333333333333336%'>energenie(1)</a> <a href='/blog/tags/esp8266' style='font-size: 58.333333333333336%'>esp8266(1)</a> <a href='/blog/tags/featured' style='font-size: 58.333333333333336%'>featured(1)</a> <a href='/blog/tags/fps' style='font-size: 58.333333333333336%'>fps(1)</a> <a href='/blog/tags/funny' style='font-size: 58.333333333333336%'>funny(1)</a> <a href='/blog/tags/game' style='font-size: 75.0%'>game(3)</a> <a href='/blog/tags/gamedev' style='font-size: 58.333333333333336%'>gamedev(1)</a> <a href='/blog/tags/games' style='font-size: 108.33333333333334%'>games(7)</a> <a href='/blog/tags/gimp' style='font-size: 58.333333333333336%'>gimp(1)</a> <a href='/blog/tags/gramola' style='font-size: 58.333333333333336%'>gramola(1)</a> <a href='/blog/tags/hackaday' style='font-size: 58.333333333333336%'>hackaday(1)</a> <a href='/blog/tags/halloween' style='font-size: 58.333333333333336%'>halloween(1)</a> <a href='/blog/tags/hardware' style='font-size: 58.333333333333336%'>hardware(1)</a> <a href='/blog/tags/hc-06' style='font-size: 58.333333333333336%'>hc-06(1)</a> <a href='/blog/tags/house' style='font-size: 58.333333333333336%'>house(1)</a> <a href='/blog/tags/html5' style='font-size: 66.66666666666667%'>html5(2)</a> <a href='/blog/tags/iwatch' style='font-size: 58.333333333333336%'>iwatch(1)</a> <a href='/blog/tags/jenkins' style='font-size: 58.333333333333336%'>jenkins(1)</a> <a href='/blog/tags/led' style='font-size: 58.333333333333336%'>LED(1)</a> <a href='/blog/tags/libgdx' style='font-size: 58.333333333333336%'>libgdx(1)</a> <a href='/blog/tags/limitations' style='font-size: 58.333333333333336%'>limitations(1)</a> <a href='/blog/tags/mobile' style='font-size: 58.333333333333336%'>mobile(1)</a> <a href='/blog/tags/music' style='font-size: 83.33333333333334%'>music(4)</a> <a href='/blog/tags/nodejs' style='font-size: 58.333333333333336%'>nodejs(1)</a> <a href='/blog/tags/notifications' style='font-size: 58.333333333333336%'>notifications(1)</a> <a href='/blog/tags/octopress' style='font-size: 66.66666666666667%'>octopress(2)</a> <a href='/blog/tags/opensource' style='font-size: 58.333333333333336%'>opensource(1)</a> <a href='/blog/tags/optimisation' style='font-size: 58.333333333333336%'>optimisation(1)</a> <a href='/blog/tags/pacman' style='font-size: 66.66666666666667%'>pacman(2)</a> <a href='/blog/tags/photos' style='font-size: 58.333333333333336%'>photos(1)</a> <a href='/blog/tags/pi' style='font-size: 66.66666666666667%'>pi(2)</a> <a href='/blog/tags/plugin' style='font-size: 66.66666666666667%'>plugin(2)</a> <a href='/blog/tags/posts' style='font-size: 58.333333333333336%'>posts(1)</a> <a href='/blog/tags/projects' style='font-size: 58.333333333333336%'>projects(1)</a> <a href='/blog/tags/radio' style='font-size: 66.66666666666667%'>radio(2)</a> <a href='/blog/tags/raspberry' style='font-size: 91.66666666666666%'>raspberry(5)</a> <a href='/blog/tags/redis' style='font-size: 58.333333333333336%'>redis(1)</a> <a href='/blog/tags/retro' style='font-size: 66.66666666666667%'>retro(2)</a> <a href='/blog/tags/retrospective' style='font-size: 58.333333333333336%'>retrospective(1)</a> <a href='/blog/tags/ruby' style='font-size: 58.333333333333336%'>ruby(1)</a> <a href='/blog/tags/screensaver' style='font-size: 58.333333333333336%'>screensaver(1)</a> <a href='/blog/tags/servo' style='font-size: 58.333333333333336%'>servo(1)</a> <a href='/blog/tags/smartwatch' style='font-size: 66.66666666666667%'>smartwatch(2)</a> <a href='/blog/tags/snake' style='font-size: 58.333333333333336%'>snake(1)</a> <a href='/blog/tags/software' style='font-size: 75.0%'>software(3)</a> <a href='/blog/tags/space-invaders' style='font-size: 66.66666666666667%'>space-invaders(2)</a> <a href='/blog/tags/starcraft' style='font-size: 58.333333333333336%'>starcraft(1)</a> <a href='/blog/tags/strategy' style='font-size: 58.333333333333336%'>strategy(1)</a> <a href='/blog/tags/template' style='font-size: 66.66666666666667%'>template(2)</a> <a href='/blog/tags/thresholds' style='font-size: 58.333333333333336%'>thresholds(1)</a> <a href='/blog/tags/timebomb' style='font-size: 116.66666666666667%'>timebomb(8)</a> <a href='/blog/tags/unity3d' style='font-size: 75.0%'>unity3d(3)</a> <a href='/blog/tags/uno' style='font-size: 58.333333333333336%'>uno(1)</a> <a href='/blog/tags/vr' style='font-size: 58.333333333333336%'>vr(1)</a> <a href='/blog/tags/vs' style='font-size: 58.333333333333336%'>vs(1)</a> <a href='/blog/tags/watchduino' style='font-size: 133.33333333333331%'>watchduino(10)</a> <a href='/blog/tags/water' style='font-size: 58.333333333333336%'>water(1)</a> </span>
+    
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  <span class="copyright">Copyright &copy; 2016 - Coconauts -</span>
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+<div class="right">
+    <a target="_blank" href="mailto:contact@coconauts.net" class="social-footer-email"></a>
+    <a target="_blank" href="http://twitter.com/coconauts" class="social-footer-twitter"></a>
+    <a target="_blank" href="https://www.facebook.com/pages/Coconauts/268867943273399" class="social-footer-facebook"></a>
+    <a target="_blank" href="https://www.youtube.com/channel/UC-L-wHR5HUG_nABI4aiMPuw" class="social-footer-youtube"></a>
+</div>
+
+
+<!-- Begin Cookie Consent script http://cookie-consent.org/ -->
+<script type="text/javascript">
+  window.cookieconsent_options = {"message":"This website uses cookies to ensure you get the best experience on our website",
+    "dismiss":"Got it!",
+    "learnMore":"More info",
+    "link":null,"theme":"dark-bottom"
+  };
+  var cookieconsent_id = 'b3e98008-ac9e-480f-85f2-3d07a77b55fe';
+</script>
+<script type="text/javascript" src="//cdn.front.to/libs/cookieconsent.min.3.js"></script>
+<noscript>
+  <a href="http://cookie-consent.org/">EU cookie consent script</a>
+  <a href="http://eu-cookie-law.info/">EU cookie law</a>
+</noscript>
+<!-- End Cookie Consent script -->
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'coconauts';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://coconauts.net/blog/2014/10/17/arduino-radio-improvements-low-consumption/';
+        var disqus_url = 'http://coconauts.net/blog/2014/10/17/arduino-radio-improvements-low-consumption/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
