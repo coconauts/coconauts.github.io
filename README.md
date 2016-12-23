@@ -1,4 +1,20 @@
-## Deploying Octopress on Github pages
+# Using docker
+
+
+## Install
+
+    docker-compose build
+
+## Preview
+
+    docker-compose up
+
+## Deploy
+
+    docker-compose run blog ./deploy
+
+
+# (OLD) Deploying Octopress on Github pages
 
 [Full documentation](http://octopress.org/docs/deploying/github/)
 

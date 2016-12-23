@@ -18,7 +18,7 @@ Great articles talking about us
 
 ### Watchduino 2
 
-[Project](http://localhost:4000/projects/watchduino2)
+[Project](/projects/watchduino2)
 
 - [Atmel](http://blog.atmel.com/2015/09/02/tell-time-and-more-on-this-open-source-bluetooth-enabled-watch/)
 - [MakerNews](http://makernews.info/featured/2015/09/watchduino-2-an-arduino-based-smartwatch-that-doesnt-look-like-a-bomb.html)
@@ -26,7 +26,7 @@ Great articles talking about us
 
 ### Watchduino
 
-[Project](http://localhost:4000/projects/watchduino)
+[Project](/projects/watchduino)
 
 - [Hackaday](http://hackaday.com/2014/05/06/tell-time-and-blink-an-led-on-your-wrist-with-watchduino/)
 - [Atmel](http://blog.atmel.com/2014/05/08/atmega328-powers-open-source-watchduino/)

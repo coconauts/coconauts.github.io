@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Copy id_rsa certificate so we can deploy on github
+mkdir -p ~/.ssh
+cp coconauts_rsa ~/.ssh/id_rsa
+chmod 600 ~/.ssh/id_rsa
+echo "Copied id_rsa to ~/.ssh/id_rsa"
+
+git config --global user.email "rephus@gmail.com"
+git config --global user.name "Javier Rengel"
+
+echo "git@github.com:coconauts/coconauts.github.io.git" | rake setup_github_pages
+
+rake generate
+rake deploy

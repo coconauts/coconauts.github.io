@@ -15,5 +15,4 @@ node_modules
 .preview-mode
 *kate-swp
 Gemfile.lock
-
-
+*_rsa
