@@ -19,10 +19,10 @@ can do to our beloved classic games in order to let us play those classic games 
 
 <img src="/images/posts/2016-12-29-how-improve-nintendo/nes-mini.jpg" alt="achievement">
 
+<!--more-->
+
 Some of these ideas have already been proved possible in our [Retrophies](http://retrophies.win) project, just by taking the original game, with no ROM hacking involved but just checking the memory values in the emulator, so imagine what Nintendo can do with their original games,
 something they already tried on the great Nes Remix compilation.
-
-<!--more-->
 
 ## Achievements
 
