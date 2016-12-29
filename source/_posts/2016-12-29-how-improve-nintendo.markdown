@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "How can Nintendo improve the Nintendo Mini"
-date: 2016-12-21 20:54:19 +0000
+title: "How can Nintendo improve classic Nintendo games"
+date: 2016-12-29 10:42:19 +0000
 comments: true
 categories: games
 tags: nintendo mini mario achievements multiplayer
@@ -10,12 +10,14 @@ keywords: nintendo,mini,mario,achievements,multiplayer
 description: "How can Nintendo improve the Nintendo Mini"
 author: Javier Rengel
 featured: false
-published: false
+published: true
 ---
 
 Although the Nintendo Mini has been a great success, and the best way of recreating our childhood
 experience with a great collection of classic Nintendo games; There are a lot of things still Nintendo
 can do to our beloved classic games in order to let us play those classic games in a complete new (and refreshing) way. They don't even need to do it on a new old mini console, but on their virtual store on WiiU or NX (switch)
+
+<img src="/images/posts/2016-12-29-how-improve-nintendo/nes-mini.jpg" alt="achievement">
 
 Some of these ideas have already been proved possible in our [Retrophies](http://retrophies.win) project, just by taking the original game, with no ROM hacking involved but just checking the memory values in the emulator, so imagine what Nintendo can do with their original games,
 something they already tried on the great Nes Remix compilation.
@@ -28,7 +30,7 @@ Some people love them, some people hate them, but it's true they are a good way 
 on playing games again with an objective in mind. Won't you play Super Mario Bros again if I tell you
 you will get an official reward by finishing it ? Maybe the brand new Nintendo coins.
 
-<img src="https://TODO" alt="achievement">
+<img src="/images/posts/2016-12-29-how-improve-nintendo/achievement.png" alt="achievement">
 
 This was the main feature of Retrophies and it was pretty fun to build and play.
 
@@ -37,7 +39,7 @@ This was the main feature of Retrophies and it was pretty fun to build and play.
 Another concept we tested on Retrophies, having the capability of see (or interact) with
 other players in real time while you play.
 
-<img src="https://TODO" alt="achievement">
+<img src="/images/posts/2016-12-29-how-improve-nintendo/multiplayer.png" alt="multiplayer">
 
 Sounds like playing New Super Mario Bros on Super Mario Bros.
 
@@ -55,4 +57,4 @@ Remember Mario maker and how fun was to build scenarios on Super Mario ? Then wh
 this function on existing games ? This is also a possibility that we could integrate in
 Retrophies in the future (by adding blocks or items in the screen in memory).
 
-Do you have another idea for a twisted classic Nintendo games ?
+Do you have another idea for twisted classic Nintendo games ?
