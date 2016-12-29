@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: smartwatch | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/smartwatch/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2016-12-29T10:52:24+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Smartwatch prototype with ESP8266: ESPmartwatch]]></title>
+<link href="http://coconauts.net/blog/2016/09/08/smartwatch-prototype-with-esp8266/"/>
+<updated>2016-09-08T23:44:00+00:00</updated>
+<id>http://coconauts.net/blog/2016/09/08/smartwatch-prototype-with-esp8266</id>
+<content type="html"><![CDATA[<p>It&rsquo;s been a while since we built and deprecated our <a href="http://coconauts/projects/watchduino2">Watchduino 2</a> smartwatch built with Arduino and BLE technology. The reason why we stopped developing the prototype was because it was not as optimal as we expected, and the bluetooth communication was unstable in practice; this is probably something we could have solved with time, but we just decided it was not worth it.</p>
+
+<p><img src="https://farm9.staticflickr.com/8284/29441586932_55059378bc_z_d.jpg" alt="" /></p>
+
+<p>However, with the &ldquo;new&rdquo; ESP8266 we decided to try a quick prototype to see how it behaves as in a smartwatch, and we did a lot of things in just a couple of days, this are the list of features of our new  <code>ESPmartwatch</code>:</p>
+
+<!--more-->
+
+
+<ul>
+<li>ESP8266 model ESP-01</li>
+<li>Wifi connection</li>
+<li>I2C OLED model SSD1306 128X64</li>
+<li>Send and receive messages via Websockets</li>
+<li>All messages are using JSON (being parsed on C++ too)</li>
+<li>Sync time and display on screen</li>
+<li>Display notifications from phone on screen using <a href="https://github.com/rephus/notification-webhook">Notification webhook</a></li>
+</ul>
+
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Doing web development with JSON and websockets in C++ on ESP8266, exciting! <a href="https://t.co/v2ZU4hNZO5">pic.twitter.com/v2ZU4hNZO5</a></p>&mdash; Javi Rengel (@rephus) <a href="https://twitter.com/rephus/status/772901218414891008">September 5, 2016</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>On the way, we faced a few unexpected issues that took us some time to fix (more than implementing communication with websockets) like the ESP8266 restarting itself every 5 mins because the WDT.</p>
+
+<p>But still, a lot of things are left to do like:</p>
+
+<ul>
+<li>Reduced consumption by enabling deep sleep mode while using websockets</li>
+<li>Lack of GPIO pins on ESP-01, need to try with a different ESP model</li>
+<li>Better OLED SSD1306 screen controller, u8glib seems incompatible, maybe Adafruit ?</li>
+<li>A way to introduce SSID and passwords from the watch (input required)</li>
+<li>Secure communication on websockets</li>
+</ul>
+
+
+<p>So at this point we decided that it was not worth to continue with the project, specially when just the new <a href="http://hackaday.com/2016/09/05/new-part-day-the-esp32-has-been-released/">ESP32 has been released</a></p>
+
+<p>All our code is available on <a href="https://github.com/rephus/ESP8266-OLED-Websocket">Github</a> so if you want to continue our work, or look at how we use some of the libraries, give it a go.</p>
+
+<p>Who knows, we might probably continue with the development at some point, so watch this space.</p>
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[Watchduino 2 first prototype]]></title>
+<link href="http://coconauts.net/blog/2015/02/26/watchduino2-first-prototype/"/>
+<updated>2015-02-26T20:42:14+00:00</updated>
+<id>http://coconauts.net/blog/2015/02/26/watchduino2-first-prototype</id>
+<content type="html"><![CDATA[<p>Five weeks have passed since I built the first wearable prototype of Watchduino 2,
+and I would like to share with you my impressions, its current features and its possible improvements.</p>
+
+<p><img src="http://coconauts.net/images/posts/watchduino2-prototype/all-3.jpg" /></p>
+
+<!--more-->
+
+
+<h2>Software</h2>
+
+<p>The software is running in an Arduino Mini Pro v2 3.3v 8Mhz and spans across 1588 lines of code, 17 files and 9 different classes.</p>
+
+<p>This code takes 28.212 bytes of the ATMega328&rsquo;s ROM and everything uses 1200 bytes of RAM when running.</p>
+
+<p>Apart from that, there is an Android app for comunication which provides cool features like a a Twitter client for our smartwatch.</p>
+
+<h2>Hardware</h2>
+
+<p>We need to talk about new hardware for Watchduino 2,
+as it is very different from its <a href="http://www.coconauts.net/projects/watchduino/">first version</a>
+which makes this new version smaller, prettier and more useful.</p>
+
+<ul>
+<li>Arduino mini pro 2 8Mhz 3.3v</li>
+<li>LIPO battery 240mah</li>
+<li>0.96" I2C 128X64 OLED (Various colors)</li>
+<li>3 x 6 x 4.3mm Push Button 2 Pin</li>
+<li>0.06A Micro Vibrator Motor</li>
+<li>Micro USB LIPO charger</li>
+<li>Bluetooth 3.0 module HC-06</li>
+</ul>
+
+
+<p>We have built 2 (and a half) prototypes following the same specification.</p>
+
+<h2>Features</h2>
+
+<p>Thanks to this new hardware, we managed to add new features to this new version.
+Most of them were mentioned in the <a href="http://www.coconauts.net/blog/2014/11/22/watchduino-2-dot-0-roadmap/">Watchduino roadmap post</a>,
+but you can have another look here:</p>
+
+<h3>Companion app (Android)</h3>
+
+<p><img src="http://coconauts.net/images/posts/watchduino2-prototype/manager.png" class="screenshot" /></p>
+
+<p>This is a big one, thanks to the bluetooth module we are able to send and receive messages from and to Android
+in realtime. This is a list of the features already available.</p>
+
+<ul>
+<li>Time sync: Set up the time sending a short message from the phone with the current timestamp, bye bye RTC.</li>
+<li>Weather information: Use weather APIs in the phone to get weather information (temperature, sky, humidity, etc)</li>
+<li>Twitter client: Read your twitter timeline from your watch (Awesome!!)</li>
+</ul>
+
+
+<p><img src="http://coconauts.net/images/posts/watchduino2-prototype/twitter.jpg" class="screenshot" /></p>
+
+<ul>
+<li>Notifications: Get notifications on your watch (emails, twits, whatsapp&hellip;)
+using the recent NotificationListener feature in Android.</li>
+<li>Debug: Great for debugging, send any message from the watch to your phone.</li>
+<li>Battery: Send battery messages from the watch to the phone to watch how the battery decreases with time</li>
+</ul>
+
+
+<p><img src="http://coconauts.net/images/posts/watchduino2-prototype/battery.png" class="screenshot" /></p>
+
+<p>But honestly, you can build whatever feature you want using your phone and a few APIs.
+Facebook client maybe ? Automatic whatsapp responses ?</p>
+
+<p>Actually, we are working in the following features:</p>
+
+<ul>
+<li>Bus notifications (see how long does your bus take to arrive, using the Transport For London APIs)</li>
+<li>Settings: Managed from the android app, and stored in the phone.</li>
+</ul>
+
+
+<h3>Screens</h3>
+
+<p>New screens, new resolution (128x64) and new style, with dynamic in-screen information for the buttons.</p>
+
+<p><img src="http://coconauts.net/images/posts/watchduino2-prototype/watch.jpg" class="screenshot"/></p>
+
+<p>Screen navigation is easier now with this simple menu.</p>
+
+<p><img src="http://coconauts.net/images/posts/watchduino2-prototype/menu.jpg" class="screenshot" /></p>
+
+<h3>Notifications</h3>
+
+<p>A vibrator and a tiny buzzer will alert you when a notification arrives.</p>
+
+<p>Also, the buzzer can play short melodies for alarms and whatnot.</p>
+
+<h3>Battery life</h3>
+
+<p>Using a tiny 240mah battery and without any kind of energy optimization (on-screen, bluetooth always on)
+a single charge last around 10 hours.</p>
+
+<p>Also, you can always look at your remaining battery in the top bar of the screen (like in phones).</p>
+
+<p>The charging time is less than 20 minutes.</p>
+
+<p>The problem here is the bluetooth module (HC-06), I was able to reduce its consumption to 4mA in sleep mode,
+but even so, the device would last up to 40 hours, which is not enough.
+No more optimisations can be performed from our side,
+so at this point I think the only option would be to try with <a href="http://en.wikipedia.org/wiki/Bluetooth_low_energy">Bluetooth BLE</a>.</p>
+
+<h2>Possible improvements</h2>
+
+<p>It works cool so far, but it can be improved a lot (there are still a few bugs).
+However that may require some time and maybe a new prototype.
+In short term, this are the things we are going to focus in the next weeks.</p>
+
+<ul>
+<li>Better case (3D printed?).</li>
+<li>Fix missing characters from Watchduino to Android.</li>
+<li>New charging system.</li>
+<li>Improve Battery life with Bluetooth BLE.</li>
+<li>Save settings in Android.</li>
+<li>Bring back the alarm / countdown features from Watchduino v1.</li>
+<li>Memory ROM and RAM can be optimized.</li>
+</ul>
+
+]]></content>
+</entry>
+
+</feed>

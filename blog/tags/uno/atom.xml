@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: uno | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/uno/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2016-12-29T10:52:24+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Why you shouldn't use Arduino UNO]]></title>
+<link href="http://coconauts.net/blog/2015/05/18/why-you-should-not-use-arduino-uno/"/>
+<updated>2015-05-18T21:53:19+00:00</updated>
+<id>http://coconauts.net/blog/2015/05/18/why-you-should-not-use-arduino-uno</id>
+<content type="html"><![CDATA[<p>Arduino is an awesome platform, that allows you to create almost
+everything you can imagine with a really tiny investment and some
+basic hardware knowledge.</p>
+
+<p>Everyone starts using Arduino UNO for development, and we see
+<em>a lot</em> of projects using this board, but there are a few good
+reasons why you shouldn&rsquo;t use UNO&hellip;</p>
+
+<p><img src="http://coconauts.net/images/posts/why-not-uno/arduino_hand.jpg" /></p>
+
+<!--more-->
+
+
+<h2>Arduino UNO is expensive</h2>
+
+<p>Arduino UNO is one of the most expensive boards that features the
+ATMega328 compared with other Arduino models like Mini, Micro,
+or Lilypad. There are
+<a href="http://www.arduino.cc/en/Main/Products">tons of them to choose from</a>)!</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th> Model       </th>
+<th> Price (on store.arduino.cc) </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td> UNO         </td>
+<td> 20€</td>
+</tr>
+<tr>
+<td></td>
+<td> Micro       </td>
+<td> 18€</td>
+</tr>
+<tr>
+<td></td>
+<td> Mini        </td>
+<td> 14€</td>
+</tr>
+<tr>
+<td></td>
+<td> Lillypad    </td>
+<td> 16€</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>Note that these prices come from the
+<a href="http://store.arduino.cc">oficial Arduino store</a>. However you can
+easily find compatible clonic boards on Amazon, Ebay or Aliexpress,
+at a fraction of the price.</p>
+
+<p>You could also use a bare ATMega328 like we did in our
+<a href="https://www.coconauts.net/projects/watchduino/">first Watchduino</a>
+or in our
+<a href="https://www.coconauts.net/blog/2014/10/18/arduino-radio-improvements-low-consumption/">light sensor with RF24 radio module</a>.</p>
+
+<h2>Arduino UNO is big</h2>
+
+<p>Arduino UNO is a big board, and you probably going to use a bread board
+next to it, which makes your whole development prototype really complex.</p>
+
+<p>Instead of that, use a Nano or Micro attached to a bread board directly.</p>
+
+<p><img src="http://coconauts.net/images/posts/why-not-uno/uno_vs_nano.jpeg" /></p>
+
+<h2>Arduino UNO is not power-efficient</h2>
+
+<p>Most of the projects built with Arduino will be wireless and
+battery-powered, so the device should be power-efficient,
+but Arduino UNO is not.</p>
+
+<p>Because Arduino UNO has a lot of hardware you don&rsquo;t need, it consumes
+<em>a lot</em> more than its brothers:</p>
+
+<ul>
+<li>USB controller</li>
+<li>Too many leds</li>
+</ul>
+
+
+<p>However, boards like Lilypad or Mini don&rsquo;t have a USB controller,
+which reduces its normal consumption a few mAh, eg:</p>
+
+<ul>
+<li>Standalone consumption for UNO: 28mAh</li>
+<li>Standalone consumption for Mini: 13mAh</li>
+</ul>
+
+
+<p>This measures have been taken when running a dummy sketch
+that does nothing (not even blinking a LED). If you make
+heavier computations or put the Arduino to sleep, measurements
+will vary.</p>
+
+<h2>Arduino UNO uses USB-B connector</h2>
+
+<p>Seriously?? in this day and age?</p>
+
+<h2>Arduino UNO is not designed for production</h2>
+
+<p>Because it&rsquo;s big, and has a very high consumption, you shouldn&rsquo;t
+ever use it in a prototype, like a remote controlled device, or a
+batery-powered-sensor, or a
+ <a href="https://www.coconauts.net/projects/watchduino2/">smartwatch</a>.</p>
+
+<p>Also, you probably don&rsquo;t want to develop in a hardware that won&rsquo;t
+match the final product specs, do you ?</p>
+
+<h2>Conclussions</h2>
+
+<p>The only reason why you could want to use UNO is to use a shield,
+but in most of the cases they&rsquo;re not worth it.</p>
+
+<p>Our personal preference is Arduino Mini: it&rsquo;s small, cheap and has
+the lowest consumption in its family.</p>
+
+<p>So do yourself a favor and use any of the other boards available
+instead of using UNO again.</p>
+
+<p><img src="http://coconauts.net/images/posts/why-not-uno/arduino_family.jpg" /></p>
+]]></content>
+</entry>
+
+</feed>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: 3dprint | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/3dprint/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2016-12-29T10:52:24+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Happy Pi Day!]]></title>
+<link href="http://coconauts.net/blog/2016/03/14/happy-pi-day/"/>
+<updated>2016-03-14T12:00:00+00:00</updated>
+<id>http://coconauts.net/blog/2016/03/14/happy-pi-day</id>
+<content type="html"><![CDATA[<p>Do you know what day is today? It&rsquo;s 3.14, and because it matches the
+decimals in the most beloved irrational number ever, it&rsquo;s been called an
+<a href="https://en.wikipedia.org/wiki/Pi_Day">official celebration of number Pi</a>.</p>
+
+<p>Actually last year it was a most special instance, as it was 3.14.15; an
+event that won&rsquo;t occur again for another 100 years! To celebrate, and to
+give some use to our newly bought 3D printer, we printed some <a href="http://www.thingiverse.com/thing:28882">Pi-shaped
+cookie-cutters we found off Thingiverse</a>,
+and baked some delicious Pi&hellip; cookies.</p>
+
+<p><img src="https://thingiverse-production-new.s3.amazonaws.com/renders/42/94/15/17/a7/IMG_20150312_223708_preview_featured.jpg" /></p>
+
+<p>This year still feels special, as it is 3.14.16, the decimals of <em>rounded</em> Pi.
+If you wanna celebrate, and have a 3D printer yourself, have a look at
+<a href="http://www.thingiverse.com/thing:28882">this neat collection</a> they&rsquo;ve put
+together, and print yourself something awesome.</p>
+]]></content>
+</entry>
+
+</feed>

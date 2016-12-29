@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: gramola | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/gramola/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2016-12-29T10:52:24+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Introducing Gramola, a lightweight web music player]]></title>
+<link href="http://coconauts.net/blog/2015/12/31/gramola-release/"/>
+<updated>2015-12-31T12:00:00+00:00</updated>
+<id>http://coconauts.net/blog/2015/12/31/gramola-release</id>
+<content type="html"><![CDATA[<p><img src="https://farm2.staticflickr.com/1513/24000467331_46d15821da_b_d.jpg" /></p>
+
+<p>You may have noticed a mysterious project that has been since the dawn of time
+in our front page: <em>&ldquo;Gramola, lightweight online music player,
+powered by JPlayer with tons of features&rdquo;</em>. We even have a detailed
+<a href="https://coconauts.net/projects/gramola/">project page</a> about it&hellip;
+yet disapointingly, you would find no download links or source code there.</p>
+
+<p>We built (and <em>rebuilt</em>!) Gramola some time ago, and we&rsquo;ve been wanting
+to find some time to give it some polish and open source it. In fact,
+at the begining of the year
+<a href="https://coconauts.net/blog/2014/12/31/coconauts-2014-retrospective/">we promised you</a>
+that we would get it out in 2015. So to honor our words, here it is!</p>
+
+<p>Read details about it on the <a href="https://coconauts.net/projects/gramola/">project page</a>,
+or head directly to the <a href="https://github.com/coconauts/gramola">Github repository</a>
+for code and install instructions.</p>
+
+<p>Happy music listening in 2016!</p>
+]]></content>
+</entry>
+
+</feed>

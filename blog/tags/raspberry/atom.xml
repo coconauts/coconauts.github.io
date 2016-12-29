@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: raspberry | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/raspberry/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2016-12-29T10:52:24+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Build a smart home using Raspberry Pi and Energenie]]></title>
+<link href="http://coconauts.net/blog/2016/04/15/energinie-and-raspberry-pi-setup/"/>
+<updated>2016-04-15T22:51:00+00:00</updated>
+<id>http://coconauts.net/blog/2016/04/15/energinie-and-raspberry-pi-setup</id>
+<content type="html"><![CDATA[<p>We recently discovered <a href="https://energenie4u.co.uk/">Energenie</a> (thanks to <a href="https://twitter.com/Man0jN">Manoj</a>) a nice and cheap remote controlled socket
+which also provides a custom shield for Raspberry Pi, you can use it to
+programatically control those sockets. This allows endless possibilities:
+from temporized sockets, to a socket that automatically turns on when
+detects presence using a PIR sensor, or triggered by a website or a phone app.</p>
+
+<p><img src='https://c2.staticflickr.com/2/1545/25845471424_d600499717_d.jpg'/></p>
+
+<!-- more -->
+
+
+<p>You can buy 2 different types of Energenie, some <a href="https://energenie4u.co.uk/catalogue/product/ENER002-4">individual sockets</a>
+or an <a href="https://energenie4u.co.uk/catalogue/product/ENER010">extension lead socket with 4 individually controlled</a>.
+You can also find them cheaper on Amazon or <a href="http://www.ebay.co.uk/itm/161972721449?_trksid=p2060353.m2749.l2649&amp;ssPageName=STRK%3AMEBIDX%3AIT">Ebay</a>.</p>
+
+<p>Every Energenie comes with a remote that you can use to power on or off those sockets using radio
+(no need to point with the controller to the socket like an infrared remote).
+You can use them just like this, but of course the really fun part is to be able
+to program them with your Raspberry Pi. For this, you&rsquo;ll need the
+<a href="https://energenie4u.co.uk/catalogue/product/ENER314">control board shield</a>
+as well.</p>
+
+<p>You can download a library for Python to use with Raspberry Pi from <a href="http://pythonhosted.org/energenie/">their website</a>, and check some examples of basic usage.</p>
+
+<p>In our case, as our first project, we built a website so you can control all
+sockets in the extension lead from your
+computer. In one of them we added some Cinema style lights under our sofa using a
+LED strip connected to a 12V supplier on the socket.</p>
+
+<p><img src='https://farm2.staticflickr.com/1704/26449115715_b672c53b20_z_d.jpg'/>
+<img src='https://farm2.staticflickr.com/1652/26449115515_60a9fd10a7_z_d.jpg'/></p>
+
+<p>The interface looks like this:</p>
+
+<p><img src='https://farm2.staticflickr.com/1630/26423191956_b64967a883_o_d.png'/></p>
+
+<p>You can check the source code in our <a href="https://github.com/rephus/energenie-manager">Github</a>.</p>
+
+<h3>Warnings and limitations</h3>
+
+<p>Each Raspberry PI board or remote allows you to use 4 different sockets
+(or 1 extension lead)  maximum. Which means you can&rsquo;t have for example 5 sockets
+controlled with a single Raspberry Pi.</p>
+
+<p>Each socket can only be paired with 2 controllers maximum, which means you can&rsquo;t control a socket with a remote and 2 Raspberry Pis. Every time you pair a new socket, the oldest one will get unpaired. Also, remember to pair every device before using it or it won&rsquo;t work.</p>
+
+<p>Do you have more ideas to implement with Energenie? we&rsquo;d like to hear about them in the comments.</p>
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[Arduino radio improvements - low consumption]]></title>
+<link href="http://coconauts.net/blog/2014/10/17/arduino-radio-improvements-low-consumption/"/>
+<updated>2014-10-17T23:00:00+00:00</updated>
+<id>http://coconauts.net/blog/2014/10/17/arduino-radio-improvements-low-consumption</id>
+<content type="html"><![CDATA[<p>In our previous post about how to <a href="http://www.coconauts.net/blog/2014/09/03/send-readings-from-arduino-to-raspberry-via-radio/">send Readings From Arduino to a Raspberry Pi via radio</a>
+we explained the basics of the Arduino-Raspberry Pi comunication and we shared a simple code.</p>
+
+<p>But there is more, with a mix of hardware and software, we managed to reduce its power
+consumption down to the minimum (between 1mAh and 0mAh while sleeping).
+Which means, your portable sensor will be able to function autonomously with an external
+battery for the longest time possible.</p>
+
+<p><img src="http://coconauts.net/images/posts/arduino-rf24-low-consumption/consumption.jpg" /></p>
+
+<!--more-->
+
+
+<h2>Things we improved</h2>
+
+<p>The key to this improvement is not only to sleep the Arduino for as much time as possible,
+but also to turn off all the devices we don&rsquo;t require while it&rsquo;s sleeping, things like the
+RF24 or even the Analog sensor.
+In order to achieve that, we need to change its configuration and use an additional digital pin to disable them all.</p>
+
+<h3>Hardware</h3>
+
+<p>First, lets have a look at the new schema</p>
+
+<p><img src="http://coconauts.net/images/posts/arduino-rf24-low-consumption/schema.png" /></p>
+
+<p>What&rsquo;s new: All VCC pins for our components (led, RF24, sensor) are connected
+to digital pin 8. This way we can enable and disable them via code by sending
+a LOW or HIGH signal through that pin. We will turn them on only when we need
+them, and disable them when the Arduino is in sleep mode.</p>
+
+<h3>Software</h3>
+
+<p>Our goal here is to turn down the RF24 device completely. As it turns out, when
+we start the radio via code with radio.begin(), some extra digital pins are
+automatically enabled by the library, and they stay like that even if we go
+to sleep mode.
+So what we&rsquo;ll do is to manually disable them before going to sleep, to lower
+the consumption. When we wake up again, at the beginning of the loop, we restart
+the radio by repeating the startup steps.</p>
+
+<p>Check the following code for more details or download it from the <a href="https://github.com/coconauts/light-rf24/blob/master/arduino_lowpower/arduino_lowpower.ino">GIT repository</a></p>
+
+<p>```</p>
+
+<h1>include &lt;SPI.h></h1>
+
+<h1>include &lt;nRF24L01.h></h1>
+
+<h1>include &lt;RF24.h></h1>
+
+<h1>include &lt;JeeLib.h></h1>
+
+<h1>define LDR 0 // Select input pin for the photocell light sensor.</h1>
+
+<h1>define FREQ 60000 //Frequency of readings (in ms)</h1>
+
+<h1>define POWER 8 //power pin to reduce consumption while sleeping</h1>
+
+<p>int val = 0; // Variable to store the value coming from the sensor.</p>
+
+<p>//rf24</p>
+
+<h1>define DEVICE_ID 1</h1>
+
+<h1>define CHANNEL 1 //MAX 127</h1>
+
+<p>RF24 radio(9,10);
+byte pipe[]= {&ldquo;light&rdquo;};</p>
+
+<p>ISR(WDT_vect) { Sleepy::watchdogEvent(); }</p>
+
+<h1>define MAX_SENSOR_VALUE 1023</h1>
+
+<h1>define MAX_RADIO_VALUE 254</h1>
+
+<p>void setup() {</p>
+
+<p>  pinMode(LDR, INPUT); // Declare LDR as an input pin.
+  pinMode(POWER, OUTPUT);<br/>
+}</p>
+
+<p>void loop() {
+  digitalWrite(POWER, HIGH);
+  val = analogRead(LDR); // Read current value from the sensor.</p>
+
+<p>  restartRadio();
+  radio.write(&amp;val , sizeof(val) ); //Send via radio
+  stopRadio();</p>
+
+<p>  digitalWrite(POWER, LOW);
+  Sleepy::loseSomeTime(FREQ);
+}</p>
+
+<p>void stopRadio(){</p>
+
+<p>  radio.powerDown();</p>
+
+<p>  pinMode(13, LOW);
+  pinMode(12, LOW);
+  pinMode(11, LOW);
+  pinMode(10, LOW);
+  pinMode(9, LOW);
+}</p>
+
+<p>void restartRadio(){
+  radio.begin(); // Start up the radio
+  radio.setChannel(CHANNEL);
+  radio.setAutoAck(1);     // Ensure autoACK is enabled
+  radio.setRetries(15,15); // Max delay between retries &amp; number of retries
+  radio.openWritingPipe(pipe);
+  radio.stopListening();
+}
+```</p>
+
+<h2>Conclussions</h2>
+
+<p>This new version drastically improves the power consumption, allowing you to not having to worry about
+having to recharge your batteries in a very long time. Or you could even use cell batteries.</p>
+
+<p>We also created a fully assembled version for the sensor, with an optional led, removable RF24, and exchangeable
+sensors (so you can use any other analog sensor, like temperature); and this is the result.</p>
+
+<p><img src="http://coconauts.net/images/posts/arduino-rf24-low-consumption/assembled.jpg" /></p>
+
+<p>And just to prove the point we were mentioning just before, this assembled device has been running with the
+same battery charge for about a month now!</p>
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[Send readings from Arduino to raspberry via radio]]></title>
+<link href="http://coconauts.net/blog/2014/09/02/send-readings-from-arduino-to-raspberry-via-radio/"/>
+<updated>2014-09-02T23:00:00+00:00</updated>
+<id>http://coconauts.net/blog/2014/09/02/send-readings-from-arduino-to-raspberry-via-radio</id>
+<content type="html"><![CDATA[<p>There are tons of tutorials on the internet about sending and receiving values via radio or comunicating Arduinos and Rapsberrys,
+most of them are too complex or they are incomplete (missing schemas or code).
+In this post we just want to show a simple and minimalistic way to do so with simple and cheap components using two nRF24L01 (RF24 from now on) radio modules
+(one in an Arduino, and the other in a Raspberry).</p>
+
+<!--more-->
+
+
+<p>The final code of this post and more advanced examples and schematics are available in <a href="https://github.com/coconauts/light-rf24">github</a>.</p>
+
+<h2>RF24</h2>
+
+<p>First of all, you should get any RF24 module available on the internet, here you have a few stores:</p>
+
+<ul>
+<li><a href="http://www.amazon.co.uk/Vktech-NRF24L01-Antenna-Wireless-Transceiver/dp/B00J7I0NU8/ref=sr_1_1?ie=UTF8&amp;qid=1409773214&amp;sr=8-1&amp;keywords=nRF24L01">Amazon UK</a></li>
+<li><a href="http://www.ebay.co.uk/itm/4pcs-NRF24L01-2-4GHz-Antenna-Wireless-Transceiver-Module-for-Arduino-New-JT1-/291029588078?pt=UK_BOI_Electrical_Components_Supplies_ET&amp;hash=item43c2b7186e">Ebay UK</a></li>
+</ul>
+
+
+<p>&ldquo;The nRF24L01+(nRF24L01p) is a single chip 2.4GHz transceiver with an embedded baseband protocol engine (Enhanced ShockBurst™), suitable for ultra low power wireless applications
+(<a href="http://www.elecfreaks.com/wiki/index.php?title=2.4G_Wireless_nRF24L01p">source</a>).&rdquo;</p>
+
+<p>That allows you to send and receive messages using some standard libraries without specifying any protocol in both the raspberry and the Arduino.</p>
+
+<h3>Connecting the RF24</h3>
+
+<p>Connecting the RF24 is not that hard if you follow any of the schemas below:</p>
+
+<p><img src="https://raw.githubusercontent.com/coconauts/light-rf24/master/schemas/arduino-simple.png" /></p>
+
+<p>```</p>
+
+<hr />
+
+<p>  |<em>1</em>| 2         ~ |
+  | 3 | 4  [_]    ~ |
+  | 5 | 6         ~ |
+  | 7 | 8  (   )  ~ |
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  NRF24L01    Arduino  Raspberry</p>
+
+<p>  1           GND      GND
+  2           3.3v     3.3v
+  3           D9       22
+  4           D10      CS0
+  5           D13      SCLK
+  6           D11      MOSI
+  7           D12      MISO
+```</p>
+
+<p>or download the <a href="https://github.com/coconauts/light-rf24/blob/master/schemas/arduino-simple.fzz?raw=true">fritzing schematic</a></p>
+
+<p>Some of the connections may vary, but we will use those values in the scripts, so once they are working you can change them if you want.</p>
+
+<h3>Coding the RF24</h3>
+
+<h4>Arduino</h4>
+
+<p>First you need to download the RF24 libraries for Arduino, you can find them <a href="https://github.com/TMRh20/RF24">here</a>, just copy the whole folder into your Arduino libraries.</p>
+
+<p>Once the libraries are copied, you can run the following code in your Arduino. This code will send a message (lifetime).</p>
+
+<p>Download the full code <a href="https://github.com/coconauts/light-rf24/blob/master/arduino_simple/arduino_simple.ino">here</a></p>
+
+<p>```</p>
+
+<h1>include &lt;SPI.h></h1>
+
+<h1>include &lt;nRF24L01.h></h1>
+
+<h1>include &lt;RF24.h></h1>
+
+<p>int CHANNEL = 1; //MAX 127
+RF24 radio(9,10);
+byte pipes[][6] = {&ldquo;1Node&rdquo;,&ldquo;2Node&rdquo;};</p>
+
+<p>void setup() {
+  Serial.begin(9600);
+  Serial.println(&ldquo;Setup radio\n\r&rdquo;);</p>
+
+<p>  // Setup and configure rf radio
+  radio.begin();                          // Start up the radio
+  radio.setChannel(CHANNEL);
+  radio.setAutoAck(1);                    // Ensure autoACK is enabled
+  radio.setRetries(15,15);                // Max delay between retries &amp; number of retries
+  radio.openWritingPipe(pipes[1]);
+  radio.openReadingPipe(1,pipes[0]);
+  radio.printDetails();                   // Dump the configuration of the rf unit for debugging
+  radio.stopListening();
+}</p>
+
+<p>void loop(void){
+  radio.powerUp();
+  int time = (int) millis();
+  Serial.println(&ldquo;Sending message&rdquo;);
+  radio.write(&amp;time , sizeof(int) );
+  radio.powerDown();
+  delay(1000);
+}
+```</p>
+
+<p>Keep it running while we work on the Raspberry PI listener.</p>
+
+<h4>Raspberry</h4>
+
+<p>First, download the c++ library for your Raspberry PI available <a href="https://github.com/TMRh20/RF24/tree/master/RPi">here</a> , install them with <code>make</code> and <code>make install</code>.
+You can also compile and test the examples.</p>
+
+<p>Then compile and run the following code using <code>g++ -lstdc++ -lrt -lrf24-bcm rf24.cpp -o rf24.out</code> and <code>./rf24.out</code></p>
+
+<p>Download the full code <a href="https://github.com/coconauts/light-rf24/blob/master/raspberry/rf24.cpp">here</a></p>
+
+<p>```</p>
+
+<h1>include <iostream> //for usleep</h1>
+
+<h1>include &lt;time.h> //for CLOCK_REALTIME</h1>
+
+<h1>include &lt;RF24/RF24.h> //for radio</h1>
+
+<h1>include &lt;stdio.h> //for printf</h1>
+
+<p>using namespace std;</p>
+
+<p>// Setup for GPIO 22 CE and CE0 CSN with SPI Speed @ 8Mhz
+RF24 radio(RPI_V2_GPIO_P1_15, RPI_V2_GPIO_P1_24, BCM2835_SPI_SPEED_8MHZ);</p>
+
+<p>// Radio pipe addresses for the 2 nodes to communicate.
+const uint8_t pipes[][6] = {&ldquo;1Node&rdquo;,&ldquo;2Node&rdquo;};</p>
+
+<p>int main(int argc, char** argv){
+  timespec time;
+  // for some reason read() reads 8 bytes, not 1, so make sure we allocate
+  // enough memory; otherwise it scribbles over other memory
+  int paylad[8];</p>
+
+<p>  radio.begin();
+  radio.setChannel(1);
+  radio.setRetries(15,15);
+  radio.printDetails();</p>
+
+<p>  radio.openWritingPipe(pipes[1]);
+  radio.openReadingPipe(1,pipes[0]);
+  radio.startListening();</p>
+
+<p>  while (1) {</p>
+
+<pre><code>if ( radio.available() ) {      
+
+  radio.read( paylad, sizeof(int) );
+  clock_gettime(CLOCK_REALTIME, &amp;time);
+  printf("Received: %i at %i.%i \n",paylad[0],time.tv_sec,time.tv_nsec);
+}
+usleep(100 * 1000);
+</code></pre>
+
+<p>  }
+  return 0;
+}
+```</p>
+
+<p>And that should be it.</p>
+
+<h3>Creating a portable sensor</h3>
+
+<p>Now you have the basic library running you can add a simple sensor (light sensor) to it.</p>
+
+<p>Just follow the previous schematic, write the code, add an external battery and place it wherever you want.</p>
+
+<p><img src="http://coconauts.net/images/posts/light-rf24/assembled.jpg" /></p>
+
+<p>See how the messages are coming to the raspberry PI.</p>
+
+<h3>Power consumption</h3>
+
+<p>The code mentioned is not power efficient , and its consumption may vary between 10mA and 20mA (using a minimal atmega328 configuration).
+However, there are a few ways to drop that consumption up to 0.5mA.</p>
+
+<p>First you need to use the JeeLib library to sleep the arduino (rather than using delay).
+That will drop the consumption up to 8mA while idle.</p>
+
+<p><img src="http://coconauts.net/images/posts/light-rf24/polimeter.jpg" /></p>
+
+<p>However, this is not enough and the reason why the consumption is not ~0 is because the RF24 chip is consuming even if it is in the powerdown mode.
+To solve this, I hackily added a NPN Transistor to turn off the device completely while it is sleeping.
+This reduces its consumption up to 0.8mA, which means it can run during 5 days using a 240mAh battery.
+More improvements can be performed to drop its consumption.</p>
+
+<p>If you want to see more details, have look at the <a href="/blog/2014/10/18/arduino-radio-improvements-low-consumption/">arduino-lowpower script</a></p>
+
+<h3>What&rsquo;s next ?</h3>
+
+<p>Obviously, this offer endless possibilities, we could write those messages in a queue system, or a database (redis, mysql, sqlite, etc)
+and run another python app in the raspberry with whatever behaviour we want.</p>
+
+<p><img src="http://coconauts.net/images/posts/light-rf24/raspberry-store-sqlite.png" /></p>
+
+<p>Show those records in a graph so it looks like this:</p>
+
+<p><img src="http://coconauts.net/images/posts/light-rf24/raspberry-graph.png" /></p>
+
+<p>Or we could attach a tiny solar panel to the portable sensor and place it outside, so the battery will last &ldquo;forever&rdquo;.</p>
+
+<p>Do you have any other idea ? <a href="/about">Contact us</a> and tell us, we may do it in our next project.</p>
+
+<h2>More examples</h2>
+
+<ul>
+<li><a href="http://hack.lenotta.com/arduino-raspberry-pi-switching-light-with-nrf24l01">Lamp example</a></li>
+<li><a href="https://github.com/onefinestay/looserver">onefinestay loo</a></li>
+</ul>
+
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[Meteorological station with raspberry pi (phase 1)]]></title>
+<link href="http://coconauts.net/blog/2014/08/13/meteorological-station-with-rasbperry-pi-phase-1/"/>
+<updated>2014-08-13T23:00:00+00:00</updated>
+<id>http://coconauts.net/blog/2014/08/13/meteorological-station-with-rasbperry-pi-phase-1</id>
+<content type="html"><![CDATA[<p>For our next project (which we will reveal soon), we have been working with the Raspberry Pi for building some sort of meteorological station.
+That piece of hardware will contain the following features:</p>
+
+<ul>
+<li>Light sensor</li>
+<li>Temperature sensor</li>
+<li>Soil humidity sensor</li>
+<li>Water pump</li>
+</ul>
+
+
+<!--more-->
+
+
+<p>As you may notice, most of the components are resistors, and the Raspberry Pi is not very good with them, as it doesn&rsquo;t have analog inputs
+(as we briefly mentioned in a <a href="/blog/2014/07/05/arduino-vs-raspberry-pi/">previous post</a> ).
+There are two common ways to solve this problem, one of them is using a capacitor, and the other is using an ADC (such as the MCP3008).
+At this point, we made some experiments using the capacitor approach.</p>
+
+<p>To begin with, we started looking for a waterproof case, as the station is going to be outdoors.
+As we don&rsquo;t have any 3D printer (yet) we recycled a gamepad case, which just happened to be perfect for our purposes.</p>
+
+<p><img src="http://coconauts.net/images/posts/weather_station/weather_st_phase1_1.jpg" /></p>
+
+<p>We added all the components into a small breadboard (for testing).</p>
+
+<p><img src="http://coconauts.net/images/posts/weather_station/weather_st_phase1_2.jpg" /></p>
+
+<p>We sealed the case and connected everything together.</p>
+
+<p><img src="http://coconauts.net/images/posts/weather_station/weather_st_phase1_3.jpg" /></p>
+
+<p>And after a few days outside, this is the result we got.</p>
+
+<p><img src="http://coconauts.net/images/posts/weather_station/graph.png" /></p>
+
+<h2>Conclusions:</h2>
+
+<p>As we can see, the capacitor manages to capture analog values, but they are not very precise (they rely not only on the capacitor value, but also on the machine load).</p>
+
+<p>Also, the soil humidity sensor we used was too cheap: it got rusted and it became useless.</p>
+
+<p>We had to take care of setting a cap to the values we read, because when a sensor goes wrong (like our soil humidity sensor) we start getting values so big that our application blocked because of it.</p>
+
+<p>There&rsquo;s to paths we can take from here, in our search for more satisfactory results:</p>
+
+<ul>
+<li>Using the MCP3008 chip and a better soil humidity sensor and we will compare both graphs.</li>
+<li>Use an Arduino for reading the analog values, and integrate comunication via bluetooth or radio.</li>
+</ul>
+
+
+<p>Stay tuned for our next experiment.</p>
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[Arduino vs Raspberry Pi]]></title>
+<link href="http://coconauts.net/blog/2014/07/05/arduino-vs-raspberry-pi/"/>
+<updated>2014-07-05T16:37:00+00:00</updated>
+<id>http://coconauts.net/blog/2014/07/05/arduino-vs-raspberry-pi</id>
+<content type="html"><![CDATA[<p>Sometimes, when you want to build a project, you need to think which is the best platform for you, weather server, desktop, Raspberry Pi or Arduino.
+If you have no experience at all, you may think you want to build a weareable device (like our <a href="/projects/watchduino">WatchDuino</a> project) using a Raspberry Pi, or a webpage or a smart robot with light and sounds using an Arduino, when in fact these are not the optimal choices.
+That&rsquo;s why we would like to point out the main differences between Rasbperry Pi and Arduino, and which makes them the best or the worst depending on the kind of project.</p>
+
+<!--more-->
+
+
+<h2>Size</h2>
+
+<p>Lets start with something obvious, the size.</p>
+
+<p>If you want to build something small, wearable, or hidden in a hat, you need to use Arduino.</p>
+
+<p>Your first impression might be that Arduino Uno and Raspberry Pi are actually similar in size, but the difference relies in that you can shrink Arduino as much as you want (up to chip size), or use a different smaller model, like Arduino Nano or Arduino Mini (which is smaller than nano). Whereas you can&rsquo;t shrink a Raspberry Pi at all.</p>
+
+<p>So Arduino is the obvious choice when size matters. You can always prototype and develop using an Arduino Uno, and then use a smaller version when you need to integrate it into your project.</p>
+
+<h2>Power consumption</h2>
+
+<p>The consumption is, in some way, related with the size. The Raspberry Pi is big because it has a lot of controllers and better processor, which means it needs more power to work.
+However, Arduino can reduce its consumption a lot if you remove all the useless inboard components (like leds and the USB controller).</p>
+
+<p>For instance, our <a href="/projects/watchduino">WatchDuino</a> project used a standalone ATMega chip (so not even an Arduino Mini) to optimize the power consumption as much as possible.</p>
+
+<h2>Portability</h2>
+
+<p>Obviously, portability is a mix of consumption and size. You can build a robot for home with a Raspberry Pi, but just keep in mind it will be big and you may need to charge it quite often.</p>
+
+<h2>Processing</h2>
+
+<p>Because Raspberry Pi processor is 700MHz (overclokable up to 1Ghz) and Arduino is only 8 or 16Mhz, you shouldn&rsquo;t use Arduino to do big calculations or run math heavy code.
+Forget about doing something like image recognition, fast fourier transform comparisons or something like that (not even the Raspberry Pi can handle that smoothly).</p>
+
+<h2>Code complexity</h2>
+
+<p>If your need to code something more complex than just giving a result according to an input, then probably Arduino is not the best platform for you.
+It is not just because it is using C++ (we will talk about this later), it is also because Arduino (ATMega) has a very limited code space (up to 32Kb),
+so you can&rsquo;t use all the libraries you want as they won&rsquo;t fit your flash program memory.</p>
+
+<h2>C++</h2>
+
+<p>If you don&rsquo;t want to have the chance to choose between different languages (Java, NodeJs, Python, Ruby, Perl, Bash&hellip;) and just want to use C++, then you&rsquo;ll feel at home with Arduino.
+You cannot use anything else, only C++, and don&rsquo;t try to use <code>pip</code> or <code>npm</code> or <code>maven</code> as it won&rsquo;t work.</p>
+
+<p>Thankfully, the guys at <a href="http://biicode.com">biicode</a> made our life a bit easier building a platform to reuse some C++ code, so if you want to use some community libraries (like in pip), you should have a look.</p>
+
+<h2>Inputs</h2>
+
+<p>Both Arduino and Raspberry Pi are good at reading digital inputs (although it&rsquo;s a bit confusing in the Raspberry Pi), and both also have a 3v and 5v output, which is good.
+However, Raspberry Pi doesn&rsquo;t have analog inputs, which is a disadvantage when using resistances or any kind of analog device. But it doesn&rsquo;t mean you can&rsquo;t use them, there are
+two popular techniques for reading analog inputs, you can either use a capacitor or an ADC chip (analog to digital converter) like the MCP3008 (we will talk about this important topic in a future post).</p>
+
+<h2>Web server</h2>
+
+<p>Do you want to host a webpage or webserver ? then go for the Raspberry Pi, and use whatever language you prefer, like Python+Flask, NodeJs, Apache+PHP, etc.
+At this point of the post I think it&rsquo;s not worth explaining why you cannot host a web server on an Arduino.</p>
+
+<h2>Advanced Audio/Video support</h2>
+
+<p>Of course you can get an Arduino Mega and connect 20 pins to a powerful LCD screen and show some fancy graphic effects using C++ with Adafruit GFX,
+but I am pretty sure it is going to be easier for you if you go for the Raspberry Pi and use the HDMI or video output, right?
+Actually, if you are going to use a full color LCD, it means the consumption is not that important in your project.</p>
+
+<p>The same goes for complex audio support (rather than just playing some sounds with a buzzer).
+If you want to play MP3, WAV or OGG files, it&rsquo;s much easier to use <code>aplay</code> or <code>from pygame import mixer</code> in Python than stacking some Arduino shields.</p>
+
+<p>If you still want to make your Raspberry Pi portable, you can use a portable USB-powered-speaker like the X-Mini or get one for <a href="http://www.amazon.co.uk/DIGIFLEX-Portable-Travel-Speaker-iPhone/dp/B003TKTUUY/ref=sr_1_4?ie=UTF8&amp;qid=1404482399&amp;sr=8-4&amp;keywords=portable+speaker">less than 3 pounds</a></p>
+]]></content>
+</entry>
+
+</feed>
