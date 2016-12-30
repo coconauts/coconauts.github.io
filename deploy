@@ -1,6 +1,11 @@
 #!/bin/sh
 
 # Copy id_rsa certificate so we can deploy on github
+if [ ! -f coconauts_rsa ]; then
+    echo "Error: couldnt find coconauts_rsa. Please copy to root of repo."
+    exit 1
+fi
+
 mkdir -p ~/.ssh
 cp coconauts_rsa ~/.ssh/id_rsa
 chmod 600 ~/.ssh/id_rsa
