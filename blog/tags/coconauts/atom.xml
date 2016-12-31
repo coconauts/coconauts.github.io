@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: coconauts | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/coconauts/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2016-12-31T16:43:51+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Coconauts 2016 retrospective]]></title>
+<link href="http://coconauts.net/blog/2016/12/30/coconauts-2016-retrospective/"/>
+<updated>2016-12-30T21:11:39+00:00</updated>
+<id>http://coconauts.net/blog/2016/12/30/coconauts-2016-retrospective</id>
+<content type="html"><![CDATA[<p>Another year went by, and this is the third that we find ourselves writing
+a retrospective in the blog, not bad eh?
+<a href="https://www.youtube.com/watch?v=Z04M6NhkIKk">2016 hasn&rsquo;t been too cheerful</a>
+(at least not for fans of the many stars that have left us this year,
+or for people with progressive political views in general).</p>
+
+<p>When it comes to Coconauts however it didn&rsquo;t go too bad:</p>
+
+<ul>
+<li>Perhaps the biggest highlight of the year is the
+<a href="http://retrophies.win/">Retrophies project</a>. Featured in
+<a href="https://news.ycombinator.com/item?id=12205560">HackerNews</a> and
+<a href="https://www.reddit.com/r/emulation/comments/4voi81/retrophies_achievements_system_for_emulators/">Reddit</a>.
+We started it as an experiment that turned out to be successful,
+and we are still expanding it (for instance, the latest addition was a
+<a href="http://coconauts.net/blog/2016/12/29/how-improve-nintendo/">multiplayer mario game using websockets</a>).</li>
+<li>We&rsquo;ve been experimenting with the ESP8266 chip, as a more versatile,
+powerful and cheaper alternative to Arduino, and we started
+<a href="http://coconauts.net/blog/2016/09/08/smartwatch-prototype-with-esp8266/http://coconauts.net/blog/2016/09/08/smartwatch-prototype-with-esp8266/">migrating Watchduino to the ESP8266</a>.</li>
+<li>A small hack that also turned out to be a hit is the
+<a href="http://coconauts.net/blog/2016/06/13/lightning-dodge-o-matic/">Lightning-dodge-O-matic</a>,
+featured on <a href="http://hackaday.com/2016/06/22/cheating-at-video-games-arduino-edition/http://hackaday.com/2016/06/22/cheating-at-video-games-arduino-edition/">Hackaday</a>!</li>
+<li>We published our <a href="http://coconauts.net/blog/2016/02/04/coconauts-ci-nodejs/">custom mini-CI system</a></li>
+<li>We started the year working on a <a href="http://coconauts.net/blog/2016/01/30/starcraft-mobile-unity3d/http://coconauts.net/blog/2016/01/30/starcraft-mobile-unity3d/">mobile version of Starcraft</a> (which we shortly after stopped working on, but there&rsquo;s still a demo video).</li>
+</ul>
+
+
+<p>Our plans of focusing on game making haven&rsquo;t materialized as much as we would have liked.
+We&rsquo;ve also continued blogging very little during the year; although, there is one
+aspect where we have delivered: more frequent status updates about ongoing projects. Thanks to this,
+we&rsquo;ve shown you some prototyes and smaller projects through the year despite not
+having any big reveals.</p>
+
+<p>So what are our best whishes for 2017? Pretty much the same as the year before:</p>
+
+<ul>
+<li>More games</li>
+<li>More open source</li>
+<li>More frequent blogging</li>
+<li>More awesome</li>
+</ul>
+
+
+<p>See you in 2017, have a good one! =)</p>
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[Coconauts 2015 retrospective]]></title>
+<link href="http://coconauts.net/blog/2016/01/01/year-retrospective/"/>
+<updated>2016-01-01T14:00:00+00:00</updated>
+<id>http://coconauts.net/blog/2016/01/01/year-retrospective</id>
+<content type="html"><![CDATA[<p>Year 2015 has come to an end, and as it turns out we do have
+<a href="https://en.wikipedia.org/wiki/Self-balancing_two-wheeled_board">hoverboards</a>,
+<a href="https://www.youtube.com/watch?v=vZRFcGrrsyc">holograms/augmented reality</a>,
+yet for some reason hip-kids insist in dressing as lumberjacks rather than
+in futuristic clothing.</p>
+
+<p>It feels just like yesterday when we were writing
+<a href="https://coconauts.net/blog/2014/12/31/coconauts-2014-retrospective/">our retrospective post</a>
+last year. Time does fly! So how did we fare this year in comparison?</p>
+
+<!-- more -->
+
+
+<ul>
+<li>The <a href="https://coconauts.net/projects/watchduino2/">second version of Watchduino</a>
+was an absolute smash. We managed to get a functional prototype with
+Bluetooth connectivity, plus a phone companion app. It&rsquo;s starting to
+look something like a real smartwatch, and it was awarded
+<a href="https://coconauts.net/blog/2015/08/24/watchduino-2-is-semifinalist-on-the-2015-hackaday-prize/">semifinalist in the Hackaday Prize</a>.</li>
+<li>Our second big release of the year, even if it was a bit last minute,
+was the long promised open sourcing of
+<a href="https://coconauts.net/blog/2015/12/31/gramola-release/">Gramola</a>,
+a web-based music player.</li>
+<li>Smaller projects, but let&rsquo;s not forget about:
+<a href="https://coconauts.net/blog/2015/10/13/notification-listener-android-cordova/">a notification listener plugin for Cordova</a>,
+<a href="https://coconauts.net/blog/2015/04/22/simple-automatic-watering-system-arduino/">an Arduino automated watering system</a>,
+our <a href="https://coconauts.net/blog/2015/07/31/404-games/">404-games</a>.</li>
+<li>Seems like we still aren&rsquo;t blogging as much as we should, as we have some
+extra small projects that we didn&rsquo;t tell you about in the blog:
+<a href="https://github.com/coconauts/image-to-json">an image-to-json</a> converter,
+<a href="http://itch.io/jam/procjam/rate/43682">a generative game</a> made for the
+<a href="http://www.procjam.com/">PROCJAM</a> game jam, and
+<a href="https://github.com/coconauts/find-open">a webapp to find open restaurants near you</a>.</li>
+<li>We didn&rsquo;t blog as much as we would have liked, but even so we brought
+you a bunch of tutorials about
+<a href="https://coconauts.net/blog/tags/arduino/">Arduino</a>,
+<a href="https://coconauts.net/blog/tags/unity3d/">Unity3D</a>, or
+<a href="https://coconauts.net/blog/tags/chiptune/">chiptune music</a>, among others.</li>
+</ul>
+
+
+<p>The year certainly felt as packed as the year before, so we definitely
+want to keep the momentum going for 2016. Here&rsquo;s our immediate plans for
+the year to come:</p>
+
+<ul>
+<li>We didn&rsquo;t do as much gamedev as we would have liked during 2015, so we
+would like to finish a Unity3D game during the next year. Specially now that
+<a href="http://blogs.unity3d.com/es/2015/08/26/unity-comes-to-linux-experimental-build-now-available/">Unity3D is available for Linux</a>,
+there&rsquo;s no better time!</li>
+<li>Once again, we want to aim to do more and better posting. 2015 saw
+regular blog updates until october, but for this year we want to do
+even better.</li>
+<li>To help fatten our blog and Github account, we want to commit to talk
+about our projects even while in an early stage. Instead of doing the
+development of a game or project in the dark until it is polished enough to
+show (as done with <a href="https://coconauts.net/projects/timebomb2/">Exploding Bunnies</a>
+or <a href="https://coconauts.net/projects/gramola/">Gramola</a>)
+we want to to show prototypes and betas as early as we
+have them, and keep our development more open
+(as we have done with <a href="https://coconauts.net/projects/watchduino2/">Watchduino2</a>).</li>
+<li>Speaking of Watchduino2, we plan to continue it&rsquo;s development due to
+popular demand, albeit perhaps at a slower pace than we did during 2015.</li>
+</ul>
+
+
+<p>Wishing a happy and exciting 2016 for all our followers!</p>
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[Coconauts 2014 retrospective]]></title>
+<link href="http://coconauts.net/blog/2014/12/31/coconauts-2014-retrospective/"/>
+<updated>2014-12-31T17:24:14+00:00</updated>
+<id>http://coconauts.net/blog/2014/12/31/coconauts-2014-retrospective</id>
+<content type="html"><![CDATA[<p>Every time there&rsquo;s a change of year we can&rsquo;t help taking a look back to
+account for everything that is different from the same point one year ago.
+For Coconauts 2014 has been a really exciting year, and we wanted to have a
+record of our achievements during the same, so when we take a look back again
+at the end of 2015 we have something to compare against.</p>
+
+<!--more-->
+
+
+<ul>
+<li>We <a href="http://www.coconauts.net/blog/2014/04/30/watchduino-awarded-first-price-at-biicontest-2014/">won the Biicode 2014 competition with Watchduino</a>.
+We are also <a href="http://www.coconauts.net/blog/2014/11/22/watchduino-2-dot-0-roadmap/">working on an improved version</a>,
+so we&rsquo;ll have some more work for next year.</li>
+<li>We <a href="http://www.coconauts.net/blog/2014/05/10/coconauts-is-powered-by-octopress/">migrated our blog from Wordpress to Octopress</a>,
+and we started blogging regularly on it.</li>
+<li>We <a href="http://www.coconauts.net/blog/2014/09/15/super-time-bomb-is-out/">released Super Time Bomb</a>,
+our second LibGDX game for Android. We also did a couple of seasonal updates for it.</li>
+<li>You may have missed it, because we didn&rsquo;t blog about it, but we released a
+<a href="http://www.coconauts.net/projects/game-manager/">Web Game Manager</a> desktop app
+(written in node.js).</li>
+<li>We opened a <a href="https://github.com/coconauts">Github account</a>, where we will
+place all new pieces of public code from now on.</li>
+<li>Minor projects we&rsquo;ve shown you include a <a href="http://www.coconauts.net/blog/2014/08/02/web-screensaver/">Chromium based screensaver</a>,
+<a href="http://www.coconauts.net/blog/2014/09/03/send-readings-from-arduino-to-raspberry-via-radio/">wireless radio Arduino sensors</a>,
+and a <a href="http://www.coconauts.net/blog/2014/08/14/meteorological-station-with-rasbperry-pi-phase-1/">meteorological station powered by a Raspberry Pi</a>.</li>
+<li>Internally, we have a much better organization and logistics. We started
+using <a href="http://trello.com">Trello</a> for task management, and <a href="http://www.coconauts.net/blog/2014/09/09/background-tasks-in-jenkins-ipchange/">Jenkins and Ansible for
+automated operations</a>.</li>
+<li>We&rsquo;ve also started a bunch of new projects, but they are still on a very early
+stage, so we haven&rsquo;t shown anything about them yet. Hopefully some of them
+will grow to a point where they can be published during the next year.</li>
+</ul>
+
+
+<p>So we are quite happy to see the big leaps taken during the year. We expect 2015
+to be at least just as exciting, if not even more! We are in fact going as far
+as to state a series of commitments:</p>
+
+<ul>
+<li>To finally open source Gramola (we&rsquo;ve actually rewritten it from scratch
+during the year!).</li>
+<li>To have a working Watchduino 2.0 prototype.</li>
+<li>To release at least another game or app.</li>
+<li>To blog more and better than we&rsquo;ve done this year.</li>
+</ul>
+
+
+<p>And on top of all this, we the Coconauts wish all our readers and followers
+a happy and prosperous year 2015. We are really excited about it because&hellip;
+it&rsquo;s finally the &ldquo;future&rdquo; according to the Back to the Future movies!</p>
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[Coconauts now is powered by Octopress]]></title>
+<link href="http://coconauts.net/blog/2014/05/10/coconauts-is-powered-by-octopress/"/>
+<updated>2014-05-10T10:44:38+00:00</updated>
+<id>http://coconauts.net/blog/2014/05/10/coconauts-is-powered-by-octopress</id>
+<content type="html"><![CDATA[<p>You may have noticed that the design of our website has changed slightly recently. This is because we have migrated the software that powers it, from Wordpress to Octopress.</p>
+
+<p>Wordpress is a very stable and easy to use blogging framework, written in PHP, and backed by a MySQL database. It&rsquo;s so easy to use in fact that is not uncommon to see it being used to power not only blogs,
+but also simple websites that don require a lot of application logic. It&rsquo;s got a very friendly administration interface, so that once it&rsquo;s been set up it&rsquo;s very easy to use by
+redactors without any tech knowledge.</p>
+
+<!--more-->
+
+
+<p>Wordpress has several problems though. First, all of your content must be held in a database, so it is cumbersome to extract it out of the blog, if you ever wanted to.
+Dynamic websites are also less safe than static ones, and require more processing power to serve them. And if you ever tried migrating a Wordpress site, well, is definitely doable,
+but not as simple as just copying and pasting your files and database from one server to another.</p>
+
+<p>So recently, there&rsquo;s been a trend of going back to static websites when you don&rsquo;t need dynamic capabilities. But instead of writing the HTML pages directly, the new cool is using
+a website generator: so you can write your context in a friendly markup language (like Markdown, or RestructuredText), and then call the software to generate the HTML website.
+Such website is static, and can be hosted practically anywhere, even in Github Pages or Dropbox!</p>
+
+<p>Writing your content in a markup language has several advantages over using a WYSIWYG editor in a webapp, and keeping the content in a database. To begin with, you don&rsquo;t need a database!
+One thing less to worry about. Your blog content is perfectly accessible and readable in raw text files, without needing to go and query it out a database. Also, you can keep all
+of your site&rsquo;s content under version control. How cool is that?</p>
+
+<p>So for Coconauts we are now using Octopress, as we think is the more simple and convenient static website generator around. You write your content in Markdown (our favorite markup
+language), use a command to generate your static site, and then your'r off to deploy it. In our case, we have a Jenkings polling our version control repo, so it auto-deploys it every
+time we make a <code>git push</code>. Octopress also comes It comes with a lot of features built in, like Twitter buttons, or Google Analytics, and you can add more plugins or tweak all pages you want directly.</p>
+
+<p>As they say, it&rsquo;s &ldquo;A blogging framework for hackers&rdquo; so if you feel brave enough <a href="http://octopress.org/">give it a try</a>.</p>
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[Updated projects page]]></title>
+<link href="http://coconauts.net/blog/2014/04/15/updated-projects-page/"/>
+<updated>2014-04-15T19:57:38+00:00</updated>
+<id>http://coconauts.net/blog/2014/04/15/updated-projects-page</id>
+<content type="html"><![CDATA[<p>We have changed the design of our <a href="/projects">projects</a> page, hopefully making it easier and quicker to have a glance to all of our projects, and their status.
+You may also notice that we’ve added a couple of new projects we just started working on.
+We’ll add them their own page with more details once we mature them a bit, so just teasers for now!</p>
+]]></content>
+</entry>
+
+</feed>

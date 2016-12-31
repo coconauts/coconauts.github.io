@@ -1,0 +1,102 @@
+#projects {
+  background-image: url('../images/index/pcb.png') ;
+  overflow: hidden;
+  background-size: cover;
+  background-attachment: scroll;
+  background-position: center center;
+
+  color:white;
+}
+#projects h3 {
+  text-align:center;
+}
+.project {
+  background-color:white;
+  width:80px;
+  height:80px;
+  margin-bottom:20px;
+  overflow:hidden;
+  margin-left:35%;
+}
+.project a {
+  margin: 8px 8px;
+}
+
+#about {
+  padding-bottom: 20px;
+}
+
+.team {
+  width:80px;
+  height:80px;
+  margin:10px 10px;
+}
+
+#main {
+
+  background-image: url('../images/index/space.jpg') ;
+  overflow: hidden;
+  background-size: cover;
+  background-attachment: scroll;
+  background-position: center center;
+
+  padding:50px;
+  color:white;
+}
+#main .title {
+  font-size: 300%;
+}
+#main .subtitle {
+  font-size: 150%;
+}
+#main img {
+  width:150px;
+  margin-right:50px;
+}
+
+#menu{
+  width:100%;
+  padding:10px;
+  border:1px solid gray;
+  position:relative;
+  background-color:white;
+  z-index: 10;
+}
+
+#menu a {
+  padding-left: 20px;
+  text-decoration:none;
+  color: #515151;
+  vertical-align: middle;
+}
+#menu a:hover {
+  color:gray;
+}
+
+.section {
+  padding:20px;
+}
+
+.right-text {
+  text-align:right
+}
+
+#featured-posts {
+
+ background-image: url('../images/index/code.png') ;
+  overflow: hidden;
+  background-size: cover;
+  background-attachment: scroll;
+  background-position: center center;
+
+  color:white;
+}
+
+.post-link {
+    font-size: 150%;
+}
+
+#contact {
+  position:relative;
+  padding:10px;
+}
