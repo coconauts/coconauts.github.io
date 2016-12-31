@@ -7,7 +7,14 @@ sharing: false
 footer: true
 ---
 
-Great articles talking about us
+Great articles talking about us!
+
+### Retrophies
+
+[Project](/projects/retrophies)
+
+- [HackerNews (front page!)](https://news.ycombinator.com/item?id=12205560)
+- [r/emulation](https://www.reddit.com/r/emulation/comments/4voi81/retrophies_achievements_system_for_emulators/)
 
 ### Lightning-dodge-O-matic
 

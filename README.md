@@ -9,6 +9,10 @@
 
     docker-compose up
 
+## Create a new post
+
+    docker-compose run blog rake new_post['Foo']
+
 ## Deploy
 
     docker-compose run blog ./deploy

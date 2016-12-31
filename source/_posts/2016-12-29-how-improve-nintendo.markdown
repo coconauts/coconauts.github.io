@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How can Nintendo improve classic Nintendo games"
+title: "How to improve classic Nintendo games"
 date: 2016-12-29 10:42:19 +0000
 comments: true
 categories: games
