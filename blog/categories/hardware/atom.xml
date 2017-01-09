@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Hardware | Coconauts]]></title>
+  <link href="http://coconauts.net/blog/categories/hardware/atom.xml" rel="self"/>
+  <link href="http://coconauts.net/"/>
+  <updated>2017-01-09T19:27:02+00:00</updated>
+  <id>http://coconauts.net/</id>
+  <author>
+    <name><![CDATA[Coconauts]]></name>
+    <email><![CDATA[admin@coconauts.net]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Smartwatch Prototype With ESP8266: ESPmartwatch]]></title>
+    <link href="http://coconauts.net/blog/2016/09/08/smartwatch-prototype-with-esp8266/"/>
+    <updated>2016-09-08T23:44:00+00:00</updated>
+    <id>http://coconauts.net/blog/2016/09/08/smartwatch-prototype-with-esp8266</id>
+    <content type="html"><![CDATA[<p>It&rsquo;s been a while since we built and deprecated our <a href="http://coconauts/projects/watchduino2">Watchduino 2</a> smartwatch built with Arduino and BLE technology. The reason why we stopped developing the prototype was because it was not as optimal as we expected, and the bluetooth communication was unstable in practice; this is probably something we could have solved with time, but we just decided it was not worth it.</p>
+
+<p><img src="https://farm9.staticflickr.com/8284/29441586932_55059378bc_z_d.jpg" alt="" /></p>
+
+<p>However, with the &ldquo;new&rdquo; ESP8266 we decided to try a quick prototype to see how it behaves as in a smartwatch, and we did a lot of things in just a couple of days, this are the list of features of our new  <code>ESPmartwatch</code>:</p>
+
+<!--more-->
+
+
+<ul>
+<li>ESP8266 model ESP-01</li>
+<li>Wifi connection</li>
+<li>I2C OLED model SSD1306 128X64</li>
+<li>Send and receive messages via Websockets</li>
+<li>All messages are using JSON (being parsed on C++ too)</li>
+<li>Sync time and display on screen</li>
+<li>Display notifications from phone on screen using <a href="https://github.com/rephus/notification-webhook">Notification webhook</a></li>
+</ul>
+
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Doing web development with JSON and websockets in C++ on ESP8266, exciting! <a href="https://t.co/v2ZU4hNZO5">pic.twitter.com/v2ZU4hNZO5</a></p>&mdash; Javi Rengel (@rephus) <a href="https://twitter.com/rephus/status/772901218414891008">September 5, 2016</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>On the way, we faced a few unexpected issues that took us some time to fix (more than implementing communication with websockets) like the ESP8266 restarting itself every 5 mins because the WDT.</p>
+
+<p>But still, a lot of things are left to do like:</p>
+
+<ul>
+<li>Reduced consumption by enabling deep sleep mode while using websockets</li>
+<li>Lack of GPIO pins on ESP-01, need to try with a different ESP model</li>
+<li>Better OLED SSD1306 screen controller, u8glib seems incompatible, maybe Adafruit ?</li>
+<li>A way to introduce SSID and passwords from the watch (input required)</li>
+<li>Secure communication on websockets</li>
+</ul>
+
+
+<p>So at this point we decided that it was not worth to continue with the project, specially when just the new <a href="http://hackaday.com/2016/09/05/new-part-day-the-esp32-has-been-released/">ESP32 has been released</a></p>
+
+<p>All our code is available on <a href="https://github.com/rephus/ESP8266-OLED-Websocket">Github</a> so if you want to continue our work, or look at how we use some of the libraries, give it a go.</p>
+
+<p>Who knows, we might probably continue with the development at some point, so watch this space.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Lightning-dodge-O-matic]]></title>
+    <link href="http://coconauts.net/blog/2016/06/13/lightning-dodge-o-matic/"/>
+    <updated>2016-06-13T20:51:00+00:00</updated>
+    <id>http://coconauts.net/blog/2016/06/13/lightning-dodge-o-matic</id>
+    <content type="html"><![CDATA[<p>If you have played Final Fantasy X, either its original version for PS2 or its remastered version
+for PS4 and PSVita, you might remember Thunder Plains and its lightning dodge challenge
+to get the Mars sigil.</p>
+
+<p>It&rsquo;s quite challenging and it might take a while. I once got it (and I have a PS2 memory card to prove it),
+but I was not in the mood to do it again on the remastered version.</p>
+
+<p>That&rsquo;s why I decided to build a simple machine to do the job for me.
+Because constantly processing inputs to produce outputs is what machines do best.</p>
+
+<blockquote class="twitter-video" data-lang="en"><p lang="en" dir="ltr">Lightning dancing like a machine. Presenting lightning-dodge-O-matic <a href="https://twitter.com/hashtag/FFX?src=hash">#FFX</a> <a href="https://twitter.com/hashtag/Lulu?src=hash">#Lulu</a> <a href="https://twitter.com/hashtag/Arduino?src=hash">#Arduino</a> <a href="https://t.co/WMLX1CRwSN">pic.twitter.com/WMLX1CRwSN</a></p>&mdash; Javi Rengel (@rephus) <a href="https://twitter.com/rephus/status/742057060456648709">June 12, 2016</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+
+<!--more-->
+
+
+<p>Just by using a LDR, a servo and an Arduino you can dodge lightnings like a Pro too.</p>
+
+<p>You can download the script and the schema in <a href="https://github.com/rephus/lightning-dodge-O-matic/blob/master/README.md">Github</a></p>
+
+<p><img src="https://farm8.staticflickr.com/7335/27042150163_732cb2c99b_z_d.jpg" alt="Schema" /></p>
+
+<p>By building this, you can avoid not only 200 lightnings but as many you like, I did 1066 in a few hours.</p>
+
+<p><img src="https://farm8.staticflickr.com/7423/27042150153_b6daeed7d5_z_d.jpg" alt="record" /></p>
+
+<p>Happy gaming.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Build a Smart Home Using Raspberry Pi and Energenie]]></title>
+    <link href="http://coconauts.net/blog/2016/04/15/energinie-and-raspberry-pi-setup/"/>
+    <updated>2016-04-15T22:51:00+00:00</updated>
+    <id>http://coconauts.net/blog/2016/04/15/energinie-and-raspberry-pi-setup</id>
+    <content type="html"><![CDATA[<p>We recently discovered <a href="https://energenie4u.co.uk/">Energenie</a> (thanks to <a href="https://twitter.com/Man0jN">Manoj</a>) a nice and cheap remote controlled socket
+which also provides a custom shield for Raspberry Pi, you can use it to
+programatically control those sockets. This allows endless possibilities:
+from temporized sockets, to a socket that automatically turns on when
+detects presence using a PIR sensor, or triggered by a website or a phone app.</p>
+
+<p><img src='https://c2.staticflickr.com/2/1545/25845471424_d600499717_d.jpg'/></p>
+
+<!-- more -->
+
+
+<p>You can buy 2 different types of Energenie, some <a href="https://energenie4u.co.uk/catalogue/product/ENER002-4">individual sockets</a>
+or an <a href="https://energenie4u.co.uk/catalogue/product/ENER010">extension lead socket with 4 individually controlled</a>.
+You can also find them cheaper on Amazon or <a href="http://www.ebay.co.uk/itm/161972721449?_trksid=p2060353.m2749.l2649&amp;ssPageName=STRK%3AMEBIDX%3AIT">Ebay</a>.</p>
+
+<p>Every Energenie comes with a remote that you can use to power on or off those sockets using radio
+(no need to point with the controller to the socket like an infrared remote).
+You can use them just like this, but of course the really fun part is to be able
+to program them with your Raspberry Pi. For this, you&rsquo;ll need the
+<a href="https://energenie4u.co.uk/catalogue/product/ENER314">control board shield</a>
+as well.</p>
+
+<p>You can download a library for Python to use with Raspberry Pi from <a href="http://pythonhosted.org/energenie/">their website</a>, and check some examples of basic usage.</p>
+
+<p>In our case, as our first project, we built a website so you can control all
+sockets in the extension lead from your
+computer. In one of them we added some Cinema style lights under our sofa using a
+LED strip connected to a 12V supplier on the socket.</p>
+
+<p><img src='https://farm2.staticflickr.com/1704/26449115715_b672c53b20_z_d.jpg'/>
+<img src='https://farm2.staticflickr.com/1652/26449115515_60a9fd10a7_z_d.jpg'/></p>
+
+<p>The interface looks like this:</p>
+
+<p><img src='https://farm2.staticflickr.com/1630/26423191956_b64967a883_o_d.png'/></p>
+
+<p>You can check the source code in our <a href="https://github.com/rephus/energenie-manager">Github</a>.</p>
+
+<h3>Warnings and limitations</h3>
+
+<p>Each Raspberry PI board or remote allows you to use 4 different sockets
+(or 1 extension lead)  maximum. Which means you can&rsquo;t have for example 5 sockets
+controlled with a single Raspberry Pi.</p>
+
+<p>Each socket can only be paired with 2 controllers maximum, which means you can&rsquo;t control a socket with a remote and 2 Raspberry Pis. Every time you pair a new socket, the oldest one will get unpaired. Also, remember to pair every device before using it or it won&rsquo;t work.</p>
+
+<p>Do you have more ideas to implement with Energenie? we&rsquo;d like to hear about them in the comments.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Honey, I Shrunk the Watchduino]]></title>
+    <link href="http://coconauts.net/blog/2015/10/20/honey-i-shrunk-the-watchduino/"/>
+    <updated>2015-10-20T21:40:34+00:00</updated>
+    <id>http://coconauts.net/blog/2015/10/20/honey-i-shrunk-the-watchduino</id>
+    <content type="html"><![CDATA[<p>Last weekend we attended
+<a href="http://hackathon.pchintl.com/hackathons/london/2015/10/16/">a hardware hackathon organised by PCH in London</a>.
+The theme of the hackathon was &ldquo;Take your prototype to the
+next stage in 54 hours&rdquo;, so in our case we brought our
+Watchduino prototype and focused on trying to make it closer
+to how it would look if it were a commercial product.</p>
+
+<p>The best part is that at the hackathon there was a set of
+mentors, people who are experts in different areas of IoT,
+which were giving us useful advice about our product
+direction, design optimizations or the ins and outs of
+manufacturing.</p>
+
+<p>By the end of the hackathon, we had a functional (at least
+theorethically) design for Watchduino that looks this
+awesome:</p>
+
+<p><img src=https://farm1.staticflickr.com/772/22314247456_e69a4e1275_z_d.jpg' /></p>
+
+<!-- more -->
+
+
+<p>The first step to getting a hardware product into manufacturing is integrating all the electronics into a PCB. This not only makes the system easier to put together, it&rsquo;s also smaller, and likely to be more energetically efficient.</p>
+
+<p>So we designed a PCB that would mainly replace the Arduino
+Mini, breaking out the pins of the ATMega processor and
+leaving space to surface mount the rest of the components.
+To completely replace the Arduino board, a 8Mhz crystal
+oscillator needs to be added on top of our current
+components, as well as breaking out the RX and TX pins for
+reprogrammation. It&rsquo;s pretty similar to
+<a href="https://bitbucket.org/rephus/watchduino/src/master/docs/how_to_replicate.md">the process we  were following in our first Watchduino</a>.</p>
+
+<p>The board was designed with
+<a href="http://fritzing.org">Fritzing</a>,
+which we were already
+using for our schematic. We were recommended Eagle, which
+appears to be the industry standard software, and has
+a bigger component library and tons of support online.
+But Fritzing is simpler and open source, so it suited
+our purposes for the time being. You can find the file
+<a href="https://github.com/coconauts/watchduino2/tree/master/schema">on the Github repo</a>.
+In the future we would like to try out Eagle though.</p>
+
+<p>By sacrificing the buzzer (which is not really very useful having the vibrator motor) and the USB charching module (to be replaced by a custom connector, as commercial smartwatches usually have) we were able to make our PCB exactly 1 square inch in area. Pretty sweet!</p>
+
+<p><img src='https://farm6.staticflickr.com/5788/21719276463_73d93089ea_o_d.png'/></p>
+
+<p>Being able to mount all the electronics in this small
+area mean there&rsquo;s no longer the need to spread them across the strap as they were before. The whole design is
+completely compact, and small enough to fit in it&rsquo;s
+entirety into a watch head; battery and everything.</p>
+
+<p>In consequence, we redesigned our 3D case into a simpler
+shape, looking now very much like a conventional watch!</p>
+
+<p><img src=https://farm6.staticflickr.com/5640/21719246863_26ed9e4423_m_d.jpg' /></p>
+
+<p>We are cheating a little bit, because we are reusing
+<a href="https://www.decathlon.co.uk/strap-m-swip-watch-strap-black-id_8243023.html">an existing strap from a Geonaute watch</a>.
+These watches are sold at Decathlon stores, and just
+happen to have a so handy sliding mechanism for
+interchangeable straps.</p>
+
+<p><img src=https://farm6.staticflickr.com/5660/22154594199_2a668aec02_m_d.jpg' /></p>
+
+<p>So we designed our new 3D case
+with the same shape, and made it compatible with the
+Geonatue straps. Once we figure out how to print with
+flexible filament we&rsquo;ll replicate the strap with the
+same connector.</p>
+
+<p>There&rsquo;s just one thing missing: our sexy new prototype
+can&rsquo;t be functional until the PCB is printed (the image
+above I&rsquo;m afraid is a dramatization with a screenshot
+pasted on it). Printing PCBs can be done manually, but it&rsquo;s handier, better, and often cheaper to just
+<a href="http://hackaday.com/2015/09/21/why-are-you-still-making-pcbs/">get a manufacturer to do the job</a>.</p>
+
+<p>When you design a PCB, either with Fritzing, Eagle, or
+other software, you can export the result as <em>Gerber files</em>,
+which contain all the different layers of your design.
+You can provide any PCB manufacturer with this format,
+and they&rsquo;ll be able to fabricate a production-quality
+version of your board.</p>
+
+<p>So we&rsquo;ve done just that: we ordered a 3-board batch of PCBs to
+<a href="https://oshpark.com/">OSH Park</a>, for the outrageous price of just £1 each. We can&rsquo;t wait for them to arrive and see if we can get our first mini production-run of Watchduinos!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Why You Shouldn't Use Arduino UNO]]></title>
+    <link href="http://coconauts.net/blog/2015/05/18/why-you-should-not-use-arduino-uno/"/>
+    <updated>2015-05-18T21:53:19+00:00</updated>
+    <id>http://coconauts.net/blog/2015/05/18/why-you-should-not-use-arduino-uno</id>
+    <content type="html"><![CDATA[<p>Arduino is an awesome platform, that allows you to create almost
+everything you can imagine with a really tiny investment and some
+basic hardware knowledge.</p>
+
+<p>Everyone starts using Arduino UNO for development, and we see
+<em>a lot</em> of projects using this board, but there are a few good
+reasons why you shouldn&rsquo;t use UNO&hellip;</p>
+
+<p><img src="http://coconauts.net/images/posts/why-not-uno/arduino_hand.jpg" /></p>
+
+<!--more-->
+
+
+<h2>Arduino UNO is expensive</h2>
+
+<p>Arduino UNO is one of the most expensive boards that features the
+ATMega328 compared with other Arduino models like Mini, Micro,
+or Lilypad. There are
+<a href="http://www.arduino.cc/en/Main/Products">tons of them to choose from</a>)!</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th> Model       </th>
+<th> Price (on store.arduino.cc) </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td> UNO         </td>
+<td> 20€</td>
+</tr>
+<tr>
+<td></td>
+<td> Micro       </td>
+<td> 18€</td>
+</tr>
+<tr>
+<td></td>
+<td> Mini        </td>
+<td> 14€</td>
+</tr>
+<tr>
+<td></td>
+<td> Lillypad    </td>
+<td> 16€</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>Note that these prices come from the
+<a href="http://store.arduino.cc">oficial Arduino store</a>. However you can
+easily find compatible clonic boards on Amazon, Ebay or Aliexpress,
+at a fraction of the price.</p>
+
+<p>You could also use a bare ATMega328 like we did in our
+<a href="https://www.coconauts.net/projects/watchduino/">first Watchduino</a>
+or in our
+<a href="https://www.coconauts.net/blog/2014/10/18/arduino-radio-improvements-low-consumption/">light sensor with RF24 radio module</a>.</p>
+
+<h2>Arduino UNO is big</h2>
+
+<p>Arduino UNO is a big board, and you probably going to use a bread board
+next to it, which makes your whole development prototype really complex.</p>
+
+<p>Instead of that, use a Nano or Micro attached to a bread board directly.</p>
+
+<p><img src="http://coconauts.net/images/posts/why-not-uno/uno_vs_nano.jpeg" /></p>
+
+<h2>Arduino UNO is not power-efficient</h2>
+
+<p>Most of the projects built with Arduino will be wireless and
+battery-powered, so the device should be power-efficient,
+but Arduino UNO is not.</p>
+
+<p>Because Arduino UNO has a lot of hardware you don&rsquo;t need, it consumes
+<em>a lot</em> more than its brothers:</p>
+
+<ul>
+<li>USB controller</li>
+<li>Too many leds</li>
+</ul>
+
+
+<p>However, boards like Lilypad or Mini don&rsquo;t have a USB controller,
+which reduces its normal consumption a few mAh, eg:</p>
+
+<ul>
+<li>Standalone consumption for UNO: 28mAh</li>
+<li>Standalone consumption for Mini: 13mAh</li>
+</ul>
+
+
+<p>This measures have been taken when running a dummy sketch
+that does nothing (not even blinking a LED). If you make
+heavier computations or put the Arduino to sleep, measurements
+will vary.</p>
+
+<h2>Arduino UNO uses USB-B connector</h2>
+
+<p>Seriously?? in this day and age?</p>
+
+<h2>Arduino UNO is not designed for production</h2>
+
+<p>Because it&rsquo;s big, and has a very high consumption, you shouldn&rsquo;t
+ever use it in a prototype, like a remote controlled device, or a
+batery-powered-sensor, or a
+ <a href="https://www.coconauts.net/projects/watchduino2/">smartwatch</a>.</p>
+
+<p>Also, you probably don&rsquo;t want to develop in a hardware that won&rsquo;t
+match the final product specs, do you ?</p>
+
+<h2>Conclussions</h2>
+
+<p>The only reason why you could want to use UNO is to use a shield,
+but in most of the cases they&rsquo;re not worth it.</p>
+
+<p>Our personal preference is Arduino Mini: it&rsquo;s small, cheap and has
+the lowest consumption in its family.</p>
+
+<p>So do yourself a favor and use any of the other boards available
+instead of using UNO again.</p>
+
+<p><img src="http://coconauts.net/images/posts/why-not-uno/arduino_family.jpg" /></p>
+]]></content>
+  </entry>
+  
+</feed>

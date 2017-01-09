@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Software | Coconauts]]></title>
+  <link href="http://coconauts.net/blog/categories/software/atom.xml" rel="self"/>
+  <link href="http://coconauts.net/"/>
+  <updated>2017-01-09T19:27:02+00:00</updated>
+  <id>http://coconauts.net/</id>
+  <author>
+    <name><![CDATA[Coconauts]]></name>
+    <email><![CDATA[admin@coconauts.net]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Coconauts CI, a Lightweight CI Built on NodeJS]]></title>
+    <link href="http://coconauts.net/blog/2016/02/04/coconauts-ci-nodejs/"/>
+    <updated>2016-02-04T23:00:00+00:00</updated>
+    <id>http://coconauts.net/blog/2016/02/04/coconauts-ci-nodejs</id>
+    <content type="html"><![CDATA[<p>CIs are good, as soon as your projects grow, having a continuous integration software
+that manages all your apps and deployments is really useful. We have been using a self-hosted
+jenkins instance in our server for a few years already, and we have some
+<a href="/blog/2014/09/09/background-tasks-in-jenkins-ipchange">interesting things with it</a>.</p>
+
+<p>However, we have always known that jenkins is too heavy, it consumes too much memory and it
+has a slow interface, as it is written on Java.</p>
+
+<p>So we were really looking for a lightweight self-hosted CI that could run easily on a Raspberry PI,
+but we couldn&rsquo;t find any existing solution, so we decided to build our own, and it was easier that we expected.</p>
+
+<p><img src='https://farm2.staticflickr.com/1443/24822031815_fcc099fc04_z_d.jpg'/></p>
+
+<!-- more -->
+
+
+<p>This project, called <code>Coconauts CI</code> is still an experiment in progress, but we decided to share it
+on a early stage.</p>
+
+<p>You can download the project on our Github: <a href="https://github.com/coconauts/coconauts-ci">https://github.com/coconauts/coconauts-ci</a></p>
+
+<h2>Characteristics</h2>
+
+<ul>
+<li>Node.js and the <a href="http://expressjs.com/">Express framework</a> for the backend</li>
+<li>JQuery for the frontend</li>
+<li>Powered by Redis database</li>
+</ul>
+
+
+<h2>Key features</h2>
+
+<ul>
+<li>Simple 1-page only dashboard</li>
+<li>Easily add or update projects in 2 clicks</li>
+<li>Execute tasks periodically</li>
+<li>Clone and update repositories from git (github , bitbucket, etc)</li>
+<li>Run projects without repository to execute tasks periodically.</li>
+<li>Slack integration using webhooks</li>
+<li>Look at previous build logs</li>
+</ul>
+
+
+<p><img src='https://farm2.staticflickr.com/1639/24704187222_47dc02eaaa_z_d.jpg'/></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Introducing Gramola, a Lightweight Web Music Player]]></title>
+    <link href="http://coconauts.net/blog/2015/12/31/gramola-release/"/>
+    <updated>2015-12-31T12:00:00+00:00</updated>
+    <id>http://coconauts.net/blog/2015/12/31/gramola-release</id>
+    <content type="html"><![CDATA[<p><img src="https://farm2.staticflickr.com/1513/24000467331_46d15821da_b_d.jpg" /></p>
+
+<p>You may have noticed a mysterious project that has been since the dawn of time
+in our front page: <em>&ldquo;Gramola, lightweight online music player,
+powered by JPlayer with tons of features&rdquo;</em>. We even have a detailed
+<a href="https://coconauts.net/projects/gramola/">project page</a> about it&hellip;
+yet disapointingly, you would find no download links or source code there.</p>
+
+<p>We built (and <em>rebuilt</em>!) Gramola some time ago, and we&rsquo;ve been wanting
+to find some time to give it some polish and open source it. In fact,
+at the begining of the year
+<a href="https://coconauts.net/blog/2014/12/31/coconauts-2014-retrospective/">we promised you</a>
+that we would get it out in 2015. So to honor our words, here it is!</p>
+
+<p>Read details about it on the <a href="https://coconauts.net/projects/gramola/">project page</a>,
+or head directly to the <a href="https://github.com/coconauts/gramola">Github repository</a>
+for code and install instructions.</p>
+
+<p>Happy music listening in 2016!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Notification Listener Plugin for Android With Cordova]]></title>
+    <link href="http://coconauts.net/blog/2015/10/13/notification-listener-android-cordova/"/>
+    <updated>2015-10-13T20:16:34+00:00</updated>
+    <id>http://coconauts.net/blog/2015/10/13/notification-listener-android-cordova</id>
+    <content type="html"><![CDATA[<p>When we were developing <a href="/projects/watchduino2">Watchduino2</a> we required to forward messages for all notifications we receive in our phone by using
+the <a href="https://developer.android.com/reference/android/service/notification/NotificationListenerService.html">NotificationListenerService</a> available on Android.</p>
+
+<p>We managed to do this in the first version of our companion app on native code, unfortunatelly, we realised this feature was not available <em>yet</em> on Cordova, the new framework we use for building
+our cool responsive companion app.</p>
+
+<p>The solution? Roll our own Cordova plugin to provide this functionality!</p>
+
+<!-- more-->
+
+
+<h3>How it works</h3>
+
+<p>The basic idea of this plugin is to create a callback from JavaScript that will be triggered everytime you get a notification
+on Android.</p>
+
+<h3>How to install</h3>
+
+<p>Installing this plugin is really simple, and it&rsquo;s like installing any other plugin on Cordova.</p>
+
+<pre><code>cordova plugin add https://github.com/coconauts/NotificationListener-cordova
+</code></pre>
+
+<h3>How to use</h3>
+
+<p>Simply  create a listener from javascript using this method inside the Cordova initialization code.</p>
+
+<pre><code>notificationListener.listen(onNotification,onError);
+</code></pre>
+
+<p>Sample code:</p>
+
+<p>```
+var app = {</p>
+
+<pre><code>initialize: function() {
+    this.bindEvents();
+},
+bindEvents: function() {
+  document.addEventListener('deviceready', this.onDeviceReady, false);
+},
+onDeviceReady: function() {
+  log("Cordova start", "Device ready");
+
+  notificationListener.listen(function(n){
+      console.log("Received notification " + JSON.stringify(n) );
+    }, function(e){
+      console.log("Notification Error " + e);
+    })
+}
+</code></pre>
+
+<p>};</p>
+
+<p>app.initialize();</p>
+
+<p>```</p>
+
+<h3>Disclaimer</h3>
+
+<p>As far as I know, listening for notifications is only supported by Android phones (from version 4.0), and we haven&rsquo;t done any IOS development in the past, so I don&rsquo;t thing is
+possible to port this plugin to IOS. But feel free to contribute to our project if you think it can be extended to other platforms.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Hackaday Price 2015 Retrospective]]></title>
+    <link href="http://coconauts.net/blog/2015/10/06/hackaday-price-2015-retrospective/"/>
+    <updated>2015-10-06T21:40:34+00:00</updated>
+    <id>http://coconauts.net/blog/2015/10/06/hackaday-price-2015-retrospective</id>
+    <content type="html"><![CDATA[<p><img src='https://farm1.staticflickr.com/584/21381222983_a64f947c8d_o_d.png' align='right'/></p>
+
+<p>You may have noticed that the blog has been quite quiet during the last month.
+The reason being we were focusing our efforts on doing some epic Watchduino
+development, as <a href="https://hackaday.io/project/7244-watchduino2">contestants for the Hackaday Prize 2015</a>.
+Sad news in the end though, as we didn&rsquo;t make it to the finals.</p>
+
+<p>But that&rsquo;s ok though. Regardless of the result, this has been a good excercise
+for us, and the contest has pushed us to keep working hard on the
+<a href="/projects/watchduino2">Watchduino</a> project. That&rsquo;s why we want to
+sum up all we have learned and all we have improved on the project during
+the course of the contest.</p>
+
+<!-- more -->
+
+
+<h3>3D Case</h3>
+
+<p><img class='screenshot' src='https://farm1.staticflickr.com/760/21814249490_2bfe5bf2b9_z_d.jpg'/>
+<img class='screenshot' src='https://farm6.staticflickr.com/5717/21815509489_5531e2b080_z_d.jpg'/></p>
+
+<p>One of the things in our TODO list was to build a proper 3D case for our watch,
+and thanks to our <a href="https://twitter.com/rephus/status/571811583602647040">3D printer</a> we managed to build a wearable prototype.</p>
+
+<p>We also introduced the Smart Strap design which allows us to keep some of the
+electronic components spread along the strap, keeping the watch face smaller.</p>
+
+<p>Our first case design, from a few months ago, was done in <a href="https://www.blender.org/">Blender</a>,
+however we&rsquo;ve now switched to <a href="https://tinkercad.com/things/gG641gG1b4c">Tinkercad</a> as it&rsquo;s a great web platform for doing
+awesome 3D models really quickly.</p>
+
+<p>We also designed an additional strap prototype using a flexible strap, that we
+plan to 3D print soon enough.</p>
+
+<h3>Migration to Cordova</h3>
+
+<p><img class='screenshot' src='https://farm1.staticflickr.com/694/21815557799_9d65cd5172_z_d.jpg'/>
+<img class='screenshot' src='https://farm1.staticflickr.com/668/21814312750_9f80cebaa1_b_d.jpg'/></p>
+
+<p>A few weeks before we joined the contest, we started migrating the existing
+Android companion app, written natively, to the Cordova framework.</p>
+
+<p>The reason for this is because Cordova seems a better platform for us, based
+on HTML5 + JS, and multiplatform. It&rsquo;s easier and faster to develop with,
+the codebase is smaller, and in general we are quite happy with it!</p>
+
+<p>We finally migrated all the code with a better design by the end of August,
+and we even introduced new functionality.</p>
+
+<h3>Showcase videos</h3>
+
+<p>We made two videos to showcase the capabilities of the watch.</p>
+
+<iframe width="100%" height="500" src="https://www.youtube.com/embed/n-ubg1R2e-A" frameborder="0" allowfullscreen></iframe>
+
+
+
+
+<iframe width="100%" height="500" src="https://www.youtube.com/embed/LVE85OxWGzs" frameborder="0" allowfullscreen></iframe>
+
+
+<h3>Open source code and documentation</h3>
+
+<p>One of the requirements of the project was to release our code and build our
+documentation so everyone can create a new Watchduino from scratch.</p>
+
+<p>This has been in our roadmap for ages, so it was a good excuse to clean up
+the code a bit an make it public.</p>
+
+<p>Feel free to <a href="https://github.com/coconauts/watchduino2">clone our project</a>, and to make pull request to improve our own.</p>
+
+<p>Be warned though: the codebase is still under heavy development, so things
+might change drastically from one day to the next!</p>
+
+<h3>Next steps</h3>
+
+<p>The community also helped us to improve our watch architecture and we are keen on
+trying different approaches so Watchduino can be even better than it&rsquo;s now.</p>
+
+<p>One of the main objectives is to improve the Bluetooth connectivity and
+the power consumption. Another one is to make an app creation framework that is
+lean and easy to use.</p>
+
+<p>Stay tuned for more updates, are we are definitely not done with our
+Watchduino development!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Add List of Featured Posts to Octopress]]></title>
+    <link href="http://coconauts.net/blog/2015/09/08/add-featured-posts-to-octopress/"/>
+    <updated>2015-09-08T19:03:19+00:00</updated>
+    <id>http://coconauts.net/blog/2015/09/08/add-featured-posts-to-octopress</id>
+    <content type="html"><![CDATA[<p>A few months ago we were requested to add a list of featured posts to an index page in Octopress.
+So we did a bit of research about how Octopress + Jekyll + Lyquid template internally works.
+And we ended up with a nice solution that you can easily replicate in your own blog.</p>
+
+<p>In this post we will show you how to add your own custom list of featured octopress posts like in <a href="http://coconauts.net#featured-posts">Coconauts</a></p>
+
+<!--more-->
+
+
+<p>The first thing you need to do is to add a new custom tag to your posts, we will call it <code>featured</code></p>
+
+<h2>```</h2>
+
+<p>layout: post
+author: Javier Rengel
+published: true</p>
+
+<h2>featured: true</h2>
+
+<p>```</p>
+
+<p>Create a new template file called <code>featured_posts.html</code> inside your <code>source/_includes</code> folder,
+with this content:</p>
+
+<p>
+```</p>
+
+<div class="row">
+   {% assign featured_count = '' %}
+   {% for post in site.posts %}
+       {% if post.featured and featured_count.size < 3 %}
+          {% capture featured_count %}{{ featured_count }}*{% endcapture %}
+           <div class="col-sm-4 col-lg-4 column featured-post">
+              <a class='post-link' href="{{ root_url }}{{ post.url }}">{{ post.title | titlecase }}</a>
+              <p>{{ post.content | strip_html | condense_spaces | truncate:300 }}</p>
+           </div>
+       {% endif %}
+   {% endfor %}
+</div>
+
+
+<p>```
+</p>
+
+<p>Then you can list your three most recent featured posts in every page you want just by adding this code to your markdown or HTML file:</p>
+
+<p>
+<code>
+{% include featured_posts.html %}
+</code>
+</p>
+
+<p>Just remember to adapt your HTML code and your CSS to your needs (this one is based on <a href="http://getbootstrap.com/">bootstrap</a>).</p>
+
+<h3>Featured posts</h3>
+
+<p><div class="row">
+   
+   
+       
+   
+       
+   
+       
+   
+       
+          
+           <div class="col-sm-4 col-lg-4 column">
+              <a class='post-link' href="/blog/2016/09/08/smartwatch-prototype-with-esp8266/">Smartwatch Prototype With ESP8266: ESPmartwatch</a>
+              <p>It&rsquo;s been a while since we built and deprecated our Watchduino 2 smartwatch built with Arduino and BLE technology. The reason why we stopped developing the prototype was because it was not as optimal as we expected, and the bluetooth communication was unstable in practice; this is probably &hellip;</p>
+           </div>
+       
+   
+       
+          
+           <div class="col-sm-4 col-lg-4 column">
+              <a class='post-link' href="/blog/2016/08/01/retrophies/">Retrophies: Achievements System for Emulators</a>
+              <p>Play now at retrophies.win! If there’s one thing that has become a de-facto standard in the gaming industry during the last decade this is game achievements, trophies, or whatever you may call them. Not only on console games, but Apple and Android also provide facilities to integrate this features &hellip;</p>
+           </div>
+       
+   
+       
+          
+           <div class="col-sm-4 col-lg-4 column">
+              <a class='post-link' href="/blog/2016/06/13/lightning-dodge-o-matic/">Lightning-dodge-O-matic</a>
+              <p>If you have played Final Fantasy X, either its original version for PS2 or its remastered version
+for PS4 and PSVita, you might remember Thunder Plains and its lightning dodge challenge
+to get the Mars sigil. It&rsquo;s quite challenging and it might take a while. I once got it (and I have a PS2 &hellip;</p>
+           </div>
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+</div>
+</p>
+]]></content>
+  </entry>
+  
+</feed>

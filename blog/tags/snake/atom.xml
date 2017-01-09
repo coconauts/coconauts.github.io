@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: snake | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/snake/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2017-01-09T19:27:02+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Updates on 404-games]]></title>
+<link href="http://coconauts.net/blog/2015/08/08/404-updates/"/>
+<updated>2015-08-08T22:00:00+00:00</updated>
+<id>http://coconauts.net/blog/2015/08/08/404-updates</id>
+<content type="html"><![CDATA[<p>Last week we implemented <a href="/projects/404games">gamified 404 pages</a> into
+coconauts. Everytime you hit a 404, instead of getting a boring
+image and cursing for your misfortune, you&rsquo;ll now get a classic videogame
+to make you forget your disappointment.</p>
+
+<p>We initially implemented pacman and space-invaders style games, but
+we&rsquo;ve now added a snake game on top of them, and not only that, the
+source code for them is now public on
+<a href="https://github.com/coconauts/404-games">a github repo</a>, so you can
+use them in your own website if you want.</p>
+
+<p><a href="http://coconauts.net/404">Happy mislinking</a>.</p>
+]]></content>
+</entry>
+
+</feed>
