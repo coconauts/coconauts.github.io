@@ -1,9 +1,11 @@
 ---
 layout: post
-title: "Coconauts Podcast Pilot"
+title: "Coconauts Podcast Pilot (en español)"
 date: 2017-02-05 20:37:11 +0000
 comments: true
-categories:
+keywords: podcast,retrophies,español
+categories: general
+tags: coconauts podcast español
 published: false
 ---
 
@@ -28,4 +30,4 @@ En este episodio piloto hablamos de:
 - Debate: creatividad computacional
 
 ¡Esperamos que lo disfruteis! No dudeis en dejarnos comentarios aqui mismo,
-en nuestro email, o en nuestra cuenta de twitter @coconauts.
+en nuestro email, o en nuestra cuenta de twitter [@coconauts](https://twitter.com/coconauts).
