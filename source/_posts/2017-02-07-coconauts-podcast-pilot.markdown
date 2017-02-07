@@ -43,4 +43,4 @@ Enlaces relacionados:
 - [Libretaxi (making of)](https://medium.com/@romanpushkin/how-i-made-uber-like-app-in-no-time-with-javascript-and-secret-sauce-94ef9120c7f6#.cc6jss25p)
 - [Desarrolladores de scalebound sobre su cancelacion](http://uk.ign.com/articles/2017/01/11/scalebound-cancellation-developers-comment-on-the-situation)
 - [Masters of Doom](https://www.amazon.es/Masters-Doom-Created-Transformed-Culture/dp/0749924896/ref=sr_1_1?ie=UTF8&qid=1486501773&sr=8-1&keywords=masters+of+doom)
-- [Jukedeck](https://www.jukedeck.com/make/tracks/browse)
+- [Jukedeck @ London Techcrunch Disrupt 2015](https://www.youtube.com/watch?v=YY2FPWWc_Sk)
