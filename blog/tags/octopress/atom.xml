@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: octopress | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/octopress/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2017-02-07T22:18:29+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Add list of featured posts to Octopress]]></title>
+<link href="http://coconauts.net/blog/2015/09/08/add-featured-posts-to-octopress/"/>
+<updated>2015-09-08T19:03:19+00:00</updated>
+<id>http://coconauts.net/blog/2015/09/08/add-featured-posts-to-octopress</id>
+<content type="html"><![CDATA[<p>A few months ago we were requested to add a list of featured posts to an index page in Octopress.
+So we did a bit of research about how Octopress + Jekyll + Lyquid template internally works.
+And we ended up with a nice solution that you can easily replicate in your own blog.</p>
+
+<p>In this post we will show you how to add your own custom list of featured octopress posts like in <a href="http://coconauts.net#featured-posts">Coconauts</a></p>
+
+<!--more-->
+
+
+<p>The first thing you need to do is to add a new custom tag to your posts, we will call it <code>featured</code></p>
+
+<h2>```</h2>
+
+<p>layout: post
+author: Javier Rengel
+published: true</p>
+
+<h2>featured: true</h2>
+
+<p>```</p>
+
+<p>Create a new template file called <code>featured_posts.html</code> inside your <code>source/_includes</code> folder,
+with this content:</p>
+
+<p>
+```</p>
+
+<div class="row">
+   {% assign featured_count = '' %}
+   {% for post in site.posts %}
+       {% if post.featured and featured_count.size < 3 %}
+          {% capture featured_count %}{{ featured_count }}*{% endcapture %}
+           <div class="col-sm-4 col-lg-4 column featured-post">
+              <a class='post-link' href="{{ root_url }}{{ post.url }}">{{ post.title | titlecase }}</a>
+              <p>{{ post.content | strip_html | condense_spaces | truncate:300 }}</p>
+           </div>
+       {% endif %}
+   {% endfor %}
+</div>
+
+
+<p>```
+</p>
+
+<p>Then you can list your three most recent featured posts in every page you want just by adding this code to your markdown or HTML file:</p>
+
+<p>
+<code>
+{% include featured_posts.html %}
+</code>
+</p>
+
+<p>Just remember to adapt your HTML code and your CSS to your needs (this one is based on <a href="http://getbootstrap.com/">bootstrap</a>).</p>
+
+<h3>Featured posts</h3>
+
+<p><div class="row">
+   
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+          
+           <div class="col-sm-4 col-lg-4 column">
+              <a class='post-link' href="/blog/2016/09/08/smartwatch-prototype-with-esp8266/">Smartwatch Prototype With ESP8266: ESPmartwatch</a>
+              <p>It&rsquo;s been a while since we built and deprecated our Watchduino 2 smartwatch built with Arduino and BLE technology. The reason why we stopped developing the prototype was because it was not as optimal as we expected, and the bluetooth communication was unstable in practice; this is probably &hellip;</p>
+           </div>
+       
+   
+       
+          
+           <div class="col-sm-4 col-lg-4 column">
+              <a class='post-link' href="/blog/2016/08/01/retrophies/">Retrophies: Achievements System for Emulators</a>
+              <p>Play now at retrophies.win! If there’s one thing that has become a de-facto standard in the gaming industry during the last decade this is game achievements, trophies, or whatever you may call them. Not only on console games, but Apple and Android also provide facilities to integrate this features &hellip;</p>
+           </div>
+       
+   
+       
+          
+           <div class="col-sm-4 col-lg-4 column">
+              <a class='post-link' href="/blog/2016/06/13/lightning-dodge-o-matic/">Lightning-dodge-O-matic</a>
+              <p>If you have played Final Fantasy X, either its original version for PS2 or its remastered version
+for PS4 and PSVita, you might remember Thunder Plains and its lightning dodge challenge
+to get the Mars sigil. It&rsquo;s quite challenging and it might take a while. I once got it (and I have a PS2 &hellip;</p>
+           </div>
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+</div>
+</p>
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[Coconauts now is powered by Octopress]]></title>
+<link href="http://coconauts.net/blog/2014/05/10/coconauts-is-powered-by-octopress/"/>
+<updated>2014-05-10T10:44:38+00:00</updated>
+<id>http://coconauts.net/blog/2014/05/10/coconauts-is-powered-by-octopress</id>
+<content type="html"><![CDATA[<p>You may have noticed that the design of our website has changed slightly recently. This is because we have migrated the software that powers it, from Wordpress to Octopress.</p>
+
+<p>Wordpress is a very stable and easy to use blogging framework, written in PHP, and backed by a MySQL database. It&rsquo;s so easy to use in fact that is not uncommon to see it being used to power not only blogs,
+but also simple websites that don require a lot of application logic. It&rsquo;s got a very friendly administration interface, so that once it&rsquo;s been set up it&rsquo;s very easy to use by
+redactors without any tech knowledge.</p>
+
+<!--more-->
+
+
+<p>Wordpress has several problems though. First, all of your content must be held in a database, so it is cumbersome to extract it out of the blog, if you ever wanted to.
+Dynamic websites are also less safe than static ones, and require more processing power to serve them. And if you ever tried migrating a Wordpress site, well, is definitely doable,
+but not as simple as just copying and pasting your files and database from one server to another.</p>
+
+<p>So recently, there&rsquo;s been a trend of going back to static websites when you don&rsquo;t need dynamic capabilities. But instead of writing the HTML pages directly, the new cool is using
+a website generator: so you can write your context in a friendly markup language (like Markdown, or RestructuredText), and then call the software to generate the HTML website.
+Such website is static, and can be hosted practically anywhere, even in Github Pages or Dropbox!</p>
+
+<p>Writing your content in a markup language has several advantages over using a WYSIWYG editor in a webapp, and keeping the content in a database. To begin with, you don&rsquo;t need a database!
+One thing less to worry about. Your blog content is perfectly accessible and readable in raw text files, without needing to go and query it out a database. Also, you can keep all
+of your site&rsquo;s content under version control. How cool is that?</p>
+
+<p>So for Coconauts we are now using Octopress, as we think is the more simple and convenient static website generator around. You write your content in Markdown (our favorite markup
+language), use a command to generate your static site, and then your'r off to deploy it. In our case, we have a Jenkings polling our version control repo, so it auto-deploys it every
+time we make a <code>git push</code>. Octopress also comes It comes with a lot of features built in, like Twitter buttons, or Google Analytics, and you can add more plugins or tweak all pages you want directly.</p>
+
+<p>As they say, it&rsquo;s &ldquo;A blogging framework for hackers&rdquo; so if you feel brave enough <a href="http://octopress.org/">give it a try</a>.</p>
+]]></content>
+</entry>
+
+</feed>
