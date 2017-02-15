@@ -1,16 +1,16 @@
 ---
 layout: post
 title: "Control energenie with Pebble"
-date: 2016-12-29 10:42:19 +0000
+date: 2017-02-15 10:42:19 +0000
 comments: true
-categories: games
+categories: software
 tags: pebble energenie smartwatch
 sharing: true
 keywords: pebble,energenie,smartwatch
 description: "Control energenie with Pebble smartwatch"
 author: Javier Rengel
 featured: false
-published: false
+published: true
 ---
 
 Last year I got a cheap Pebble smartwatch
@@ -28,4 +28,4 @@ You can see it in action [here](https://twitter.com/rephus/status/81063083669764
 The source code is availabe on [this repo](https://github.com/rephus/pebble-energenie)
 
 We might try to build a game using the gyroscope in the future,
-do you have any other ideas ?
+do you have any other ideas?
