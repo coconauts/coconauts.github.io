@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: defold | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/defold/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2017-02-15T19:32:28+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[2D game framework comparison: Defold vs Phaser vs Game Maker]]></title>
+<link href="http://coconauts.net/blog/2017/01/09/2d-game-framework-comparison/"/>
+<updated>2017-01-09T10:42:19+00:00</updated>
+<id>http://coconauts.net/blog/2017/01/09/2d-game-framework-comparison</id>
+<content type="html"><![CDATA[<p>We wanted to start a building new 2D game ideas we have in mind, and we thought
+our favorite 3D platform so far (Unity3D) was not optimal enough to build a fully 2D game.
+And despite having experience with some other frameworks like LibGDX (as we built
+<a href="/projects/timebomb2">Exploding Bunnies</a> ) along with some other Ludum Dare games,
+we wanted to see if there is something better.</p>
+
+<p>After some investigation, we narrowed the list to Defold vs Phaser.io vs Game Maker,
+ so we decided to give them a try by building a quick Pong demo in those 3 frameworks,
+and gather some conclusions before we start building our next 2D game.</p>
+
+<!--more-->
+
+
+<h2>Defold</h2>
+
+<p>Propietary framework made by King (experts on mobile games). They have built a
+promising editor with a lot of great features, like version control and easy deployment to multiple platforms.
+Although it&rsquo;s still on Beta, it sounds like this might be a trully solid option.</p>
+
+<p>It took me some time to get used to the new concepts like the atlas and the collection, plus all the properties.
+After a while, the whole framework reminded me of Unity3D, but simpler.
+On the other hand, the current editor, which is based on Eclipse, gave me bad memories;
+fortunately they&rsquo;re moving  to a <a href="http://www.defold.com/roadmap/">cloure based editor</a> now.
+I got blocked during almost an hour because of this
+<a href="https://forum.defold.com/t/scaling-collision-object-when-game-object-is-scaled-def-521/547">scaled collision object bug</a>
+until I discovered the useful debug option on game settings.</p>
+
+<iframe src='http://html5.coconauts.net/2d-framework-comparison/defold/' width=650 height=350></iframe>
+
+
+<ul>
+<li><p><a href="http://www.defold.com/showcase/">Showcase</a></p></li>
+<li><p>Language: Lua</p></li>
+<li><p>Getting started: <a href="http://www.defold.com/tutorials/getting-started/">http://www.defold.com/tutorials/getting-started/</a></p></li>
+</ul>
+
+
+<p><img src='http://coconauts.net/images/posts/2017-01-09-2d-framework/defold-editor.png'/></p>
+
+<h4>Pros:</h4>
+
+<ul>
+<li>Free</li>
+<li>Visual editor</li>
+<li>Available on Linux</li>
+<li>Multiplatform</li>
+<li>Performance</li>
+<li>Version control friendly (+integrated)</li>
+<li>Integrated game analytics</li>
+</ul>
+
+
+<h4>Cons:</h4>
+
+<ul>
+<li>Propietary solution</li>
+<li>Still beta</li>
+<li><p>Found bugs while building demo</p></li>
+<li><p>Score:  7 / 10</p></li>
+</ul>
+
+
+<p>Get our demo <a href="https://github.com/rephus/pong-sample-defold">here</a></p>
+
+<h2>Phaser.io</h2>
+
+<p>Pretty popular simple opensource framework  with a great community and tons of examples.</p>
+
+<p>While building this demo, I found it was surprisingly easy to start with,
+plus the documentation and the API was very clear and advanced.</p>
+
+<p>Things like <code>game.world.centerX</code> instead of doing <code>game.world.width / 2</code> or
+<code>body.collideWorldBounds = True</code> really impressed me.</p>
+
+<iframe src='http://html5.coconauts.net/2d-framework-comparison/phaser/' width=650 height=350></iframe>
+
+
+<ul>
+<li><p>Language: Javascript</p></li>
+<li><p>Getting started: <a href="http://phaser.io/tutorials/getting-started">http://phaser.io/tutorials/getting-started</a></p></li>
+<li><p>Pong tutorial: <a href="https://www.youtube.com/watch?v=3egKs7b86j0">https://www.youtube.com/watch?v=3egKs7b86j0</a></p></li>
+</ul>
+
+
+<h4>Pros:</h4>
+
+<ul>
+<li>Open source (but with a company behind it)</li>
+<li>Available on Linux</li>
+<li>HTML5 (multiplatform)</li>
+<li>Great community</li>
+<li>Version control capabilities</li>
+</ul>
+
+
+<h4>Cons:</h4>
+
+<ul>
+<li>No official Visual editor</li>
+<li><p>No direct Android exporting (cordova/cocoon required)</p></li>
+<li><p>Score: 8 / 10</p></li>
+</ul>
+
+
+<p>Get our demo <a href="https://github.com/rephus/pong-sample-phaser">here</a></p>
+
+<h2>Game Maker</h2>
+
+<p>Probably one of the oldests game frameworks and still pretty popular,
+I remember using this like 10 years ago, before I knew anything about programming.
+And to be honest, it hasn&rsquo;t changed that much since then.</p>
+
+<p>The fact the free version only allows to generate window executables and
+that the studio only runs on Windows was conclusive enough,
+but also the whole framework is no much different from the others,
+if you know programming.</p>
+
+<p>Some of the best indie games have been made with this framework like:</p>
+
+<ul>
+<li>Spelunky</li>
+<li>Hyper Light Drifter</li>
+<li>Nuclear Throne</li>
+<li><p>Hotline Miami</p></li>
+<li><p>Language: Game Maker Language</p></li>
+<li><p>Getting started: <a href="http://www.yoyogames.com/learn">http://www.yoyogames.com/learn</a></p></li>
+</ul>
+
+
+<p><img src='http://coconauts.net/images/posts/2017-01-09-2d-framework/gamemaker-editor.png'/></p>
+
+<h4>Pros:</h4>
+
+<ul>
+<li>Visual editor</li>
+<li>No programming skills required</li>
+<li>Seems to be the indie industry standard</li>
+</ul>
+
+
+<h4>Cons:</h4>
+
+<ul>
+<li>Propietary solution</li>
+<li>Windows only editor</li>
+<li>No multiplatform (free version)</li>
+<li>Uses its own scripting language</li>
+<li>Version control issues</li>
+<li><p>Slow runnable</p></li>
+<li><p>Score:  3 / 10</p></li>
+</ul>
+
+
+<h2>Conclussions</h2>
+
+<p>We decided Phaser.io to be our next 2D framework. Of the 3 it was the faster and easiest to get started with. Defold sounds like with some polish it might be a sounder solution to use for real projects (for example, the mobile export is managed a lot better, or the integrated analytics are a bit plus); but the bugs we found on Defold while building this simple demo scared us a bit. Once it matures we might give it another go, but for now Phaser fits the bill for our purposes.</p>
+]]></content>
+</entry>
+
+</feed>

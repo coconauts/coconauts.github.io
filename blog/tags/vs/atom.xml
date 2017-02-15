@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: vs | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/vs/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2017-02-15T19:32:28+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Arduino vs Raspberry Pi]]></title>
+<link href="http://coconauts.net/blog/2014/07/05/arduino-vs-raspberry-pi/"/>
+<updated>2014-07-05T16:37:00+00:00</updated>
+<id>http://coconauts.net/blog/2014/07/05/arduino-vs-raspberry-pi</id>
+<content type="html"><![CDATA[<p>Sometimes, when you want to build a project, you need to think which is the best platform for you, weather server, desktop, Raspberry Pi or Arduino.
+If you have no experience at all, you may think you want to build a weareable device (like our <a href="/projects/watchduino">WatchDuino</a> project) using a Raspberry Pi, or a webpage or a smart robot with light and sounds using an Arduino, when in fact these are not the optimal choices.
+That&rsquo;s why we would like to point out the main differences between Rasbperry Pi and Arduino, and which makes them the best or the worst depending on the kind of project.</p>
+
+<!--more-->
+
+
+<h2>Size</h2>
+
+<p>Lets start with something obvious, the size.</p>
+
+<p>If you want to build something small, wearable, or hidden in a hat, you need to use Arduino.</p>
+
+<p>Your first impression might be that Arduino Uno and Raspberry Pi are actually similar in size, but the difference relies in that you can shrink Arduino as much as you want (up to chip size), or use a different smaller model, like Arduino Nano or Arduino Mini (which is smaller than nano). Whereas you can&rsquo;t shrink a Raspberry Pi at all.</p>
+
+<p>So Arduino is the obvious choice when size matters. You can always prototype and develop using an Arduino Uno, and then use a smaller version when you need to integrate it into your project.</p>
+
+<h2>Power consumption</h2>
+
+<p>The consumption is, in some way, related with the size. The Raspberry Pi is big because it has a lot of controllers and better processor, which means it needs more power to work.
+However, Arduino can reduce its consumption a lot if you remove all the useless inboard components (like leds and the USB controller).</p>
+
+<p>For instance, our <a href="/projects/watchduino">WatchDuino</a> project used a standalone ATMega chip (so not even an Arduino Mini) to optimize the power consumption as much as possible.</p>
+
+<h2>Portability</h2>
+
+<p>Obviously, portability is a mix of consumption and size. You can build a robot for home with a Raspberry Pi, but just keep in mind it will be big and you may need to charge it quite often.</p>
+
+<h2>Processing</h2>
+
+<p>Because Raspberry Pi processor is 700MHz (overclokable up to 1Ghz) and Arduino is only 8 or 16Mhz, you shouldn&rsquo;t use Arduino to do big calculations or run math heavy code.
+Forget about doing something like image recognition, fast fourier transform comparisons or something like that (not even the Raspberry Pi can handle that smoothly).</p>
+
+<h2>Code complexity</h2>
+
+<p>If your need to code something more complex than just giving a result according to an input, then probably Arduino is not the best platform for you.
+It is not just because it is using C++ (we will talk about this later), it is also because Arduino (ATMega) has a very limited code space (up to 32Kb),
+so you can&rsquo;t use all the libraries you want as they won&rsquo;t fit your flash program memory.</p>
+
+<h2>C++</h2>
+
+<p>If you don&rsquo;t want to have the chance to choose between different languages (Java, NodeJs, Python, Ruby, Perl, Bash&hellip;) and just want to use C++, then you&rsquo;ll feel at home with Arduino.
+You cannot use anything else, only C++, and don&rsquo;t try to use <code>pip</code> or <code>npm</code> or <code>maven</code> as it won&rsquo;t work.</p>
+
+<p>Thankfully, the guys at <a href="http://biicode.com">biicode</a> made our life a bit easier building a platform to reuse some C++ code, so if you want to use some community libraries (like in pip), you should have a look.</p>
+
+<h2>Inputs</h2>
+
+<p>Both Arduino and Raspberry Pi are good at reading digital inputs (although it&rsquo;s a bit confusing in the Raspberry Pi), and both also have a 3v and 5v output, which is good.
+However, Raspberry Pi doesn&rsquo;t have analog inputs, which is a disadvantage when using resistances or any kind of analog device. But it doesn&rsquo;t mean you can&rsquo;t use them, there are
+two popular techniques for reading analog inputs, you can either use a capacitor or an ADC chip (analog to digital converter) like the MCP3008 (we will talk about this important topic in a future post).</p>
+
+<h2>Web server</h2>
+
+<p>Do you want to host a webpage or webserver ? then go for the Raspberry Pi, and use whatever language you prefer, like Python+Flask, NodeJs, Apache+PHP, etc.
+At this point of the post I think it&rsquo;s not worth explaining why you cannot host a web server on an Arduino.</p>
+
+<h2>Advanced Audio/Video support</h2>
+
+<p>Of course you can get an Arduino Mega and connect 20 pins to a powerful LCD screen and show some fancy graphic effects using C++ with Adafruit GFX,
+but I am pretty sure it is going to be easier for you if you go for the Raspberry Pi and use the HDMI or video output, right?
+Actually, if you are going to use a full color LCD, it means the consumption is not that important in your project.</p>
+
+<p>The same goes for complex audio support (rather than just playing some sounds with a buzzer).
+If you want to play MP3, WAV or OGG files, it&rsquo;s much easier to use <code>aplay</code> or <code>from pygame import mixer</code> in Python than stacking some Arduino shields.</p>
+
+<p>If you still want to make your Raspberry Pi portable, you can use a portable USB-powered-speaker like the X-Mini or get one for <a href="http://www.amazon.co.uk/DIGIFLEX-Portable-Travel-Speaker-iPhone/dp/B003TKTUUY/ref=sr_1_4?ie=UTF8&amp;qid=1404482399&amp;sr=8-4&amp;keywords=portable+speaker">less than 3 pounds</a></p>
+]]></content>
+</entry>
+
+</feed>
