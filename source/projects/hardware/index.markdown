@@ -16,6 +16,27 @@ For bigger projects look at:
 
 For all posts about projects go to [all hardware posts](/posts/categories/hardware)
 
+## Energenie
+
+Energenie sockets are great for building a smart home.
+These cheap devices that allows you can turn on/off power sockets with a simple remote,
+a Raspberry PI or even an Arduino/ESP8266 and a cheap radio module.
+
+<img src="https://c2.staticflickr.com/2/1545/25845471424_d600499717_d.jpg" class="screenshot" />
+
+### Related posts
+
+* [Build a Smart Home Using Raspberry Pi and Energenie](http://coconauts.net/blog/2016/04/15/energinie-and-raspberry-pi-setup/)
+* [Control Energenie With Pebble](http://coconauts.net/blog/2017/02/15/control-energenie-with-pebble/)
+
+## Smart staircase lights
+
+Check on [Twitter](https://twitter.com/rephus/status/830460205699854336) what we build with an Arduino, a relay and 2 infrarred sensors.
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Smart staircase LED lighting with <a href="https://twitter.com/hashtag/Arduino?src=hash">#Arduino</a> and IR sensors <a href="https://t.co/ns5zh2r8tQ">pic.twitter.com/ns5zh2r8tQ</a></p>&mdash; Javi Rengel (@rephus) <a href="https://twitter.com/rephus/status/830460205699854336">February 11, 2017</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
 ## Lightning-dodge-O-matic
 
 We hooked up a light-dependent resistor to an Arduino and rubber-banded a servo to press the X button for us on the lightning-dodge minigame on Final Fantasy X for PSVita.
@@ -26,6 +47,7 @@ We hooked up a light-dependent resistor to an Arduino and rubber-banded a servo 
 ### Related posts
 
 * [Lightning-dodge-O-matic](http://coconauts.net/blog/2016/06/13/lightning-dodge-o-matic/)
+
 
 ## Light sensor
 

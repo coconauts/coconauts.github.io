@@ -47,6 +47,7 @@ table {  width:100%}
  * 64,128,192,256,320,384,448,512 */
 
 .project-coconauts{ background-position:0px 0px;}
+.project-podcast{ background-position:0px 0px;}
 .project-astroship{ background-position:-64px 0px;}
 .project-turret-pi{ background-position:-128px 0px;}
 .project-watchduino{ background-position:-192px 0px;}
@@ -87,6 +88,7 @@ table {  width:100%}
 .project-retrophies{ background-position:-192px -448px;}
 
 .project-sea-life{ background-position:0px -512px;}
+.project-rps{ background-position:-64px -512px;}
 
 .title{font-weight:bold;}
 .gray{color:gray;}

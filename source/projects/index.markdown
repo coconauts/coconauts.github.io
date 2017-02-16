@@ -20,15 +20,25 @@ footer: true
 
 <script language="javascript">
 
+add("podcast", 2017, "general",
+    "Podcast",
+    "Podcast about games, hardware and stuff (in spanish)",
+    "Audacity, Ivoox, Itunes");
+
+add("rps", 2017, "games",
+    "RPS",
+    "A Phaser.io Simple RTS",
+    "Javascript, Phaser.io");
+
+add("hardware", 2017, "hardware",
+    "Small hardware projects",
+    "Compilation of all our small hardware projects",
+    "C++, Arduino, Electronics, Raspberry PI");
+
 add("retrophies", 2016, "games",
     "Retrophies",
     "Achievements system for Emulators",
     "Javascript");
-
-add("hardware", 2016, "hardware",
-    "Small hardware projects",
-    "Compilation of all our small hardware projects",
-    "C++, Arduino, Electronics, Raspberry PI");
 
 add("3d-house", 2016, "games",
     "3D house",

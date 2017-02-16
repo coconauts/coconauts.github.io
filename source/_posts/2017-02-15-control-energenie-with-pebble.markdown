@@ -21,9 +21,9 @@ so we built an app to control our Energenie sockets from the watch,
 sending HTTP requests to a Raspberry PI with the official radio module from Energenie.
 
 All you need, apart form the pebble is a Raspberry PI to send the radio signal from a REST API to a Energenie socket.
-Check how to do it [on our previous post](http://coconauts.net/blog/2016/04/15/energinie-and-raspberry-pi-setup/)
+Check how to do it [on our previous post](http://coconauts.net/blog/2016/04/15/energinie-and-raspberry-pi-setup/).
 
-You can see it in action [here](https://twitter.com/rephus/status/810630836697649152)
+You can see it in action [here](https://twitter.com/rephus/status/810630836697649152).
 
 <!--more-->
 
