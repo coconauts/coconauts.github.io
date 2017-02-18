@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: mini | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/mini/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2017-02-18T12:02:37+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[How to improve classic Nintendo games]]></title>
+<link href="http://coconauts.net/blog/2016/12/29/how-improve-nintendo/"/>
+<updated>2016-12-29T10:42:19+00:00</updated>
+<id>http://coconauts.net/blog/2016/12/29/how-improve-nintendo</id>
+<content type="html"><![CDATA[<p>Although the Nintendo Mini has been a great success, and the best way of recreating our childhood
+experience with a great collection of classic Nintendo games; There are a lot of things still Nintendo
+can do to our beloved classic games in order to let us play those classic games in a complete new (and refreshing) way. They don&rsquo;t even need to do it on a new old mini console, but on their virtual store on WiiU or NX (switch)</p>
+
+<p><img src="http://coconauts.net/images/posts/2016-12-29-how-improve-nintendo/nes-mini.jpg" alt="achievement"></p>
+
+<!--more-->
+
+
+<p>Some of these ideas have already been proved possible in our <a href="http://retrophies.win">Retrophies</a> project, just by taking the original game, with no ROM hacking involved but just checking the memory values in the emulator, so imagine what Nintendo can do with their original games,
+something they already tried on the great Nes Remix compilation.</p>
+
+<h2>Achievements</h2>
+
+<p>Some people love them, some people hate them, but it&rsquo;s true they are a good way of motivating people
+on playing games again with an objective in mind. Won&rsquo;t you play Super Mario Bros again if I tell you
+you will get an official reward by finishing it ? Maybe the brand new Nintendo coins.</p>
+
+<p><img src="http://coconauts.net/images/posts/2016-12-29-how-improve-nintendo/achievement.png" alt="achievement"></p>
+
+<p>This was the main feature of Retrophies and it was pretty fun to build and play.</p>
+
+<h2>Multiplayer</h2>
+
+<p>Another concept we tested on Retrophies, having the capability of see (or interact) with
+other players in real time while you play.</p>
+
+<p><img src="http://coconauts.net/images/posts/2016-12-29-how-improve-nintendo/multiplayer.png" alt="multiplayer"></p>
+
+<p>Sounds like playing New Super Mario Bros on Super Mario Bros.</p>
+
+<h2>Scoreboards</h2>
+
+<p>Who is the fastest player to finish World 1-1 on Super Mario Bros ? This is a concept we
+are still working on Retrophies.</p>
+
+<p>Nintendo can add official scoreboard to most of their games. I mean, speedrunners
+do this with most Nintendo games already, think about all the crazy Ocarina of Time speedrunnes available, why don&rsquo;t make it official.</p>
+
+<h2>Maker version of classic games</h2>
+
+<p>Remember Mario maker and how fun was to build scenarios on Super Mario ? Then why not integrating
+this function on existing games ? This is also a possibility that we could integrate in
+Retrophies in the future (by adding blocks or items in the screen in memory).</p>
+
+<p>Do you have another idea for twisted classic Nintendo games ?</p>
+]]></content>
+</entry>
+
+</feed>
