@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "RPS: A Phaser.io Simple RTS"
-date: 2017-02-15 10:42:19 +0000
+date: 2017-02-18 11:57:19 +0000
 comments: true
 categories: games
 tags: html5 phaser.io RPS RTS games
@@ -14,7 +14,7 @@ published: true
 ---
 
 If you follow [me](http://twitter.com/rephus) or [Coconauts](http://twitter.com/coconauts) on Twitter, you might have seen some
-GIFs about a RTS game we're developing on Phaser.io.
+GIFs about an RTS game we're developing on Phaser.io.
 
 Codename: RPS (Rock, Paper, Scissors). Is a simple RTS (Real Strategy Game)
 we're building using the Phaser.io framework for HTML5 games.
@@ -22,9 +22,9 @@ we're building using the Phaser.io framework for HTML5 games.
 We aim to have a fun and complete game, with campaign, multiplayer
 and with a fresh interface, compatible with mobile and touch devices.
 
-The main strong point are its simple but effective mechanics.
+The main selling point are its simple but effective mechanics.
 Forget about hundreds of different units with their own powerups, multiple buildings,
-or advance research.
+or advanced research.
 
 <!--more-->
 
