@@ -10,7 +10,7 @@ keywords: sensors,arduino,led,relay
 description: "Smart staircase LED lighting with Arduino and IR sensors"
 author: Javier Rengel
 featured: false
-published: true
+published: false
 ---
 
 For a long time, we've been turning on the lights at the beginning the staircase,
