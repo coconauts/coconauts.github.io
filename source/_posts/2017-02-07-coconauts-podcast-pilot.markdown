@@ -3,7 +3,7 @@ layout: post
 title: "Coconauts Podcast Pilot (en español)"
 date: 2017-02-07 20:37:11 +0000
 comments: true
-keywords: podcast,retrophies,español
+keywords: podcast,español
 categories: general
 tags: coconauts podcast español
 published: true
