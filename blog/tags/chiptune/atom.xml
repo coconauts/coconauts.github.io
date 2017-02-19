@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: chiptune | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/chiptune/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2017-02-19T20:48:57+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Easily create 8-bit sound effects]]></title>
+<link href="http://coconauts.net/blog/2015/07/06/easily-create-8-bit-sound-effects/"/>
+<updated>2015-07-06T20:10:17+00:00</updated>
+<id>http://coconauts.net/blog/2015/07/06/easily-create-8-bit-sound-effects</id>
+<content type="html"><![CDATA[<p>In a past post we&rsquo;ve shown you <a href="https://www.coconauts.net/blog/2015/02/02/creating-chiptune-style-music-with-ubuntu/">how to make 8-bit music</a>,
+which you might want to use in a game. But of course, if you are having
+8-bit music, you&rsquo;ll want your game sound effects to match as well.</p>
+
+<p>In this post we&rsquo;ll show you how to generate 8-bit style sound effects for
+for games using a very simple free tool called <a href="http://www.bfxr.net/">bfxr</a>.
+No audio or DSP knowledge needed!</p>
+
+<!--more-->
+
+
+<p><a href="http://www.bfxr.net/">bfxr</a> is a generator for 8-bit style sound effects.
+It&rsquo;s also completely idiot proof, and you don&rsquo;t even need to install it,
+because it&rsquo;s available as a web app (though you can if you want to).</p>
+
+<p><img src="http://coconauts.net/images/posts/chiptune/bfxr.png" /></p>
+
+<p>Simply pick a category to generate a randomized sound that
+will look legit enough, and the parameters used to synthesize it will
+get filled out. In n00b mode you simply keep clicking until just the
+right sound appears, and if you&rsquo;re audio savvy you can even tune the
+parameters to your will. When you&rsquo;re satisfied, just save the sound in wav
+format and you&rsquo;re done.</p>
+
+<p>You&rsquo;ll probably want to do some format conversion with your bfxr
+generated sounds though, as wav is an uncompressed format that eats up a
+ridiculous amount of space. For this, use any audio converting tool, like
+ffmpeg:</p>
+
+<pre><code>ffmpeg -i audio.wav  -acodec libvorbis audio.ogg
+</code></pre>
+
+<p>Actually, since we don&rsquo;t care very much about the quality of the audio
+(if fact, the lower it is, it will look more authentic!), we can use
+the same tool to downsample the track (<code>-ar</code> flag sets the sample rate,
+and <code>-ab</code> sets the bitrate) and turn it to mono (<code>-ac</code> flag sets the
+number of channels):</p>
+
+<pre><code>ffmpeg -i audio.ogg -acodec libvorbis -ac 1 -ab 64000 -ar 22050 output.ogg
+</code></pre>
+
+<p>In this case we&rsquo;ve reduced the bitrate to 64k, the sample rate to half the
+usual value, and the channels to just one.</p>
+
+<p>The same downsampling process can also be applied to yor 8-bit game music actually.
+It shouldn&rsquo;t hurt the music quality and it will noticeably reduce the
+size of your assets, something you surely want if you&rsquo;re doing mobile
+development.</p>
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[Creating TRVE CHIPTUNE with a tracker]]></title>
+<link href="http://coconauts.net/blog/2015/04/19/creating-trve-chiptune-with-a-tracker/"/>
+<updated>2015-04-19T19:34:31+00:00</updated>
+<id>http://coconauts.net/blog/2015/04/19/creating-trve-chiptune-with-a-tracker</id>
+<content type="html"><![CDATA[<p>Following up with the
+<a href="https://www.coconauts.net/blog/2015/02/02/creating-chiptune-style-music-with-ubuntu/">previous post about chiptune music</a>,
+remember what I said about those purists only considering to be TRVE
+CHIPTUNE that in the format of Amiga MOD files created with an old
+school tracker software? Well, guess what, you can do just that to
+create chiptune music the hardcore way.</p>
+
+<!--more-->
+
+
+<p>This route is certainly not for the faints of heart, but the results
+will be really convincing and proper chiptune music, not cheap
+imitations. As a matter of fact, when you go out in the wild looking for
+chiptune tutorials they are mostly going to point to this approach.</p>
+
+<p>So in the dawn of times, <a href="http://en.wikipedia.org/wiki/Chiptune#Tracker_chiptunes">apparently</a>
+Amiga computers had really good sound chips and equally good tracking
+software, and this spawned a community of enthusiasts creating chiptune
+music with them. Over the years, software trackers came to be for PC,
+imitating those of Amiga computers, and these are the ones you can use
+to create chiptune music, as was done in the 80s. And with that, I mean
+cryptic and hardcore text-based interfaces. Like this one:</p>
+
+<iframe width="420" height="315" src="https://www.youtube.com/embed/Fw4Aa0FfuJU" frameborder="0" allowfullscreen></iframe>
+
+
+<p>That was <a href="http://milkytracker.org/">MilkyTracker</a>, which is actually
+the friendliest of trackers that I found (it&rsquo;s also free and available
+for Linux). There are <a href="http://woolyss.com/chipmusic-chiptrackers.php">plenty of other options out there though</a>.</p>
+
+<p>If you feel brave enough to step into this path, your experience
+wouldn&rsquo;t be complete without some ancient tutorials in glorious static
+html websites from a decade ago, so here&rsquo;s some to get you started:</p>
+
+<ul>
+<li><a href="http://resources.openmpt.org/tracker_handbook/handbook.htm">The Tracker&rsquo;s Handbook</a></li>
+<li><a href="http://amp.dascene.net/faq.php">Amiga Music Preservation FAQ</a></li>
+<li><a href="http://chiptuneswin.com/blog/so-you-wanna-make-a-chiptune-2-computer-trackers/">Tutorial at The ChipWIN blog</a></li>
+<li><a href="http://woolyss.com/">Woolys</a> is an extensive reference site with tons
+of tutorials and documentation about all things chiptune and tracking.</li>
+</ul>
+
+
+<p>Don&rsquo;t forget though that there&rsquo;s a saner way to do it, we&rsquo;ve shown you how in the
+<a href="https://www.coconauts.net/blog/2015/02/02/creating-chiptune-style-music-with-ubuntu/">previous post</a>!</p>
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[Creating chiptune style music with Ubuntu]]></title>
+<link href="http://coconauts.net/blog/2015/02/02/creating-chiptune-style-music-with-ubuntu/"/>
+<updated>2015-02-02T19:36:33+00:00</updated>
+<id>http://coconauts.net/blog/2015/02/02/creating-chiptune-style-music-with-ubuntu</id>
+<content type="html"><![CDATA[<p>This is the first post in a series, in which we will
+detail several aspects of the creation of the music of Super Time Bomb.
+In this post we&rsquo;ll show you how we created the music for the game
+(which happens to be chiptune-style) using free software available
+for the Ubuntu platform. The tools that we are using are however pretty generic,
+and there should be alternatives (if not even direct ports) available
+for your platform.</p>
+
+<p> <!--more--></p>
+
+<h2>What do I mean by chiptune</h2>
+
+<p>I think there&rsquo;s no better way to explain than to show:</p>
+
+<iframe width="420" height="315" src="https://www.youtube.com/embed/auQv90TfXrI" frameborder="0" allowfullscreen></iframe>
+
+
+
+
+<iframe width="420" height="315" src="https://www.youtube.com/embed/1vrfeBPDEM8" frameborder="0" allowfullscreen></iframe>
+
+
+
+
+<iframe width="420" height="315" src="https://www.youtube.com/embed/NKwqMZd6zhw" frameborder="0" allowfullscreen></iframe>
+
+
+<p>In this tutorial I&rsquo;ll be calling chiptune music, or 8-bit music,
+or &ldquo;beeps and boops&rdquo; music, to the kind of music games had when they
+couldn&rsquo;t afford to store and play recorded music and they had to
+synthesize it themselves, using what nowdays we consider very modest
+hardware.</p>
+
+<p>Be warned though, that this is not a very technical definition
+of the term. There are purists out there who will only call chiptune
+music to that coming out of an old Amiga-style tracker in the form of a
+MOD file, or to that manually handcrafted from bending real physical chips.
+In our case though, our only requirement is that it sounds like it comes
+from an old Nintendo game, and that&rsquo;s about it.</p>
+
+<p>Now for the interesting part: to make it! There are several approaches you can
+follow to create this kind of music, from the purist way of using chiptune
+trackers, to synthesize it directly in your game code. But there&rsquo;s really no
+need to make chiptune music the way it was done 20 years ago, when today we
+have very powerful software for audio creation, and ready-made
+high quality virtual instruments: including chiptune-sounding ones.</p>
+
+<h2>Making chiptune with LMMS and VSTi plugins</h2>
+
+<p>The music of Super Time Bomb was made using <a href="https://lmms.io/">LMMS</a>,
+which is an open source
+alternative to the popular Fruity Loops Studio. It&rsquo;s free, multiplatform,
+and easy to use. And in recent versions it will let you import VSTi
+plugins (a very popular format for instrument and audio effects),
+even if you are using it on Linux (it will rely on Wine to run them).</p>
+
+<p>We will be using the following selection of free VSTi plugins,
+that will provide us with a handful of chiptune-style instruments and sounds:</p>
+
+<ul>
+<li><a href="http://www.tweakbench.com/peach">Peach</a> and <a href="http://www.tweakbench.com/triforce">Triforce</a>
+will provide you with a decent set of NES-style instruments.</li>
+<li><a href="http://www.tweakbench.com/toad">Toad</a> is a NES-style percussion set.</li>
+<li>There&rsquo;s also <a href="http://www.ymck.net/en/download/index.html">Magical 8-Bit</a>,
+but unfortunately I couldn&rsquo;t make that one work on my setup
+(don&rsquo;t let that stop you from trying it yourself though!)</li>
+</ul>
+
+
+<p>Make sure you download the Windows version of the plugins
+(in the cases where there are more available), even if you are using
+Linux. Each of them comes in the form of a zipped package, containing a
+dll plus potentially some other files (texts, sounds&hellip;) inside. Extract
+the dll for each of them (as this is actually the VST plugin) to any
+directory of your choice.</p>
+
+<p>After you have the dlls, you&rsquo;ll have to install them in your workstation
+software to be able to use them to make awesome music. For LMMS on Linux
+the process is not so straightforward, but it can be done.</p>
+
+<p>LMMS is available on the repos, but unfortunately the version that we can find
+there (at least on Ubuntu 14.10) is old, and doesn&rsquo;t come with VSTi support.
+To get a newer version you have two alternatives. Some months ago,
+what I did was compiling the latest version (there&rsquo;s some trickery to
+be done to get VSTs to work, which basically involves compiling the
+VeSTige plugin first.
+<a href="http://nickhumphreyit.blogspot.co.uk/2012/01/how-to-compile-and-install-vestige.html">Here&rsquo;s the instructions I followed</a>).
+However this should not be necessary anymore, as there&rsquo;s now the official
+<a href="http://kxstudio.sourceforge.net/Repositories#Ubuntu">KXStudio ppa repository</a>
+which you can add to Ubuntu to be able to install everything from the
+package manager.</p>
+
+<p>To add the KXStudio ppa:</p>
+
+<pre><code>sudo add-apt-repository ppa:kxstudio-debian/kxstudio
+sudo apt-get update
+sudo apt-get install kxstudio-repos
+sudo apt-get update
+</code></pre>
+
+<p>Then install LMMS and the VST support:</p>
+
+<pre><code>sudo apt-get install lmms lmms-vst-full
+</code></pre>
+
+<p>You may also need to install wine first, if you don&rsquo;t have it already, as
+LMMS relies on it to run the Windows VST plugins that we are using.</p>
+
+<p>Then open up your newly installed LMMS, and say yes to all default
+options if prompted with them. After that, you will be shown an empty
+workbench. On the left side, you&rsquo;ll see a column with icons. Click on the
+first one, which is the instrument plugins, and a sidebar will open
+showing all available instruments. There should be there one called
+&ldquo;VeSTige&rdquo; (if it&rsquo;s not there, it means you didn&rsquo;t install LMMS correctly,
+as you are missing the VST support). Drag and drop this instrument into
+the song editor, and then click on the instrument name. A new window
+should open showing the instrument controls. Here&rsquo;s an image showing
+the process:</p>
+
+<p><img src="http://coconauts.net/images/posts/chiptune/lmms-vestige.png" /></p>
+
+<p>VeSTige is not really an actual instrument, it&rsquo;s simply a loader for
+Windows VSTi plugins (it will run them using Wine). If you click on the
+little green folder on the interface, a file browser will come up, and
+then you can select one of the dlls for the instruments you have
+downloaded. When you do so, after a few seconds of loading, you should
+see the VST instrument controls pop up in a new window, and the name of
+the instrument in the song editor will also be different. You can then
+select your sound from the VST interface, and start adding notes on the
+piano roll to create your music!</p>
+
+<p>For every VST instrument you want to load, you&rsquo;ll have to use an
+independent VeSTige instance, so simply repeat the process over and over
+as needed. Since the VSTs we are using let you select from various
+instruments you will probably want to load several of them in separate
+tracks, to be able to use several sounds independently. To do so, you&rsquo;ll
+simply have to add several VeSTiges loading the same VST in each of them,
+and use the instrument GUI to select the sound you want that track to
+use. This is how my workbench looks like after loading a bunch of Peach +
+Toad tracks with VeSTige:</p>
+
+<p><img src="http://coconauts.net/images/posts/chiptune/lmms-timebomb.png" /></p>
+
+<p>After you are done, you&rsquo;ll be able to export your music to any common
+audio format (like ogg or mp3), and then you can use it in your game.</p>
+]]></content>
+</entry>
+
+</feed>

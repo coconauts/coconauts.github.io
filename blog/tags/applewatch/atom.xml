@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: applewatch | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/applewatch/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2017-02-19T20:48:57+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Apple Watch vs Watchduino: side by side comparison]]></title>
+<link href="http://coconauts.net/blog/2014/09/28/iwatch-vs-arduino-comparison/"/>
+<updated>2014-09-28T14:00:00+00:00</updated>
+<id>http://coconauts.net/blog/2014/09/28/iwatch-vs-arduino-comparison</id>
+<content type="html"><![CDATA[<p><img src="http://coconauts.net/images/posts/iwatch-vs-watchduino.png" /></p>
+]]></content>
+</entry>
+
+</feed>
