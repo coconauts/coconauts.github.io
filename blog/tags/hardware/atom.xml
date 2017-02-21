@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: hardware | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/hardware/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2017-02-21T21:00:06+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Honey, I shrunk the Watchduino]]></title>
+<link href="http://coconauts.net/blog/2015/10/20/honey-i-shrunk-the-watchduino/"/>
+<updated>2015-10-20T21:40:34+00:00</updated>
+<id>http://coconauts.net/blog/2015/10/20/honey-i-shrunk-the-watchduino</id>
+<content type="html"><![CDATA[<p>Last weekend we attended
+<a href="http://hackathon.pchintl.com/hackathons/london/2015/10/16/">a hardware hackathon organised by PCH in London</a>.
+The theme of the hackathon was &ldquo;Take your prototype to the
+next stage in 54 hours&rdquo;, so in our case we brought our
+Watchduino prototype and focused on trying to make it closer
+to how it would look if it were a commercial product.</p>
+
+<p>The best part is that at the hackathon there was a set of
+mentors, people who are experts in different areas of IoT,
+which were giving us useful advice about our product
+direction, design optimizations or the ins and outs of
+manufacturing.</p>
+
+<p>By the end of the hackathon, we had a functional (at least
+theorethically) design for Watchduino that looks this
+awesome:</p>
+
+<p><img src=https://farm1.staticflickr.com/772/22314247456_e69a4e1275_z_d.jpg' /></p>
+
+<!-- more -->
+
+
+<p>The first step to getting a hardware product into manufacturing is integrating all the electronics into a PCB. This not only makes the system easier to put together, it&rsquo;s also smaller, and likely to be more energetically efficient.</p>
+
+<p>So we designed a PCB that would mainly replace the Arduino
+Mini, breaking out the pins of the ATMega processor and
+leaving space to surface mount the rest of the components.
+To completely replace the Arduino board, a 8Mhz crystal
+oscillator needs to be added on top of our current
+components, as well as breaking out the RX and TX pins for
+reprogrammation. It&rsquo;s pretty similar to
+<a href="https://bitbucket.org/rephus/watchduino/src/master/docs/how_to_replicate.md">the process we  were following in our first Watchduino</a>.</p>
+
+<p>The board was designed with
+<a href="http://fritzing.org">Fritzing</a>,
+which we were already
+using for our schematic. We were recommended Eagle, which
+appears to be the industry standard software, and has
+a bigger component library and tons of support online.
+But Fritzing is simpler and open source, so it suited
+our purposes for the time being. You can find the file
+<a href="https://github.com/coconauts/watchduino2/tree/master/schema">on the Github repo</a>.
+In the future we would like to try out Eagle though.</p>
+
+<p>By sacrificing the buzzer (which is not really very useful having the vibrator motor) and the USB charching module (to be replaced by a custom connector, as commercial smartwatches usually have) we were able to make our PCB exactly 1 square inch in area. Pretty sweet!</p>
+
+<p><img src='https://farm6.staticflickr.com/5788/21719276463_73d93089ea_o_d.png'/></p>
+
+<p>Being able to mount all the electronics in this small
+area mean there&rsquo;s no longer the need to spread them across the strap as they were before. The whole design is
+completely compact, and small enough to fit in it&rsquo;s
+entirety into a watch head; battery and everything.</p>
+
+<p>In consequence, we redesigned our 3D case into a simpler
+shape, looking now very much like a conventional watch!</p>
+
+<p><img src=https://farm6.staticflickr.com/5640/21719246863_26ed9e4423_m_d.jpg' /></p>
+
+<p>We are cheating a little bit, because we are reusing
+<a href="https://www.decathlon.co.uk/strap-m-swip-watch-strap-black-id_8243023.html">an existing strap from a Geonaute watch</a>.
+These watches are sold at Decathlon stores, and just
+happen to have a so handy sliding mechanism for
+interchangeable straps.</p>
+
+<p><img src=https://farm6.staticflickr.com/5660/22154594199_2a668aec02_m_d.jpg' /></p>
+
+<p>So we designed our new 3D case
+with the same shape, and made it compatible with the
+Geonatue straps. Once we figure out how to print with
+flexible filament we&rsquo;ll replicate the strap with the
+same connector.</p>
+
+<p>There&rsquo;s just one thing missing: our sexy new prototype
+can&rsquo;t be functional until the PCB is printed (the image
+above I&rsquo;m afraid is a dramatization with a screenshot
+pasted on it). Printing PCBs can be done manually, but it&rsquo;s handier, better, and often cheaper to just
+<a href="http://hackaday.com/2015/09/21/why-are-you-still-making-pcbs/">get a manufacturer to do the job</a>.</p>
+
+<p>When you design a PCB, either with Fritzing, Eagle, or
+other software, you can export the result as <em>Gerber files</em>,
+which contain all the different layers of your design.
+You can provide any PCB manufacturer with this format,
+and they&rsquo;ll be able to fabricate a production-quality
+version of your board.</p>
+
+<p>So we&rsquo;ve done just that: we ordered a 3-board batch of PCBs to
+<a href="https://oshpark.com/">OSH Park</a>, for the outrageous price of just £1 each. We can&rsquo;t wait for them to arrive and see if we can get our first mini production-run of Watchduinos!</p>
+]]></content>
+</entry>
+
+</feed>

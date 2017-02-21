@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: pebble | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/pebble/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2017-02-21T21:00:06+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Control energenie with Pebble]]></title>
+<link href="http://coconauts.net/blog/2017/02/15/control-energenie-with-pebble/"/>
+<updated>2017-02-15T10:42:19+00:00</updated>
+<id>http://coconauts.net/blog/2017/02/15/control-energenie-with-pebble</id>
+<content type="html"><![CDATA[<p>Last year I got a cheap Pebble smartwatch
+<a href="https://twitter.com/rephus/status/806522854699372546">just days before the company was sold to Fitbit</a></p>
+
+<p>One of the reasons was to play with it building our custom apps,
+so we built an app to control our Energenie sockets from the watch,
+sending HTTP requests to a Raspberry PI with the official radio module from Energenie.</p>
+
+<p>All you need, apart form the pebble is a Raspberry PI to send the radio signal from a REST API to a Energenie socket.
+Check how to do it <a href="http://coconauts.net/blog/2016/04/15/energinie-and-raspberry-pi-setup/">on our previous post</a>.</p>
+
+<p>You can see it in action <a href="https://twitter.com/rephus/status/810630836697649152">here</a>.</p>
+
+<!--more-->
+
+
+
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Turning on Christmas from my pebble watch app and energenie sockets. <a href="https://t.co/XvtuQGs6h0">pic.twitter.com/XvtuQGs6h0</a></p>&mdash; Javi Rengel (@rephus) <a href="https://twitter.com/rephus/status/810630836697649152">December 18, 2016</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>The source code is availabe on <a href="https://github.com/rephus/pebble-energenie">this repo</a></p>
+
+<p>We might try to build a game using the gyroscope in the future,
+do you have any other ideas?</p>
+]]></content>
+</entry>
+
+</feed>
