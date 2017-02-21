@@ -31,11 +31,18 @@ a Raspberry PI or even an Arduino/ESP8266 and a cheap radio module.
 
 ## Smart staircase lights
 
-Check on [Twitter](https://twitter.com/rephus/status/830460205699854336) what we build with an Arduino, a relay and 2 infrarred sensors.
+For a long time, we’ve been turning on the lights at the beginning the staircase, just to turn them off when we reach another floor.
+
+But instead, we built a simple system to turn them ON automatically when you are going upstairs or downstairs, just by using a couple of IR proximity sensors, a relay and an Arduino Pro Mini, to control the timing.
+
+Featured on [Instructables](https://www.instructables.com/id/Smart-Staircase-LED-Lighting/) !!
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Smart staircase LED lighting with <a href="https://twitter.com/hashtag/Arduino?src=hash">#Arduino</a> and IR sensors <a href="https://t.co/ns5zh2r8tQ">pic.twitter.com/ns5zh2r8tQ</a></p>&mdash; Javi Rengel (@rephus) <a href="https://twitter.com/rephus/status/830460205699854336">February 11, 2017</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
+### Related posts
+
+* [Smart Staircase LED Lighting With Arduino and IR Sensors](http://coconauts.net/blog/2017/02/21/stair-lights/)
 
 ## Lightning-dodge-O-matic
 

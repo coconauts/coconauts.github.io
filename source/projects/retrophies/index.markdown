@@ -7,7 +7,7 @@ sharing: true
 footer: true
 ---
 
-<img src="/projects/retrophies/retrophies.png" class="screenshot" />
+<img src="/projects/retrophies/retrophies.jpg" />
 
 Retrophies is an attempt to bring trophies/achievements to classic console games, running on an emulator. The first prototype implements some achievements on top of the unhacked rom of Super Mario Bros for NES.
 

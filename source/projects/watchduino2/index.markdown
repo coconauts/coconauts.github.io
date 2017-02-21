@@ -11,7 +11,6 @@ A smartwatch powered with Arduino, and a revision our previous [Watchduino proje
 
 <img src='https://farm6.staticflickr.com/5717/21815509489_5531e2b080_z_d.jpg'/>
 <img src='https://farm1.staticflickr.com/772/22314247456_e69a4e1275_z_d.jpg'/>
-<!--<img src="/projects/watchduino2/watch1.jpg"  class='screenshot'/>-->
 
 ## Featured in
 

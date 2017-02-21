@@ -1,12 +1,12 @@
 ---
 layout: page
-title: "Bookmark manager"
+title: "Timebomb"
 comments: false
 sidebar: true
 sharing: true
 footer: true
 ---
- 
+
 ## Introduction
 
 This game was developed in less than 48 hours for Ludum Dare #27. A big wave of 10 seconds time bombs are going to kill that cute rabbit, you must save him.

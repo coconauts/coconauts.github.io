@@ -3,8 +3,8 @@ layout: post
 title: "Coconauts Podcast Pilot (en español)"
 date: 2017-02-07 20:37:11 +0000
 comments: true
-keywords: podcast,español
-categories: general
+keywords: podcast,español,oculus,zenimax,tinkerboard,libretaxi,scalebound,masters of doom,jukedeck
+categories: podcast
 tags: coconauts podcast español
 published: true
 ---

@@ -3,8 +3,8 @@ layout: post
 title: "Coconauts Podcast S1E1 (en español)"
 date: 2017-02-19 20:00:14 +0000
 comments: true
-keywords: podcast,español
-categories: general
+keywords: podcast,español,gitlab,gameband,rethinkdb,cloud spanner,jukedeck
+categories: podcast
 tags: coconauts podcast español
 published: true
 ---
