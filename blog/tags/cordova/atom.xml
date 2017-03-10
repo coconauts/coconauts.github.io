@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: cordova | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/cordova/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2017-03-10T21:38:29+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Notification Listener plugin for Android with Cordova]]></title>
+<link href="http://coconauts.net/blog/2015/10/13/notification-listener-android-cordova/"/>
+<updated>2015-10-13T20:16:34+00:00</updated>
+<id>http://coconauts.net/blog/2015/10/13/notification-listener-android-cordova</id>
+<content type="html"><![CDATA[<p>When we were developing <a href="/projects/watchduino2">Watchduino2</a> we required to forward messages for all notifications we receive in our phone by using
+the <a href="https://developer.android.com/reference/android/service/notification/NotificationListenerService.html">NotificationListenerService</a> available on Android.</p>
+
+<p>We managed to do this in the first version of our companion app on native code, unfortunatelly, we realised this feature was not available <em>yet</em> on Cordova, the new framework we use for building
+our cool responsive companion app.</p>
+
+<p>The solution? Roll our own Cordova plugin to provide this functionality!</p>
+
+<!-- more-->
+
+
+<h3>How it works</h3>
+
+<p>The basic idea of this plugin is to create a callback from JavaScript that will be triggered everytime you get a notification
+on Android.</p>
+
+<h3>How to install</h3>
+
+<p>Installing this plugin is really simple, and it&rsquo;s like installing any other plugin on Cordova.</p>
+
+<pre><code>cordova plugin add https://github.com/coconauts/NotificationListener-cordova
+</code></pre>
+
+<h3>How to use</h3>
+
+<p>Simply  create a listener from javascript using this method inside the Cordova initialization code.</p>
+
+<pre><code>notificationListener.listen(onNotification,onError);
+</code></pre>
+
+<p>Sample code:</p>
+
+<p>```
+var app = {</p>
+
+<pre><code>initialize: function() {
+    this.bindEvents();
+},
+bindEvents: function() {
+  document.addEventListener('deviceready', this.onDeviceReady, false);
+},
+onDeviceReady: function() {
+  log("Cordova start", "Device ready");
+
+  notificationListener.listen(function(n){
+      console.log("Received notification " + JSON.stringify(n) );
+    }, function(e){
+      console.log("Notification Error " + e);
+    })
+}
+</code></pre>
+
+<p>};</p>
+
+<p>app.initialize();</p>
+
+<p>```</p>
+
+<h3>Disclaimer</h3>
+
+<p>As far as I know, listening for notifications is only supported by Android phones (from version 4.0), and we haven&rsquo;t done any IOS development in the past, so I don&rsquo;t thing is
+possible to port this plugin to IOS. But feel free to contribute to our project if you think it can be extended to other platforms.</p>
+]]></content>
+</entry>
+
+</feed>

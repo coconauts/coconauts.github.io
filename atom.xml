@@ -1,0 +1,1268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Coconauts]]></title>
+  <link href="http://coconauts.net/atom.xml" rel="self"/>
+  <link href="http://coconauts.net/"/>
+  <updated>2017-03-10T21:38:29+00:00</updated>
+  <id>http://coconauts.net/</id>
+  <author>
+    <name><![CDATA[Coconauts]]></name>
+    <email><![CDATA[admin@coconauts.net]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Control Energenie With ESP8266]]></title>
+    <link href="http://coconauts.net/blog/2017/03/10/control-energenie-with-esp8266/"/>
+    <updated>2017-03-10T21:30:19+00:00</updated>
+    <id>http://coconauts.net/blog/2017/03/10/control-energenie-with-esp8266</id>
+    <content type="html"><![CDATA[<p>We recently showed you how to control <a href="http://coconauts.net/blog/2017/02/15/control-energenie-with-pebble/">Energenie sockets using Pebble smartwatch app</a>,
+thanks to a <a href="http://coconauts.net/blog/2016/04/15/energinie-and-raspberry-pi-setup/">Raspberry PI</a> REST API.</p>
+
+<p>But we recently found this <a href="https://github.com/cjdell/esp-rf-switch">Github repo</a>
+about how to use a generic 433Mhz radio module with an ESP8266  to control Energenie sockets.</p>
+
+<!--more-->
+
+
+<p>So we decided to replace our Raspberry setup with this cheaper, smaller, portable and scalabe solution.</p>
+
+<p>All you need is an ESP8266 and this tiny and cheap radio module</p>
+
+<p><img src="http://coconauts.net/images/posts/2017-02-16-control-energenie-esp8266/radio-transmitter.png" alt="radio-transmitter" /></p>
+
+<p>In order to build this</p>
+
+<p><img src="http://coconauts.net/images/posts/2017-02-16-control-energenie-esp8266/hardware.png" alt="hardware" /></p>
+
+<p>The detailed guide and schemas about how to do it is on our <a href="https://github.com/rephus/esp8266-energenie-switch">own Github repo</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Smart Staircase LED Lighting With Arduino and IR Sensors]]></title>
+    <link href="http://coconauts.net/blog/2017/02/21/stair-lights/"/>
+    <updated>2017-02-21T20:52:19+00:00</updated>
+    <id>http://coconauts.net/blog/2017/02/21/stair-lights</id>
+    <content type="html"><![CDATA[<p>For a long time, we&rsquo;ve been turning on the lights at the beginning the staircase,
+just to turn them off when we reach another floor.</p>
+
+<p>But instead, we built a simple system to turn them ON automatically when you are going upstairs or downstairs,
+just by using a couple of IR proximity sensors, a relay and an Arduino Pro Mini, to control the timing.</p>
+
+<p>Featured on <a href="https://www.instructables.com/id/Smart-Staircase-LED-Lighting/">Instructables</a> !!</p>
+
+<!--more-->
+
+
+
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Smart staircase LED lighting with <a href="https://twitter.com/hashtag/Arduino?src=hash">#Arduino</a> and IR sensors <a href="https://t.co/ns5zh2r8tQ">pic.twitter.com/ns5zh2r8tQ</a></p>&mdash; Javi Rengel (@rephus) <a href="https://twitter.com/rephus/status/830460205699854336">February 11, 2017</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>If you want to build your own, just follow our guide.</p>
+
+<h2>Shopping list</h2>
+
+<ul>
+<li><a href="https://www.aliexpress.com/item/Smart-car-robot-E18-D80NK-infrared-obstacle-avoidance-sensor-proximity-switch-3-80cm-adjustable-Free-Shipping/32396659854.html">IR proximity sensor</a></li>
+<li><a href="https://www.aliexpress.com/item/Free-Shipping-new-version-2pcs-lot-Pro-Mini-328-Mini-ATMEGA328-5V-16MHz-for-Arduino/1731218090.html">Arduino Pro Mini</a></li>
+<li><a href="https://www.aliexpress.com/item/1pc-1-Channel-5V-Optocoupler-Driver-Relay-Module-High-Level-for-Arduino-top-quality/32638202870.html">Relay</a></li>
+<li><a href="https://www.aliexpress.com/item/Free-Shipping-SMD5050-12V-flexible-light-60-leds-m-LED-strips-5m-lot-White-Blue-Green/1599651146.html">5m LED strip</a></li>
+</ul>
+
+
+<p>You can optionally use a power converter (from 12v to 5v) if you want to take advantage of the 12v input to power your Arduino and sensors.</p>
+
+<ul>
+<li><a href="https://www.aliexpress.com/item/1Pc-DC-to-DC-12V-to-5V-3A-15W-Auto-Car-Power-Converter-Regulator-Adapter-for/32702720703.html">12v to 5v converter</a></li>
+</ul>
+
+
+<h2>Schema</h2>
+
+<p><img src="http://coconauts.net/images/posts/2017-02-18-stair-lights/schema.png" alt="schema" /></p>
+
+<h2>Arduino code</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#define IR_RECEIVER 8
+</span><span class='line'>#define RELAY 10
+</span><span class='line'>
+</span><span class='line'>void setup() {
+</span><span class='line'>  // initialize digital pin LED_BUILTIN as an output.
+</span><span class='line'>    pinMode(RELAY, OUTPUT);
+</span><span class='line'>  digitalWrite(RELAY, LOW);
+</span><span class='line'>
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>// the loop function runs over and over again forever
+</span><span class='line'>void loop() {
+</span><span class='line'>
+</span><span class='line'>  int sensorValue = digitalRead(IR_RECEIVER);
+</span><span class='line'>  // print out the value you read:
+</span><span class='line'>  delay(10);        // delay in between reads for stability
+</span><span class='line'>
+</span><span class='line'>  if (sensorValue == 0 ) {
+</span><span class='line'>    digitalWrite(RELAY, HIGH);   // turn the LED on (HIGH is the voltage level)
+</span><span class='line'>    delay(5000);
+</span><span class='line'>  }
+</span><span class='line'>  else {
+</span><span class='line'>    digitalWrite(RELAY, LOW);
+</span><span class='line'>
+</span><span class='line'>  }
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Images</h2>
+
+<p><img src="http://coconauts.net/images/posts/2017-02-18-stair-lights/arduino.jpg" alt="arduino" />
+<img src="http://coconauts.net/images/posts/2017-02-18-stair-lights/upstairs.jpg" alt="upstairs" />
+<img src="http://coconauts.net/images/posts/2017-02-18-stair-lights/downstairs.jpg" alt="downstairs" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Coconauts Podcast S1E1 (en Español)]]></title>
+    <link href="http://coconauts.net/blog/2017/02/19/coconauts-podcast-e1s1-en-espanol/"/>
+    <updated>2017-02-19T20:00:14+00:00</updated>
+    <id>http://coconauts.net/blog/2017/02/19/coconauts-podcast-e1s1-en-espanol</id>
+    <content type="html"><![CDATA[<p>Note: today&rsquo;s post is about our podcast in spanish.
+But don&rsquo;t worry, we&rsquo;ll be back to english on the next post!</p>
+
+<p>¡Ya está aqui la segunda entrega de nuestro podcast!</p>
+
+<iframe id='audio_17098008' frameborder='0' allowfullscreen='' scrolling='no' height='200' style='border:1px solid #EEE; box-sizing:border-box; width:100%;' src="https://www.ivoox.com/player_ej_17098008_4_1.html?c1=ff6600"></iframe>
+
+
+<p>En este episodio hablamos de:</p>
+
+<ul>
+<li>Noticias: el outage de Gitlab, Steam cierra Greenlight, RethinkDB y Cloud Spanner, Gameband.</li>
+<li>Yo he venido aquí a hablar de mi libro: la psicología de los objetos cotidianos de Don Norman</li>
+<li>Debate: frameworks de desarrollo de videojuegos</li>
+</ul>
+
+
+<!--more-->
+
+
+<p>Enlaces relacionados:</p>
+
+<ul>
+<li><a href="https://about.gitlab.com/2017/02/10/postmortem-of-database-outage-of-january-31/">Gitlab outage postmortem</a></li>
+<li><a href="http://steamcommunity.com/greenlight/discussions/18446744073709551615/133256758580075301/">Steam greenlight</a></li>
+<li><a href="https://rethinkdb.com/blog/rethinkdb-joins-linux-foundation/">RethinkDB</a></li>
+<li><a href="https://cloudplatform.googleblog.com/2017/02/introducing-Cloud-Spanner-a-global-database-service-for-mission-critical-applications.html">Google Cloud Spanner</a></li>
+<li><a href="https://www.kickstarter.com/projects/gameband/gameband-the-first-smartwatch-for-gamers?ref=category_newest">Gameband</a></li>
+<li><a href="https://www.youtube.com/watch?v=CtgR1YiwnEY">Watchduino</a></li>
+<li><a href="https://www.amazon.es/psicolog%C3%ADa-objetos-cotidianos-Serie-Media/dp/8415042019">La psicologia de los objetos cotidianos</a></li>
+<li><a href="http://coconauts.net/blog/2017/01/09/2d-game-framework-comparison/">Comparativa de game frameworks</a></li>
+</ul>
+
+
+<p>Música de <a href="http://jukedeck.com">http://jukedeck.com</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[RPS: A Phaser.io Simple RTS]]></title>
+    <link href="http://coconauts.net/blog/2017/02/18/rps-a-phaser-io-simple-rts/"/>
+    <updated>2017-02-18T11:57:19+00:00</updated>
+    <id>http://coconauts.net/blog/2017/02/18/rps-a-phaser-io-simple-rts</id>
+    <content type="html"><![CDATA[<p>If you follow <a href="http://twitter.com/rephus">me</a> or <a href="http://twitter.com/coconauts">Coconauts</a> on Twitter, you might have seen some
+GIFs about an RTS game we&rsquo;re developing on Phaser.io.</p>
+
+<p>Codename: RPS (Rock, Paper, Scissors). Is a simple RTS (Real Strategy Game)
+we&rsquo;re building using the Phaser.io framework for HTML5 games.</p>
+
+<p>We aim to have a fun and complete game, with campaign, multiplayer
+and with a fresh interface, compatible with mobile and touch devices.</p>
+
+<p>The main selling point are its simple but effective mechanics.
+Forget about hundreds of different units with their own powerups, multiple buildings,
+or advanced research.</p>
+
+<!--more-->
+
+
+<p>This is some of the recent progress we&rsquo;ve made in the last 2-3 weeks.</p>
+
+<ul>
+<li>Minimap</li>
+</ul>
+
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Added a Minimap (bottom-rigth) to our game. It was easier than I expected <a href="https://twitter.com/hashtag/gamedev?src=hash">#gamedev</a> <a href="https://twitter.com/hashtag/phaserIo?src=hash">#phaserIo</a> <a href="https://t.co/A0ATvb5ZxM">pic.twitter.com/A0ATvb5ZxM</a></p>&mdash; Coconauts (@coconauts) <a href="https://twitter.com/coconauts/status/826728173996015616">February 1, 2017</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<ul>
+<li>Simple AI, sight area, and new map</li>
+</ul>
+
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Big progress on our RTS game in <a href="https://twitter.com/hashtag/phaserio?src=hash">#phaserio</a>: simple AI, sight area, new map and more! <a href="https://twitter.com/hashtag/gamedev?src=hash">#gamedev</a> <a href="https://t.co/jnxwofvm5c">pic.twitter.com/jnxwofvm5c</a></p>&mdash; Coconauts (@coconauts) <a href="https://twitter.com/coconauts/status/826161939478872069">January 30, 2017</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<ul>
+<li>Emojis dialogs</li>
+</ul>
+
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Express yourself with in-game emojis <a href="https://twitter.com/hashtag/gamedev?src=hash">#gamedev</a> <a href="https://t.co/l6RoYpmrrm">pic.twitter.com/l6RoYpmrrm</a></p>&mdash; Javi Rengel (@rephus) <a href="https://twitter.com/rephus/status/825682597170786304">January 29, 2017</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>If you want to follow these updates closely, checkout our <a href="http://coconauts.net/projects/rps">Project page</a></p>
+
+<p>And let us know if you want to give us feedback about how to improve the game !</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Smart Staircase LED Lighting With Arduino and IR Sensors]]></title>
+    <link href="http://coconauts.net/blog/2017/02/18/stair-lights/"/>
+    <updated>2017-02-18T10:42:19+00:00</updated>
+    <id>http://coconauts.net/blog/2017/02/18/stair-lights</id>
+    <content type="html"><![CDATA[<p>For a long time, we&rsquo;ve been turning on the lights at the beginning the staircase,
+just to turn them off when we reach another floor.</p>
+
+<p>But instead, we built a simple system to turn them ON automatically when you are going upstairs or downstairs,
+just by using a couple of IR proximity sensors, a relay and an Arduino Pro Mini, to control the timing.</p>
+
+<!--more-->
+
+
+
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Smart staircase LED lighting with <a href="https://twitter.com/hashtag/Arduino?src=hash">#Arduino</a> and IR sensors <a href="https://t.co/ns5zh2r8tQ">pic.twitter.com/ns5zh2r8tQ</a></p>&mdash; Javi Rengel (@rephus) <a href="https://twitter.com/rephus/status/830460205699854336">February 11, 2017</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>If you want to build your own, just follow our guide.</p>
+
+<h2>Shopping list</h2>
+
+<ul>
+<li><a href="https://www.aliexpress.com/item/Smart-car-robot-E18-D80NK-infrared-obstacle-avoidance-sensor-proximity-switch-3-80cm-adjustable-Free-Shipping/32396659854.html">IR proximity sensor</a></li>
+<li><a href="https://www.aliexpress.com/item/Free-Shipping-new-version-2pcs-lot-Pro-Mini-328-Mini-ATMEGA328-5V-16MHz-for-Arduino/1731218090.html">Arduino Pro Mini</a></li>
+<li><a href="https://www.aliexpress.com/item/1pc-1-Channel-5V-Optocoupler-Driver-Relay-Module-High-Level-for-Arduino-top-quality/32638202870.html">Relay</a></li>
+<li><a href="https://www.aliexpress.com/item/Free-Shipping-SMD5050-12V-flexible-light-60-leds-m-LED-strips-5m-lot-White-Blue-Green/1599651146.html">5m LED strip</a></li>
+</ul>
+
+
+<p>You can optionally use a power converter (from 12v to 5v) if you want to take advantage of the 12v input to power your Arduino and sensors.</p>
+
+<ul>
+<li><a href="https://www.aliexpress.com/item/1Pc-DC-to-DC-12V-to-5V-3A-15W-Auto-Car-Power-Converter-Regulator-Adapter-for/32702720703.html">12v to 5v converter</a></li>
+</ul>
+
+
+<h2>Schema</h2>
+
+<p><img src="http://coconauts.net/images/posts/2017-02-18-stair-lights/schema.png" alt="schema" /></p>
+
+<h2>Arduino code</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#define IR_RECEIVER 8
+</span><span class='line'>#define RELAY 10
+</span><span class='line'>
+</span><span class='line'>void setup() {
+</span><span class='line'>  // initialize digital pin LED_BUILTIN as an output.
+</span><span class='line'>    pinMode(RELAY, OUTPUT);
+</span><span class='line'>  digitalWrite(RELAY, LOW);
+</span><span class='line'>
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>// the loop function runs over and over again forever
+</span><span class='line'>void loop() {
+</span><span class='line'>
+</span><span class='line'>  int sensorValue = digitalRead(IR_RECEIVER);
+</span><span class='line'>  // print out the value you read:
+</span><span class='line'>  delay(10);        // delay in between reads for stability
+</span><span class='line'>
+</span><span class='line'>  if (sensorValue == 0 ) {
+</span><span class='line'>    digitalWrite(RELAY, HIGH);   // turn the LED on (HIGH is the voltage level)
+</span><span class='line'>    delay(5000);
+</span><span class='line'>  }
+</span><span class='line'>  else {
+</span><span class='line'>    digitalWrite(RELAY, LOW);
+</span><span class='line'>
+</span><span class='line'>  }
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Images</h2>
+
+<p><img src="http://coconauts.net/images/posts/2017-02-18-stair-lights/arduino.jpg" alt="arduino" />
+<img src="http://coconauts.net/images/posts/2017-02-18-stair-lights/upstairs.jpg" alt="upstairs" />
+<img src="http://coconauts.net/images/posts/2017-02-18-stair-lights/downstairs.jpg" alt="downstairs" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Control Energenie With Pebble]]></title>
+    <link href="http://coconauts.net/blog/2017/02/15/control-energenie-with-pebble/"/>
+    <updated>2017-02-15T10:42:19+00:00</updated>
+    <id>http://coconauts.net/blog/2017/02/15/control-energenie-with-pebble</id>
+    <content type="html"><![CDATA[<p>Last year I got a cheap Pebble smartwatch
+<a href="https://twitter.com/rephus/status/806522854699372546">just days before the company was sold to Fitbit</a></p>
+
+<p>One of the reasons was to play with it building our custom apps,
+so we built an app to control our Energenie sockets from the watch,
+sending HTTP requests to a Raspberry PI with the official radio module from Energenie.</p>
+
+<p>All you need, apart form the pebble is a Raspberry PI to send the radio signal from a REST API to a Energenie socket.
+Check how to do it <a href="http://coconauts.net/blog/2016/04/15/energinie-and-raspberry-pi-setup/">on our previous post</a>.</p>
+
+<p>You can see it in action <a href="https://twitter.com/rephus/status/810630836697649152">here</a>.</p>
+
+<!--more-->
+
+
+
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Turning on Christmas from my pebble watch app and energenie sockets. <a href="https://t.co/XvtuQGs6h0">pic.twitter.com/XvtuQGs6h0</a></p>&mdash; Javi Rengel (@rephus) <a href="https://twitter.com/rephus/status/810630836697649152">December 18, 2016</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>The source code is availabe on <a href="https://github.com/rephus/pebble-energenie">this repo</a></p>
+
+<p>We might try to build a game using the gyroscope in the future,
+do you have any other ideas?</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Coconauts Podcast Pilot (en Español)]]></title>
+    <link href="http://coconauts.net/blog/2017/02/07/coconauts-podcast-pilot/"/>
+    <updated>2017-02-07T20:37:11+00:00</updated>
+    <id>http://coconauts.net/blog/2017/02/07/coconauts-podcast-pilot</id>
+    <content type="html"><![CDATA[<p>Note: today&rsquo;s post is about a podcast we&rsquo;ve started in spanish.
+But don&rsquo;t worry, we&rsquo;ll be back to english on the next post!</p>
+
+<p>Con ustedes, ¡el episodio piloto del podcast de Coconauts!</p>
+
+<iframe id='audio_16881889' frameborder='0' allowfullscreen='' scrolling='no' height='200' style='border:1px solid #EEE; box-sizing:border-box; width:100%;' src="https://gb.ivoox.com/es/player_ej_16881889_4_1.html?c1=ff6600"></iframe>
+
+
+<p>Ultimamente, dado que vamos al trabajo en un trayecto largo en tren, nos hemos
+enganchado a escuchar podcasts (mayormente de videojuegos). Sin embargo,
+no hemos encontrado ningun podcast de tecnologia o desarrollo en español
+que nos guste, así que nos hemos planteado ¿por qué no intentar llenar el hueco?</p>
+
+<!--more-->
+
+
+<p>Nuestro plan con el podcast es un poco tratar los mismos temas que en el blog
+(desarrollo software, hardware y de juegos) con una serie de seciones
+mas o menos fijas.</p>
+
+<p>En este episodio piloto hablamos de:</p>
+
+<ul>
+<li>Noticias: Zenimax vs Oculus, Asus Tinkerboard, Libretaxi y cancelacion de Scalebound.</li>
+<li>Yo he venido aqui a hablar de mi libro: Masters of Doom</li>
+<li>Debate: creatividad computacional</li>
+</ul>
+
+
+<p>¡Esperamos que lo disfruteis! No dudeis en dejarnos comentarios aqui mismo,
+en nuestro email, o en nuestra cuenta de twitter <a href="https://twitter.com/coconauts">@coconauts</a>.</p>
+
+<p>Enlaces relacionados:</p>
+
+<ul>
+<li><a href="http://www.polygon.com/2017/2/1/14474198/oculus-lawsuit-verdict">Oculus vs Zenimax</a></li>
+<li><a href="https://www.engadget.com/2017/01/23/asus-tinker-board/">Asus Tinkerboard</a></li>
+<li><a href="https://medium.com/@romanpushkin/how-i-made-uber-like-app-in-no-time-with-javascript-and-secret-sauce-94ef9120c7f6#.cc6jss25p">Libretaxi (making of)</a></li>
+<li><a href="http://uk.ign.com/articles/2017/01/11/scalebound-cancellation-developers-comment-on-the-situation">Desarrolladores de scalebound sobre su cancelacion</a></li>
+<li><a href="https://www.amazon.es/Masters-Doom-Created-Transformed-Culture/dp/0749924896/ref=sr_1_1?ie=UTF8&amp;qid=1486501773&amp;sr=8-1&amp;keywords=masters+of+doom">Masters of Doom</a></li>
+<li><a href="https://www.youtube.com/watch?v=YY2FPWWc_Sk">Jukedeck @ London Techcrunch Disrupt 2015</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[2D Game Framework Comparison: Defold vs Phaser vs Game Maker]]></title>
+    <link href="http://coconauts.net/blog/2017/01/09/2d-game-framework-comparison/"/>
+    <updated>2017-01-09T10:42:19+00:00</updated>
+    <id>http://coconauts.net/blog/2017/01/09/2d-game-framework-comparison</id>
+    <content type="html"><![CDATA[<p>We wanted to start a building new 2D game ideas we have in mind, and we thought
+our favorite 3D platform so far (Unity3D) was not optimal enough to build a fully 2D game.
+And despite having experience with some other frameworks like LibGDX (as we built
+<a href="http://coconauts.net/projects/timebomb2">Exploding Bunnies</a> ) along with some other Ludum Dare games,
+we wanted to see if there is something better.</p>
+
+<p>After some investigation, we narrowed the list to Defold vs Phaser.io vs Game Maker,
+ so we decided to give them a try by building a quick Pong demo in those 3 frameworks,
+and gather some conclusions before we start building our next 2D game.</p>
+
+<!--more-->
+
+
+<h2>Defold</h2>
+
+<p>Propietary framework made by King (experts on mobile games). They have built a
+promising editor with a lot of great features, like version control and easy deployment to multiple platforms.
+Although it&rsquo;s still on Beta, it sounds like this might be a trully solid option.</p>
+
+<p>It took me some time to get used to the new concepts like the atlas and the collection, plus all the properties.
+After a while, the whole framework reminded me of Unity3D, but simpler.
+On the other hand, the current editor, which is based on Eclipse, gave me bad memories;
+fortunately they&rsquo;re moving  to a <a href="http://www.defold.com/roadmap/">cloure based editor</a> now.
+I got blocked during almost an hour because of this
+<a href="https://forum.defold.com/t/scaling-collision-object-when-game-object-is-scaled-def-521/547">scaled collision object bug</a>
+until I discovered the useful debug option on game settings.</p>
+
+<iframe src='http://html5.coconauts.net/2d-framework-comparison/defold/' width=650 height=350></iframe>
+
+
+<ul>
+<li><p><a href="http://www.defold.com/showcase/">Showcase</a></p></li>
+<li><p>Language: Lua</p></li>
+<li><p>Getting started: <a href="http://www.defold.com/tutorials/getting-started/">http://www.defold.com/tutorials/getting-started/</a></p></li>
+</ul>
+
+
+<p><img src='http://coconauts.net/images/posts/2017-01-09-2d-framework/defold-editor.png'/></p>
+
+<h4>Pros:</h4>
+
+<ul>
+<li>Free</li>
+<li>Visual editor</li>
+<li>Available on Linux</li>
+<li>Multiplatform</li>
+<li>Performance</li>
+<li>Version control friendly (+integrated)</li>
+<li>Integrated game analytics</li>
+</ul>
+
+
+<h4>Cons:</h4>
+
+<ul>
+<li>Propietary solution</li>
+<li>Still beta</li>
+<li><p>Found bugs while building demo</p></li>
+<li><p>Score:  7 / 10</p></li>
+</ul>
+
+
+<p>Get our demo <a href="https://github.com/rephus/pong-sample-defold">here</a></p>
+
+<h2>Phaser.io</h2>
+
+<p>Pretty popular simple opensource framework  with a great community and tons of examples.</p>
+
+<p>While building this demo, I found it was surprisingly easy to start with,
+plus the documentation and the API was very clear and advanced.</p>
+
+<p>Things like <code>game.world.centerX</code> instead of doing <code>game.world.width / 2</code> or
+<code>body.collideWorldBounds = True</code> really impressed me.</p>
+
+<iframe src='http://html5.coconauts.net/2d-framework-comparison/phaser/' width=650 height=350></iframe>
+
+
+<ul>
+<li><p>Language: Javascript</p></li>
+<li><p>Getting started: <a href="http://phaser.io/tutorials/getting-started">http://phaser.io/tutorials/getting-started</a></p></li>
+<li><p>Pong tutorial: <a href="https://www.youtube.com/watch?v=3egKs7b86j0">https://www.youtube.com/watch?v=3egKs7b86j0</a></p></li>
+</ul>
+
+
+<h4>Pros:</h4>
+
+<ul>
+<li>Open source (but with a company behind it)</li>
+<li>Available on Linux</li>
+<li>HTML5 (multiplatform)</li>
+<li>Great community</li>
+<li>Version control capabilities</li>
+</ul>
+
+
+<h4>Cons:</h4>
+
+<ul>
+<li>No official Visual editor</li>
+<li><p>No direct Android exporting (cordova/cocoon required)</p></li>
+<li><p>Score: 8 / 10</p></li>
+</ul>
+
+
+<p>Get our demo <a href="https://github.com/rephus/pong-sample-phaser">here</a></p>
+
+<h2>Game Maker</h2>
+
+<p>Probably one of the oldests game frameworks and still pretty popular,
+I remember using this like 10 years ago, before I knew anything about programming.
+And to be honest, it hasn&rsquo;t changed that much since then.</p>
+
+<p>The fact the free version only allows to generate window executables and
+that the studio only runs on Windows was conclusive enough,
+but also the whole framework is no much different from the others,
+if you know programming.</p>
+
+<p>Some of the best indie games have been made with this framework like:</p>
+
+<ul>
+<li>Spelunky</li>
+<li>Hyper Light Drifter</li>
+<li>Nuclear Throne</li>
+<li><p>Hotline Miami</p></li>
+<li><p>Language: Game Maker Language</p></li>
+<li><p>Getting started: <a href="http://www.yoyogames.com/learn">http://www.yoyogames.com/learn</a></p></li>
+</ul>
+
+
+<p><img src='http://coconauts.net/images/posts/2017-01-09-2d-framework/gamemaker-editor.png'/></p>
+
+<h4>Pros:</h4>
+
+<ul>
+<li>Visual editor</li>
+<li>No programming skills required</li>
+<li>Seems to be the indie industry standard</li>
+</ul>
+
+
+<h4>Cons:</h4>
+
+<ul>
+<li>Propietary solution</li>
+<li>Windows only editor</li>
+<li>No multiplatform (free version)</li>
+<li>Uses its own scripting language</li>
+<li>Version control issues</li>
+<li><p>Slow runnable</p></li>
+<li><p>Score:  3 / 10</p></li>
+</ul>
+
+
+<h2>Conclussions</h2>
+
+<p>We decided Phaser.io to be our next 2D framework. Of the 3 it was the faster and easiest to get started with. Defold sounds like with some polish it might be a sounder solution to use for real projects (for example, the mobile export is managed a lot better, or the integrated analytics are a bit plus); but the bugs we found on Defold while building this simple demo scared us a bit. Once it matures we might give it another go, but for now Phaser fits the bill for our purposes.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Coconauts 2016 Retrospective]]></title>
+    <link href="http://coconauts.net/blog/2016/12/30/coconauts-2016-retrospective/"/>
+    <updated>2016-12-30T21:11:39+00:00</updated>
+    <id>http://coconauts.net/blog/2016/12/30/coconauts-2016-retrospective</id>
+    <content type="html"><![CDATA[<p>Another year went by, and this is the third that we find ourselves writing
+a retrospective in the blog, not bad eh?
+<a href="https://www.youtube.com/watch?v=Z04M6NhkIKk">2016 hasn&rsquo;t been too cheerful</a>
+(at least not for fans of the many stars that have left us this year,
+or for people with progressive political views in general).</p>
+
+<p>When it comes to Coconauts however it didn&rsquo;t go too bad:</p>
+
+<ul>
+<li>Perhaps the biggest highlight of the year is the
+<a href="http://retrophies.win/">Retrophies project</a>. Featured in
+<a href="https://news.ycombinator.com/item?id=12205560">HackerNews</a> and
+<a href="https://www.reddit.com/r/emulation/comments/4voi81/retrophies_achievements_system_for_emulators/">Reddit</a>.
+We started it as an experiment that turned out to be successful,
+and we are still expanding it (for instance, the latest addition was a
+<a href="http://coconauts.net/blog/2016/12/29/how-improve-nintendo/">multiplayer mario game using websockets</a>).</li>
+<li>We&rsquo;ve been experimenting with the ESP8266 chip, as a more versatile,
+powerful and cheaper alternative to Arduino, and we started
+<a href="http://coconauts.net/blog/2016/09/08/smartwatch-prototype-with-esp8266/http://coconauts.net/blog/2016/09/08/smartwatch-prototype-with-esp8266/">migrating Watchduino to the ESP8266</a>.</li>
+<li>A small hack that also turned out to be a hit is the
+<a href="http://coconauts.net/blog/2016/06/13/lightning-dodge-o-matic/">Lightning-dodge-O-matic</a>,
+featured on <a href="http://hackaday.com/2016/06/22/cheating-at-video-games-arduino-edition/http://hackaday.com/2016/06/22/cheating-at-video-games-arduino-edition/">Hackaday</a>!</li>
+<li>We published our <a href="http://coconauts.net/blog/2016/02/04/coconauts-ci-nodejs/">custom mini-CI system</a></li>
+<li>We started the year working on a <a href="http://coconauts.net/blog/2016/01/30/starcraft-mobile-unity3d/http://coconauts.net/blog/2016/01/30/starcraft-mobile-unity3d/">mobile version of Starcraft</a> (which we shortly after stopped working on, but there&rsquo;s still a demo video).</li>
+</ul>
+
+
+<p>Our plans of focusing on game making haven&rsquo;t materialized as much as we would have liked.
+We&rsquo;ve also continued blogging very little during the year; although, there is one
+aspect where we have delivered: more frequent status updates about ongoing projects. Thanks to this,
+we&rsquo;ve shown you some prototyes and smaller projects through the year despite not
+having any big reveals.</p>
+
+<p>So what are our best whishes for 2017? Pretty much the same as the year before:</p>
+
+<ul>
+<li>More games</li>
+<li>More open source</li>
+<li>More frequent blogging</li>
+<li>More awesome</li>
+</ul>
+
+
+<p>See you in 2017, have a good one! =)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to Improve Classic Nintendo Games]]></title>
+    <link href="http://coconauts.net/blog/2016/12/29/how-improve-nintendo/"/>
+    <updated>2016-12-29T10:42:19+00:00</updated>
+    <id>http://coconauts.net/blog/2016/12/29/how-improve-nintendo</id>
+    <content type="html"><![CDATA[<p>Although the Nintendo Mini has been a great success, and the best way of recreating our childhood
+experience with a great collection of classic Nintendo games; There are a lot of things still Nintendo
+can do to our beloved classic games in order to let us play those classic games in a complete new (and refreshing) way. They don&rsquo;t even need to do it on a new old mini console, but on their virtual store on WiiU or NX (switch)</p>
+
+<p><img src="http://coconauts.net/images/posts/2016-12-29-how-improve-nintendo/nes-mini.jpg" alt="achievement"></p>
+
+<!--more-->
+
+
+<p>Some of these ideas have already been proved possible in our <a href="http://retrophies.win">Retrophies</a> project, just by taking the original game, with no ROM hacking involved but just checking the memory values in the emulator, so imagine what Nintendo can do with their original games,
+something they already tried on the great Nes Remix compilation.</p>
+
+<h2>Achievements</h2>
+
+<p>Some people love them, some people hate them, but it&rsquo;s true they are a good way of motivating people
+on playing games again with an objective in mind. Won&rsquo;t you play Super Mario Bros again if I tell you
+you will get an official reward by finishing it ? Maybe the brand new Nintendo coins.</p>
+
+<p><img src="http://coconauts.net/images/posts/2016-12-29-how-improve-nintendo/achievement.png" alt="achievement"></p>
+
+<p>This was the main feature of Retrophies and it was pretty fun to build and play.</p>
+
+<h2>Multiplayer</h2>
+
+<p>Another concept we tested on Retrophies, having the capability of see (or interact) with
+other players in real time while you play.</p>
+
+<p><img src="http://coconauts.net/images/posts/2016-12-29-how-improve-nintendo/multiplayer.png" alt="multiplayer"></p>
+
+<p>Sounds like playing New Super Mario Bros on Super Mario Bros.</p>
+
+<h2>Scoreboards</h2>
+
+<p>Who is the fastest player to finish World 1-1 on Super Mario Bros ? This is a concept we
+are still working on Retrophies.</p>
+
+<p>Nintendo can add official scoreboard to most of their games. I mean, speedrunners
+do this with most Nintendo games already, think about all the crazy Ocarina of Time speedrunnes available, why don&rsquo;t make it official.</p>
+
+<h2>Maker version of classic games</h2>
+
+<p>Remember Mario maker and how fun was to build scenarios on Super Mario ? Then why not integrating
+this function on existing games ? This is also a possibility that we could integrate in
+Retrophies in the future (by adding blocks or items in the screen in memory).</p>
+
+<p>Do you have another idea for twisted classic Nintendo games ?</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Sea-Life: Game for ProcJam 2015]]></title>
+    <link href="http://coconauts.net/blog/2016/10/05/sea-life-at-procjam/"/>
+    <updated>2016-10-05T20:54:19+00:00</updated>
+    <id>http://coconauts.net/blog/2016/10/05/sea-life-at-procjam</id>
+    <content type="html"><![CDATA[<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Procedurally drawn fishies with balanced stats in our <a href="https://twitter.com/hashtag/procjam?src=hash">#procjam</a> entry. Coming next: changing their shape accordingly! <a href="https://t.co/dzoFheVaO1">pic.twitter.com/dzoFheVaO1</a></p>&mdash; Coconauts (@coconauts) <a href="https://twitter.com/coconauts/status/664208953522462720">November 10, 2015</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>On 10 Nov 2015 we posted a procedurally generated game featuring
+websockets for the Procjam 2015 (done only in 2 days). Almost a year ago, we decided to create a post for it, just for the record (see the original post <a href="https://marbu.itch.io/sea-life">here</a>)</p>
+
+<p>Play the game <a href="http://html5.coconauts.net/sealife/">here</a> or check the <a href="https://github.com/coconauts/sea-life">Github repo</a></p>
+
+<!--more-->
+
+
+<h2>Description</h2>
+
+<p>This game attempted to be an iteration on a similar idea that we did for a Ludum Dare, <a href="http://ludumdare.com/compo/ludum-dare-24/?action=preview&amp;uid=16605">&ldquo;Sea Evolution&rdquo;</a></p>
+
+<p>In the game you are sea creature that needs to survive in your ecosystem. You get hungry, you need to eat, and you can lay eggs to perpetuate your species. Different sea creatures have different attributes, which determine who can eat and get eaten by.</p>
+
+<p>Unfortunately we didn&rsquo;t have a lot of time during this week, so we couldn&rsquo;t develop or polish as much as we wanted! Here&rsquo;s what we managed to do:</p>
+
+<h2>Infinite game world</h2>
+
+<p>In the original sea evolution there was no scrolling. But we wanted to make it feel like the endless sea, so in this one we made a scrolling world that gets autopopulated with new fishes as you advance through it.</p>
+
+<p>Our original plan was to emulate a sea bottom, which we would also autopopulate with seaweeds, reefs, or even dark abyss areas, or polluted areas where only poison-resistant fishes would be able to habitate. But we didn&rsquo;t have time for all this! So instead you are just traversing the boring open ocean.</p>
+
+<h2>100% canvas, randomized fish shapes</h2>
+
+<p>Everything is drawn with canvas, no sprites! It&rsquo;s the first time we actually do this sort of thing, and it was challenging but quite fun. This allows for some fun features, such as being able to alter the shape of the fishes programatically. Each fish will randomly be given a distinct color and shape.</p>
+
+<h2>Autogenerated fish statistics</h2>
+
+<p>Fishes are created with a set of stats: speed, attack power and defense. These are represented by the gauge meters below the fish. Normally you should be safe to attack a fish if it has less attack and defense than you do (otherwise the other fish might kill you!). The stats are balanced, so that if you get more of one you&rsquo;ll get less of the others.</p>
+
+<h2>Fish growth</h2>
+
+<p>In the original Sea Evolution, fishes went through several life stages, from egg to adult. On each life stage their stats were bumped. You were always able to survive by eating the fishes that were in lower life stages, beacause they had lower stats. On adult form, fishes can lay eggs to perpetuate there species.</p>
+
+<p>In this game we have implemented the life stages, and you can notice that after a certain amount of time the stats are bumped. However we didn&rsquo;t have timeto alter the appearance of the fishes when this happens.</p>
+
+<h2>Controls</h2>
+
+<p>You can move with the arrow keys or the mouse. The enemy fishes randomly pick where to go, or if they are close to other fish they will chase it to eat it. Sometimes this results in all of the enemies gathering together in one point eating each other out.</p>
+
+<p>The player fish also follows the same behavior if you don&rsquo;t tell it where to go. This is a bit confusing, yes, but we didn&rsquo;t have time to change it.</p>
+
+<h2>Descendants</h2>
+
+<p>The original idea for Sea Life was to be able to perpetuate your species over the rest. You would be able to lay eggs and have descendancy, and your success in life (ie, your game score) would be measured to how many descendants did you managed to get until you died. How successful you would be in your species conquering the sea world would depend in both your ability and the statistics autogenerated for your sea species.</p>
+
+<p>So we did implement this&hellip; partially. You will have children from time to time, and they will follow you along. But actually they don&rsquo;t really have any stats, or count as real fishes. But they make you feel less lonely, no?</p>
+
+<h2>Websockets</h2>
+
+<p>Yay! Another experiment. We wanted to make this a multiplayer experience, using websockets. When you join the game you will connect to a server keeping track of all the players, and you will receive their possitions. So you might cross another human while playing!</p>
+
+<p>It&rsquo;s easy to identify a human: they will have no stats displaying (because you can&rsquo;t really eat them), and they would have an autogenerated name, in the pattern &ldquo;adjective + sea animal&rdquo; (in the spirit of Metal Gear Solid troop names, or Ubuntu distributions)</p>
+
+<p>And that is basically it. Probably too buggy to be playable for a long time, but a fun experiment with some forms of procedural generation =)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Smartwatch Prototype With ESP8266: ESPmartwatch]]></title>
+    <link href="http://coconauts.net/blog/2016/09/08/smartwatch-prototype-with-esp8266/"/>
+    <updated>2016-09-08T23:44:00+00:00</updated>
+    <id>http://coconauts.net/blog/2016/09/08/smartwatch-prototype-with-esp8266</id>
+    <content type="html"><![CDATA[<p>It&rsquo;s been a while since we built and deprecated our <a href="http://coconauts/projects/watchduino2">Watchduino 2</a> smartwatch built with Arduino and BLE technology. The reason why we stopped developing the prototype was because it was not as optimal as we expected, and the bluetooth communication was unstable in practice; this is probably something we could have solved with time, but we just decided it was not worth it.</p>
+
+<p><img src="https://farm9.staticflickr.com/8284/29441586932_55059378bc_z_d.jpg" alt="" /></p>
+
+<p>However, with the &ldquo;new&rdquo; ESP8266 we decided to try a quick prototype to see how it behaves as in a smartwatch, and we did a lot of things in just a couple of days, this are the list of features of our new  <code>ESPmartwatch</code>:</p>
+
+<!--more-->
+
+
+<ul>
+<li>ESP8266 model ESP-01</li>
+<li>Wifi connection</li>
+<li>I2C OLED model SSD1306 128X64</li>
+<li>Send and receive messages via Websockets</li>
+<li>All messages are using JSON (being parsed on C++ too)</li>
+<li>Sync time and display on screen</li>
+<li>Display notifications from phone on screen using <a href="https://github.com/rephus/notification-webhook">Notification webhook</a></li>
+</ul>
+
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Doing web development with JSON and websockets in C++ on ESP8266, exciting! <a href="https://t.co/v2ZU4hNZO5">pic.twitter.com/v2ZU4hNZO5</a></p>&mdash; Javi Rengel (@rephus) <a href="https://twitter.com/rephus/status/772901218414891008">September 5, 2016</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>On the way, we faced a few unexpected issues that took us some time to fix (more than implementing communication with websockets) like the ESP8266 restarting itself every 5 mins because the WDT.</p>
+
+<p>But still, a lot of things are left to do like:</p>
+
+<ul>
+<li>Reduced consumption by enabling deep sleep mode while using websockets</li>
+<li>Lack of GPIO pins on ESP-01, need to try with a different ESP model</li>
+<li>Better OLED SSD1306 screen controller, u8glib seems incompatible, maybe Adafruit ?</li>
+<li>A way to introduce SSID and passwords from the watch (input required)</li>
+<li>Secure communication on websockets</li>
+</ul>
+
+
+<p>So at this point we decided that it was not worth to continue with the project, specially when just the new <a href="http://hackaday.com/2016/09/05/new-part-day-the-esp32-has-been-released/">ESP32 has been released</a></p>
+
+<p>All our code is available on <a href="https://github.com/rephus/ESP8266-OLED-Websocket">Github</a> so if you want to continue our work, or look at how we use some of the libraries, give it a go.</p>
+
+<p>Who knows, we might probably continue with the development at some point, so watch this space.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Retrophies: Achievements System for Emulators]]></title>
+    <link href="http://coconauts.net/blog/2016/08/01/retrophies/"/>
+    <updated>2016-08-01T20:54:19+00:00</updated>
+    <id>http://coconauts.net/blog/2016/08/01/retrophies</id>
+    <content type="html"><![CDATA[<p>Play now at <a href="http://retrophies.win">retrophies.win</a>!</p>
+
+<p>If there’s one thing that has become a de-facto standard in the gaming industry during the last decade this is game achievements, trophies, or whatever you may call them. Not only on console games, but Apple and Android also provide facilities to integrate this features in games published on their platforms. Many games even implement a custom achievements system specific for that game in isolation.</p>
+
+<p>There seems to be an exception though. Retro games. Obviously a game from 20 years ago was not designed with achievements in mind, but even when companies re-edit old games, they seem to be happy enough charging you current day prices for what it is often an effort-less dump of the classic game, which you may even wonder if they’re running though an emulator. Do you expect the new <a href="https://www.nintendo.com/nes-classic">mini-NES</a> will be anything more than this?</p>
+
+<p>At Coconauts we love classic games, as well as emulators. So we’ve wondered… how would it be if your favourite emulators had some of the functions of today’s game platforms, like achievements?</p>
+
+<p>This what Retrophies is trying to achieve. And for the first proof of concept we’re bringing achievements to Super Mario Bros.</p>
+
+<!--more-->
+
+
+<p>You can see Retrophies in action <a href="http://retrophies.win">here</a>. A rom of Super Mario Bros for NES is running on a forked version of JSNES, implementing Retrophies. If you play for a little bit, you should start seeing some notifications for unlocking some achievements, after certain events occur in the game. How many can you get?</p>
+
+<p><img src="https://farm9.staticflickr.com/8674/28062483653_c8da6e86ea_z_d.jpg" alt="achievement"></p>
+
+<p>You may be wondering how all this works. No romhacking is involved, or at least not in the game rom itself. Retrophies is nothing more than a collection of memory registers and values. The emulator implementing Retrophies needs to be constantly inspecting those register in the running game RAM. When the correct value is up, the achievement should be triggered.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>var achievements = [
+</span><span class='line'>    //[Memory (0), Value (1) , Title (2), Description (3), Img (4), Triggered (5)]
+</span><span class='line'>    [0x0770, 1, "Enjoy Retrophies", "Play Super Mario Bros", "mario", false],
+</span><span class='line'>    [0x0748, 10, "Gold mine", "Collect 10 coins", "coin", false],
+</span><span class='line'>    [0x075A, 7, "More lives than a cat", "Get 8 lives", "1up", false],
+</span><span class='line'>    ...
+</span><span class='line'>]</span></code></pre></td></tr></table></div></figure>
+
+
+<p>As you see, the system itself is quite simple. The difficult part comes when figuring out the list of memory values that should trigger achievements. This of course has to be custom-tailored for each individual game, in a reverse engineering process of trial and error, similar to what it takes to discover cheat codes for Game Genie.</p>
+
+<p>Game-hacking utilities come handy for this task. The SMB achievements were obtained using an emulator called FCEUX, which <a href="http://www.fceux.com/web/help/fceux.html?ROMHacking.html">comes with a good bunch of tools</a> used by rom hackers, or speedrunners. Particularly useful for our purposes are a <a href="https://www.youtube.com/watch?v=jfnqxxwlIyo">real time hex editor</a>(pictured below) or the <a href="http://tasvideos.org/EmulatorResources/RamSearch.html">RAM search tool</a>.</p>
+
+<p><img src="https://farm9.staticflickr.com/8835/28600323071_60e66949c8_z_d.jpg" alt="fceux"></p>
+
+<p>We can also take advantage of the <a href="http://gamehacking.org/game/31010">plenty of already existing game cheat codes</a> that people have already deciphered for the game. If we have a cheat code for invincivility setting a particular value in a particular register, we already know the register and the value that we have to inspect if we want to trigger an achievement when getting an invincivility star. There are different formats for game codes, but there are conversors around that will map them in the end to one or several memory locations.</p>
+
+<p>Our Retrophies implementation has only been done for now on the JSNES emulator, as a proof of concept. However, as the system is very simple, as well as <a href="https://github.com/rephus/retrophies">open source</a>, it should be easy for other emulators to implement. Achievement codes can also be obtained for any ROM, given some time and dedication. Watch this space for further news.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Lightning-dodge-O-matic]]></title>
+    <link href="http://coconauts.net/blog/2016/06/13/lightning-dodge-o-matic/"/>
+    <updated>2016-06-13T20:51:00+00:00</updated>
+    <id>http://coconauts.net/blog/2016/06/13/lightning-dodge-o-matic</id>
+    <content type="html"><![CDATA[<p>If you have played Final Fantasy X, either its original version for PS2 or its remastered version
+for PS4 and PSVita, you might remember Thunder Plains and its lightning dodge challenge
+to get the Mars sigil.</p>
+
+<p>It&rsquo;s quite challenging and it might take a while. I once got it (and I have a PS2 memory card to prove it),
+but I was not in the mood to do it again on the remastered version.</p>
+
+<p>That&rsquo;s why I decided to build a simple machine to do the job for me.
+Because constantly processing inputs to produce outputs is what machines do best.</p>
+
+<blockquote class="twitter-video" data-lang="en"><p lang="en" dir="ltr">Lightning dancing like a machine. Presenting lightning-dodge-O-matic <a href="https://twitter.com/hashtag/FFX?src=hash">#FFX</a> <a href="https://twitter.com/hashtag/Lulu?src=hash">#Lulu</a> <a href="https://twitter.com/hashtag/Arduino?src=hash">#Arduino</a> <a href="https://t.co/WMLX1CRwSN">pic.twitter.com/WMLX1CRwSN</a></p>&mdash; Javi Rengel (@rephus) <a href="https://twitter.com/rephus/status/742057060456648709">June 12, 2016</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+
+<!--more-->
+
+
+<p>Just by using a LDR, a servo and an Arduino you can dodge lightnings like a Pro too.</p>
+
+<p>You can download the script and the schema in <a href="https://github.com/rephus/lightning-dodge-O-matic/blob/master/README.md">Github</a></p>
+
+<p><img src="https://farm8.staticflickr.com/7335/27042150163_732cb2c99b_z_d.jpg" alt="Schema" /></p>
+
+<p>By building this, you can avoid not only 200 lightnings but as many you like, I did 1066 in a few hours.</p>
+
+<p><img src="https://farm8.staticflickr.com/7423/27042150153_b6daeed7d5_z_d.jpg" alt="record" /></p>
+
+<p>Happy gaming.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[We Built Our House With Unity3D and Blender]]></title>
+    <link href="http://coconauts.net/blog/2016/05/19/build-house-in-3d-with-blender-unity3d/"/>
+    <updated>2016-05-19T22:51:00+00:00</updated>
+    <id>http://coconauts.net/blog/2016/05/19/build-house-in-3d-with-blender-unity3d</id>
+    <content type="html"><![CDATA[<p>We moved home a few months ago to a beautiful house in the country side in UK,
+outside the expensive area of London, but close enough to commute daily.</p>
+
+<p>As soon as we moved in, we built a simple version of our home in 3D on Blender
+ to help us decorate. And then we integrated the 3D model into Unity3D and build
+a game on top of it, on this case, a FPS or more like a FPW: First Person Walker,
+a FPS without shooting, not as fun as it sounds.</p>
+
+<p>We posted an image on Twitter a few months ago about our first prototype:</p>
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">I finally created a First person game of my new home with <a href="https://twitter.com/hashtag/unity3D?src=hash">#unity3D</a> and <a href="https://twitter.com/hashtag/blender?src=hash">#blender</a> . Looks better than real life! <a href="https://t.co/JjSPPP1835">pic.twitter.com/JjSPPP1835</a></p>&mdash; Javi Rengel (@rephus) <a href="https://twitter.com/rephus/status/698998470280089600">February 14, 2016</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+
+<!-- more -->
+
+
+<p>And this is how our place looks after we bought all the furniture.</p>
+
+<p><img src='https://farm8.staticflickr.com/7236/26513350403_4ac3cc142c_z_d.jpg'/>
+<img src='https://farm8.staticflickr.com/7714/27083818276_36950ff772_z_d.jpg'/></p>
+
+<p><img src='https://farm8.staticflickr.com/7715/27083819056_acb9ae8fa5_z_d.jpg'/>
+<img src='https://farm8.staticflickr.com/7348/27083818686_12b5f68383_z_d.jpg'/></p>
+
+<p><img src='https://farm8.staticflickr.com/7211/27083819206_727a82707c_z_d.jpg'/>
+<img src='https://farm8.staticflickr.com/7434/26513349443_4d9df59b0d_z_d.jpg'/></p>
+
+<p><img src='https://farm8.staticflickr.com/7750/27083819266_15ca7674e5_z_d.jpg'/>
+<img src='https://farm8.staticflickr.com/7054/27083818506_f84f07ba12_z_d.jpg'/></p>
+
+<p>The game is also a good chance to try out VR, perfect to use with Google VR to feel
+like you are at home.</p>
+
+<p><img src='https://farm8.staticflickr.com/7554/27083819136_dd3a9a50d3_z_d.jpg'/></p>
+
+<p>If you are interested, you can play on our 3D model we made, please feel at home.</p>
+
+<p><a href="http://unity3d.coconauts.net/welwyn">Play it here!</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Build a Smart Home Using Raspberry Pi and Energenie]]></title>
+    <link href="http://coconauts.net/blog/2016/04/15/energinie-and-raspberry-pi-setup/"/>
+    <updated>2016-04-15T22:51:00+00:00</updated>
+    <id>http://coconauts.net/blog/2016/04/15/energinie-and-raspberry-pi-setup</id>
+    <content type="html"><![CDATA[<p>We recently discovered <a href="https://energenie4u.co.uk/">Energenie</a> (thanks to <a href="https://twitter.com/Man0jN">Manoj</a>) a nice and cheap remote controlled socket
+which also provides a custom shield for Raspberry Pi, you can use it to
+programatically control those sockets. This allows endless possibilities:
+from temporized sockets, to a socket that automatically turns on when
+detects presence using a PIR sensor, or triggered by a website or a phone app.</p>
+
+<p><img src='https://c2.staticflickr.com/2/1545/25845471424_d600499717_d.jpg'/></p>
+
+<!-- more -->
+
+
+<p>You can buy 2 different types of Energenie, some <a href="https://energenie4u.co.uk/catalogue/product/ENER002-4">individual sockets</a>
+or an <a href="https://energenie4u.co.uk/catalogue/product/ENER010">extension lead socket with 4 individually controlled</a>.
+You can also find them cheaper on Amazon or <a href="http://www.ebay.co.uk/itm/161972721449?_trksid=p2060353.m2749.l2649&amp;ssPageName=STRK%3AMEBIDX%3AIT">Ebay</a>.</p>
+
+<p>Every Energenie comes with a remote that you can use to power on or off those sockets using radio
+(no need to point with the controller to the socket like an infrared remote).
+You can use them just like this, but of course the really fun part is to be able
+to program them with your Raspberry Pi. For this, you&rsquo;ll need the
+<a href="https://energenie4u.co.uk/catalogue/product/ENER314">control board shield</a>
+as well.</p>
+
+<p>You can download a library for Python to use with Raspberry Pi from <a href="http://pythonhosted.org/energenie/">their website</a>, and check some examples of basic usage.</p>
+
+<p>In our case, as our first project, we built a website so you can control all
+sockets in the extension lead from your
+computer. In one of them we added some Cinema style lights under our sofa using a
+LED strip connected to a 12V supplier on the socket.</p>
+
+<p><img src='https://farm2.staticflickr.com/1704/26449115715_b672c53b20_z_d.jpg'/>
+<img src='https://farm2.staticflickr.com/1652/26449115515_60a9fd10a7_z_d.jpg'/></p>
+
+<p>The interface looks like this:</p>
+
+<p><img src='https://farm2.staticflickr.com/1630/26423191956_b64967a883_o_d.png'/></p>
+
+<p>You can check the source code in our <a href="https://github.com/rephus/energenie-manager">Github</a>.</p>
+
+<h3>Warnings and limitations</h3>
+
+<p>Each Raspberry PI board or remote allows you to use 4 different sockets
+(or 1 extension lead)  maximum. Which means you can&rsquo;t have for example 5 sockets
+controlled with a single Raspberry Pi.</p>
+
+<p>Each socket can only be paired with 2 controllers maximum, which means you can&rsquo;t control a socket with a remote and 2 Raspberry Pis. Every time you pair a new socket, the oldest one will get unpaired. Also, remember to pair every device before using it or it won&rsquo;t work.</p>
+
+<p>Do you have more ideas to implement with Energenie? we&rsquo;d like to hear about them in the comments.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Happy Pi Day!]]></title>
+    <link href="http://coconauts.net/blog/2016/03/14/happy-pi-day/"/>
+    <updated>2016-03-14T12:00:00+00:00</updated>
+    <id>http://coconauts.net/blog/2016/03/14/happy-pi-day</id>
+    <content type="html"><![CDATA[<p>Do you know what day is today? It&rsquo;s 3.14, and because it matches the
+decimals in the most beloved irrational number ever, it&rsquo;s been called an
+<a href="https://en.wikipedia.org/wiki/Pi_Day">official celebration of number Pi</a>.</p>
+
+<p>Actually last year it was a most special instance, as it was 3.14.15; an
+event that won&rsquo;t occur again for another 100 years! To celebrate, and to
+give some use to our newly bought 3D printer, we printed some <a href="http://www.thingiverse.com/thing:28882">Pi-shaped
+cookie-cutters we found off Thingiverse</a>,
+and baked some delicious Pi&hellip; cookies.</p>
+
+<p><img src="https://thingiverse-production-new.s3.amazonaws.com/renders/42/94/15/17/a7/IMG_20150312_223708_preview_featured.jpg" /></p>
+
+<p>This year still feels special, as it is 3.14.16, the decimals of <em>rounded</em> Pi.
+If you wanna celebrate, and have a 3D printer yourself, have a look at
+<a href="http://www.thingiverse.com/thing:28882">this neat collection</a> they&rsquo;ve put
+together, and print yourself something awesome.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Coconauts CI, a Lightweight CI Built on NodeJS]]></title>
+    <link href="http://coconauts.net/blog/2016/02/04/coconauts-ci-nodejs/"/>
+    <updated>2016-02-04T23:00:00+00:00</updated>
+    <id>http://coconauts.net/blog/2016/02/04/coconauts-ci-nodejs</id>
+    <content type="html"><![CDATA[<p>CIs are good, as soon as your projects grow, having a continuous integration software
+that manages all your apps and deployments is really useful. We have been using a self-hosted
+jenkins instance in our server for a few years already, and we have some
+<a href="http://coconauts.net/blog/2014/09/09/background-tasks-in-jenkins-ipchange">interesting things with it</a>.</p>
+
+<p>However, we have always known that jenkins is too heavy, it consumes too much memory and it
+has a slow interface, as it is written on Java.</p>
+
+<p>So we were really looking for a lightweight self-hosted CI that could run easily on a Raspberry PI,
+but we couldn&rsquo;t find any existing solution, so we decided to build our own, and it was easier that we expected.</p>
+
+<p><img src='https://farm2.staticflickr.com/1443/24822031815_fcc099fc04_z_d.jpg'/></p>
+
+<!-- more -->
+
+
+<p>This project, called <code>Coconauts CI</code> is still an experiment in progress, but we decided to share it
+on a early stage.</p>
+
+<p>You can download the project on our Github: <a href="https://github.com/coconauts/coconauts-ci">https://github.com/coconauts/coconauts-ci</a></p>
+
+<h2>Characteristics</h2>
+
+<ul>
+<li>Node.js and the <a href="http://expressjs.com/">Express framework</a> for the backend</li>
+<li>JQuery for the frontend</li>
+<li>Powered by Redis database</li>
+</ul>
+
+
+<h2>Key features</h2>
+
+<ul>
+<li>Simple 1-page only dashboard</li>
+<li>Easily add or update projects in 2 clicks</li>
+<li>Execute tasks periodically</li>
+<li>Clone and update repositories from git (github , bitbucket, etc)</li>
+<li>Run projects without repository to execute tasks periodically.</li>
+<li>Slack integration using webhooks</li>
+<li>Look at previous build logs</li>
+</ul>
+
+
+<p><img src='https://farm2.staticflickr.com/1639/24704187222_47dc02eaaa_z_d.jpg'/></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[RTS Game Template on Unity3d: StarCraft for Mobile]]></title>
+    <link href="http://coconauts.net/blog/2016/01/30/starcraft-mobile-unity3d/"/>
+    <updated>2016-01-30T20:16:34+00:00</updated>
+    <id>http://coconauts.net/blog/2016/01/30/starcraft-mobile-unity3d</id>
+    <content type="html"><![CDATA[<p>We have been just <em>playing</em> with Unity3D for a few months, but we have already tried to build something: a new RTS (Real Time Strategy) game for Desktop and Mobile. But we want to make this game abstract and adaptable, so that it works like an engine, which means we could easily change the models, behaviour and statistics from the objects in the scene to make a completely new game, a clone of <a href="https://www.youtube.com/watch?v=0Wkrd594k4k">Star Wars Galactic Battlegrounds Clone Campaings</a> maybe ? or maybe completely new strategy game featuring plants vs zombies, pirates vs ninjas, angels vs demons or monkeys vs giraffes.</p>
+
+<p><img src='https://farm2.staticflickr.com/1636/24079670424_3275b9c5f1_z_d.jpg'/></p>
+
+<p>In our case, we&rsquo;ve started by using the 3D models, animations from StarCraft II game
+and reverse engineered the behaviour of this game to make our strategy game template.</p>
+
+<!-- more -->
+
+
+<p><img src='https://farm2.staticflickr.com/1502/24614331371_6e4c44e84e_z_d.jpg'/></p>
+
+<p>Please note that this is just a technical demo and it&rsquo;s not made to replace
+StarCraft or make any money with their work in any way, we are just trying to follow their path because we love this game.</p>
+
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/MqGj5grWYG8" frameborder="0" allowfullscreen></iframe>
+
+
+<h2>What we have achieved</h2>
+
+<p>This is the list of features we have developed to simulate a basic gameplay from Starcraft.
+They together implement the featureset from StarCraft games, but it can be easily applied to fit any other strategy gameplay. Do you want to have 4 different resource types instead of 2 like in SWGB ? just update the Resources class and you&rsquo;re done.</p>
+
+<p><img src='https://farm2.staticflickr.com/1534/24707844895_74afa1c9af_z_d.jpg'/></p>
+
+<ul>
+<li>3D models and animations</li>
+<li>Background music, sounds and reactions (<em>For Adun!</em>)</li>
+<li>Buildings and units training queue</li>
+<li>Special building behaviour (like gas extractor or supply depots)</li>
+<li>Ground and flying units (Zerg and Terran)</li>
+<li>Researches</li>
+<li>Resources (Mineral, gas and supplies)</li>
+<li>Import maps using image heightmap</li>
+<li>Mouse and touch controls</li>
+<li>Camera movement and zoom</li>
+<li>Completely new simple interface for touch devices</li>
+<li>New survival gameplay mode</li>
+<li>Basic AI</li>
+<li>Minimap</li>
+<li>Pathfinding (using free A* pathfinding)</li>
+</ul>
+
+
+<p><img src='https://farm2.staticflickr.com/1452/24681642176_2a5f191b10_z_d.jpg'/></p>
+
+<h2> What is missing</h2>
+
+<p>This are things we haven&rsquo;t build for this prototype but we will probably do in the future.</p>
+
+<ul>
+<li>Multiplayer mode</li>
+<li>Better AI</li>
+<li>Local avoidance</li>
+<li>Protoss</li>
+<li>More units and buildings (like bunkers)</li>
+<li>Wireframe support on OpenGL devices or equivalent</li>
+<li>Unit visibility filter</li>
+<li>Team coloring</li>
+<li>Healing units, shields or Zerg restoration feature.</li>
+</ul>
+
+
+<p>We are planning to release this engine in the future (without the StarCraft assets),
+but in the meantime let us know any thoughts in the comments.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Coconauts 2015 Retrospective]]></title>
+    <link href="http://coconauts.net/blog/2016/01/01/year-retrospective/"/>
+    <updated>2016-01-01T14:00:00+00:00</updated>
+    <id>http://coconauts.net/blog/2016/01/01/year-retrospective</id>
+    <content type="html"><![CDATA[<p>Year 2015 has come to an end, and as it turns out we do have
+<a href="https://en.wikipedia.org/wiki/Self-balancing_two-wheeled_board">hoverboards</a>,
+<a href="https://www.youtube.com/watch?v=vZRFcGrrsyc">holograms/augmented reality</a>,
+yet for some reason hip-kids insist in dressing as lumberjacks rather than
+in futuristic clothing.</p>
+
+<p>It feels just like yesterday when we were writing
+<a href="https://coconauts.net/blog/2014/12/31/coconauts-2014-retrospective/">our retrospective post</a>
+last year. Time does fly! So how did we fare this year in comparison?</p>
+
+<!-- more -->
+
+
+<ul>
+<li>The <a href="https://coconauts.net/projects/watchduino2/">second version of Watchduino</a>
+was an absolute smash. We managed to get a functional prototype with
+Bluetooth connectivity, plus a phone companion app. It&rsquo;s starting to
+look something like a real smartwatch, and it was awarded
+<a href="https://coconauts.net/blog/2015/08/24/watchduino-2-is-semifinalist-on-the-2015-hackaday-prize/">semifinalist in the Hackaday Prize</a>.</li>
+<li>Our second big release of the year, even if it was a bit last minute,
+was the long promised open sourcing of
+<a href="https://coconauts.net/blog/2015/12/31/gramola-release/">Gramola</a>,
+a web-based music player.</li>
+<li>Smaller projects, but let&rsquo;s not forget about:
+<a href="https://coconauts.net/blog/2015/10/13/notification-listener-android-cordova/">a notification listener plugin for Cordova</a>,
+<a href="https://coconauts.net/blog/2015/04/22/simple-automatic-watering-system-arduino/">an Arduino automated watering system</a>,
+our <a href="https://coconauts.net/blog/2015/07/31/404-games/">404-games</a>.</li>
+<li>Seems like we still aren&rsquo;t blogging as much as we should, as we have some
+extra small projects that we didn&rsquo;t tell you about in the blog:
+<a href="https://github.com/coconauts/image-to-json">an image-to-json</a> converter,
+<a href="http://itch.io/jam/procjam/rate/43682">a generative game</a> made for the
+<a href="http://www.procjam.com/">PROCJAM</a> game jam, and
+<a href="https://github.com/coconauts/find-open">a webapp to find open restaurants near you</a>.</li>
+<li>We didn&rsquo;t blog as much as we would have liked, but even so we brought
+you a bunch of tutorials about
+<a href="https://coconauts.net/blog/tags/arduino/">Arduino</a>,
+<a href="https://coconauts.net/blog/tags/unity3d/">Unity3D</a>, or
+<a href="https://coconauts.net/blog/tags/chiptune/">chiptune music</a>, among others.</li>
+</ul>
+
+
+<p>The year certainly felt as packed as the year before, so we definitely
+want to keep the momentum going for 2016. Here&rsquo;s our immediate plans for
+the year to come:</p>
+
+<ul>
+<li>We didn&rsquo;t do as much gamedev as we would have liked during 2015, so we
+would like to finish a Unity3D game during the next year. Specially now that
+<a href="http://blogs.unity3d.com/es/2015/08/26/unity-comes-to-linux-experimental-build-now-available/">Unity3D is available for Linux</a>,
+there&rsquo;s no better time!</li>
+<li>Once again, we want to aim to do more and better posting. 2015 saw
+regular blog updates until october, but for this year we want to do
+even better.</li>
+<li>To help fatten our blog and Github account, we want to commit to talk
+about our projects even while in an early stage. Instead of doing the
+development of a game or project in the dark until it is polished enough to
+show (as done with <a href="https://coconauts.net/projects/timebomb2/">Exploding Bunnies</a>
+or <a href="https://coconauts.net/projects/gramola/">Gramola</a>)
+we want to to show prototypes and betas as early as we
+have them, and keep our development more open
+(as we have done with <a href="https://coconauts.net/projects/watchduino2/">Watchduino2</a>).</li>
+<li>Speaking of Watchduino2, we plan to continue it&rsquo;s development due to
+popular demand, albeit perhaps at a slower pace than we did during 2015.</li>
+</ul>
+
+
+<p>Wishing a happy and exciting 2016 for all our followers!</p>
+]]></content>
+  </entry>
+  
+</feed>

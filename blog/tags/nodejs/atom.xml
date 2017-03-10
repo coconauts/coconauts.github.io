@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: nodejs | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/nodejs/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2017-03-10T21:38:29+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Coconauts CI, a lightweight CI built on NodeJS]]></title>
+<link href="http://coconauts.net/blog/2016/02/04/coconauts-ci-nodejs/"/>
+<updated>2016-02-04T23:00:00+00:00</updated>
+<id>http://coconauts.net/blog/2016/02/04/coconauts-ci-nodejs</id>
+<content type="html"><![CDATA[<p>CIs are good, as soon as your projects grow, having a continuous integration software
+that manages all your apps and deployments is really useful. We have been using a self-hosted
+jenkins instance in our server for a few years already, and we have some
+<a href="/blog/2014/09/09/background-tasks-in-jenkins-ipchange">interesting things with it</a>.</p>
+
+<p>However, we have always known that jenkins is too heavy, it consumes too much memory and it
+has a slow interface, as it is written on Java.</p>
+
+<p>So we were really looking for a lightweight self-hosted CI that could run easily on a Raspberry PI,
+but we couldn&rsquo;t find any existing solution, so we decided to build our own, and it was easier that we expected.</p>
+
+<p><img src='https://farm2.staticflickr.com/1443/24822031815_fcc099fc04_z_d.jpg'/></p>
+
+<!-- more -->
+
+
+<p>This project, called <code>Coconauts CI</code> is still an experiment in progress, but we decided to share it
+on a early stage.</p>
+
+<p>You can download the project on our Github: <a href="https://github.com/coconauts/coconauts-ci">https://github.com/coconauts/coconauts-ci</a></p>
+
+<h2>Characteristics</h2>
+
+<ul>
+<li>Node.js and the <a href="http://expressjs.com/">Express framework</a> for the backend</li>
+<li>JQuery for the frontend</li>
+<li>Powered by Redis database</li>
+</ul>
+
+
+<h2>Key features</h2>
+
+<ul>
+<li>Simple 1-page only dashboard</li>
+<li>Easily add or update projects in 2 clicks</li>
+<li>Execute tasks periodically</li>
+<li>Clone and update repositories from git (github , bitbucket, etc)</li>
+<li>Run projects without repository to execute tasks periodically.</li>
+<li>Slack integration using webhooks</li>
+<li>Look at previous build logs</li>
+</ul>
+
+
+<p><img src='https://farm2.staticflickr.com/1639/24704187222_47dc02eaaa_z_d.jpg'/></p>
+]]></content>
+</entry>
+
+</feed>
