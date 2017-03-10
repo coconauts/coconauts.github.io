@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Control Energenie with ESP8266"
-date: 2017-02-xx 10:42:19 +0000
+date: 2017-03-10 21:30:19 +0000
 comments: true
 categories: hardware
 tags: energenie esp8266 radio smart
@@ -10,7 +10,7 @@ keywords: energenie,esp8266,esp8,radio,433mhz
 description: "Control Energenie sockes with ESP8266 over radio 433Mhz"
 author: Javier Rengel
 featured: false
-published: false
+published: true
 ---
 
 We recently showed you how to control [Energenie sockets using Pebble smartwatch app](http://coconauts.net/blog/2017/02/15/control-energenie-with-pebble/),
