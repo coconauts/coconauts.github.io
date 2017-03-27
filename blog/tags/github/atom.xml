@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: github | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/github/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2017-03-27T09:27:42+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Github PR tracker]]></title>
+<link href="http://coconauts.net/blog/2017/03/27/github-pr-tracker/"/>
+<updated>2017-03-27T10:12:19+00:00</updated>
+<id>http://coconauts.net/blog/2017/03/27/github-pr-tracker</id>
+<content type="html"><![CDATA[<p>Sometimes I feel like following changes on PRs on Github is a bit confusing and/or verbose, even with the existing <a href="https://github.com/notifications">Github notifications</a>
+ or <a href="https://github.com/pulls">Github pulls</a> interfaces, sometimes the best way was to check your email inbox.</p>
+
+<p>So I decided to create my own <a href="https://github.com/rephus/Github-PR-tracker">Github PR tracker</a>
+for my own Pull Requests, but also for those that I&rsquo;m assigned to.</p>
+
+<p><img src="/images/posts/2017-03-27-github-pr-tracker/screen.png" alt="github pr tracker" /></p>
+
+<!-- more-->
+
+
+<h2>Features</h2>
+
+<ul>
+<li><p>Group pull requests by title, that will allow me to easily visualize changes related between microservices (in different github repos)</p></li>
+<li><p>Visual &ldquo;Red dot&rdquo; on those Pull requests that have been updated since you refreshed the page:
+comment added, commit made, opened pull request&hellip;</p></li>
+<li><p>Get quick access to all your relevant PRs, only pin this page on your browser,
+and forget about dozens of opened tabs or bookmarks.</p></li>
+</ul>
+
+
+<h2>How to use</h2>
+
+<p>First pull the repo from <a href="https://github.com/rephus/Github-PR-tracker">here</a>.</p>
+
+<p>Then you need to create a
+<a href="https://github.com/settings/tokens">Github personal access token</a>
+and use it on the input text on the search (or modify the index.html to add the default value)</p>
+
+<p>Easy and simple.</p>
+]]></content>
+</entry>
+
+</feed>
