@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: esp8266 | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/esp8266/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2017-04-12T21:11:34+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Control Energenie with ESP8266]]></title>
+<link href="http://coconauts.net/blog/2017/03/10/control-energenie-with-esp8266/"/>
+<updated>2017-03-10T21:30:19+00:00</updated>
+<id>http://coconauts.net/blog/2017/03/10/control-energenie-with-esp8266</id>
+<content type="html"><![CDATA[<p>We recently showed you how to control <a href="http://coconauts.net/blog/2017/02/15/control-energenie-with-pebble/">Energenie sockets using Pebble smartwatch app</a>,
+thanks to a <a href="http://coconauts.net/blog/2016/04/15/energinie-and-raspberry-pi-setup/">Raspberry PI</a> REST API.</p>
+
+<p>But we recently found this <a href="https://github.com/cjdell/esp-rf-switch">Github repo</a>
+about how to use a generic 433Mhz radio module with an ESP8266  to control Energenie sockets.</p>
+
+<!--more-->
+
+
+<p>So we decided to replace our Raspberry setup with this cheaper, smaller, portable and scalabe solution.</p>
+
+<p>All you need is an ESP8266 and this tiny and cheap radio module</p>
+
+<p><img src="/images/posts/2017-02-16-control-energenie-esp8266/radio-transmitter.png" alt="radio-transmitter" /></p>
+
+<p>In order to build this</p>
+
+<p><img src="/images/posts/2017-02-16-control-energenie-esp8266/hardware.png" alt="hardware" /></p>
+
+<p>The detailed guide and schemas about how to do it is on our <a href="https://github.com/rephus/esp8266-energenie-switch">own Github repo</a></p>
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[Smartwatch prototype with ESP8266: ESPmartwatch]]></title>
+<link href="http://coconauts.net/blog/2016/09/08/smartwatch-prototype-with-esp8266/"/>
+<updated>2016-09-08T23:44:00+00:00</updated>
+<id>http://coconauts.net/blog/2016/09/08/smartwatch-prototype-with-esp8266</id>
+<content type="html"><![CDATA[<p>It&rsquo;s been a while since we built and deprecated our <a href="http://coconauts/projects/watchduino2">Watchduino 2</a> smartwatch built with Arduino and BLE technology. The reason why we stopped developing the prototype was because it was not as optimal as we expected, and the bluetooth communication was unstable in practice; this is probably something we could have solved with time, but we just decided it was not worth it.</p>
+
+<p><img src="https://farm9.staticflickr.com/8284/29441586932_55059378bc_z_d.jpg" alt="" /></p>
+
+<p>However, with the &ldquo;new&rdquo; ESP8266 we decided to try a quick prototype to see how it behaves as in a smartwatch, and we did a lot of things in just a couple of days, this are the list of features of our new  <code>ESPmartwatch</code>:</p>
+
+<!--more-->
+
+
+<ul>
+<li>ESP8266 model ESP-01</li>
+<li>Wifi connection</li>
+<li>I2C OLED model SSD1306 128X64</li>
+<li>Send and receive messages via Websockets</li>
+<li>All messages are using JSON (being parsed on C++ too)</li>
+<li>Sync time and display on screen</li>
+<li>Display notifications from phone on screen using <a href="https://github.com/rephus/notification-webhook">Notification webhook</a></li>
+</ul>
+
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Doing web development with JSON and websockets in C++ on ESP8266, exciting! <a href="https://t.co/v2ZU4hNZO5">pic.twitter.com/v2ZU4hNZO5</a></p>&mdash; Javi Rengel (@rephus) <a href="https://twitter.com/rephus/status/772901218414891008">September 5, 2016</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>On the way, we faced a few unexpected issues that took us some time to fix (more than implementing communication with websockets) like the ESP8266 restarting itself every 5 mins because the WDT.</p>
+
+<p>But still, a lot of things are left to do like:</p>
+
+<ul>
+<li>Reduced consumption by enabling deep sleep mode while using websockets</li>
+<li>Lack of GPIO pins on ESP-01, need to try with a different ESP model</li>
+<li>Better OLED SSD1306 screen controller, u8glib seems incompatible, maybe Adafruit ?</li>
+<li>A way to introduce SSID and passwords from the watch (input required)</li>
+<li>Secure communication on websockets</li>
+</ul>
+
+
+<p>So at this point we decided that it was not worth to continue with the project, specially when just the new <a href="http://hackaday.com/2016/09/05/new-part-day-the-esp32-has-been-released/">ESP32 has been released</a></p>
+
+<p>All our code is available on <a href="https://github.com/rephus/ESP8266-OLED-Websocket">Github</a> so if you want to continue our work, or look at how we use some of the libraries, give it a go.</p>
+
+<p>Who knows, we might probably continue with the development at some point, so watch this space.</p>
+]]></content>
+</entry>
+
+</feed>

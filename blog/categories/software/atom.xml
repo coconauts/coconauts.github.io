@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Software | Coconauts]]></title>
+  <link href="http://coconauts.net/blog/categories/software/atom.xml" rel="self"/>
+  <link href="http://coconauts.net/"/>
+  <updated>2017-04-12T21:11:34+00:00</updated>
+  <id>http://coconauts.net/</id>
+  <author>
+    <name><![CDATA[Coconauts]]></name>
+    <email><![CDATA[admin@coconauts.net]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Github PR Tracker]]></title>
+    <link href="http://coconauts.net/blog/2017/03/27/github-pr-tracker/"/>
+    <updated>2017-03-27T10:12:19+00:00</updated>
+    <id>http://coconauts.net/blog/2017/03/27/github-pr-tracker</id>
+    <content type="html"><![CDATA[<p>Sometimes I feel like following changes on PRs on Github is a bit confusing and/or verbose, even with the existing <a href="https://github.com/notifications">Github notifications</a>
+ or <a href="https://github.com/pulls">Github pulls</a> interfaces, sometimes the best way was to check your email inbox.</p>
+
+<p>So I decided to create my own <a href="https://github.com/rephus/Github-PR-tracker">Github PR tracker</a>
+for my own Pull Requests, but also for those that I&rsquo;m assigned to.</p>
+
+<p><img src="/images/posts/2017-03-27-github-pr-tracker/screen.png" alt="github pr tracker" /></p>
+
+<!-- more-->
+
+
+<h2>Features</h2>
+
+<ul>
+<li><p>Group pull requests by title, that will allow me to easily visualize changes related between microservices (in different github repos)</p></li>
+<li><p>Visual &ldquo;Red dot&rdquo; on those Pull requests that have been updated since you refreshed the page:
+comment added, commit made, opened pull request&hellip;</p></li>
+<li><p>Get quick access to all your relevant PRs, only pin this page on your browser,
+and forget about dozens of opened tabs or bookmarks.</p></li>
+</ul>
+
+
+<h2>How to use</h2>
+
+<p>First pull the repo from <a href="https://github.com/rephus/Github-PR-tracker">here</a>.</p>
+
+<p>Then you need to create a
+<a href="https://github.com/settings/tokens">Github personal access token</a>
+and use it on the input text on the search (or modify the index.html to add the default value)</p>
+
+<p>Easy and simple.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Control Energenie With Pebble]]></title>
+    <link href="http://coconauts.net/blog/2017/02/15/control-energenie-with-pebble/"/>
+    <updated>2017-02-15T10:42:19+00:00</updated>
+    <id>http://coconauts.net/blog/2017/02/15/control-energenie-with-pebble</id>
+    <content type="html"><![CDATA[<p>Last year I got a cheap Pebble smartwatch
+<a href="https://twitter.com/rephus/status/806522854699372546">just days before the company was sold to Fitbit</a></p>
+
+<p>One of the reasons was to play with it building our custom apps,
+so we built an app to control our Energenie sockets from the watch,
+sending HTTP requests to a Raspberry PI with the official radio module from Energenie.</p>
+
+<p>All you need, apart form the pebble is a Raspberry PI to send the radio signal from a REST API to a Energenie socket.
+Check how to do it <a href="http://coconauts.net/blog/2016/04/15/energinie-and-raspberry-pi-setup/">on our previous post</a>.</p>
+
+<p>You can see it in action <a href="https://twitter.com/rephus/status/810630836697649152">here</a>.</p>
+
+<!--more-->
+
+
+
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Turning on Christmas from my pebble watch app and energenie sockets. <a href="https://t.co/XvtuQGs6h0">pic.twitter.com/XvtuQGs6h0</a></p>&mdash; Javi Rengel (@rephus) <a href="https://twitter.com/rephus/status/810630836697649152">December 18, 2016</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>The source code is availabe on <a href="https://github.com/rephus/pebble-energenie">this repo</a></p>
+
+<p>We might try to build a game using the gyroscope in the future,
+do you have any other ideas?</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Coconauts CI, a Lightweight CI Built on NodeJS]]></title>
+    <link href="http://coconauts.net/blog/2016/02/04/coconauts-ci-nodejs/"/>
+    <updated>2016-02-04T23:00:00+00:00</updated>
+    <id>http://coconauts.net/blog/2016/02/04/coconauts-ci-nodejs</id>
+    <content type="html"><![CDATA[<p>CIs are good, as soon as your projects grow, having a continuous integration software
+that manages all your apps and deployments is really useful. We have been using a self-hosted
+jenkins instance in our server for a few years already, and we have some
+<a href="/blog/2014/09/09/background-tasks-in-jenkins-ipchange">interesting things with it</a>.</p>
+
+<p>However, we have always known that jenkins is too heavy, it consumes too much memory and it
+has a slow interface, as it is written on Java.</p>
+
+<p>So we were really looking for a lightweight self-hosted CI that could run easily on a Raspberry PI,
+but we couldn&rsquo;t find any existing solution, so we decided to build our own, and it was easier that we expected.</p>
+
+<p><img src='https://farm2.staticflickr.com/1443/24822031815_fcc099fc04_z_d.jpg'/></p>
+
+<!-- more -->
+
+
+<p>This project, called <code>Coconauts CI</code> is still an experiment in progress, but we decided to share it
+on a early stage.</p>
+
+<p>You can download the project on our Github: <a href="https://github.com/coconauts/coconauts-ci">https://github.com/coconauts/coconauts-ci</a></p>
+
+<h2>Characteristics</h2>
+
+<ul>
+<li>Node.js and the <a href="http://expressjs.com/">Express framework</a> for the backend</li>
+<li>JQuery for the frontend</li>
+<li>Powered by Redis database</li>
+</ul>
+
+
+<h2>Key features</h2>
+
+<ul>
+<li>Simple 1-page only dashboard</li>
+<li>Easily add or update projects in 2 clicks</li>
+<li>Execute tasks periodically</li>
+<li>Clone and update repositories from git (github , bitbucket, etc)</li>
+<li>Run projects without repository to execute tasks periodically.</li>
+<li>Slack integration using webhooks</li>
+<li>Look at previous build logs</li>
+</ul>
+
+
+<p><img src='https://farm2.staticflickr.com/1639/24704187222_47dc02eaaa_z_d.jpg'/></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Introducing Gramola, a Lightweight Web Music Player]]></title>
+    <link href="http://coconauts.net/blog/2015/12/31/gramola-release/"/>
+    <updated>2015-12-31T12:00:00+00:00</updated>
+    <id>http://coconauts.net/blog/2015/12/31/gramola-release</id>
+    <content type="html"><![CDATA[<p><img src="https://farm2.staticflickr.com/1513/24000467331_46d15821da_b_d.jpg" /></p>
+
+<p>You may have noticed a mysterious project that has been since the dawn of time
+in our front page: <em>&ldquo;Gramola, lightweight online music player,
+powered by JPlayer with tons of features&rdquo;</em>. We even have a detailed
+<a href="https://coconauts.net/projects/gramola/">project page</a> about it&hellip;
+yet disapointingly, you would find no download links or source code there.</p>
+
+<p>We built (and <em>rebuilt</em>!) Gramola some time ago, and we&rsquo;ve been wanting
+to find some time to give it some polish and open source it. In fact,
+at the begining of the year
+<a href="https://coconauts.net/blog/2014/12/31/coconauts-2014-retrospective/">we promised you</a>
+that we would get it out in 2015. So to honor our words, here it is!</p>
+
+<p>Read details about it on the <a href="https://coconauts.net/projects/gramola/">project page</a>,
+or head directly to the <a href="https://github.com/coconauts/gramola">Github repository</a>
+for code and install instructions.</p>
+
+<p>Happy music listening in 2016!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Notification Listener Plugin for Android With Cordova]]></title>
+    <link href="http://coconauts.net/blog/2015/10/13/notification-listener-android-cordova/"/>
+    <updated>2015-10-13T20:16:34+00:00</updated>
+    <id>http://coconauts.net/blog/2015/10/13/notification-listener-android-cordova</id>
+    <content type="html"><![CDATA[<p>When we were developing <a href="/projects/watchduino2">Watchduino2</a> we required to forward messages for all notifications we receive in our phone by using
+the <a href="https://developer.android.com/reference/android/service/notification/NotificationListenerService.html">NotificationListenerService</a> available on Android.</p>
+
+<p>We managed to do this in the first version of our companion app on native code, unfortunatelly, we realised this feature was not available <em>yet</em> on Cordova, the new framework we use for building
+our cool responsive companion app.</p>
+
+<p>The solution? Roll our own Cordova plugin to provide this functionality!</p>
+
+<!-- more-->
+
+
+<h3>How it works</h3>
+
+<p>The basic idea of this plugin is to create a callback from JavaScript that will be triggered everytime you get a notification
+on Android.</p>
+
+<h3>How to install</h3>
+
+<p>Installing this plugin is really simple, and it&rsquo;s like installing any other plugin on Cordova.</p>
+
+<pre><code>cordova plugin add https://github.com/coconauts/NotificationListener-cordova
+</code></pre>
+
+<h3>How to use</h3>
+
+<p>Simply  create a listener from javascript using this method inside the Cordova initialization code.</p>
+
+<pre><code>notificationListener.listen(onNotification,onError);
+</code></pre>
+
+<p>Sample code:</p>
+
+<p>```
+var app = {</p>
+
+<pre><code>initialize: function() {
+    this.bindEvents();
+},
+bindEvents: function() {
+  document.addEventListener('deviceready', this.onDeviceReady, false);
+},
+onDeviceReady: function() {
+  log("Cordova start", "Device ready");
+
+  notificationListener.listen(function(n){
+      console.log("Received notification " + JSON.stringify(n) );
+    }, function(e){
+      console.log("Notification Error " + e);
+    })
+}
+</code></pre>
+
+<p>};</p>
+
+<p>app.initialize();</p>
+
+<p>```</p>
+
+<h3>Disclaimer</h3>
+
+<p>As far as I know, listening for notifications is only supported by Android phones (from version 4.0), and we haven&rsquo;t done any IOS development in the past, so I don&rsquo;t thing is
+possible to port this plugin to IOS. But feel free to contribute to our project if you think it can be extended to other platforms.</p>
+]]></content>
+  </entry>
+  
+</feed>

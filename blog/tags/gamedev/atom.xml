@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: gamedev | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/gamedev/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2017-04-12T21:11:34+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Synthesizing chiptune music programatically]]></title>
+<link href="http://coconauts.net/blog/2015/10/04/creating-chiptune-music-programatically/"/>
+<updated>2015-10-04T19:35:34+00:00</updated>
+<id>http://coconauts.net/blog/2015/10/04/creating-chiptune-music-programatically</id>
+<content type="html"><![CDATA[<p>We&rsquo;ve shown you in the past how to create chiptune-style music both
+<a href="https://coconauts.net/blog/2015/02/02/creating-chiptune-style-music-with-ubuntu/">with a DAW program</a>,
+and <a href="https://coconauts.net/blog/2015/04/19/creating-trve-chiptune-with-a-tracker/">with old-school trackers</a>.</p>
+
+<p>There&rsquo;s still another way to do it: via code. Particularly suitable for
+videogame music in particular, as you can have fine-grained control
+over the music that you autogenerate, giving it the ability to be
+dynamic.</p>
+
+<p>Every programming language worth their name will have a basic sound
+synthesizing library, which will be more than what to need to
+make chiptune sounds.</p>
+
+<!--more-->
+
+
+<p>The basics are these: you&rsquo;ll need something called an oscillator,
+which is nothing more than a device (in our case it will be a software
+device, but a device nonetheless) capable of generating <a href="http://public.wsu.edu/~jkrug/MUS364/audio/Waveforms.htm">basic sound
+waves</a>:
+sine, square, triangle and sawtooth.</p>
+
+<p><img src="http://coconauts.net/images/posts/chiptune/waveforms.png" /></p>
+
+<p>Then' you&rsquo;ll combine several sound waves together to form your sound.
+This technique is known as additive synthesis, and it&rsquo;s illustrated
+just below.</p>
+
+<p><img src="http://coconauts.net/images/posts/chiptune/additive.jpg" /></p>
+
+<p>Once you have a timbre that you like, the synthesizing library should
+have functions to alter its frequency, which will result in
+different tones being produced (this is called FM, or frequency modulation,
+synthesis), and then you have all you need to make any melody.</p>
+
+<p>There&rsquo;s something that you have to take into account, and is that you
+should limit yourself a bit with the kind and number of waves that
+you&rsquo;re using, to try to replicate the limitations of the hardware of
+old, and thus achieve convincing chiptune sounds.
+In <a href="http://opengameart.org/forumtopic/kickin-it-old-school-setting-up-nes-style-chiptunes">this forum post</a>
+the author recommends using nothing more than square, triangle and
+sawtooth waves (avoiding sine), and limiting yourself to four
+simultaneous instruments (as old sound cards didn&rsquo;t come with many
+audio channels). Have in mind though that these are just guidelines,
+in practice you should experiment with everything and pick whatever
+you think sounds good and convincingly chiptuneish.</p>
+
+<p>Synthesizing your
+own game music programatically has several important advantages:
+you wont waste any space storing your music assets (when your game is
+going on mobile phones this is an important aspect to consider!), and
+it allows for unlimited flexibility if your music is going to be
+dynamic. So we personally are keen in exploring this approach in a
+future game.</p>
+]]></content>
+</entry>
+
+</feed>
