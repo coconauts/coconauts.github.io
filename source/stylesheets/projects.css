@@ -89,6 +89,8 @@ table {  width:100%}
 
 .project-sea-life{ background-position:0px -512px;}
 .project-rps{ background-position:-64px -512px;}
+.project-github-pr-tracker { background-position:0px 0px; }
+.project-water-rings-simulator { background-position:-192px -192px; }
 
 .title{font-weight:bold;}
 .gray{color:gray;}

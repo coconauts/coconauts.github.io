@@ -20,6 +20,11 @@ footer: true
 
 <script language="javascript">
 
+add("github-pr-tracker", 2017, "software",
+    "Github PR tracker",
+    "Podcast about games, hardware and stuff (in spanish)",
+    "Audacity, Ivoox, Itunes");
+
 add("podcast", 2017, "general",
     "Podcast",
     "Podcast about games, hardware and stuff (in spanish)",
@@ -54,6 +59,11 @@ add("coconauts-ci", 2016, "software",
     "Coconauts CI",
     "Lightweight CI app",
     "NodeJS, Redis");
+
+add("water-rings-simulator", 2015, "games",
+    "Water Rings Simulator",
+    "New version of Water rings toy simulator on Unity3D for Android",
+    "Unity3D");
 
 add("sea-life", 2015, "games",
     "Sea-Life",
