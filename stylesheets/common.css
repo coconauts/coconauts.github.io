@@ -1,0 +1,150 @@
+/*Used in footer*/
+.right {
+    left: auto;
+    right: 0px;
+    position: absolute;
+    top: 0px;
+    margin: 20px;
+}
+
+/*Used in projects and about*/
+.icon {
+    width:64px;
+    height:64px;
+    margin:10px;
+    margin-right:25px;
+    background-size:64px;
+    background-repeat:no-repeat;
+    border:0px !important;
+}
+.circular {
+    border-radius: 150px;
+    -webkit-border-radius: 150px;
+    -moz-border-radius: 150px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+    -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+    -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+}
+
+.copyright{
+    color:black
+}
+
+/* Used in icons in about and aside*/
+[class*="social-"]  {
+  margin:5px;
+  width:48px;
+  height:48px;
+  display:inline-block;
+  background-image:url('social.png') ;
+  background-repeat: no-repeat;
+}
+
+/*used for icons in footer*/
+[class*="-footer"]  {
+
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+    filter: gray;
+    -webkit-filter: grayscale(100%);
+
+    background-size: 144px 72px;
+    width:24px;
+    height:24px;
+}
+[class*="-footer"]:hover{
+  filter:none;
+  -webkit-filter:none;
+}
+
+/* 1 ,2, 3  ,4  ,5  ,6  ,7
+ * 24,48,72,96,120,144,
+ * 48,96,144,192,240,288,336
+ * 64,128,192,256,320*/
+
+.social-facebook {background-position:0px -96px; }
+.social-gplus {background-position:-48px -96px;}
+.social-linkedin {background-position:-96px -96px;}
+.social-twitter {background-position:-145px -96px;}
+.social-email { background-position:-192px -96px;}
+.social-youtube {background-position:-240px -96px;}
+.social-patreon { background-image:url('/stylesheets/patreon.png');
+  background-size: 80%;
+  height: 50px;
+  width: 100%;
+  margin: 20px;
+}
+
+.social-footer-facebook {background-position:0px -48px; }
+.social-footer-gplus {background-position:-24px -48px;}
+.social-footer-linkedin {background-position:-48px -48px;}
+.social-footer-twitter {background-position:-72px -48px;}
+.social-footer-email { background-position:-96px -48px;}
+.social-footer-youtube {background-position:-120px -48px;}
+
+[class*="rating-"]{
+  height:32px;
+  background-image:url('/stylesheets/coconauts.png');
+}
+.rating-1 {  width:32px; }
+.rating-2 {  width:64px; }
+.rating-3 {  width:96px; }
+.rating-4 {  width:128px; }
+.rating-5 {  width:160px; }
+
+/* Used in template and pages under construction*/
+.small {
+   width:300px;
+   float:center;
+}
+/*Used in all projects*/
+.screenshot {
+   width:150px;
+   float:center;
+}
+
+/*Used in all projects*/
+#image-container{
+  position:fixed;
+  z-index: 20;
+  border-radius: 10px;
+  border: 1px solid gray;
+  background-color: white;
+  padding:10px;
+  display: none;
+}
+
+.modal{
+  display:none;
+  z-index: 10;
+  width:100%;
+  height:100%;
+  position:fixed;
+  left:0px;
+  top:0px;
+  background-color:rgba(255,255,255,0.5);
+}
+
+.noscroll { position: fixed; overflow-y:scroll }
+
+.summary {
+ background-color: #FEFEE1;
+ font-size:small;
+  margin: 20px 0px 20px 0px;
+}
+
+.summary tr th {
+  padding:10px;
+  font-weight:bold;
+}
+.summary tr td {
+  vertical-align:top;
+ padding:10px;
+ width:50%;
+
+}
+.summary tr td ul {
+ margin-left:20px;
+}
+
+/** OVERRIDE DEFAULT OCTOPRESS CSS */
+body>header{padding:0px}

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: halloween | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/halloween/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2017-04-24T12:23:39+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Super Time Bomb Halloween Updates]]></title>
+<link href="http://coconauts.net/blog/2014/10/30/super-time-bomb-halloween-updates/"/>
+<updated>2014-10-30T18:30:00+00:00</updated>
+<id>http://coconauts.net/blog/2014/10/30/super-time-bomb-halloween-updates</id>
+<content type="html"><![CDATA[<p>We&rsquo;ve got a tasty update ready for <a href="/projects/timebomb2">project page</a>, just in time for most spooky festivity
+of the year. We know all of you love to dress up for Halloween, so now you can get a couple
+of really scary outfits for Lollipop the bunny as well! We&rsquo;ve included a really creepy
+zombie skin, and a very festive carved pumpking head.</p>
+
+<p><img src="http://coconauts.net/images/posts/zombie_bunny.png" /><img src="http://coconauts.net/images/posts/pumpkin_bunny.png" /></p>
+
+<!--more-->
+
+
+<p>But not only that, since the launching of Super Time Bomb we&rsquo;ve been listening to all of
+our users suggestions, and we&rsquo;ve included some changes that
+attempt to make the game more straightforward and fun:</p>
+
+<ul>
+<li>Instead of having to go though a tutorial, a tip system will guide you through learning
+all Super Time Bomb inside outs.</li>
+<li>Hovering tags will let you know what all of the menu items are about.</li>
+<li>Did you find boring to start from the begginning every time you died? worry no more!
+now you can skip 50 seconds ahead of time (by paying one little bunny in return).</li>
+</ul>
+
+
+<p>So don&rsquo;t forget to update you game, or go to the
+<a href="https://play.google.com/store/apps/details?id=net.coconauts.timebomb2">Google Play Store</a>
+to install it if you still don&rsquo;t have it. You are encouraged to leave us feedback on the
+new features as well.</p>
+
+<p>Have a spooky Halloween, and get lots of candies!</p>
+]]></content>
+</entry>
+
+</feed>
