@@ -15,7 +15,7 @@ published: true
 
 We have more projects that posts in the blog, that's why a long ago we created a new new version of our first-game-ever: Water Rings.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/5VBlgFSvP_w" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="560" src="https://www.youtube.com/embed/5VBlgFSvP_w" frameborder="0" allowfullscreen></iframe>
 
 <!--more-->
 
