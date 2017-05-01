@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Games | Coconauts]]></title>
+  <link href="http://coconauts.net/blog/categories/games/atom.xml" rel="self"/>
+  <link href="http://coconauts.net/"/>
+  <updated>2017-05-01T22:42:07+00:00</updated>
+  <id>http://coconauts.net/</id>
+  <author>
+    <name><![CDATA[Coconauts]]></name>
+    <email><![CDATA[admin@coconauts.net]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Water Ring Simulator]]></title>
+    <link href="http://coconauts.net/blog/2017/03/27/water-rings-simulator/"/>
+    <updated>2017-03-27T10:12:19+00:00</updated>
+    <id>http://coconauts.net/blog/2017/03/27/water-rings-simulator</id>
+    <content type="html"><![CDATA[<p>We have more projects that posts in the blog, that&rsquo;s why a long ago we created a new new version of our first-game-ever: Water Rings.</p>
+
+<iframe width="560" height="560" src="https://www.youtube.com/embed/5VBlgFSvP_w" frameborder="0" allowfullscreen></iframe>
+
+
+
+
+<!--more-->
+
+
+<p>Water Rings Simulator is the new version of the classic toy game on Unity3d exlusive for Android.</p>
+
+<p>This game features:</p>
+
+<ul>
+<li>Realisitc underwater physics</li>
+<li>3D graphics</li>
+<li>Mobile movement detection</li>
+<li>Realistic visual effects</li>
+<li>Transparent phone background (using camera to see behind it)</li>
+<li>It&rsquo;s FREE!</li>
+</ul>
+
+
+<p><img src="/images/posts/2017-04-20-water-rings-simulator/transparent.png" alt="game screenshot" /></p>
+
+<p>Download the game for free on the <a href="https://play.google.com/store/apps/details?id=net.coconauts.water3d">Android Play Store</a></p>
+
+<p>Do you want us to keep expanding the game? let us know in the comments</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[RPS: A Phaser.io Simple RTS]]></title>
+    <link href="http://coconauts.net/blog/2017/02/18/rps-a-phaser-io-simple-rts/"/>
+    <updated>2017-02-18T11:57:19+00:00</updated>
+    <id>http://coconauts.net/blog/2017/02/18/rps-a-phaser-io-simple-rts</id>
+    <content type="html"><![CDATA[<p>If you follow <a href="http://twitter.com/rephus">me</a> or <a href="http://twitter.com/coconauts">Coconauts</a> on Twitter, you might have seen some
+GIFs about an RTS game we&rsquo;re developing on Phaser.io.</p>
+
+<p>Codename: RPS (Rock, Paper, Scissors). Is a simple RTS (Real Strategy Game)
+we&rsquo;re building using the Phaser.io framework for HTML5 games.</p>
+
+<p>We aim to have a fun and complete game, with campaign, multiplayer
+and with a fresh interface, compatible with mobile and touch devices.</p>
+
+<p>The main selling point are its simple but effective mechanics.
+Forget about hundreds of different units with their own powerups, multiple buildings,
+or advanced research.</p>
+
+<!--more-->
+
+
+<p>This is some of the recent progress we&rsquo;ve made in the last 2-3 weeks.</p>
+
+<ul>
+<li>Minimap</li>
+</ul>
+
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Added a Minimap (bottom-rigth) to our game. It was easier than I expected <a href="https://twitter.com/hashtag/gamedev?src=hash">#gamedev</a> <a href="https://twitter.com/hashtag/phaserIo?src=hash">#phaserIo</a> <a href="https://t.co/A0ATvb5ZxM">pic.twitter.com/A0ATvb5ZxM</a></p>&mdash; Coconauts (@coconauts) <a href="https://twitter.com/coconauts/status/826728173996015616">February 1, 2017</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<ul>
+<li>Simple AI, sight area, and new map</li>
+</ul>
+
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Big progress on our RTS game in <a href="https://twitter.com/hashtag/phaserio?src=hash">#phaserio</a>: simple AI, sight area, new map and more! <a href="https://twitter.com/hashtag/gamedev?src=hash">#gamedev</a> <a href="https://t.co/jnxwofvm5c">pic.twitter.com/jnxwofvm5c</a></p>&mdash; Coconauts (@coconauts) <a href="https://twitter.com/coconauts/status/826161939478872069">January 30, 2017</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<ul>
+<li>Emojis dialogs</li>
+</ul>
+
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Express yourself with in-game emojis <a href="https://twitter.com/hashtag/gamedev?src=hash">#gamedev</a> <a href="https://t.co/l6RoYpmrrm">pic.twitter.com/l6RoYpmrrm</a></p>&mdash; Javi Rengel (@rephus) <a href="https://twitter.com/rephus/status/825682597170786304">January 29, 2017</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>If you want to follow these updates closely, checkout our <a href="/projects/rps">Project page</a></p>
+
+<p>And let us know if you want to give us feedback about how to improve the game !</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[2D Game Framework Comparison: Defold vs Phaser vs Game Maker]]></title>
+    <link href="http://coconauts.net/blog/2017/01/09/2d-game-framework-comparison/"/>
+    <updated>2017-01-09T10:42:19+00:00</updated>
+    <id>http://coconauts.net/blog/2017/01/09/2d-game-framework-comparison</id>
+    <content type="html"><![CDATA[<p>We wanted to start a building new 2D game ideas we have in mind, and we thought
+our favorite 3D platform so far (Unity3D) was not optimal enough to build a fully 2D game.
+And despite having experience with some other frameworks like LibGDX (as we built
+<a href="/projects/timebomb2">Exploding Bunnies</a> ) along with some other Ludum Dare games,
+we wanted to see if there is something better.</p>
+
+<p>After some investigation, we narrowed the list to Defold vs Phaser.io vs Game Maker,
+ so we decided to give them a try by building a quick Pong demo in those 3 frameworks,
+and gather some conclusions before we start building our next 2D game.</p>
+
+<!--more-->
+
+
+<h2>Defold</h2>
+
+<p>Propietary framework made by King (experts on mobile games). They have built a
+promising editor with a lot of great features, like version control and easy deployment to multiple platforms.
+Although it&rsquo;s still on Beta, it sounds like this might be a trully solid option.</p>
+
+<p>It took me some time to get used to the new concepts like the atlas and the collection, plus all the properties.
+After a while, the whole framework reminded me of Unity3D, but simpler.
+On the other hand, the current editor, which is based on Eclipse, gave me bad memories;
+fortunately they&rsquo;re moving  to a <a href="http://www.defold.com/roadmap/">cloure based editor</a> now.
+I got blocked during almost an hour because of this
+<a href="https://forum.defold.com/t/scaling-collision-object-when-game-object-is-scaled-def-521/547">scaled collision object bug</a>
+until I discovered the useful debug option on game settings.</p>
+
+<iframe src='http://html5.coconauts.net/2d-framework-comparison/defold/' width=650 height=350></iframe>
+
+
+<ul>
+<li><p><a href="http://www.defold.com/showcase/">Showcase</a></p></li>
+<li><p>Language: Lua</p></li>
+<li><p>Getting started: <a href="http://www.defold.com/tutorials/getting-started/">http://www.defold.com/tutorials/getting-started/</a></p></li>
+</ul>
+
+
+<p><img src='http://coconauts.net/images/posts/2017-01-09-2d-framework/defold-editor.png'/></p>
+
+<h4>Pros:</h4>
+
+<ul>
+<li>Free</li>
+<li>Visual editor</li>
+<li>Available on Linux</li>
+<li>Multiplatform</li>
+<li>Performance</li>
+<li>Version control friendly (+integrated)</li>
+<li>Integrated game analytics</li>
+</ul>
+
+
+<h4>Cons:</h4>
+
+<ul>
+<li>Propietary solution</li>
+<li>Still beta</li>
+<li><p>Found bugs while building demo</p></li>
+<li><p>Score:  7 / 10</p></li>
+</ul>
+
+
+<p>Get our demo <a href="https://github.com/rephus/pong-sample-defold">here</a></p>
+
+<h2>Phaser.io</h2>
+
+<p>Pretty popular simple opensource framework  with a great community and tons of examples.</p>
+
+<p>While building this demo, I found it was surprisingly easy to start with,
+plus the documentation and the API was very clear and advanced.</p>
+
+<p>Things like <code>game.world.centerX</code> instead of doing <code>game.world.width / 2</code> or
+<code>body.collideWorldBounds = True</code> really impressed me.</p>
+
+<iframe src='http://html5.coconauts.net/2d-framework-comparison/phaser/' width=650 height=350></iframe>
+
+
+<ul>
+<li><p>Language: Javascript</p></li>
+<li><p>Getting started: <a href="http://phaser.io/tutorials/getting-started">http://phaser.io/tutorials/getting-started</a></p></li>
+<li><p>Pong tutorial: <a href="https://www.youtube.com/watch?v=3egKs7b86j0">https://www.youtube.com/watch?v=3egKs7b86j0</a></p></li>
+</ul>
+
+
+<h4>Pros:</h4>
+
+<ul>
+<li>Open source (but with a company behind it)</li>
+<li>Available on Linux</li>
+<li>HTML5 (multiplatform)</li>
+<li>Great community</li>
+<li>Version control capabilities</li>
+</ul>
+
+
+<h4>Cons:</h4>
+
+<ul>
+<li>No official Visual editor</li>
+<li><p>No direct Android exporting (cordova/cocoon required)</p></li>
+<li><p>Score: 8 / 10</p></li>
+</ul>
+
+
+<p>Get our demo <a href="https://github.com/rephus/pong-sample-phaser">here</a></p>
+
+<h2>Game Maker</h2>
+
+<p>Probably one of the oldests game frameworks and still pretty popular,
+I remember using this like 10 years ago, before I knew anything about programming.
+And to be honest, it hasn&rsquo;t changed that much since then.</p>
+
+<p>The fact the free version only allows to generate window executables and
+that the studio only runs on Windows was conclusive enough,
+but also the whole framework is no much different from the others,
+if you know programming.</p>
+
+<p>Some of the best indie games have been made with this framework like:</p>
+
+<ul>
+<li>Spelunky</li>
+<li>Hyper Light Drifter</li>
+<li>Nuclear Throne</li>
+<li><p>Hotline Miami</p></li>
+<li><p>Language: Game Maker Language</p></li>
+<li><p>Getting started: <a href="http://www.yoyogames.com/learn">http://www.yoyogames.com/learn</a></p></li>
+</ul>
+
+
+<p><img src='http://coconauts.net/images/posts/2017-01-09-2d-framework/gamemaker-editor.png'/></p>
+
+<h4>Pros:</h4>
+
+<ul>
+<li>Visual editor</li>
+<li>No programming skills required</li>
+<li>Seems to be the indie industry standard</li>
+</ul>
+
+
+<h4>Cons:</h4>
+
+<ul>
+<li>Propietary solution</li>
+<li>Windows only editor</li>
+<li>No multiplatform (free version)</li>
+<li>Uses its own scripting language</li>
+<li>Version control issues</li>
+<li><p>Slow runnable</p></li>
+<li><p>Score:  3 / 10</p></li>
+</ul>
+
+
+<h2>Conclussions</h2>
+
+<p>We decided Phaser.io to be our next 2D framework. Of the 3 it was the faster and easiest to get started with. Defold sounds like with some polish it might be a sounder solution to use for real projects (for example, the mobile export is managed a lot better, or the integrated analytics are a bit plus); but the bugs we found on Defold while building this simple demo scared us a bit. Once it matures we might give it another go, but for now Phaser fits the bill for our purposes.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to Improve Classic Nintendo Games]]></title>
+    <link href="http://coconauts.net/blog/2016/12/29/how-improve-nintendo/"/>
+    <updated>2016-12-29T10:42:19+00:00</updated>
+    <id>http://coconauts.net/blog/2016/12/29/how-improve-nintendo</id>
+    <content type="html"><![CDATA[<p>Although the Nintendo Mini has been a great success, and the best way of recreating our childhood
+experience with a great collection of classic Nintendo games; There are a lot of things still Nintendo
+can do to our beloved classic games in order to let us play those classic games in a complete new (and refreshing) way. They don&rsquo;t even need to do it on a new old mini console, but on their virtual store on WiiU or NX (switch)</p>
+
+<p><img src="http://coconauts.net/images/posts/2016-12-29-how-improve-nintendo/nes-mini.jpg" alt="achievement"></p>
+
+<!--more-->
+
+
+<p>Some of these ideas have already been proved possible in our <a href="http://retrophies.win">Retrophies</a> project, just by taking the original game, with no ROM hacking involved but just checking the memory values in the emulator, so imagine what Nintendo can do with their original games,
+something they already tried on the great Nes Remix compilation.</p>
+
+<h2>Achievements</h2>
+
+<p>Some people love them, some people hate them, but it&rsquo;s true they are a good way of motivating people
+on playing games again with an objective in mind. Won&rsquo;t you play Super Mario Bros again if I tell you
+you will get an official reward by finishing it ? Maybe the brand new Nintendo coins.</p>
+
+<p><img src="http://coconauts.net/images/posts/2016-12-29-how-improve-nintendo/achievement.png" alt="achievement"></p>
+
+<p>This was the main feature of Retrophies and it was pretty fun to build and play.</p>
+
+<h2>Multiplayer</h2>
+
+<p>Another concept we tested on Retrophies, having the capability of see (or interact) with
+other players in real time while you play.</p>
+
+<p><img src="http://coconauts.net/images/posts/2016-12-29-how-improve-nintendo/multiplayer.png" alt="multiplayer"></p>
+
+<p>Sounds like playing New Super Mario Bros on Super Mario Bros.</p>
+
+<h2>Scoreboards</h2>
+
+<p>Who is the fastest player to finish World 1-1 on Super Mario Bros ? This is a concept we
+are still working on Retrophies.</p>
+
+<p>Nintendo can add official scoreboard to most of their games. I mean, speedrunners
+do this with most Nintendo games already, think about all the crazy Ocarina of Time speedrunnes available, why don&rsquo;t make it official.</p>
+
+<h2>Maker version of classic games</h2>
+
+<p>Remember Mario maker and how fun was to build scenarios on Super Mario ? Then why not integrating
+this function on existing games ? This is also a possibility that we could integrate in
+Retrophies in the future (by adding blocks or items in the screen in memory).</p>
+
+<p>Do you have another idea for twisted classic Nintendo games ?</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Sea-Life: Game for ProcJam 2015]]></title>
+    <link href="http://coconauts.net/blog/2016/10/05/sea-life-at-procjam/"/>
+    <updated>2016-10-05T20:54:19+00:00</updated>
+    <id>http://coconauts.net/blog/2016/10/05/sea-life-at-procjam</id>
+    <content type="html"><![CDATA[<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Procedurally drawn fishies with balanced stats in our <a href="https://twitter.com/hashtag/procjam?src=hash">#procjam</a> entry. Coming next: changing their shape accordingly! <a href="https://t.co/dzoFheVaO1">pic.twitter.com/dzoFheVaO1</a></p>&mdash; Coconauts (@coconauts) <a href="https://twitter.com/coconauts/status/664208953522462720">November 10, 2015</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>On 10 Nov 2015 we posted a procedurally generated game featuring
+websockets for the Procjam 2015 (done only in 2 days). Almost a year ago, we decided to create a post for it, just for the record (see the original post <a href="https://marbu.itch.io/sea-life">here</a>)</p>
+
+<p>Play the game <a href="http://html5.coconauts.net/sealife/">here</a> or check the <a href="https://github.com/coconauts/sea-life">Github repo</a></p>
+
+<!--more-->
+
+
+<h2>Description</h2>
+
+<p>This game attempted to be an iteration on a similar idea that we did for a Ludum Dare, <a href="http://ludumdare.com/compo/ludum-dare-24/?action=preview&amp;uid=16605">&ldquo;Sea Evolution&rdquo;</a></p>
+
+<p>In the game you are sea creature that needs to survive in your ecosystem. You get hungry, you need to eat, and you can lay eggs to perpetuate your species. Different sea creatures have different attributes, which determine who can eat and get eaten by.</p>
+
+<p>Unfortunately we didn&rsquo;t have a lot of time during this week, so we couldn&rsquo;t develop or polish as much as we wanted! Here&rsquo;s what we managed to do:</p>
+
+<h2>Infinite game world</h2>
+
+<p>In the original sea evolution there was no scrolling. But we wanted to make it feel like the endless sea, so in this one we made a scrolling world that gets autopopulated with new fishes as you advance through it.</p>
+
+<p>Our original plan was to emulate a sea bottom, which we would also autopopulate with seaweeds, reefs, or even dark abyss areas, or polluted areas where only poison-resistant fishes would be able to habitate. But we didn&rsquo;t have time for all this! So instead you are just traversing the boring open ocean.</p>
+
+<h2>100% canvas, randomized fish shapes</h2>
+
+<p>Everything is drawn with canvas, no sprites! It&rsquo;s the first time we actually do this sort of thing, and it was challenging but quite fun. This allows for some fun features, such as being able to alter the shape of the fishes programatically. Each fish will randomly be given a distinct color and shape.</p>
+
+<h2>Autogenerated fish statistics</h2>
+
+<p>Fishes are created with a set of stats: speed, attack power and defense. These are represented by the gauge meters below the fish. Normally you should be safe to attack a fish if it has less attack and defense than you do (otherwise the other fish might kill you!). The stats are balanced, so that if you get more of one you&rsquo;ll get less of the others.</p>
+
+<h2>Fish growth</h2>
+
+<p>In the original Sea Evolution, fishes went through several life stages, from egg to adult. On each life stage their stats were bumped. You were always able to survive by eating the fishes that were in lower life stages, beacause they had lower stats. On adult form, fishes can lay eggs to perpetuate there species.</p>
+
+<p>In this game we have implemented the life stages, and you can notice that after a certain amount of time the stats are bumped. However we didn&rsquo;t have timeto alter the appearance of the fishes when this happens.</p>
+
+<h2>Controls</h2>
+
+<p>You can move with the arrow keys or the mouse. The enemy fishes randomly pick where to go, or if they are close to other fish they will chase it to eat it. Sometimes this results in all of the enemies gathering together in one point eating each other out.</p>
+
+<p>The player fish also follows the same behavior if you don&rsquo;t tell it where to go. This is a bit confusing, yes, but we didn&rsquo;t have time to change it.</p>
+
+<h2>Descendants</h2>
+
+<p>The original idea for Sea Life was to be able to perpetuate your species over the rest. You would be able to lay eggs and have descendancy, and your success in life (ie, your game score) would be measured to how many descendants did you managed to get until you died. How successful you would be in your species conquering the sea world would depend in both your ability and the statistics autogenerated for your sea species.</p>
+
+<p>So we did implement this&hellip; partially. You will have children from time to time, and they will follow you along. But actually they don&rsquo;t really have any stats, or count as real fishes. But they make you feel less lonely, no?</p>
+
+<h2>Websockets</h2>
+
+<p>Yay! Another experiment. We wanted to make this a multiplayer experience, using websockets. When you join the game you will connect to a server keeping track of all the players, and you will receive their possitions. So you might cross another human while playing!</p>
+
+<p>It&rsquo;s easy to identify a human: they will have no stats displaying (because you can&rsquo;t really eat them), and they would have an autogenerated name, in the pattern &ldquo;adjective + sea animal&rdquo; (in the spirit of Metal Gear Solid troop names, or Ubuntu distributions)</p>
+
+<p>And that is basically it. Probably too buggy to be playable for a long time, but a fun experiment with some forms of procedural generation =)</p>
+]]></content>
+  </entry>
+  
+</feed>
