@@ -7,7 +7,7 @@ categories: software
 tags: music nodejs webdev javascript
 sharing: true
 keywords: spotify,discovery,infinite,nodejs,javascript
-description: "A NodeJS app powering infinite recommendations to a spotify playlist"
+description: "A NodeJS app powering infinite recommendations to a Spotify playlist"
 author: Mar Bartolome
 featured: false
 published: true
@@ -20,6 +20,8 @@ choosing. Deciding albums to hear? What are we, in the 90s? with phisical CDs th
 need popping into a player? It's the digital age! I just want to open Spotify
 and be presented with a continuous stream of non-stop music,
 wihout having the choose an album, or a genre, or a playlist.
+They even require my constant feedback when in radio mode!
+(don't even get me started on the Spotify radio, _yuck_).
 I just want a big "play" button and let Spotify use a teeny bit of
 machine intelligence to feed me stuff that it thinks I might like.
 Considering the app is sitting on top of a pile of data from me
@@ -60,7 +62,9 @@ in some occasions, but when it comes to recommending music to people it doesn't 
 if I like John Williams and Queen I want to be recommended Danny Elfman and Van Halen,
 not "Some Orchestra Plays Very Bland Rock Classics".
 
-So our solution involves using the endpoint, but in a somewhat brutish way:
+![Infinify](/images/posts/2017-05-01-infinify/epicrock.png)
+
+So our solution involves working around the endpoint, using in a bit unorthodox way:
 
 1. Fetch a random single song from the user's saved music collection.
 2. Use this song's artist as a seed to the `/recommendations` endpoint. Get a small X number of songs back.
@@ -80,9 +84,12 @@ same artist that your seed, and this doesn't give you much variety. So by produc
 several and then picking one of them, you get a delicious balance: you'll get a
 certain chance to get songs by the same artists in your library, but them a slightly
 bigger chance to get related artists (that may or not be in your library).
+
 This X number of tracks is what we call the `discoverability` parameter, and
 you can toggle it between 1 ("I just want the artists I know and love") and 10
 (in which approximately 9 in every 10 songs will be new, and 1 will be familiar).
+
+![Infinify](/images/posts/2017-05-01-infinify/discoverability.png)
 
 ## The ugly bits
 
@@ -113,6 +120,8 @@ playlist: for this eventuality we added a little `(+)` button to force a manual
 generation. When you start a new session the playlist gets reset, as it would be
 confusing to have the long list of tracks from last time.
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_ge4n9zmTRQ" frameborder="0" allowfullscreen></iframe>
+
 Because the way we are abusing the `/recommendations` endpoint, ours is
 not the most rate-friendly solution. However, it's also not that bad: our load
 is 4 or 5 requests every 2 minutes, which still falls within reasonable limits,
@@ -124,10 +133,15 @@ For recommender engines, and in general many AI problems, there's usually
 a rule: a naive, straightforward solution can take you 60-80% there.
 Then any increases on that number will require years of PhD research.
 
-This is a very simple solution, but surprisingly, also very effective! I was
+Infinify is a very simple solution, but surprisingly, also very effective! I was
 very pleased with the quality of recommendations, and how you can still get
 a mix of familiar and new. Of course, most of the
 heavy lifting comes from the magic behind the `/recommendations` engine,
 but I'm happy that we could bend it to overcome it's limitations.
+
+For now, I intend to use it heavily for a while and see if it still satisfy me,
+or if recommendations start getting a bit repetitive. In such case, I might start
+tunning the algorithim to try more variability (for instance, going for
+multi-level recommendations from recommendations).
 
 You can get the code for Infinify [on Github](https://github.com/coconauts/infinify).
