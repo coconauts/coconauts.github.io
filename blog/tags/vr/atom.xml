@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: vr | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/vr/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2017-05-01T22:46:48+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Building 3D virtual reality games with Unity3D]]></title>
+<link href="http://coconauts.net/blog/2015/06/20/3d-virtual-reality-demo-with-unity/"/>
+<updated>2015-06-20T15:53:19+00:00</updated>
+<id>http://coconauts.net/blog/2015/06/20/3d-virtual-reality-demo-with-unity</id>
+<content type="html"><![CDATA[<p>All the big companies like Samsung, Sony and even Facebook are doing their best to build the
+ultimate Virtual Reality headset and make it standard.</p>
+
+<p>Once they are in the market, we (indie game developers) need to be ready to build VR games
+so everyone can enjoy their fancy expensive devices.</p>
+
+<p>So, in order to start playing with them, you could either pay 350$ dollars for a <a href="https://www.oculus.com/order/">Oculus Rift developing kit</a>,
+or you could get one of those cheap kits from <a href="http://www.aliexpress.com/item/High-quality-DIY-Google-Cardboard-Virtual-Reality-VR-Mobile-Phone-3D-Glasses-for-5-0-Screen/32301733749.html?s=p">Google</a>
+or even <a href="https://twitter.com/rephus/status/587297530045714432">build your own</a>, and start building games in Unity3D.</p>
+
+<p><img src="http://coconauts.net/images/posts/3d-island-demo/img1.png" /></p>
+
+<!--more-->
+
+
+<p>We recently built a VR technical demo in Unity and it&rsquo;s available on <a href="https://play.google.com/store/apps/details?id=net.coconauts.island3d">Play store</a>.
+The purpose of this demo was built to test the performance of a Virtual Reality environment in Unity3D.</p>
+
+<p><img src="http://coconauts.net/images/posts/3d-island-demo/img2.png" /></p>
+
+<p>It uses the scene and models from the <a href="http://unity3d.com/showcase/live-demos#tropical-paradise">Tropical Paradise Unity demo</a>,</p>
+
+<p>But because this demo was built for Unity v3 and we use 4.6 we had to fix some parts of the code to make it compatible,
+also we replaced the water effect completely with a new one for the free version.</p>
+
+<p>Also, it&rsquo;s optimized for mobile platforms and we included some simple features to make it VR ready.</p>
+
+<p>We noticed that the game runs great in PC, and OK (~30FPS) in a modern phone even with high resolution and good quality.
+The bottleneck is the number of details and shadows in the scene, or drawCalls in unity.</p>
+
+<p>But you can try by your own by <a href="https://play.google.com/store/apps/details?id=net.coconauts.island3d">downloading</a> the game into your phone.</p>
+
+<p>If you have a question or want more details about our demo, please let us know in the comments.</p>
+]]></content>
+</entry>
+
+</feed>

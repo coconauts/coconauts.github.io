@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: game | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/game/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2017-05-01T22:46:48+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[We built our house with Unity3D and Blender]]></title>
+<link href="http://coconauts.net/blog/2016/05/19/build-house-in-3d-with-blender-unity3d/"/>
+<updated>2016-05-19T22:51:00+00:00</updated>
+<id>http://coconauts.net/blog/2016/05/19/build-house-in-3d-with-blender-unity3d</id>
+<content type="html"><![CDATA[<p>We moved home a few months ago to a beautiful house in the country side in UK,
+outside the expensive area of London, but close enough to commute daily.</p>
+
+<p>As soon as we moved in, we built a simple version of our home in 3D on Blender
+ to help us decorate. And then we integrated the 3D model into Unity3D and build
+a game on top of it, on this case, a FPS or more like a FPW: First Person Walker,
+a FPS without shooting, not as fun as it sounds.</p>
+
+<p>We posted an image on Twitter a few months ago about our first prototype:</p>
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">I finally created a First person game of my new home with <a href="https://twitter.com/hashtag/unity3D?src=hash">#unity3D</a> and <a href="https://twitter.com/hashtag/blender?src=hash">#blender</a> . Looks better than real life! <a href="https://t.co/JjSPPP1835">pic.twitter.com/JjSPPP1835</a></p>&mdash; Javi Rengel (@rephus) <a href="https://twitter.com/rephus/status/698998470280089600">February 14, 2016</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+
+<!-- more -->
+
+
+<p>And this is how our place looks after we bought all the furniture.</p>
+
+<p><img src='https://farm8.staticflickr.com/7236/26513350403_4ac3cc142c_z_d.jpg'/>
+<img src='https://farm8.staticflickr.com/7714/27083818276_36950ff772_z_d.jpg'/></p>
+
+<p><img src='https://farm8.staticflickr.com/7715/27083819056_acb9ae8fa5_z_d.jpg'/>
+<img src='https://farm8.staticflickr.com/7348/27083818686_12b5f68383_z_d.jpg'/></p>
+
+<p><img src='https://farm8.staticflickr.com/7211/27083819206_727a82707c_z_d.jpg'/>
+<img src='https://farm8.staticflickr.com/7434/26513349443_4d9df59b0d_z_d.jpg'/></p>
+
+<p><img src='https://farm8.staticflickr.com/7750/27083819266_15ca7674e5_z_d.jpg'/>
+<img src='https://farm8.staticflickr.com/7054/27083818506_f84f07ba12_z_d.jpg'/></p>
+
+<p>The game is also a good chance to try out VR, perfect to use with Google VR to feel
+like you are at home.</p>
+
+<p><img src='https://farm8.staticflickr.com/7554/27083819136_dd3a9a50d3_z_d.jpg'/></p>
+
+<p>If you are interested, you can play on our 3D model we made, please feel at home.</p>
+
+<p><a href="http://unity3d.coconauts.net/welwyn">Play it here!</a></p>
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[Building 3D virtual reality games with Unity3D]]></title>
+<link href="http://coconauts.net/blog/2015/06/20/3d-virtual-reality-demo-with-unity/"/>
+<updated>2015-06-20T15:53:19+00:00</updated>
+<id>http://coconauts.net/blog/2015/06/20/3d-virtual-reality-demo-with-unity</id>
+<content type="html"><![CDATA[<p>All the big companies like Samsung, Sony and even Facebook are doing their best to build the
+ultimate Virtual Reality headset and make it standard.</p>
+
+<p>Once they are in the market, we (indie game developers) need to be ready to build VR games
+so everyone can enjoy their fancy expensive devices.</p>
+
+<p>So, in order to start playing with them, you could either pay 350$ dollars for a <a href="https://www.oculus.com/order/">Oculus Rift developing kit</a>,
+or you could get one of those cheap kits from <a href="http://www.aliexpress.com/item/High-quality-DIY-Google-Cardboard-Virtual-Reality-VR-Mobile-Phone-3D-Glasses-for-5-0-Screen/32301733749.html?s=p">Google</a>
+or even <a href="https://twitter.com/rephus/status/587297530045714432">build your own</a>, and start building games in Unity3D.</p>
+
+<p><img src="http://coconauts.net/images/posts/3d-island-demo/img1.png" /></p>
+
+<!--more-->
+
+
+<p>We recently built a VR technical demo in Unity and it&rsquo;s available on <a href="https://play.google.com/store/apps/details?id=net.coconauts.island3d">Play store</a>.
+The purpose of this demo was built to test the performance of a Virtual Reality environment in Unity3D.</p>
+
+<p><img src="http://coconauts.net/images/posts/3d-island-demo/img2.png" /></p>
+
+<p>It uses the scene and models from the <a href="http://unity3d.com/showcase/live-demos#tropical-paradise">Tropical Paradise Unity demo</a>,</p>
+
+<p>But because this demo was built for Unity v3 and we use 4.6 we had to fix some parts of the code to make it compatible,
+also we replaced the water effect completely with a new one for the free version.</p>
+
+<p>Also, it&rsquo;s optimized for mobile platforms and we included some simple features to make it VR ready.</p>
+
+<p>We noticed that the game runs great in PC, and OK (~30FPS) in a modern phone even with high resolution and good quality.
+The bottleneck is the number of details and shadows in the scene, or drawCalls in unity.</p>
+
+<p>But you can try by your own by <a href="https://play.google.com/store/apps/details?id=net.coconauts.island3d">downloading</a> the game into your phone.</p>
+
+<p>If you have a question or want more details about our demo, please let us know in the comments.</p>
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[Exploding Bunnies]]></title>
+<link href="http://coconauts.net/blog/2015/03/21/exploding-bunnies/"/>
+<updated>2015-03-21T15:53:19+00:00</updated>
+<id>http://coconauts.net/blog/2015/03/21/exploding-bunnies</id>
+<content type="html"><![CDATA[<p>It&rsquo;s been half a year since
+<a href="http://www.coconauts.net/projects/timebomb2/">Super Time Bomb</a>
+was released. During this
+time, we&rsquo;ve been closely following it&rsquo;s reception, and gathering user
+feedback. Today we released an update with major gameplay changes,
+including a name change!</p>
+
+<!--more-->
+
+
+<h2>New name</h2>
+
+<p>The game is now named <em>Exploding Bunnies</em>, in the hope that this is
+a more unique name, making it easier to search on the Play Store.
+Before it was appearing over the 10th position in the search result,
+whereas now it&rsquo;s showing up the forth, you don&rsquo;t even need to scroll
+to see it.</p>
+
+<p><img src="http://coconauts.net/images/posts/exploding-bunnies/store.png" /></p>
+
+<h2>More fun difficulty curve</h2>
+
+<p>We&rsquo;ve made the difficulty curve more stable. Previously, the difficulty
+in both game modes was set to be strictly incremental: it started
+really slow and easy, and difficult went up at a constant rate. But
+after a few minutes it turned out to be humanely impossible to survive.
+This made for a frustrating experience, with short gameplays, boring time
+after every restart, and no incentive for players to try to last longer
+and longer, since it was physically impossible.</p>
+
+<p>We&rsquo;ve heavily tuned the difficulty curve so that now starts out a little
+bit more upbeat, so you won&rsquo;t be bored with every game restart. Then it
+goes up  until it reaches a limit at 5 minutes of gameplay, after which
+point it will stabilize. This allows for in theory infinite gameplays,
+giving the players an incentive to keep trying to beat their high scores.</p>
+
+<p><img src="http://coconauts.net/images/posts/exploding-bunnies/difficulty.png" /></p>
+
+<h2>One game mode to rule them all</h2>
+
+<p>The original Super Time Bomb included two game modes: wave and continous.
+For this revision, however, we&rsquo;ve decided to say goodbyde to the wave mode
+and keep the continous one. The wave mode wasn&rsquo;t that different from the
+continous one, so it was a bit redundant to begin with. The difficulty
+curve problem mentioned earlier was also more accused in the wave mode
+than in the continous one. It also confused new users trying out the game
+to have to pick between two game modes.</p>
+
+<p>So now we have one big &ldquo;PLAY&rdquo; button instead, which will take you to
+the formerly continous mode gameplay. Unite and conquer!</p>
+
+<p><img src="http://coconauts.net/images/posts/exploding-bunnies/mainmenu.png" /></p>
+
+<h2>Death from above</h2>
+
+<p>Since we&rsquo;ve limited the difficulty in terms of quantity of bombs in the
+screen, we&rsquo;ve decided to add a new type of bomb to increase the complexity
+a little bit. Now, aside from the regular bombs, mines, and wall lasers,
+we have a new dropping bomb that falls from the sky. The difference is that
+for this type of bomb there is no counter! You&rsquo;ll just see a warning and
+a shadow where the bomb will fall.</p>
+
+<p><img src="http://coconauts.net/images/posts/exploding-bunnies/airbomb.png" /></p>
+
+<h2>Go play it!</h2>
+
+<p>It&rsquo;s difficult to make a star game in your first shot. Usually most
+great games come from successive iterations over the same idea (just
+have a look at the metal gear games for instance!).</p>
+
+<p>So go and give a try to the new
+<a href="https://play.google.com/store/apps/details?id=net.coconauts.timebomb2">Exploding Bunnies</a>
+and see how you like it! Please give us feedback: we welcome every
+comment, and we&rsquo;ll try to make the next iteration even better.</p>
+]]></content>
+</entry>
+
+</feed>

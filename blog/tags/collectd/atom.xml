@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: collectd | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/collectd/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2017-05-01T22:46:48+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Collectd threshold status]]></title>
+<link href="http://coconauts.net/blog/2015/01/27/collectd-threshold-status/"/>
+<updated>2015-01-27T17:24:14+00:00</updated>
+<id>http://coconauts.net/blog/2015/01/27/collectd-threshold-status</id>
+<content type="html"><![CDATA[<p>Collectd is an easy way of monitoring servers (CPU, memory, network, etc)
+and using the <strong>threshold</strong> and the <strong>notification</strong> plugin
+we can get notifications via email if some of them hit a threshold.</p>
+
+<p>The only problem is that collectd doesn&rsquo;t provide a summary of the current status
+(like, for instance, Jenkins does),
+that&rsquo;s why we built our own summary system.</p>
+
+<p><img src="http://coconauts.net/images/posts/collectd-threshold-status/status.png" /></p>
+
+<p>Download from <a href="https://github.com/coconauts/collectd-threshold-status">Github</a></p>
+
+<!--more-->
+
+
+<h2>Quick introduction to thresholds and notifications</h2>
+
+<p>Collectd provides a plugin called <strong>threshold</strong> to monitor and dispatch notifications,
+looking at the values reported by collectd like CPU, memory, etc.</p>
+
+<p>Follow <a href="https://collectd.org/documentation/manpages/collectd-threshold.5.shtml">this guide</a>
+to learn more about thresholds.</p>
+
+<p>The <strong>notify_email</strong> plugin will send emails to an address of your choice everytime a threshold is reached.
+More info <a href="https://collectd.org/wiki/index.php/Plugin:Notify_Email">here</a>.</p>
+
+<h2>Read thresholds from the log</h2>
+
+<p>If you are using both of the plugins,
+the notification will record every threshold in the <code>/var/log/collectd.log</code> file.</p>
+
+<p><code>
+[2014-11-20 06:26:44] Notification: severity = FAILURE, host = vpn, plugin = cpu, plugin_instance = 0, type = cpu, type_instance = user, message = Host vpn, plugin cpu (instance 0) type cpu (instance user): Data source "value" is currently 99.432869. That is above the failure threshold of 50.000000.
+[2014-11-20 06:28:54] Notification: severity = OKAY, host = vpn, plugin = cpu, plugin_instance = 0, type = cpu, type_instance = user, message = Host vpn, plugin cpu (instance 0) type cpu (instance user): All data sources are within range again.
+</code></p>
+
+<p>We are building a <a href="https://github.com/coconauts/collectd-threshold-status/blob/master/status.sh">bash script</a>
+that parses that log periodically and generates a json file like this one:</p>
+
+<p><code>json
+{"servers":[
+  {"name":"apps", "status":"OK","message":"Host apps, plugin cpu (instance 0) type cpu (instance user): All data sources are within range again.","timestamp":"2014-12-16 06:26:40","type":"cpu"}
+  ,{"name":"ci", "status":"OK","message":"","timestamp":"","type":""}
+  ,{"name":"collectd", "status":"OK","message":"","timestamp":"","type":""}
+  ]}
+</code></p>
+
+<h2>Showing the information in the web</h2>
+
+<p>A html file with some <a href="(https://github.com/coconauts/collectd-threshold-status/blob/master/status.js">javascript</a>
+is looking at the json file previously generated to build a
+table with the current status of all thresholds.</p>
+
+<p><img src="http://coconauts.net/images/posts/collectd-threshold-status/status.png" /></p>
+]]></content>
+</entry>
+
+</feed>
