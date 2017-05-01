@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Hardware | Coconauts]]></title>
+  <link href="http://coconauts.net/blog/categories/hardware/atom.xml" rel="self"/>
+  <link href="http://coconauts.net/"/>
+  <updated>2017-05-01T22:32:42+00:00</updated>
+  <id>http://coconauts.net/</id>
+  <author>
+    <name><![CDATA[Coconauts]]></name>
+    <email><![CDATA[admin@coconauts.net]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Control Energenie With ESP8266]]></title>
+    <link href="http://coconauts.net/blog/2017/03/10/control-energenie-with-esp8266/"/>
+    <updated>2017-03-10T21:30:19+00:00</updated>
+    <id>http://coconauts.net/blog/2017/03/10/control-energenie-with-esp8266</id>
+    <content type="html"><![CDATA[<p>We recently showed you how to control <a href="http://coconauts.net/blog/2017/02/15/control-energenie-with-pebble/">Energenie sockets using Pebble smartwatch app</a>,
+thanks to a <a href="http://coconauts.net/blog/2016/04/15/energinie-and-raspberry-pi-setup/">Raspberry PI</a> REST API.</p>
+
+<p>But we recently found this <a href="https://github.com/cjdell/esp-rf-switch">Github repo</a>
+about how to use a generic 433Mhz radio module with an ESP8266  to control Energenie sockets.</p>
+
+<!--more-->
+
+
+<p>So we decided to replace our Raspberry setup with this cheaper, smaller, portable and scalabe solution.</p>
+
+<p>All you need is an ESP8266 and this tiny and cheap radio module</p>
+
+<p><img src="/images/posts/2017-02-16-control-energenie-esp8266/radio-transmitter.png" alt="radio-transmitter" /></p>
+
+<p>In order to build this</p>
+
+<p><img src="/images/posts/2017-02-16-control-energenie-esp8266/hardware.png" alt="hardware" /></p>
+
+<p>The detailed guide and schemas about how to do it is on our <a href="https://github.com/rephus/esp8266-energenie-switch">own Github repo</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Smart Staircase LED Lighting With Arduino and IR Sensors]]></title>
+    <link href="http://coconauts.net/blog/2017/02/21/stair-lights/"/>
+    <updated>2017-02-21T20:52:19+00:00</updated>
+    <id>http://coconauts.net/blog/2017/02/21/stair-lights</id>
+    <content type="html"><![CDATA[<p>For a long time, we&rsquo;ve been turning on the lights at the beginning the staircase,
+just to turn them off when we reach another floor.</p>
+
+<p>But instead, we built a simple system to turn them ON automatically when you are going upstairs or downstairs,
+just by using a couple of IR proximity sensors, a relay and an Arduino Pro Mini, to control the timing.</p>
+
+<p>Featured on <a href="https://www.instructables.com/id/Smart-Staircase-LED-Lighting/">Instructables</a> !!</p>
+
+<!--more-->
+
+
+
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Smart staircase LED lighting with <a href="https://twitter.com/hashtag/Arduino?src=hash">#Arduino</a> and IR sensors <a href="https://t.co/ns5zh2r8tQ">pic.twitter.com/ns5zh2r8tQ</a></p>&mdash; Javi Rengel (@rephus) <a href="https://twitter.com/rephus/status/830460205699854336">February 11, 2017</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>If you want to build your own, just follow our guide.</p>
+
+<h2>Shopping list</h2>
+
+<ul>
+<li><a href="https://www.aliexpress.com/item/Smart-car-robot-E18-D80NK-infrared-obstacle-avoidance-sensor-proximity-switch-3-80cm-adjustable-Free-Shipping/32396659854.html">IR proximity sensor</a></li>
+<li><a href="https://www.aliexpress.com/item/Free-Shipping-new-version-2pcs-lot-Pro-Mini-328-Mini-ATMEGA328-5V-16MHz-for-Arduino/1731218090.html">Arduino Pro Mini</a></li>
+<li><a href="https://www.aliexpress.com/item/1pc-1-Channel-5V-Optocoupler-Driver-Relay-Module-High-Level-for-Arduino-top-quality/32638202870.html">Relay</a></li>
+<li><a href="https://www.aliexpress.com/item/Free-Shipping-SMD5050-12V-flexible-light-60-leds-m-LED-strips-5m-lot-White-Blue-Green/1599651146.html">5m LED strip</a></li>
+</ul>
+
+
+<p>You can optionally use a power converter (from 12v to 5v) if you want to take advantage of the 12v input to power your Arduino and sensors.</p>
+
+<ul>
+<li><a href="https://www.aliexpress.com/item/1Pc-DC-to-DC-12V-to-5V-3A-15W-Auto-Car-Power-Converter-Regulator-Adapter-for/32702720703.html">12v to 5v converter</a></li>
+</ul>
+
+
+<h2>Schema</h2>
+
+<p><img src="/images/posts/2017-02-18-stair-lights/schema.png" alt="schema" /></p>
+
+<h2>Arduino code</h2>
+
+<p>```</p>
+
+<h1>define IR_RECEIVER 8</h1>
+
+<h1>define RELAY 10</h1>
+
+<p>void setup() {
+  // initialize digital pin LED_BUILTIN as an output.</p>
+
+<pre><code>pinMode(RELAY, OUTPUT);
+</code></pre>
+
+<p>  digitalWrite(RELAY, LOW);</p>
+
+<p>}</p>
+
+<p>// the loop function runs over and over again forever
+void loop() {</p>
+
+<p>  int sensorValue = digitalRead(IR_RECEIVER);
+  // print out the value you read:
+  delay(10);        // delay in between reads for stability</p>
+
+<p>  if (sensorValue == 0 ) {</p>
+
+<pre><code>digitalWrite(RELAY, HIGH);   // turn the LED on (HIGH is the voltage level)
+delay(5000);
+</code></pre>
+
+<p>  }
+  else {</p>
+
+<pre><code>digitalWrite(RELAY, LOW);
+</code></pre>
+
+<p>  }
+}
+```</p>
+
+<h2>Images</h2>
+
+<p><img src="/images/posts/2017-02-18-stair-lights/arduino.jpg" alt="arduino" />
+<img src="/images/posts/2017-02-18-stair-lights/upstairs.jpg" alt="upstairs" />
+<img src="/images/posts/2017-02-18-stair-lights/downstairs.jpg" alt="downstairs" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Smartwatch Prototype With ESP8266: ESPmartwatch]]></title>
+    <link href="http://coconauts.net/blog/2016/09/08/smartwatch-prototype-with-esp8266/"/>
+    <updated>2016-09-08T23:44:00+00:00</updated>
+    <id>http://coconauts.net/blog/2016/09/08/smartwatch-prototype-with-esp8266</id>
+    <content type="html"><![CDATA[<p>It&rsquo;s been a while since we built and deprecated our <a href="http://coconauts/projects/watchduino2">Watchduino 2</a> smartwatch built with Arduino and BLE technology. The reason why we stopped developing the prototype was because it was not as optimal as we expected, and the bluetooth communication was unstable in practice; this is probably something we could have solved with time, but we just decided it was not worth it.</p>
+
+<p><img src="https://farm9.staticflickr.com/8284/29441586932_55059378bc_z_d.jpg" alt="" /></p>
+
+<p>However, with the &ldquo;new&rdquo; ESP8266 we decided to try a quick prototype to see how it behaves as in a smartwatch, and we did a lot of things in just a couple of days, this are the list of features of our new  <code>ESPmartwatch</code>:</p>
+
+<!--more-->
+
+
+<ul>
+<li>ESP8266 model ESP-01</li>
+<li>Wifi connection</li>
+<li>I2C OLED model SSD1306 128X64</li>
+<li>Send and receive messages via Websockets</li>
+<li>All messages are using JSON (being parsed on C++ too)</li>
+<li>Sync time and display on screen</li>
+<li>Display notifications from phone on screen using <a href="https://github.com/rephus/notification-webhook">Notification webhook</a></li>
+</ul>
+
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Doing web development with JSON and websockets in C++ on ESP8266, exciting! <a href="https://t.co/v2ZU4hNZO5">pic.twitter.com/v2ZU4hNZO5</a></p>&mdash; Javi Rengel (@rephus) <a href="https://twitter.com/rephus/status/772901218414891008">September 5, 2016</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>On the way, we faced a few unexpected issues that took us some time to fix (more than implementing communication with websockets) like the ESP8266 restarting itself every 5 mins because the WDT.</p>
+
+<p>But still, a lot of things are left to do like:</p>
+
+<ul>
+<li>Reduced consumption by enabling deep sleep mode while using websockets</li>
+<li>Lack of GPIO pins on ESP-01, need to try with a different ESP model</li>
+<li>Better OLED SSD1306 screen controller, u8glib seems incompatible, maybe Adafruit ?</li>
+<li>A way to introduce SSID and passwords from the watch (input required)</li>
+<li>Secure communication on websockets</li>
+</ul>
+
+
+<p>So at this point we decided that it was not worth to continue with the project, specially when just the new <a href="http://hackaday.com/2016/09/05/new-part-day-the-esp32-has-been-released/">ESP32 has been released</a></p>
+
+<p>All our code is available on <a href="https://github.com/rephus/ESP8266-OLED-Websocket">Github</a> so if you want to continue our work, or look at how we use some of the libraries, give it a go.</p>
+
+<p>Who knows, we might probably continue with the development at some point, so watch this space.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Lightning-dodge-O-matic]]></title>
+    <link href="http://coconauts.net/blog/2016/06/13/lightning-dodge-o-matic/"/>
+    <updated>2016-06-13T20:51:00+00:00</updated>
+    <id>http://coconauts.net/blog/2016/06/13/lightning-dodge-o-matic</id>
+    <content type="html"><![CDATA[<p>If you have played Final Fantasy X, either its original version for PS2 or its remastered version
+for PS4 and PSVita, you might remember Thunder Plains and its lightning dodge challenge
+to get the Mars sigil.</p>
+
+<p>It&rsquo;s quite challenging and it might take a while. I once got it (and I have a PS2 memory card to prove it),
+but I was not in the mood to do it again on the remastered version.</p>
+
+<p>That&rsquo;s why I decided to build a simple machine to do the job for me.
+Because constantly processing inputs to produce outputs is what machines do best.</p>
+
+<blockquote class="twitter-video" data-lang="en"><p lang="en" dir="ltr">Lightning dancing like a machine. Presenting lightning-dodge-O-matic <a href="https://twitter.com/hashtag/FFX?src=hash">#FFX</a> <a href="https://twitter.com/hashtag/Lulu?src=hash">#Lulu</a> <a href="https://twitter.com/hashtag/Arduino?src=hash">#Arduino</a> <a href="https://t.co/WMLX1CRwSN">pic.twitter.com/WMLX1CRwSN</a></p>&mdash; Javi Rengel (@rephus) <a href="https://twitter.com/rephus/status/742057060456648709">June 12, 2016</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+
+<!--more-->
+
+
+<p>Just by using a LDR, a servo and an Arduino you can dodge lightnings like a Pro too.</p>
+
+<p>You can download the script and the schema in <a href="https://github.com/rephus/lightning-dodge-O-matic/blob/master/README.md">Github</a></p>
+
+<p><img src="https://farm8.staticflickr.com/7335/27042150163_732cb2c99b_z_d.jpg" alt="Schema" /></p>
+
+<p>By building this, you can avoid not only 200 lightnings but as many you like, I did 1066 in a few hours.</p>
+
+<p><img src="https://farm8.staticflickr.com/7423/27042150153_b6daeed7d5_z_d.jpg" alt="record" /></p>
+
+<p>Happy gaming.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Build a Smart Home Using Raspberry Pi and Energenie]]></title>
+    <link href="http://coconauts.net/blog/2016/04/15/energinie-and-raspberry-pi-setup/"/>
+    <updated>2016-04-15T22:51:00+00:00</updated>
+    <id>http://coconauts.net/blog/2016/04/15/energinie-and-raspberry-pi-setup</id>
+    <content type="html"><![CDATA[<p>We recently discovered <a href="https://energenie4u.co.uk/">Energenie</a> (thanks to <a href="https://twitter.com/Man0jN">Manoj</a>) a nice and cheap remote controlled socket
+which also provides a custom shield for Raspberry Pi, you can use it to
+programatically control those sockets. This allows endless possibilities:
+from temporized sockets, to a socket that automatically turns on when
+detects presence using a PIR sensor, or triggered by a website or a phone app.</p>
+
+<p><img src='https://c2.staticflickr.com/2/1545/25845471424_d600499717_d.jpg'/></p>
+
+<!-- more -->
+
+
+<p>You can buy 2 different types of Energenie, some <a href="https://energenie4u.co.uk/catalogue/product/ENER002-4">individual sockets</a>
+or an <a href="https://energenie4u.co.uk/catalogue/product/ENER010">extension lead socket with 4 individually controlled</a>.
+You can also find them cheaper on Amazon or <a href="http://www.ebay.co.uk/itm/161972721449?_trksid=p2060353.m2749.l2649&amp;ssPageName=STRK%3AMEBIDX%3AIT">Ebay</a>.</p>
+
+<p>Every Energenie comes with a remote that you can use to power on or off those sockets using radio
+(no need to point with the controller to the socket like an infrared remote).
+You can use them just like this, but of course the really fun part is to be able
+to program them with your Raspberry Pi. For this, you&rsquo;ll need the
+<a href="https://energenie4u.co.uk/catalogue/product/ENER314">control board shield</a>
+as well.</p>
+
+<p>You can download a library for Python to use with Raspberry Pi from <a href="http://pythonhosted.org/energenie/">their website</a>, and check some examples of basic usage.</p>
+
+<p>In our case, as our first project, we built a website so you can control all
+sockets in the extension lead from your
+computer. In one of them we added some Cinema style lights under our sofa using a
+LED strip connected to a 12V supplier on the socket.</p>
+
+<p><img src='https://farm2.staticflickr.com/1704/26449115715_b672c53b20_z_d.jpg'/>
+<img src='https://farm2.staticflickr.com/1652/26449115515_60a9fd10a7_z_d.jpg'/></p>
+
+<p>The interface looks like this:</p>
+
+<p><img src='https://farm2.staticflickr.com/1630/26423191956_b64967a883_o_d.png'/></p>
+
+<p>You can check the source code in our <a href="https://github.com/rephus/energenie-manager">Github</a>.</p>
+
+<h3>Warnings and limitations</h3>
+
+<p>Each Raspberry PI board or remote allows you to use 4 different sockets
+(or 1 extension lead)  maximum. Which means you can&rsquo;t have for example 5 sockets
+controlled with a single Raspberry Pi.</p>
+
+<p>Each socket can only be paired with 2 controllers maximum, which means you can&rsquo;t control a socket with a remote and 2 Raspberry Pis. Every time you pair a new socket, the oldest one will get unpaired. Also, remember to pair every device before using it or it won&rsquo;t work.</p>
+
+<p>Do you have more ideas to implement with Energenie? we&rsquo;d like to hear about them in the comments.</p>
+]]></content>
+  </entry>
+  
+</feed>

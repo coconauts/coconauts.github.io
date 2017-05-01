@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: hackaday | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/hackaday/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2017-05-01T22:32:42+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Hackaday price 2015 retrospective]]></title>
+<link href="http://coconauts.net/blog/2015/10/06/hackaday-price-2015-retrospective/"/>
+<updated>2015-10-06T21:40:34+00:00</updated>
+<id>http://coconauts.net/blog/2015/10/06/hackaday-price-2015-retrospective</id>
+<content type="html"><![CDATA[<p><img src='https://farm1.staticflickr.com/584/21381222983_a64f947c8d_o_d.png' align='right'/></p>
+
+<p>You may have noticed that the blog has been quite quiet during the last month.
+The reason being we were focusing our efforts on doing some epic Watchduino
+development, as <a href="https://hackaday.io/project/7244-watchduino2">contestants for the Hackaday Prize 2015</a>.
+Sad news in the end though, as we didn&rsquo;t make it to the finals.</p>
+
+<p>But that&rsquo;s ok though. Regardless of the result, this has been a good excercise
+for us, and the contest has pushed us to keep working hard on the
+<a href="/projects/watchduino2">Watchduino</a> project. That&rsquo;s why we want to
+sum up all we have learned and all we have improved on the project during
+the course of the contest.</p>
+
+<!-- more -->
+
+
+<h3>3D Case</h3>
+
+<p><img class='screenshot' src='https://farm1.staticflickr.com/760/21814249490_2bfe5bf2b9_z_d.jpg'/>
+<img class='screenshot' src='https://farm6.staticflickr.com/5717/21815509489_5531e2b080_z_d.jpg'/></p>
+
+<p>One of the things in our TODO list was to build a proper 3D case for our watch,
+and thanks to our <a href="https://twitter.com/rephus/status/571811583602647040">3D printer</a> we managed to build a wearable prototype.</p>
+
+<p>We also introduced the Smart Strap design which allows us to keep some of the
+electronic components spread along the strap, keeping the watch face smaller.</p>
+
+<p>Our first case design, from a few months ago, was done in <a href="https://www.blender.org/">Blender</a>,
+however we&rsquo;ve now switched to <a href="https://tinkercad.com/things/gG641gG1b4c">Tinkercad</a> as it&rsquo;s a great web platform for doing
+awesome 3D models really quickly.</p>
+
+<p>We also designed an additional strap prototype using a flexible strap, that we
+plan to 3D print soon enough.</p>
+
+<h3>Migration to Cordova</h3>
+
+<p><img class='screenshot' src='https://farm1.staticflickr.com/694/21815557799_9d65cd5172_z_d.jpg'/>
+<img class='screenshot' src='https://farm1.staticflickr.com/668/21814312750_9f80cebaa1_b_d.jpg'/></p>
+
+<p>A few weeks before we joined the contest, we started migrating the existing
+Android companion app, written natively, to the Cordova framework.</p>
+
+<p>The reason for this is because Cordova seems a better platform for us, based
+on HTML5 + JS, and multiplatform. It&rsquo;s easier and faster to develop with,
+the codebase is smaller, and in general we are quite happy with it!</p>
+
+<p>We finally migrated all the code with a better design by the end of August,
+and we even introduced new functionality.</p>
+
+<h3>Showcase videos</h3>
+
+<p>We made two videos to showcase the capabilities of the watch.</p>
+
+<iframe width="100%" height="500" src="https://www.youtube.com/embed/n-ubg1R2e-A" frameborder="0" allowfullscreen></iframe>
+
+
+
+
+<iframe width="100%" height="500" src="https://www.youtube.com/embed/LVE85OxWGzs" frameborder="0" allowfullscreen></iframe>
+
+
+<h3>Open source code and documentation</h3>
+
+<p>One of the requirements of the project was to release our code and build our
+documentation so everyone can create a new Watchduino from scratch.</p>
+
+<p>This has been in our roadmap for ages, so it was a good excuse to clean up
+the code a bit an make it public.</p>
+
+<p>Feel free to <a href="https://github.com/coconauts/watchduino2">clone our project</a>, and to make pull request to improve our own.</p>
+
+<p>Be warned though: the codebase is still under heavy development, so things
+might change drastically from one day to the next!</p>
+
+<h3>Next steps</h3>
+
+<p>The community also helped us to improve our watch architecture and we are keen on
+trying different approaches so Watchduino can be even better than it&rsquo;s now.</p>
+
+<p>One of the main objectives is to improve the Bluetooth connectivity and
+the power consumption. Another one is to make an app creation framework that is
+lean and easy to use.</p>
+
+<p>Stay tuned for more updates, are we are definitely not done with our
+Watchduino development!</p>
+]]></content>
+</entry>
+
+</feed>
