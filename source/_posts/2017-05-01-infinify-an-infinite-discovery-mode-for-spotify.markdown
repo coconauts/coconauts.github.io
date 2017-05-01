@@ -85,7 +85,7 @@ several and then picking one of them, you get a delicious balance: you'll get a
 certain chance to get songs by the same artists in your library, but them a slightly
 bigger chance to get related artists (that may or not be in your library).
 
-This X number of tracks is what we call the `discoverability` parameter, and
+This X number of tracks is what we call the _discoverability_ parameter, and
 you can toggle it between 1 ("I just want the artists I know and love") and 10
 (in which approximately 9 in every 10 songs will be new, and 1 will be familiar).
 
