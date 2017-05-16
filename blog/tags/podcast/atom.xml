@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: podcast | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/podcast/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2017-05-16T08:04:53+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Coconauts Podcast S1E1 (en español)]]></title>
+<link href="http://coconauts.net/blog/2017/02/19/coconauts-podcast-e1s1-en-espanol/"/>
+<updated>2017-02-19T20:00:14+00:00</updated>
+<id>http://coconauts.net/blog/2017/02/19/coconauts-podcast-e1s1-en-espanol</id>
+<content type="html"><![CDATA[<p>Note: today&rsquo;s post is about our podcast in spanish.
+But don&rsquo;t worry, we&rsquo;ll be back to english on the next post!</p>
+
+<p>¡Ya está aqui la segunda entrega de nuestro podcast!</p>
+
+<iframe id='audio_17098008' frameborder='0' allowfullscreen='' scrolling='no' height='200' style='border:1px solid #EEE; box-sizing:border-box; width:100%;' src="https://www.ivoox.com/player_ej_17098008_4_1.html?c1=ff6600"></iframe>
+
+
+<p>En este episodio hablamos de:</p>
+
+<ul>
+<li>Noticias: el outage de Gitlab, Steam cierra Greenlight, RethinkDB y Cloud Spanner, Gameband.</li>
+<li>Yo he venido aquí a hablar de mi libro: la psicología de los objetos cotidianos de Don Norman</li>
+<li>Debate: frameworks de desarrollo de videojuegos</li>
+</ul>
+
+
+<!--more-->
+
+
+<p>Enlaces relacionados:</p>
+
+<ul>
+<li><a href="https://about.gitlab.com/2017/02/10/postmortem-of-database-outage-of-january-31/">Gitlab outage postmortem</a></li>
+<li><a href="http://steamcommunity.com/greenlight/discussions/18446744073709551615/133256758580075301/">Steam greenlight</a></li>
+<li><a href="https://rethinkdb.com/blog/rethinkdb-joins-linux-foundation/">RethinkDB</a></li>
+<li><a href="https://cloudplatform.googleblog.com/2017/02/introducing-Cloud-Spanner-a-global-database-service-for-mission-critical-applications.html">Google Cloud Spanner</a></li>
+<li><a href="https://www.kickstarter.com/projects/gameband/gameband-the-first-smartwatch-for-gamers?ref=category_newest">Gameband</a></li>
+<li><a href="https://www.youtube.com/watch?v=CtgR1YiwnEY">Watchduino</a></li>
+<li><a href="https://www.amazon.es/psicolog%C3%ADa-objetos-cotidianos-Serie-Media/dp/8415042019">La psicologia de los objetos cotidianos</a></li>
+<li><a href="http://coconauts.net/blog/2017/01/09/2d-game-framework-comparison/">Comparativa de game frameworks</a></li>
+</ul>
+
+
+<p>Música de <a href="http://jukedeck.com">http://jukedeck.com</a></p>
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[Coconauts Podcast Pilot (en español)]]></title>
+<link href="http://coconauts.net/blog/2017/02/07/coconauts-podcast-pilot/"/>
+<updated>2017-02-07T20:37:11+00:00</updated>
+<id>http://coconauts.net/blog/2017/02/07/coconauts-podcast-pilot</id>
+<content type="html"><![CDATA[<p>Note: today&rsquo;s post is about a podcast we&rsquo;ve started in spanish.
+But don&rsquo;t worry, we&rsquo;ll be back to english on the next post!</p>
+
+<p>Con ustedes, ¡el episodio piloto del podcast de Coconauts!</p>
+
+<iframe id='audio_16881889' frameborder='0' allowfullscreen='' scrolling='no' height='200' style='border:1px solid #EEE; box-sizing:border-box; width:100%;' src="https://gb.ivoox.com/es/player_ej_16881889_4_1.html?c1=ff6600"></iframe>
+
+
+<p>Ultimamente, dado que vamos al trabajo en un trayecto largo en tren, nos hemos
+enganchado a escuchar podcasts (mayormente de videojuegos). Sin embargo,
+no hemos encontrado ningun podcast de tecnologia o desarrollo en español
+que nos guste, así que nos hemos planteado ¿por qué no intentar llenar el hueco?</p>
+
+<!--more-->
+
+
+<p>Nuestro plan con el podcast es un poco tratar los mismos temas que en el blog
+(desarrollo software, hardware y de juegos) con una serie de seciones
+mas o menos fijas.</p>
+
+<p>En este episodio piloto hablamos de:</p>
+
+<ul>
+<li>Noticias: Zenimax vs Oculus, Asus Tinkerboard, Libretaxi y cancelacion de Scalebound.</li>
+<li>Yo he venido aqui a hablar de mi libro: Masters of Doom</li>
+<li>Debate: creatividad computacional</li>
+</ul>
+
+
+<p>¡Esperamos que lo disfruteis! No dudeis en dejarnos comentarios aqui mismo,
+en nuestro email, o en nuestra cuenta de twitter <a href="https://twitter.com/coconauts">@coconauts</a>.</p>
+
+<p>Enlaces relacionados:</p>
+
+<ul>
+<li><a href="http://www.polygon.com/2017/2/1/14474198/oculus-lawsuit-verdict">Oculus vs Zenimax</a></li>
+<li><a href="https://www.engadget.com/2017/01/23/asus-tinker-board/">Asus Tinkerboard</a></li>
+<li><a href="https://medium.com/@romanpushkin/how-i-made-uber-like-app-in-no-time-with-javascript-and-secret-sauce-94ef9120c7f6#.cc6jss25p">Libretaxi (making of)</a></li>
+<li><a href="http://uk.ign.com/articles/2017/01/11/scalebound-cancellation-developers-comment-on-the-situation">Desarrolladores de scalebound sobre su cancelacion</a></li>
+<li><a href="https://www.amazon.es/Masters-Doom-Created-Transformed-Culture/dp/0749924896/ref=sr_1_1?ie=UTF8&amp;qid=1486501773&amp;sr=8-1&amp;keywords=masters+of+doom">Masters of Doom</a></li>
+<li><a href="https://www.youtube.com/watch?v=YY2FPWWc_Sk">Jukedeck @ London Techcrunch Disrupt 2015</a></li>
+</ul>
+
+]]></content>
+</entry>
+
+</feed>

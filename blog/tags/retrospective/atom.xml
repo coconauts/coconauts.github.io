@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: retrospective | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/retrospective/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2017-05-16T08:04:53+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Coconauts 2016 retrospective]]></title>
+<link href="http://coconauts.net/blog/2016/12/30/coconauts-2016-retrospective/"/>
+<updated>2016-12-30T21:11:39+00:00</updated>
+<id>http://coconauts.net/blog/2016/12/30/coconauts-2016-retrospective</id>
+<content type="html"><![CDATA[<p>Another year went by, and this is the third that we find ourselves writing
+a retrospective in the blog, not bad eh?
+<a href="https://www.youtube.com/watch?v=Z04M6NhkIKk">2016 hasn&rsquo;t been too cheerful</a>
+(at least not for fans of the many stars that have left us this year,
+or for people with progressive political views in general).</p>
+
+<p>When it comes to Coconauts however it didn&rsquo;t go too bad:</p>
+
+<ul>
+<li>Perhaps the biggest highlight of the year is the
+<a href="http://retrophies.win/">Retrophies project</a>. Featured in
+<a href="https://news.ycombinator.com/item?id=12205560">HackerNews</a> and
+<a href="https://www.reddit.com/r/emulation/comments/4voi81/retrophies_achievements_system_for_emulators/">Reddit</a>.
+We started it as an experiment that turned out to be successful,
+and we are still expanding it (for instance, the latest addition was a
+<a href="http://coconauts.net/blog/2016/12/29/how-improve-nintendo/">multiplayer mario game using websockets</a>).</li>
+<li>We&rsquo;ve been experimenting with the ESP8266 chip, as a more versatile,
+powerful and cheaper alternative to Arduino, and we started
+<a href="http://coconauts.net/blog/2016/09/08/smartwatch-prototype-with-esp8266/http://coconauts.net/blog/2016/09/08/smartwatch-prototype-with-esp8266/">migrating Watchduino to the ESP8266</a>.</li>
+<li>A small hack that also turned out to be a hit is the
+<a href="http://coconauts.net/blog/2016/06/13/lightning-dodge-o-matic/">Lightning-dodge-O-matic</a>,
+featured on <a href="http://hackaday.com/2016/06/22/cheating-at-video-games-arduino-edition/http://hackaday.com/2016/06/22/cheating-at-video-games-arduino-edition/">Hackaday</a>!</li>
+<li>We published our <a href="http://coconauts.net/blog/2016/02/04/coconauts-ci-nodejs/">custom mini-CI system</a></li>
+<li>We started the year working on a <a href="http://coconauts.net/blog/2016/01/30/starcraft-mobile-unity3d/http://coconauts.net/blog/2016/01/30/starcraft-mobile-unity3d/">mobile version of Starcraft</a> (which we shortly after stopped working on, but there&rsquo;s still a demo video).</li>
+</ul>
+
+
+<p>Our plans of focusing on game making haven&rsquo;t materialized as much as we would have liked.
+We&rsquo;ve also continued blogging very little during the year; although, there is one
+aspect where we have delivered: more frequent status updates about ongoing projects. Thanks to this,
+we&rsquo;ve shown you some prototyes and smaller projects through the year despite not
+having any big reveals.</p>
+
+<p>So what are our best whishes for 2017? Pretty much the same as the year before:</p>
+
+<ul>
+<li>More games</li>
+<li>More open source</li>
+<li>More frequent blogging</li>
+<li>More awesome</li>
+</ul>
+
+
+<p>See you in 2017, have a good one! =)</p>
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[Coconauts 2015 retrospective]]></title>
+<link href="http://coconauts.net/blog/2016/01/01/year-retrospective/"/>
+<updated>2016-01-01T14:00:00+00:00</updated>
+<id>http://coconauts.net/blog/2016/01/01/year-retrospective</id>
+<content type="html"><![CDATA[<p>Year 2015 has come to an end, and as it turns out we do have
+<a href="https://en.wikipedia.org/wiki/Self-balancing_two-wheeled_board">hoverboards</a>,
+<a href="https://www.youtube.com/watch?v=vZRFcGrrsyc">holograms/augmented reality</a>,
+yet for some reason hip-kids insist in dressing as lumberjacks rather than
+in futuristic clothing.</p>
+
+<p>It feels just like yesterday when we were writing
+<a href="https://coconauts.net/blog/2014/12/31/coconauts-2014-retrospective/">our retrospective post</a>
+last year. Time does fly! So how did we fare this year in comparison?</p>
+
+<!-- more -->
+
+
+<ul>
+<li>The <a href="https://coconauts.net/projects/watchduino2/">second version of Watchduino</a>
+was an absolute smash. We managed to get a functional prototype with
+Bluetooth connectivity, plus a phone companion app. It&rsquo;s starting to
+look something like a real smartwatch, and it was awarded
+<a href="https://coconauts.net/blog/2015/08/24/watchduino-2-is-semifinalist-on-the-2015-hackaday-prize/">semifinalist in the Hackaday Prize</a>.</li>
+<li>Our second big release of the year, even if it was a bit last minute,
+was the long promised open sourcing of
+<a href="https://coconauts.net/blog/2015/12/31/gramola-release/">Gramola</a>,
+a web-based music player.</li>
+<li>Smaller projects, but let&rsquo;s not forget about:
+<a href="https://coconauts.net/blog/2015/10/13/notification-listener-android-cordova/">a notification listener plugin for Cordova</a>,
+<a href="https://coconauts.net/blog/2015/04/22/simple-automatic-watering-system-arduino/">an Arduino automated watering system</a>,
+our <a href="https://coconauts.net/blog/2015/07/31/404-games/">404-games</a>.</li>
+<li>Seems like we still aren&rsquo;t blogging as much as we should, as we have some
+extra small projects that we didn&rsquo;t tell you about in the blog:
+<a href="https://github.com/coconauts/image-to-json">an image-to-json</a> converter,
+<a href="http://itch.io/jam/procjam/rate/43682">a generative game</a> made for the
+<a href="http://www.procjam.com/">PROCJAM</a> game jam, and
+<a href="https://github.com/coconauts/find-open">a webapp to find open restaurants near you</a>.</li>
+<li>We didn&rsquo;t blog as much as we would have liked, but even so we brought
+you a bunch of tutorials about
+<a href="https://coconauts.net/blog/tags/arduino/">Arduino</a>,
+<a href="https://coconauts.net/blog/tags/unity3d/">Unity3D</a>, or
+<a href="https://coconauts.net/blog/tags/chiptune/">chiptune music</a>, among others.</li>
+</ul>
+
+
+<p>The year certainly felt as packed as the year before, so we definitely
+want to keep the momentum going for 2016. Here&rsquo;s our immediate plans for
+the year to come:</p>
+
+<ul>
+<li>We didn&rsquo;t do as much gamedev as we would have liked during 2015, so we
+would like to finish a Unity3D game during the next year. Specially now that
+<a href="http://blogs.unity3d.com/es/2015/08/26/unity-comes-to-linux-experimental-build-now-available/">Unity3D is available for Linux</a>,
+there&rsquo;s no better time!</li>
+<li>Once again, we want to aim to do more and better posting. 2015 saw
+regular blog updates until october, but for this year we want to do
+even better.</li>
+<li>To help fatten our blog and Github account, we want to commit to talk
+about our projects even while in an early stage. Instead of doing the
+development of a game or project in the dark until it is polished enough to
+show (as done with <a href="https://coconauts.net/projects/timebomb2/">Exploding Bunnies</a>
+or <a href="https://coconauts.net/projects/gramola/">Gramola</a>)
+we want to to show prototypes and betas as early as we
+have them, and keep our development more open
+(as we have done with <a href="https://coconauts.net/projects/watchduino2/">Watchduino2</a>).</li>
+<li>Speaking of Watchduino2, we plan to continue it&rsquo;s development due to
+popular demand, albeit perhaps at a slower pace than we did during 2015.</li>
+</ul>
+
+
+<p>Wishing a happy and exciting 2016 for all our followers!</p>
+]]></content>
+</entry>
+
+</feed>

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: nodemcu | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/nodemcu/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2017-05-16T08:04:53+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Control Energenie with NodeMCU]]></title>
+<link href="http://coconauts.net/blog/2017/05/16/control-energenie-with-nodemcu/"/>
+<updated>2017-05-16T08:53:19+00:00</updated>
+<id>http://coconauts.net/blog/2017/05/16/control-energenie-with-nodemcu</id>
+<content type="html"><![CDATA[<p>You might have noticed, we like the concept of Smart Homes, and physical devices you can control remotely from an API using your local Wifi network. Specifically, we&rsquo;re talking about Energenie sockets, a brand of electrical sockets controlled by radio. We&rsquo;ve introduced previously these sockets in <a href="/blog/tags/energenie/">posts</a> like <a href="/blog/2017/03/10/control-energenie-with-esp8266/">Control Energenie with ESP8266</a>, <a href="/blog/2017/02/15/control-energenie-with-pebble/">Control energenie with Pebble</a> or <a href="/blog/2016/04/15/energinie-and-raspberry-pi-setup/">Raspberry Pi and Energenie</a> but this time, we&rsquo;re going to show you how we built the same Energenie radio controller with a NodeMCU web server.</p>
+
+<p><img src="/images/posts/2017-05-16-energenie-nodemcu/board.jpg" alt="board" /></p>
+
+<!-- more-->
+
+
+<h2>NodeMCU</h2>
+
+<p>NodeMCU is an open source IoT platform. It includes firmware which runs on the ESP8266 Wi-Fi SoC from Espressif Systems, and hardware which is based on the ESP-12 module. <a href="https://en.wikipedia.org/wiki/NodeMCU">Source</a></p>
+
+<p>The concept behind this is the same as our <a href="/blog/2017/03/10/control-energenie-with-esp8266/">ESP8266</a> implementation. But, there are a few advantages of using NodeMCU instead.</p>
+
+<ul>
+<li>Easier development</li>
+<li>Lua scripting (easier than C++)</li>
+<li>Standard 5V microusb power input</li>
+<li>More stability (ESP8266 was constantly restarting (memory leak on C++?))</li>
+<li>Easier wiring (No need for reset button or PIN0 hack)</li>
+<li>More pins available than our previous <a href="http://www.esp8266.com/wiki/doku.php?id=esp8266-module-family">ESP-01</a> module (this is ESP-12)</li>
+<li>Fully dedicated SDK (ESPlorer)</li>
+</ul>
+
+
+<p><img src="/images/posts/2017-05-16-energenie-nodemcu/esplorer.png" alt="esplorer" /></p>
+
+<h2>Lua examples on NodeMCU</h2>
+
+<p>Lua scripting is very simple and easy to learn. Similar to python at first, but without the alignment restriction; you use <code>end</code> tags to mark the end of a statement. These are a few examples</p>
+
+<h3>LED blink</h3>
+
+<p>```
+LED_PIN = 4 &mdash; Use pin 4
+gpio.mode(LED_PIN, gpio.OUTPUT)</p>
+
+<p>while true do
+   gpio.write(LED_PIN, gpio.HIGH)
+   tmr.delay(500 * 1000)</p>
+
+<p>   gpio.write(LED_PIN, gpio.LOW)
+   tmr.delay(500 * 1000)
+end
+```</p>
+
+<h3>Web server</h3>
+
+<p>```
+wifi.setmode(wifi.STATION)
+wifi.sta.config(&ldquo;Marphus&rdquo;,&ldquo;fafafafafa&rdquo;)</p>
+
+<p>function check_wifi()
+ local ip = wifi.sta.getip()</p>
+
+<p> if(ip==nil) then
+   print(&ldquo;Connecting&hellip;&rdquo;)
+ else
+  tmr.stop(0)
+  print(&ldquo;Connected to AP!&rdquo;)
+  print(ip)<br/>
+ end
+end
+tmr.alarm(0,1000,1,check_wifi)</p>
+
+<p>srv=net.createServer(net.TCP)
+srv:listen(80,function(conn)</p>
+
+<pre><code>conn:on("receive", function(client,request)
+    local buf = "";
+    local _, _, method, path, vars = string.find(request, "([A-Z]+) (.+)?(.+) HTTP");
+    if(method == nil)then
+        _, _, method, path = string.find(request, "([A-Z]+) (.+) HTTP");
+    end
+    -- Store all the GET parameters in a table
+    local _GET = {}
+    if (vars ~= nil)then
+        for k, v in string.gmatch(vars, "(%w+)=(%w+)&amp;*") do
+            _GET[k] = v
+        end
+    end
+
+    buf = buf.."&lt;h1&gt; ESP8266 Web Server&lt;/h1&gt;";
+
+    client:send(buf);
+    client:close();
+    collectgarbage();
+end)
+</code></pre>
+
+<p>end)
+```
+More examples are available on their <a href="http://nodemcu.com/index_en.html">official website</a></p>
+
+<h2>Control radio energenie via web server</h2>
+
+<p>In this script we will combine the previous web server with a simple function to send radio signals.</p>
+
+<p>```
+wifi.setmode(wifi.STATION)
+wifi.sta.config(&ldquo;SSID&rdquo;,&ldquo;password&rdquo;)</p>
+
+<p>function check_wifi()
+ local ip = wifi.sta.getip()</p>
+
+<p> if(ip==nil) then
+   print(&ldquo;Connecting&hellip;&rdquo;)
+ else
+  tmr.stop(0)
+  print(&ldquo;Connected to AP!&rdquo;)
+  print(ip)<br/>
+ end
+end</p>
+
+<p>tmr.alarm(0,1000,1,check_wifi)</p>
+
+<p>RADIO_PIN = 4
+gpio.mode(RADIO_PIN, gpio.OUTPUT)</p>
+
+<p>function sendCode(code)</p>
+
+<pre><code>print("Sending radio code " .. code) 
+</code></pre>
+
+<p>  rc.send(RADIO_PIN,code,24,185,1,2) &mdash;Sends the data via GPIO pin 4 to the rc switch.
+end</p>
+
+<p>srv=net.createServer(net.TCP)
+srv:listen(80,function(conn)</p>
+
+<pre><code>conn:on("receive", function(client,request)
+    local buf = "";
+    local _, _, method, path, vars = string.find(request, "([A-Z]+) (.+)?(.+) HTTP");
+    if(method == nil)then
+        _, _, method, path = string.find(request, "([A-Z]+) (.+) HTTP");
+    end
+    local _GET = {}
+    if (vars ~= nil)then
+        for k, v in string.gmatch(vars, "(%w+)=(%w+)&amp;*") do
+            _GET[k] = v
+            print("Got parameter " .. k .. ": " .. v)
+        end
+    end
+    buf = buf.."&lt;h1&gt; ESP8266 Radio Web Server&lt;/h1&gt;";
+    local radiofreq = {
+         ["Socket 1"] = {on= 6916877, off= 6916878},
+         ["Socket 2"] = {on= 6916871, off= 6916870},
+         ["Socket 3"] = {on= 6916875, off= 6916874},
+         ["Socket 4"] = {on= 6916867, off= 6916866}
+    }
+    for k, v in pairs(radiofreq) do 
+        buf = buf.."&lt;p&gt;" .. k .. "&lt;a href=\"?f=" ..v["on"] .."\"&gt;&lt;button&gt;ON&lt;/button&gt;&lt;/a&gt;&amp;nbsp;&lt;a href=\"?f="..v["off"].."\"&gt;&lt;button&gt;OFF&lt;/button&gt;&lt;/a&gt;&lt;/p&gt;";
+    end 
+
+    local _on,_off = "",""
+
+    if( _GET.f ~= nil)then
+          sendCode(_GET.f)
+    end
+    client:send(buf);
+    client:close();
+    collectgarbage();
+end)
+</code></pre>
+
+<p>end)</p>
+
+<p>```</p>
+
+<p><img src="/images/posts/2017-05-16-energenie-nodemcu/server.png" alt="server" /></p>
+
+<p>Again, as always, our code and all the details about this project are available on <a href="https://github.com/rephus/nodemcu-radio">Github</a></p>
+]]></content>
+</entry>
+
+</feed>

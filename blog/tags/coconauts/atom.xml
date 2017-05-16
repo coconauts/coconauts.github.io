@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: coconauts | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/coconauts/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2017-05-16T08:04:53+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Coconauts Podcast S1E1 (en español)]]></title>
+<link href="http://coconauts.net/blog/2017/02/19/coconauts-podcast-e1s1-en-espanol/"/>
+<updated>2017-02-19T20:00:14+00:00</updated>
+<id>http://coconauts.net/blog/2017/02/19/coconauts-podcast-e1s1-en-espanol</id>
+<content type="html"><![CDATA[<p>Note: today&rsquo;s post is about our podcast in spanish.
+But don&rsquo;t worry, we&rsquo;ll be back to english on the next post!</p>
+
+<p>¡Ya está aqui la segunda entrega de nuestro podcast!</p>
+
+<iframe id='audio_17098008' frameborder='0' allowfullscreen='' scrolling='no' height='200' style='border:1px solid #EEE; box-sizing:border-box; width:100%;' src="https://www.ivoox.com/player_ej_17098008_4_1.html?c1=ff6600"></iframe>
+
+
+<p>En este episodio hablamos de:</p>
+
+<ul>
+<li>Noticias: el outage de Gitlab, Steam cierra Greenlight, RethinkDB y Cloud Spanner, Gameband.</li>
+<li>Yo he venido aquí a hablar de mi libro: la psicología de los objetos cotidianos de Don Norman</li>
+<li>Debate: frameworks de desarrollo de videojuegos</li>
+</ul>
+
+
+<!--more-->
+
+
+<p>Enlaces relacionados:</p>
+
+<ul>
+<li><a href="https://about.gitlab.com/2017/02/10/postmortem-of-database-outage-of-january-31/">Gitlab outage postmortem</a></li>
+<li><a href="http://steamcommunity.com/greenlight/discussions/18446744073709551615/133256758580075301/">Steam greenlight</a></li>
+<li><a href="https://rethinkdb.com/blog/rethinkdb-joins-linux-foundation/">RethinkDB</a></li>
+<li><a href="https://cloudplatform.googleblog.com/2017/02/introducing-Cloud-Spanner-a-global-database-service-for-mission-critical-applications.html">Google Cloud Spanner</a></li>
+<li><a href="https://www.kickstarter.com/projects/gameband/gameband-the-first-smartwatch-for-gamers?ref=category_newest">Gameband</a></li>
+<li><a href="https://www.youtube.com/watch?v=CtgR1YiwnEY">Watchduino</a></li>
+<li><a href="https://www.amazon.es/psicolog%C3%ADa-objetos-cotidianos-Serie-Media/dp/8415042019">La psicologia de los objetos cotidianos</a></li>
+<li><a href="http://coconauts.net/blog/2017/01/09/2d-game-framework-comparison/">Comparativa de game frameworks</a></li>
+</ul>
+
+
+<p>Música de <a href="http://jukedeck.com">http://jukedeck.com</a></p>
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[Coconauts Podcast Pilot (en español)]]></title>
+<link href="http://coconauts.net/blog/2017/02/07/coconauts-podcast-pilot/"/>
+<updated>2017-02-07T20:37:11+00:00</updated>
+<id>http://coconauts.net/blog/2017/02/07/coconauts-podcast-pilot</id>
+<content type="html"><![CDATA[<p>Note: today&rsquo;s post is about a podcast we&rsquo;ve started in spanish.
+But don&rsquo;t worry, we&rsquo;ll be back to english on the next post!</p>
+
+<p>Con ustedes, ¡el episodio piloto del podcast de Coconauts!</p>
+
+<iframe id='audio_16881889' frameborder='0' allowfullscreen='' scrolling='no' height='200' style='border:1px solid #EEE; box-sizing:border-box; width:100%;' src="https://gb.ivoox.com/es/player_ej_16881889_4_1.html?c1=ff6600"></iframe>
+
+
+<p>Ultimamente, dado que vamos al trabajo en un trayecto largo en tren, nos hemos
+enganchado a escuchar podcasts (mayormente de videojuegos). Sin embargo,
+no hemos encontrado ningun podcast de tecnologia o desarrollo en español
+que nos guste, así que nos hemos planteado ¿por qué no intentar llenar el hueco?</p>
+
+<!--more-->
+
+
+<p>Nuestro plan con el podcast es un poco tratar los mismos temas que en el blog
+(desarrollo software, hardware y de juegos) con una serie de seciones
+mas o menos fijas.</p>
+
+<p>En este episodio piloto hablamos de:</p>
+
+<ul>
+<li>Noticias: Zenimax vs Oculus, Asus Tinkerboard, Libretaxi y cancelacion de Scalebound.</li>
+<li>Yo he venido aqui a hablar de mi libro: Masters of Doom</li>
+<li>Debate: creatividad computacional</li>
+</ul>
+
+
+<p>¡Esperamos que lo disfruteis! No dudeis en dejarnos comentarios aqui mismo,
+en nuestro email, o en nuestra cuenta de twitter <a href="https://twitter.com/coconauts">@coconauts</a>.</p>
+
+<p>Enlaces relacionados:</p>
+
+<ul>
+<li><a href="http://www.polygon.com/2017/2/1/14474198/oculus-lawsuit-verdict">Oculus vs Zenimax</a></li>
+<li><a href="https://www.engadget.com/2017/01/23/asus-tinker-board/">Asus Tinkerboard</a></li>
+<li><a href="https://medium.com/@romanpushkin/how-i-made-uber-like-app-in-no-time-with-javascript-and-secret-sauce-94ef9120c7f6#.cc6jss25p">Libretaxi (making of)</a></li>
+<li><a href="http://uk.ign.com/articles/2017/01/11/scalebound-cancellation-developers-comment-on-the-situation">Desarrolladores de scalebound sobre su cancelacion</a></li>
+<li><a href="https://www.amazon.es/Masters-Doom-Created-Transformed-Culture/dp/0749924896/ref=sr_1_1?ie=UTF8&amp;qid=1486501773&amp;sr=8-1&amp;keywords=masters+of+doom">Masters of Doom</a></li>
+<li><a href="https://www.youtube.com/watch?v=YY2FPWWc_Sk">Jukedeck @ London Techcrunch Disrupt 2015</a></li>
+</ul>
+
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[Coconauts 2016 retrospective]]></title>
+<link href="http://coconauts.net/blog/2016/12/30/coconauts-2016-retrospective/"/>
+<updated>2016-12-30T21:11:39+00:00</updated>
+<id>http://coconauts.net/blog/2016/12/30/coconauts-2016-retrospective</id>
+<content type="html"><![CDATA[<p>Another year went by, and this is the third that we find ourselves writing
+a retrospective in the blog, not bad eh?
+<a href="https://www.youtube.com/watch?v=Z04M6NhkIKk">2016 hasn&rsquo;t been too cheerful</a>
+(at least not for fans of the many stars that have left us this year,
+or for people with progressive political views in general).</p>
+
+<p>When it comes to Coconauts however it didn&rsquo;t go too bad:</p>
+
+<ul>
+<li>Perhaps the biggest highlight of the year is the
+<a href="http://retrophies.win/">Retrophies project</a>. Featured in
+<a href="https://news.ycombinator.com/item?id=12205560">HackerNews</a> and
+<a href="https://www.reddit.com/r/emulation/comments/4voi81/retrophies_achievements_system_for_emulators/">Reddit</a>.
+We started it as an experiment that turned out to be successful,
+and we are still expanding it (for instance, the latest addition was a
+<a href="http://coconauts.net/blog/2016/12/29/how-improve-nintendo/">multiplayer mario game using websockets</a>).</li>
+<li>We&rsquo;ve been experimenting with the ESP8266 chip, as a more versatile,
+powerful and cheaper alternative to Arduino, and we started
+<a href="http://coconauts.net/blog/2016/09/08/smartwatch-prototype-with-esp8266/http://coconauts.net/blog/2016/09/08/smartwatch-prototype-with-esp8266/">migrating Watchduino to the ESP8266</a>.</li>
+<li>A small hack that also turned out to be a hit is the
+<a href="http://coconauts.net/blog/2016/06/13/lightning-dodge-o-matic/">Lightning-dodge-O-matic</a>,
+featured on <a href="http://hackaday.com/2016/06/22/cheating-at-video-games-arduino-edition/http://hackaday.com/2016/06/22/cheating-at-video-games-arduino-edition/">Hackaday</a>!</li>
+<li>We published our <a href="http://coconauts.net/blog/2016/02/04/coconauts-ci-nodejs/">custom mini-CI system</a></li>
+<li>We started the year working on a <a href="http://coconauts.net/blog/2016/01/30/starcraft-mobile-unity3d/http://coconauts.net/blog/2016/01/30/starcraft-mobile-unity3d/">mobile version of Starcraft</a> (which we shortly after stopped working on, but there&rsquo;s still a demo video).</li>
+</ul>
+
+
+<p>Our plans of focusing on game making haven&rsquo;t materialized as much as we would have liked.
+We&rsquo;ve also continued blogging very little during the year; although, there is one
+aspect where we have delivered: more frequent status updates about ongoing projects. Thanks to this,
+we&rsquo;ve shown you some prototyes and smaller projects through the year despite not
+having any big reveals.</p>
+
+<p>So what are our best whishes for 2017? Pretty much the same as the year before:</p>
+
+<ul>
+<li>More games</li>
+<li>More open source</li>
+<li>More frequent blogging</li>
+<li>More awesome</li>
+</ul>
+
+
+<p>See you in 2017, have a good one! =)</p>
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[Coconauts 2015 retrospective]]></title>
+<link href="http://coconauts.net/blog/2016/01/01/year-retrospective/"/>
+<updated>2016-01-01T14:00:00+00:00</updated>
+<id>http://coconauts.net/blog/2016/01/01/year-retrospective</id>
+<content type="html"><![CDATA[<p>Year 2015 has come to an end, and as it turns out we do have
+<a href="https://en.wikipedia.org/wiki/Self-balancing_two-wheeled_board">hoverboards</a>,
+<a href="https://www.youtube.com/watch?v=vZRFcGrrsyc">holograms/augmented reality</a>,
+yet for some reason hip-kids insist in dressing as lumberjacks rather than
+in futuristic clothing.</p>
+
+<p>It feels just like yesterday when we were writing
+<a href="https://coconauts.net/blog/2014/12/31/coconauts-2014-retrospective/">our retrospective post</a>
+last year. Time does fly! So how did we fare this year in comparison?</p>
+
+<!-- more -->
+
+
+<ul>
+<li>The <a href="https://coconauts.net/projects/watchduino2/">second version of Watchduino</a>
+was an absolute smash. We managed to get a functional prototype with
+Bluetooth connectivity, plus a phone companion app. It&rsquo;s starting to
+look something like a real smartwatch, and it was awarded
+<a href="https://coconauts.net/blog/2015/08/24/watchduino-2-is-semifinalist-on-the-2015-hackaday-prize/">semifinalist in the Hackaday Prize</a>.</li>
+<li>Our second big release of the year, even if it was a bit last minute,
+was the long promised open sourcing of
+<a href="https://coconauts.net/blog/2015/12/31/gramola-release/">Gramola</a>,
+a web-based music player.</li>
+<li>Smaller projects, but let&rsquo;s not forget about:
+<a href="https://coconauts.net/blog/2015/10/13/notification-listener-android-cordova/">a notification listener plugin for Cordova</a>,
+<a href="https://coconauts.net/blog/2015/04/22/simple-automatic-watering-system-arduino/">an Arduino automated watering system</a>,
+our <a href="https://coconauts.net/blog/2015/07/31/404-games/">404-games</a>.</li>
+<li>Seems like we still aren&rsquo;t blogging as much as we should, as we have some
+extra small projects that we didn&rsquo;t tell you about in the blog:
+<a href="https://github.com/coconauts/image-to-json">an image-to-json</a> converter,
+<a href="http://itch.io/jam/procjam/rate/43682">a generative game</a> made for the
+<a href="http://www.procjam.com/">PROCJAM</a> game jam, and
+<a href="https://github.com/coconauts/find-open">a webapp to find open restaurants near you</a>.</li>
+<li>We didn&rsquo;t blog as much as we would have liked, but even so we brought
+you a bunch of tutorials about
+<a href="https://coconauts.net/blog/tags/arduino/">Arduino</a>,
+<a href="https://coconauts.net/blog/tags/unity3d/">Unity3D</a>, or
+<a href="https://coconauts.net/blog/tags/chiptune/">chiptune music</a>, among others.</li>
+</ul>
+
+
+<p>The year certainly felt as packed as the year before, so we definitely
+want to keep the momentum going for 2016. Here&rsquo;s our immediate plans for
+the year to come:</p>
+
+<ul>
+<li>We didn&rsquo;t do as much gamedev as we would have liked during 2015, so we
+would like to finish a Unity3D game during the next year. Specially now that
+<a href="http://blogs.unity3d.com/es/2015/08/26/unity-comes-to-linux-experimental-build-now-available/">Unity3D is available for Linux</a>,
+there&rsquo;s no better time!</li>
+<li>Once again, we want to aim to do more and better posting. 2015 saw
+regular blog updates until october, but for this year we want to do
+even better.</li>
+<li>To help fatten our blog and Github account, we want to commit to talk
+about our projects even while in an early stage. Instead of doing the
+development of a game or project in the dark until it is polished enough to
+show (as done with <a href="https://coconauts.net/projects/timebomb2/">Exploding Bunnies</a>
+or <a href="https://coconauts.net/projects/gramola/">Gramola</a>)
+we want to to show prototypes and betas as early as we
+have them, and keep our development more open
+(as we have done with <a href="https://coconauts.net/projects/watchduino2/">Watchduino2</a>).</li>
+<li>Speaking of Watchduino2, we plan to continue it&rsquo;s development due to
+popular demand, albeit perhaps at a slower pace than we did during 2015.</li>
+</ul>
+
+
+<p>Wishing a happy and exciting 2016 for all our followers!</p>
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[Coconauts 2014 retrospective]]></title>
+<link href="http://coconauts.net/blog/2014/12/31/coconauts-2014-retrospective/"/>
+<updated>2014-12-31T17:24:14+00:00</updated>
+<id>http://coconauts.net/blog/2014/12/31/coconauts-2014-retrospective</id>
+<content type="html"><![CDATA[<p>Every time there&rsquo;s a change of year we can&rsquo;t help taking a look back to
+account for everything that is different from the same point one year ago.
+For Coconauts 2014 has been a really exciting year, and we wanted to have a
+record of our achievements during the same, so when we take a look back again
+at the end of 2015 we have something to compare against.</p>
+
+<!--more-->
+
+
+<ul>
+<li>We <a href="http://www.coconauts.net/blog/2014/04/30/watchduino-awarded-first-price-at-biicontest-2014/">won the Biicode 2014 competition with Watchduino</a>.
+We are also <a href="http://www.coconauts.net/blog/2014/11/22/watchduino-2-dot-0-roadmap/">working on an improved version</a>,
+so we&rsquo;ll have some more work for next year.</li>
+<li>We <a href="http://www.coconauts.net/blog/2014/05/10/coconauts-is-powered-by-octopress/">migrated our blog from Wordpress to Octopress</a>,
+and we started blogging regularly on it.</li>
+<li>We <a href="http://www.coconauts.net/blog/2014/09/15/super-time-bomb-is-out/">released Super Time Bomb</a>,
+our second LibGDX game for Android. We also did a couple of seasonal updates for it.</li>
+<li>You may have missed it, because we didn&rsquo;t blog about it, but we released a
+<a href="http://www.coconauts.net/projects/game-manager/">Web Game Manager</a> desktop app
+(written in node.js).</li>
+<li>We opened a <a href="https://github.com/coconauts">Github account</a>, where we will
+place all new pieces of public code from now on.</li>
+<li>Minor projects we&rsquo;ve shown you include a <a href="http://www.coconauts.net/blog/2014/08/02/web-screensaver/">Chromium based screensaver</a>,
+<a href="http://www.coconauts.net/blog/2014/09/03/send-readings-from-arduino-to-raspberry-via-radio/">wireless radio Arduino sensors</a>,
+and a <a href="http://www.coconauts.net/blog/2014/08/14/meteorological-station-with-rasbperry-pi-phase-1/">meteorological station powered by a Raspberry Pi</a>.</li>
+<li>Internally, we have a much better organization and logistics. We started
+using <a href="http://trello.com">Trello</a> for task management, and <a href="http://www.coconauts.net/blog/2014/09/09/background-tasks-in-jenkins-ipchange/">Jenkins and Ansible for
+automated operations</a>.</li>
+<li>We&rsquo;ve also started a bunch of new projects, but they are still on a very early
+stage, so we haven&rsquo;t shown anything about them yet. Hopefully some of them
+will grow to a point where they can be published during the next year.</li>
+</ul>
+
+
+<p>So we are quite happy to see the big leaps taken during the year. We expect 2015
+to be at least just as exciting, if not even more! We are in fact going as far
+as to state a series of commitments:</p>
+
+<ul>
+<li>To finally open source Gramola (we&rsquo;ve actually rewritten it from scratch
+during the year!).</li>
+<li>To have a working Watchduino 2.0 prototype.</li>
+<li>To release at least another game or app.</li>
+<li>To blog more and better than we&rsquo;ve done this year.</li>
+</ul>
+
+
+<p>And on top of all this, we the Coconauts wish all our readers and followers
+a happy and prosperous year 2015. We are really excited about it because&hellip;
+it&rsquo;s finally the &ldquo;future&rdquo; according to the Back to the Future movies!</p>
+]]></content>
+</entry>
+
+</feed>
