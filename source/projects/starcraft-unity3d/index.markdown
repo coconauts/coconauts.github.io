@@ -60,5 +60,6 @@ This are things we haven't build for this prototype but we will probably do in t
 * Team coloring
 * Healing units, shields or Zerg restoration feature.
 
-We are planning to release this engine in the future (without the StarCraft assets),
-but in the meantime let us know any thoughts in the comments.
+## Source code
+
+On [github](https://github.com/coconauts/startcraft-unity3d).
