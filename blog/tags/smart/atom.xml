@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: smart | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/smart/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2017-05-20T17:54:48+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Control Energenie with ESP8266]]></title>
+<link href="http://coconauts.net/blog/2017/03/10/control-energenie-with-esp8266/"/>
+<updated>2017-03-10T21:30:19+00:00</updated>
+<id>http://coconauts.net/blog/2017/03/10/control-energenie-with-esp8266</id>
+<content type="html"><![CDATA[<p>We recently showed you how to control <a href="http://coconauts.net/blog/2017/02/15/control-energenie-with-pebble/">Energenie sockets using Pebble smartwatch app</a>,
+thanks to a <a href="http://coconauts.net/blog/2016/04/15/energinie-and-raspberry-pi-setup/">Raspberry PI</a> REST API.</p>
+
+<p>But we recently found this <a href="https://github.com/cjdell/esp-rf-switch">Github repo</a>
+about how to use a generic 433Mhz radio module with an ESP8266  to control Energenie sockets.</p>
+
+<!--more-->
+
+
+<p>So we decided to replace our Raspberry setup with this cheaper, smaller, portable and scalabe solution.</p>
+
+<p>All you need is an ESP8266 and this tiny and cheap radio module</p>
+
+<p><img src="/images/posts/2017-02-16-control-energenie-esp8266/radio-transmitter.png" alt="radio-transmitter" /></p>
+
+<p>In order to build this</p>
+
+<p><img src="/images/posts/2017-02-16-control-energenie-esp8266/hardware.png" alt="hardware" /></p>
+
+<p>The detailed guide and schemas about how to do it is on our <a href="https://github.com/rephus/esp8266-energenie-switch">own Github repo</a></p>
+]]></content>
+</entry>
+
+</feed>

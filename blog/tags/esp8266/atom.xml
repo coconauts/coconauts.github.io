@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: esp8266 | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/esp8266/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2017-05-20T17:54:48+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Control Energenie with NodeMCU]]></title>
+<link href="http://coconauts.net/blog/2017/05/16/control-energenie-with-nodemcu/"/>
+<updated>2017-05-16T08:53:19+00:00</updated>
+<id>http://coconauts.net/blog/2017/05/16/control-energenie-with-nodemcu</id>
+<content type="html"><![CDATA[<p>You might have noticed, we like the concept of Smart Homes, and physical devices you can control remotely from an API using your local Wifi network. Specifically, we&rsquo;re talking about Energenie sockets, a brand of electrical sockets controlled by radio. We&rsquo;ve introduced previously these sockets in <a href="/blog/tags/energenie/">posts</a> like <a href="/blog/2017/03/10/control-energenie-with-esp8266/">Control Energenie with ESP8266</a>, <a href="/blog/2017/02/15/control-energenie-with-pebble/">Control energenie with Pebble</a> or <a href="/blog/2016/04/15/energinie-and-raspberry-pi-setup/">Raspberry Pi and Energenie</a> but this time, we&rsquo;re going to show you how we built the same Energenie radio controller with a NodeMCU web server.</p>
+
+<p><img src="/images/posts/2017-05-16-energenie-nodemcu/board.jpg" alt="board" /></p>
+
+<!-- more-->
+
+
+<h2>NodeMCU</h2>
+
+<p>NodeMCU is an open source IoT platform. It includes firmware which runs on the ESP8266 Wi-Fi SoC from Espressif Systems, and hardware which is based on the ESP-12 module. <a href="https://en.wikipedia.org/wiki/NodeMCU">Source</a></p>
+
+<p>The concept behind this is the same as our <a href="/blog/2017/03/10/control-energenie-with-esp8266/">ESP8266</a> implementation. But, there are a few advantages of using NodeMCU instead.</p>
+
+<ul>
+<li>Easier development</li>
+<li>Lua scripting (easier than C++)</li>
+<li>Standard 5V microusb power input</li>
+<li>More stability (ESP8266 was constantly restarting (memory leak on C++?))</li>
+<li>Easier wiring (No need for reset button or PIN0 hack)</li>
+<li>More pins available than our previous <a href="http://www.esp8266.com/wiki/doku.php?id=esp8266-module-family">ESP-01</a> module (this is ESP-12)</li>
+<li>Fully dedicated SDK (ESPlorer)</li>
+</ul>
+
+
+<p><img src="/images/posts/2017-05-16-energenie-nodemcu/esplorer.png" alt="esplorer" /></p>
+
+<h2>Lua examples on NodeMCU</h2>
+
+<p>Lua scripting is very simple and easy to learn. Similar to python at first, but without the alignment restriction; you use <code>end</code> tags to mark the end of a statement. These are a few examples</p>
+
+<h3>LED blink</h3>
+
+<p>```
+LED_PIN = 4 &mdash; Use pin 4
+gpio.mode(LED_PIN, gpio.OUTPUT)</p>
+
+<p>while true do
+   gpio.write(LED_PIN, gpio.HIGH)
+   tmr.delay(500 * 1000)</p>
+
+<p>   gpio.write(LED_PIN, gpio.LOW)
+   tmr.delay(500 * 1000)
+end
+```</p>
+
+<h3>Web server</h3>
+
+<p>```
+wifi.setmode(wifi.STATION)
+wifi.sta.config(&ldquo;Marphus&rdquo;,&ldquo;fafafafafa&rdquo;)</p>
+
+<p>function check_wifi()
+ local ip = wifi.sta.getip()</p>
+
+<p> if(ip==nil) then
+   print(&ldquo;Connecting&hellip;&rdquo;)
+ else
+  tmr.stop(0)
+  print(&ldquo;Connected to AP!&rdquo;)
+  print(ip)<br/>
+ end
+end
+tmr.alarm(0,1000,1,check_wifi)</p>
+
+<p>srv=net.createServer(net.TCP)
+srv:listen(80,function(conn)</p>
+
+<pre><code>conn:on("receive", function(client,request)
+    local buf = "";
+    local _, _, method, path, vars = string.find(request, "([A-Z]+) (.+)?(.+) HTTP");
+    if(method == nil)then
+        _, _, method, path = string.find(request, "([A-Z]+) (.+) HTTP");
+    end
+    -- Store all the GET parameters in a table
+    local _GET = {}
+    if (vars ~= nil)then
+        for k, v in string.gmatch(vars, "(%w+)=(%w+)&amp;*") do
+            _GET[k] = v
+        end
+    end
+
+    buf = buf.."&lt;h1&gt; ESP8266 Web Server&lt;/h1&gt;";
+
+    client:send(buf);
+    client:close();
+    collectgarbage();
+end)
+</code></pre>
+
+<p>end)
+```
+More examples are available on their <a href="http://nodemcu.com/index_en.html">official website</a></p>
+
+<h2>Control radio energenie via web server</h2>
+
+<p>In this script we will combine the previous web server with a simple function to send radio signals.</p>
+
+<p>```
+wifi.setmode(wifi.STATION)
+wifi.sta.config(&ldquo;SSID&rdquo;,&ldquo;password&rdquo;)</p>
+
+<p>function check_wifi()
+ local ip = wifi.sta.getip()</p>
+
+<p> if(ip==nil) then
+   print(&ldquo;Connecting&hellip;&rdquo;)
+ else
+  tmr.stop(0)
+  print(&ldquo;Connected to AP!&rdquo;)
+  print(ip)<br/>
+ end
+end</p>
+
+<p>tmr.alarm(0,1000,1,check_wifi)</p>
+
+<p>RADIO_PIN = 4
+gpio.mode(RADIO_PIN, gpio.OUTPUT)</p>
+
+<p>function sendCode(code)</p>
+
+<pre><code>print("Sending radio code " .. code) 
+</code></pre>
+
+<p>  rc.send(RADIO_PIN,code,24,185,1,2) &mdash;Sends the data via GPIO pin 4 to the rc switch.
+end</p>
+
+<p>srv=net.createServer(net.TCP)
+srv:listen(80,function(conn)</p>
+
+<pre><code>conn:on("receive", function(client,request)
+    local buf = "";
+    local _, _, method, path, vars = string.find(request, "([A-Z]+) (.+)?(.+) HTTP");
+    if(method == nil)then
+        _, _, method, path = string.find(request, "([A-Z]+) (.+) HTTP");
+    end
+    local _GET = {}
+    if (vars ~= nil)then
+        for k, v in string.gmatch(vars, "(%w+)=(%w+)&amp;*") do
+            _GET[k] = v
+            print("Got parameter " .. k .. ": " .. v)
+        end
+    end
+    buf = buf.."&lt;h1&gt; ESP8266 Radio Web Server&lt;/h1&gt;";
+    local radiofreq = {
+         ["Socket 1"] = {on= 6916877, off= 6916878},
+         ["Socket 2"] = {on= 6916871, off= 6916870},
+         ["Socket 3"] = {on= 6916875, off= 6916874},
+         ["Socket 4"] = {on= 6916867, off= 6916866}
+    }
+    for k, v in pairs(radiofreq) do 
+        buf = buf.."&lt;p&gt;" .. k .. "&lt;a href=\"?f=" ..v["on"] .."\"&gt;&lt;button&gt;ON&lt;/button&gt;&lt;/a&gt;&amp;nbsp;&lt;a href=\"?f="..v["off"].."\"&gt;&lt;button&gt;OFF&lt;/button&gt;&lt;/a&gt;&lt;/p&gt;";
+    end 
+
+    local _on,_off = "",""
+
+    if( _GET.f ~= nil)then
+          sendCode(_GET.f)
+    end
+    client:send(buf);
+    client:close();
+    collectgarbage();
+end)
+</code></pre>
+
+<p>end)</p>
+
+<p>```</p>
+
+<p><img src="/images/posts/2017-05-16-energenie-nodemcu/server.png" alt="server" /></p>
+
+<p>Again, as always, our code and all the details about this project are available on <a href="https://github.com/rephus/nodemcu-radio">Github</a></p>
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[Control Energenie with ESP8266]]></title>
+<link href="http://coconauts.net/blog/2017/03/10/control-energenie-with-esp8266/"/>
+<updated>2017-03-10T21:30:19+00:00</updated>
+<id>http://coconauts.net/blog/2017/03/10/control-energenie-with-esp8266</id>
+<content type="html"><![CDATA[<p>We recently showed you how to control <a href="http://coconauts.net/blog/2017/02/15/control-energenie-with-pebble/">Energenie sockets using Pebble smartwatch app</a>,
+thanks to a <a href="http://coconauts.net/blog/2016/04/15/energinie-and-raspberry-pi-setup/">Raspberry PI</a> REST API.</p>
+
+<p>But we recently found this <a href="https://github.com/cjdell/esp-rf-switch">Github repo</a>
+about how to use a generic 433Mhz radio module with an ESP8266  to control Energenie sockets.</p>
+
+<!--more-->
+
+
+<p>So we decided to replace our Raspberry setup with this cheaper, smaller, portable and scalabe solution.</p>
+
+<p>All you need is an ESP8266 and this tiny and cheap radio module</p>
+
+<p><img src="/images/posts/2017-02-16-control-energenie-esp8266/radio-transmitter.png" alt="radio-transmitter" /></p>
+
+<p>In order to build this</p>
+
+<p><img src="/images/posts/2017-02-16-control-energenie-esp8266/hardware.png" alt="hardware" /></p>
+
+<p>The detailed guide and schemas about how to do it is on our <a href="https://github.com/rephus/esp8266-energenie-switch">own Github repo</a></p>
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[Smartwatch prototype with ESP8266: ESPmartwatch]]></title>
+<link href="http://coconauts.net/blog/2016/09/08/smartwatch-prototype-with-esp8266/"/>
+<updated>2016-09-08T23:44:00+00:00</updated>
+<id>http://coconauts.net/blog/2016/09/08/smartwatch-prototype-with-esp8266</id>
+<content type="html"><![CDATA[<p>It&rsquo;s been a while since we built and deprecated our <a href="http://coconauts/projects/watchduino2">Watchduino 2</a> smartwatch built with Arduino and BLE technology. The reason why we stopped developing the prototype was because it was not as optimal as we expected, and the bluetooth communication was unstable in practice; this is probably something we could have solved with time, but we just decided it was not worth it.</p>
+
+<p><img src="https://farm9.staticflickr.com/8284/29441586932_55059378bc_z_d.jpg" alt="" /></p>
+
+<p>However, with the &ldquo;new&rdquo; ESP8266 we decided to try a quick prototype to see how it behaves as in a smartwatch, and we did a lot of things in just a couple of days, this are the list of features of our new  <code>ESPmartwatch</code>:</p>
+
+<!--more-->
+
+
+<ul>
+<li>ESP8266 model ESP-01</li>
+<li>Wifi connection</li>
+<li>I2C OLED model SSD1306 128X64</li>
+<li>Send and receive messages via Websockets</li>
+<li>All messages are using JSON (being parsed on C++ too)</li>
+<li>Sync time and display on screen</li>
+<li>Display notifications from phone on screen using <a href="https://github.com/rephus/notification-webhook">Notification webhook</a></li>
+</ul>
+
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Doing web development with JSON and websockets in C++ on ESP8266, exciting! <a href="https://t.co/v2ZU4hNZO5">pic.twitter.com/v2ZU4hNZO5</a></p>&mdash; Javi Rengel (@rephus) <a href="https://twitter.com/rephus/status/772901218414891008">September 5, 2016</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>On the way, we faced a few unexpected issues that took us some time to fix (more than implementing communication with websockets) like the ESP8266 restarting itself every 5 mins because the WDT.</p>
+
+<p>But still, a lot of things are left to do like:</p>
+
+<ul>
+<li>Reduced consumption by enabling deep sleep mode while using websockets</li>
+<li>Lack of GPIO pins on ESP-01, need to try with a different ESP model</li>
+<li>Better OLED SSD1306 screen controller, u8glib seems incompatible, maybe Adafruit ?</li>
+<li>A way to introduce SSID and passwords from the watch (input required)</li>
+<li>Secure communication on websockets</li>
+</ul>
+
+
+<p>So at this point we decided that it was not worth to continue with the project, specially when just the new <a href="http://hackaday.com/2016/09/05/new-part-day-the-esp32-has-been-released/">ESP32 has been released</a></p>
+
+<p>All our code is available on <a href="https://github.com/rephus/ESP8266-OLED-Websocket">Github</a> so if you want to continue our work, or look at how we use some of the libraries, give it a go.</p>
+
+<p>Who knows, we might probably continue with the development at some point, so watch this space.</p>
+]]></content>
+</entry>
+
+</feed>
