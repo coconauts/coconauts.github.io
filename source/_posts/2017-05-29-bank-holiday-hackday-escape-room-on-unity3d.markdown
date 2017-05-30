@@ -48,6 +48,7 @@ as otherwise we wouldn't have had time to implement it all in a day.
 The end result is a short, but we hope that also clever escape room.
 You can play right [here from your browser!](http://unity3d.coconauts.net/escaperoom/)
 
+![door](/images/posts/2017-05-29-escape-room/door.png)
 
 We are quite happy with the result. It's the first time we make a puzzler game
 and it turns out it is very rewarding: usually physics is the most frustrating
@@ -55,8 +56,8 @@ part of game development, and you have none of that in here. Your mind can focus
 on designing and thinking puzzles rather than on tricky implementations. And
 the game is fun without having to spend a lot of time polishing the mechanics.
 
-![TV](/images/posts/2017-05-29-escape-room/tv.png)
-
 As stated, our MVP is linear (except for a couple of passwords which are
 generated randomly), but we plan to pick this project again to try to turn
 it into something generative next time. Stay tuned!
+
+![TV](/images/posts/2017-05-29-escape-room/tv.png)
