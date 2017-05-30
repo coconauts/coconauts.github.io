@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: starcraft | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/starcraft/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2017-05-30T12:43:01+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[RTS game template on Unity3d: StarCraft for mobile]]></title>
+<link href="http://coconauts.net/blog/2016/01/30/starcraft-mobile-unity3d/"/>
+<updated>2016-01-30T20:16:34+00:00</updated>
+<id>http://coconauts.net/blog/2016/01/30/starcraft-mobile-unity3d</id>
+<content type="html"><![CDATA[<p>We have been just <em>playing</em> with Unity3D for a few months, but we have already tried to build something: a new RTS (Real Time Strategy) game for Desktop and Mobile. But we want to make this game abstract and adaptable, so that it works like an engine, which means we could easily change the models, behaviour and statistics from the objects in the scene to make a completely new game, a clone of <a href="https://www.youtube.com/watch?v=0Wkrd594k4k">Star Wars Galactic Battlegrounds Clone Campaings</a> maybe ? or maybe completely new strategy game featuring plants vs zombies, pirates vs ninjas, angels vs demons or monkeys vs giraffes.</p>
+
+<p><img src='https://farm2.staticflickr.com/1636/24079670424_3275b9c5f1_z_d.jpg'/></p>
+
+<p>In our case, we&rsquo;ve started by using the 3D models, animations from StarCraft II game
+and reverse engineered the behaviour of this game to make our strategy game template.</p>
+
+<!-- more -->
+
+
+<p><img src='https://farm2.staticflickr.com/1502/24614331371_6e4c44e84e_z_d.jpg'/></p>
+
+<p>Please note that this is just a technical demo and it&rsquo;s not made to replace
+StarCraft or make any money with their work in any way, we are just trying to follow their path because we love this game.</p>
+
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/MqGj5grWYG8" frameborder="0" allowfullscreen></iframe>
+
+
+<h2>What we have achieved</h2>
+
+<p>This is the list of features we have developed to simulate a basic gameplay from Starcraft.
+They together implement the featureset from StarCraft games, but it can be easily applied to fit any other strategy gameplay. Do you want to have 4 different resource types instead of 2 like in SWGB ? just update the Resources class and you&rsquo;re done.</p>
+
+<p><img src='https://farm2.staticflickr.com/1534/24707844895_74afa1c9af_z_d.jpg'/></p>
+
+<ul>
+<li>3D models and animations</li>
+<li>Background music, sounds and reactions (<em>For Adun!</em>)</li>
+<li>Buildings and units training queue</li>
+<li>Special building behaviour (like gas extractor or supply depots)</li>
+<li>Ground and flying units (Zerg and Terran)</li>
+<li>Researches</li>
+<li>Resources (Mineral, gas and supplies)</li>
+<li>Import maps using image heightmap</li>
+<li>Mouse and touch controls</li>
+<li>Camera movement and zoom</li>
+<li>Completely new simple interface for touch devices</li>
+<li>New survival gameplay mode</li>
+<li>Basic AI</li>
+<li>Minimap</li>
+<li>Pathfinding (using free A* pathfinding)</li>
+</ul>
+
+
+<p><img src='https://farm2.staticflickr.com/1452/24681642176_2a5f191b10_z_d.jpg'/></p>
+
+<h2> What is missing</h2>
+
+<p>This are things we haven&rsquo;t build for this prototype but we will probably do in the future.</p>
+
+<ul>
+<li>Multiplayer mode</li>
+<li>Better AI</li>
+<li>Local avoidance</li>
+<li>Protoss</li>
+<li>More units and buildings (like bunkers)</li>
+<li>Wireframe support on OpenGL devices or equivalent</li>
+<li>Unit visibility filter</li>
+<li>Team coloring</li>
+<li>Healing units, shields or Zerg restoration feature.</li>
+</ul>
+
+
+<p>We are planning to release this engine in the future (without the StarCraft assets),
+but in the meantime let us know any thoughts in the comments.</p>
+]]></content>
+</entry>
+
+</feed>

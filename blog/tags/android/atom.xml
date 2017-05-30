@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: android | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/android/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2017-05-30T12:43:01+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Water Ring Simulator]]></title>
+<link href="http://coconauts.net/blog/2017/03/27/water-rings-simulator/"/>
+<updated>2017-03-27T10:12:19+00:00</updated>
+<id>http://coconauts.net/blog/2017/03/27/water-rings-simulator</id>
+<content type="html"><![CDATA[<p>We have more projects that posts in the blog, that&rsquo;s why a long ago we created a new new version of our first-game-ever: Water Rings.</p>
+
+<iframe width="560" height="560" src="https://www.youtube.com/embed/5VBlgFSvP_w" frameborder="0" allowfullscreen></iframe>
+
+
+
+
+<!--more-->
+
+
+<p>Water Rings Simulator is the new version of the classic toy game on Unity3d exlusive for Android.</p>
+
+<p>This game features:</p>
+
+<ul>
+<li>Realisitc underwater physics</li>
+<li>3D graphics</li>
+<li>Mobile movement detection</li>
+<li>Realistic visual effects</li>
+<li>Transparent phone background (using camera to see behind it)</li>
+<li>It&rsquo;s FREE!</li>
+</ul>
+
+
+<p><img src="/images/posts/2017-04-20-water-rings-simulator/transparent.png" alt="game screenshot" /></p>
+
+<p>Download the game for free on the <a href="https://play.google.com/store/apps/details?id=net.coconauts.water3d">Android Play Store</a></p>
+
+<p>Do you want us to keep expanding the game? let us know in the comments</p>
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[Notification Listener plugin for Android with Cordova]]></title>
+<link href="http://coconauts.net/blog/2015/10/13/notification-listener-android-cordova/"/>
+<updated>2015-10-13T20:16:34+00:00</updated>
+<id>http://coconauts.net/blog/2015/10/13/notification-listener-android-cordova</id>
+<content type="html"><![CDATA[<p>When we were developing <a href="/projects/watchduino2">Watchduino2</a> we required to forward messages for all notifications we receive in our phone by using
+the <a href="https://developer.android.com/reference/android/service/notification/NotificationListenerService.html">NotificationListenerService</a> available on Android.</p>
+
+<p>We managed to do this in the first version of our companion app on native code, unfortunatelly, we realised this feature was not available <em>yet</em> on Cordova, the new framework we use for building
+our cool responsive companion app.</p>
+
+<p>The solution? Roll our own Cordova plugin to provide this functionality!</p>
+
+<!-- more-->
+
+
+<h3>How it works</h3>
+
+<p>The basic idea of this plugin is to create a callback from JavaScript that will be triggered everytime you get a notification
+on Android.</p>
+
+<h3>How to install</h3>
+
+<p>Installing this plugin is really simple, and it&rsquo;s like installing any other plugin on Cordova.</p>
+
+<pre><code>cordova plugin add https://github.com/coconauts/NotificationListener-cordova
+</code></pre>
+
+<h3>How to use</h3>
+
+<p>Simply  create a listener from javascript using this method inside the Cordova initialization code.</p>
+
+<pre><code>notificationListener.listen(onNotification,onError);
+</code></pre>
+
+<p>Sample code:</p>
+
+<p>```
+var app = {</p>
+
+<pre><code>initialize: function() {
+    this.bindEvents();
+},
+bindEvents: function() {
+  document.addEventListener('deviceready', this.onDeviceReady, false);
+},
+onDeviceReady: function() {
+  log("Cordova start", "Device ready");
+
+  notificationListener.listen(function(n){
+      console.log("Received notification " + JSON.stringify(n) );
+    }, function(e){
+      console.log("Notification Error " + e);
+    })
+}
+</code></pre>
+
+<p>};</p>
+
+<p>app.initialize();</p>
+
+<p>```</p>
+
+<h3>Disclaimer</h3>
+
+<p>As far as I know, listening for notifications is only supported by Android phones (from version 4.0), and we haven&rsquo;t done any IOS development in the past, so I don&rsquo;t thing is
+possible to port this plugin to IOS. But feel free to contribute to our project if you think it can be extended to other platforms.</p>
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[Exploding Bunnies]]></title>
+<link href="http://coconauts.net/blog/2015/03/21/exploding-bunnies/"/>
+<updated>2015-03-21T15:53:19+00:00</updated>
+<id>http://coconauts.net/blog/2015/03/21/exploding-bunnies</id>
+<content type="html"><![CDATA[<p>It&rsquo;s been half a year since
+<a href="http://www.coconauts.net/projects/timebomb2/">Super Time Bomb</a>
+was released. During this
+time, we&rsquo;ve been closely following it&rsquo;s reception, and gathering user
+feedback. Today we released an update with major gameplay changes,
+including a name change!</p>
+
+<!--more-->
+
+
+<h2>New name</h2>
+
+<p>The game is now named <em>Exploding Bunnies</em>, in the hope that this is
+a more unique name, making it easier to search on the Play Store.
+Before it was appearing over the 10th position in the search result,
+whereas now it&rsquo;s showing up the forth, you don&rsquo;t even need to scroll
+to see it.</p>
+
+<p><img src="http://coconauts.net/images/posts/exploding-bunnies/store.png" /></p>
+
+<h2>More fun difficulty curve</h2>
+
+<p>We&rsquo;ve made the difficulty curve more stable. Previously, the difficulty
+in both game modes was set to be strictly incremental: it started
+really slow and easy, and difficult went up at a constant rate. But
+after a few minutes it turned out to be humanely impossible to survive.
+This made for a frustrating experience, with short gameplays, boring time
+after every restart, and no incentive for players to try to last longer
+and longer, since it was physically impossible.</p>
+
+<p>We&rsquo;ve heavily tuned the difficulty curve so that now starts out a little
+bit more upbeat, so you won&rsquo;t be bored with every game restart. Then it
+goes up  until it reaches a limit at 5 minutes of gameplay, after which
+point it will stabilize. This allows for in theory infinite gameplays,
+giving the players an incentive to keep trying to beat their high scores.</p>
+
+<p><img src="http://coconauts.net/images/posts/exploding-bunnies/difficulty.png" /></p>
+
+<h2>One game mode to rule them all</h2>
+
+<p>The original Super Time Bomb included two game modes: wave and continous.
+For this revision, however, we&rsquo;ve decided to say goodbyde to the wave mode
+and keep the continous one. The wave mode wasn&rsquo;t that different from the
+continous one, so it was a bit redundant to begin with. The difficulty
+curve problem mentioned earlier was also more accused in the wave mode
+than in the continous one. It also confused new users trying out the game
+to have to pick between two game modes.</p>
+
+<p>So now we have one big &ldquo;PLAY&rdquo; button instead, which will take you to
+the formerly continous mode gameplay. Unite and conquer!</p>
+
+<p><img src="http://coconauts.net/images/posts/exploding-bunnies/mainmenu.png" /></p>
+
+<h2>Death from above</h2>
+
+<p>Since we&rsquo;ve limited the difficulty in terms of quantity of bombs in the
+screen, we&rsquo;ve decided to add a new type of bomb to increase the complexity
+a little bit. Now, aside from the regular bombs, mines, and wall lasers,
+we have a new dropping bomb that falls from the sky. The difference is that
+for this type of bomb there is no counter! You&rsquo;ll just see a warning and
+a shadow where the bomb will fall.</p>
+
+<p><img src="http://coconauts.net/images/posts/exploding-bunnies/airbomb.png" /></p>
+
+<h2>Go play it!</h2>
+
+<p>It&rsquo;s difficult to make a star game in your first shot. Usually most
+great games come from successive iterations over the same idea (just
+have a look at the metal gear games for instance!).</p>
+
+<p>So go and give a try to the new
+<a href="https://play.google.com/store/apps/details?id=net.coconauts.timebomb2">Exploding Bunnies</a>
+and see how you like it! Please give us feedback: we welcome every
+comment, and we&rsquo;ll try to make the next iteration even better.</p>
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[Watchduino 2 first prototype]]></title>
+<link href="http://coconauts.net/blog/2015/02/26/watchduino2-first-prototype/"/>
+<updated>2015-02-26T20:42:14+00:00</updated>
+<id>http://coconauts.net/blog/2015/02/26/watchduino2-first-prototype</id>
+<content type="html"><![CDATA[<p>Five weeks have passed since I built the first wearable prototype of Watchduino 2,
+and I would like to share with you my impressions, its current features and its possible improvements.</p>
+
+<p><img src="http://coconauts.net/images/posts/watchduino2-prototype/all-3.jpg" /></p>
+
+<!--more-->
+
+
+<h2>Software</h2>
+
+<p>The software is running in an Arduino Mini Pro v2 3.3v 8Mhz and spans across 1588 lines of code, 17 files and 9 different classes.</p>
+
+<p>This code takes 28.212 bytes of the ATMega328&rsquo;s ROM and everything uses 1200 bytes of RAM when running.</p>
+
+<p>Apart from that, there is an Android app for comunication which provides cool features like a a Twitter client for our smartwatch.</p>
+
+<h2>Hardware</h2>
+
+<p>We need to talk about new hardware for Watchduino 2,
+as it is very different from its <a href="http://www.coconauts.net/projects/watchduino/">first version</a>
+which makes this new version smaller, prettier and more useful.</p>
+
+<ul>
+<li>Arduino mini pro 2 8Mhz 3.3v</li>
+<li>LIPO battery 240mah</li>
+<li>0.96" I2C 128X64 OLED (Various colors)</li>
+<li>3 x 6 x 4.3mm Push Button 2 Pin</li>
+<li>0.06A Micro Vibrator Motor</li>
+<li>Micro USB LIPO charger</li>
+<li>Bluetooth 3.0 module HC-06</li>
+</ul>
+
+
+<p>We have built 2 (and a half) prototypes following the same specification.</p>
+
+<h2>Features</h2>
+
+<p>Thanks to this new hardware, we managed to add new features to this new version.
+Most of them were mentioned in the <a href="http://www.coconauts.net/blog/2014/11/22/watchduino-2-dot-0-roadmap/">Watchduino roadmap post</a>,
+but you can have another look here:</p>
+
+<h3>Companion app (Android)</h3>
+
+<p><img src="http://coconauts.net/images/posts/watchduino2-prototype/manager.png" class="screenshot" /></p>
+
+<p>This is a big one, thanks to the bluetooth module we are able to send and receive messages from and to Android
+in realtime. This is a list of the features already available.</p>
+
+<ul>
+<li>Time sync: Set up the time sending a short message from the phone with the current timestamp, bye bye RTC.</li>
+<li>Weather information: Use weather APIs in the phone to get weather information (temperature, sky, humidity, etc)</li>
+<li>Twitter client: Read your twitter timeline from your watch (Awesome!!)</li>
+</ul>
+
+
+<p><img src="http://coconauts.net/images/posts/watchduino2-prototype/twitter.jpg" class="screenshot" /></p>
+
+<ul>
+<li>Notifications: Get notifications on your watch (emails, twits, whatsapp&hellip;)
+using the recent NotificationListener feature in Android.</li>
+<li>Debug: Great for debugging, send any message from the watch to your phone.</li>
+<li>Battery: Send battery messages from the watch to the phone to watch how the battery decreases with time</li>
+</ul>
+
+
+<p><img src="http://coconauts.net/images/posts/watchduino2-prototype/battery.png" class="screenshot" /></p>
+
+<p>But honestly, you can build whatever feature you want using your phone and a few APIs.
+Facebook client maybe ? Automatic whatsapp responses ?</p>
+
+<p>Actually, we are working in the following features:</p>
+
+<ul>
+<li>Bus notifications (see how long does your bus take to arrive, using the Transport For London APIs)</li>
+<li>Settings: Managed from the android app, and stored in the phone.</li>
+</ul>
+
+
+<h3>Screens</h3>
+
+<p>New screens, new resolution (128x64) and new style, with dynamic in-screen information for the buttons.</p>
+
+<p><img src="http://coconauts.net/images/posts/watchduino2-prototype/watch.jpg" class="screenshot"/></p>
+
+<p>Screen navigation is easier now with this simple menu.</p>
+
+<p><img src="http://coconauts.net/images/posts/watchduino2-prototype/menu.jpg" class="screenshot" /></p>
+
+<h3>Notifications</h3>
+
+<p>A vibrator and a tiny buzzer will alert you when a notification arrives.</p>
+
+<p>Also, the buzzer can play short melodies for alarms and whatnot.</p>
+
+<h3>Battery life</h3>
+
+<p>Using a tiny 240mah battery and without any kind of energy optimization (on-screen, bluetooth always on)
+a single charge last around 10 hours.</p>
+
+<p>Also, you can always look at your remaining battery in the top bar of the screen (like in phones).</p>
+
+<p>The charging time is less than 20 minutes.</p>
+
+<p>The problem here is the bluetooth module (HC-06), I was able to reduce its consumption to 4mA in sleep mode,
+but even so, the device would last up to 40 hours, which is not enough.
+No more optimisations can be performed from our side,
+so at this point I think the only option would be to try with <a href="http://en.wikipedia.org/wiki/Bluetooth_low_energy">Bluetooth BLE</a>.</p>
+
+<h2>Possible improvements</h2>
+
+<p>It works cool so far, but it can be improved a lot (there are still a few bugs).
+However that may require some time and maybe a new prototype.
+In short term, this are the things we are going to focus in the next weeks.</p>
+
+<ul>
+<li>Better case (3D printed?).</li>
+<li>Fix missing characters from Watchduino to Android.</li>
+<li>New charging system.</li>
+<li>Improve Battery life with Bluetooth BLE.</li>
+<li>Save settings in Android.</li>
+<li>Bring back the alarm / countdown features from Watchduino v1.</li>
+<li>Memory ROM and RAM can be optimized.</li>
+</ul>
+
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[Communicating Android and Arduino via Bluetooth using HC-06 Module]]></title>
+<link href="http://coconauts.net/blog/2015/01/06/android-arduino-bluetooth-hc-06/"/>
+<updated>2015-01-06T21:00:43+00:00</updated>
+<id>http://coconauts.net/blog/2015/01/06/android-arduino-bluetooth-hc-06</id>
+<content type="html"><![CDATA[<p>Are you sad that Santa didn&rsquo;t get you that phone-controlled quadcopter
+that you wanted for Christmas?</p>
+
+<p>How about building your own?</p>
+
+<p>It is not as difficult as it seems,
+in Coconauts we will show you how to do it. Or at least, we&rsquo;ll show you
+how to get started with building a small Bluetooth controlled device.</p>
+
+<!--more-->
+
+
+
+
+<table class='summary' border=1>
+<tr><th>Description</th><th>Materials</th></tr>
+<tr>
+<td>
+
+  In this tutorial we will create the simplest ever mobile controlled hellicopter. 
+  It will feature an Arduino attached to a motor, that will be listening for speed values
+  over a Bluetooth channel. Depending on the speed value received, our Aduino program
+  will vary the the rotation speed of the motor accordingly.
+  <br/>
+  On the other side of the Bluetooth channel, sending the speed values, will be an 
+  Android app, that will feature a graphic interface with a slide to select the desired
+  values.
+
+</td>
+<td>
+
+<ul>
+  <li>A phone (with Android)</li>
+  <li>An Arduino (any model: UNO, mini, Lylipad, ATMega, etc)</li>
+  <li>A DC Motor</li>
+  <li>A Bluetooth module (we will use HC-06 in this example)</li>
+</ul>
+
+<strong> Links </strong><br/>
+
+<ul>
+  <li><a href='https://github.com/coconauts/Arduino-Android-Bluetooth'>Source</a></li>
+  <li><a href='https://play.google.com/store/apps/details?id=net.coconauts.quadcopter'>Play store</a></li>
+</ul>
+
+<strong> Difficulty </strong>
+
+<div class='rating-2'></div>
+
+</td>
+</tr>
+</table>
+
+
+<br/>
+
+
+<p>Here is a video demostrating the usage of the whole setup:</p>
+
+<iframe width="100%" height="450" src="//www.youtube.com/embed/B-lNE8wwka4" frameborder="0" allowfullscreen></iframe>
+
+
+<h3>Schema</h3>
+
+<p>First of all, connect your Arduino to your DC motor and the HC-06 module as indicated by the schema.</p>
+
+<p>Only 3 digital pins are required in this simple project.
+Pins for the DC motor are exchangeable, but do not mix TX and RX for the Bluetooth module.</p>
+
+<p><img src="http://coconauts.net/images/posts/quadcopter-hc06/schema.png" /></p>
+
+<h3>Arduino code</h3>
+
+<p>Then, upload the following code to your Arduino (also available
+<a href="https://github.com/coconauts/Arduino-Android-Bluetooth/blob/master/arduino/arduino.ino">here</a>).</p>
+
+<p>```</p>
+
+<h1>include &lt;SoftwareSerial.h></h1>
+
+<p>SoftwareSerial bluetooth(10, 11); // TX, RX</p>
+
+<h1>define MAX_BUFFER 4</h1>
+
+<p>int motor = 9;  <br/>
+int speed = 0;
+char data;
+char* buffer;
+boolean receiving = false;
+int pos;</p>
+
+<p>void setup()  {
+  bluetooth.begin(9600);
+  bluetooth.println(&ldquo;Bluetooth On&rdquo;);
+  pinMode(motor, OUTPUT);</p>
+
+<p>   buffer = new char[MAX_BUFFER];
+}</p>
+
+<p>void loop()  {</p>
+
+<p>   if (bluetooth.available()){</p>
+
+<pre><code>    data=bluetooth.read();
+
+     switch(data) {
+        //3: End of transmission
+        case 3:  receiving = false;  
+                speed = buffer2int(buffer);
+
+                bluetooth.print("Received: ");
+                bluetooth.print(buffer);
+                bluetooth.print(", Speed: ");
+                bluetooth.println(speed);
+
+                 break; //end message
+        default: if (receiving == false) resetData();
+                buffer[pos] = data;
+                pos++;
+                 receiving = true;          
+      }
+</code></pre>
+
+<p>   }<br/>
+  analogWrite(motor, speed);
+  delay(10);                          <br/>
+}</p>
+
+<p> void resetData(){
+   for (int i=0; i&lt;=pos; i++) buffer[i] = 0;
+   pos = 0;
+}</p>
+
+<p>int buffer2int(char* buffer){
+  int i;
+  sscanf(buffer, &ldquo;%d&rdquo;, &amp;i);
+  return i;</p>
+
+<p>}
+```</p>
+
+<p>We are using the <a href="http://arduino.cc/en/pmwiki.php?n=Reference/Serial">SoftwareSerial</a> library for receiving Bluetooth messages.
+On the <code>setup</code> we hook it to the serial connection using a 9600 baud rate, and then we can read and write from it in a file-handle fashion.</p>
+
+<p>The code inside the loop will read the data coming from Bluetooth
+one character at a time, and it will append all received characters to a string buffer,
+until we reach EOT (End Of Transmission, ASCII character number 3).</p>
+
+<p>Then the numeric value of the string will be converted using <a href="http://www.cplusplus.com/reference/cstdio/sscanf/">sscanf</a>
+and passed to the motor&rsquo;s pin as a analog value using <a href="http://arduino.cc/en/pmwiki.php?n=Reference/analogWrite">analogWrite</a>.</p>
+
+<p>However, when you first run this code, it will keep waiting until the other end of the
+transmission is connected. If you are you are using a Bluetooth board equipped with a LED,
+like this one:</p>
+
+<p><img src="http://coconauts.net/images/posts/quadcopter-hc06/hc06.jpg" /></p>
+
+<p>then the LED will start blinking (that means is not connected yet). So lets fix this.</p>
+
+<h3>Connecting Bluetooth to Android</h3>
+
+<p>Before you start toying with the Android app, you first need to connect your Bluetooth device and your Android.</p>
+
+<p>In order to do so, and test that your Bluetooth module is working properly,
+go to the Bluetooth manager screen in your Android device, and enable it if it&rsquo;s not enabled.</p>
+
+<p>If you now search for devices, you should see our friend HC-06. click on it and follow the steps until it gets paired.</p>
+
+<h3>Android app</h3>
+
+<p>Now is time to run the Android app. Our code is making use of the very known BluetoothService class
+from <a href="http://developer.android.com/samples/index.html">Bluetooth chat example</a>, with a few tiny modifications
+to allow HC-06 and EOT ending character.</p>
+
+<p>The full code for the Android app is available <a href="https://github.com/coconauts/Arduino-Android-Bluetooth/tree/master/android">here</a>. If you feel brave enough, you can import our app from gradle, build and upload
+the app to your phone, or you can cheat and directly grab a version we conveniently uploaded to the <a href="https://play.google.com/store/apps/details?id=net.coconauts.quadcopter">Play Store</a>.</p>
+
+<p>The moment you open the app, a Bluetooh connection shoud be stablished
+with the paired HC-06 (at this point, if your HC-06 module is LED-equipped, it should not blink anymore). If you loose the connection
+there is a button for reconnecting on the interface.</p>
+
+<p>Congratulations, your Bluetooth app is set.
+You can now togge the slider on the android app, and inmediately
+see how the motor rotates at different speeds, as shown in the video.</p>
+]]></content>
+</entry>
+
+</feed>
