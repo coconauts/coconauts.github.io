@@ -9,7 +9,7 @@ sharing: true
 keywords: PDG,DGA,PDC,Unity 3D,escape room,puzzles,unlock
 description: "We made a escape room on Unity 3D using puzzle dependency charts"
 author: Mar Bartolome
-featured: false
+featured: true
 published: true
 ---
 
@@ -17,6 +17,8 @@ It's another bank holiday in England, and in Coconauts this means: hackday!
 
 Last time we did an [infinite recommender for Spotify](http://coconauts.net/blog/2017/05/01/infinify-an-infinite-discovery-mode-for-spotify/), 
 and this time  we wanted to get started with a game concept that has been in our heads for a while: [a escape room](https://en.wikipedia.org/wiki/Escape_room).
+
+![Room](/images/posts/2017-05-29-escape-room/room.png)
 
 Our idea came after playing the [_Unlock!_ board game](https://boardgamegeek.com/boardgame/213460/unlock),
 which quite successfully recreates the experience of a scape room using just cards.
@@ -44,7 +46,7 @@ ended up having to dumb down a bit our original puzzle grahp design,
 as otherwise we wouldn't have had time to implement it all in a day.
 
 The end result is a short, but we hope that also clever escape room.
-You can play right here from your browser!
+You can play right [here from your browser!](http://unity3d.coconauts.net/escaperoom/)
 
 
 We are quite happy with the result. It's the first time we make a puzzler game
@@ -52,6 +54,8 @@ and it turns out it is very rewarding: usually physics is the most frustrating
 part of game development, and you have none of that in here. Your mind can focus
 on designing and thinking puzzles rather than on tricky implementations. And
 the game is fun without having to spend a lot of time polishing the mechanics.
+
+![TV](/images/posts/2017-05-29-escape-room/tv.png)
 
 As stated, our MVP is linear (except for a couple of passwords which are
 generated randomly), but we plan to pick this project again to try to turn
