@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: water-rings | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/water-rings/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2017-05-31T21:55:38+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Water Ring Simulator]]></title>
+<link href="http://coconauts.net/blog/2017/03/27/water-rings-simulator/"/>
+<updated>2017-03-27T10:12:19+00:00</updated>
+<id>http://coconauts.net/blog/2017/03/27/water-rings-simulator</id>
+<content type="html"><![CDATA[<p>We have more projects that posts in the blog, that&rsquo;s why a long ago we created a new new version of our first-game-ever: Water Rings.</p>
+
+<iframe width="560" height="560" src="https://www.youtube.com/embed/5VBlgFSvP_w" frameborder="0" allowfullscreen></iframe>
+
+
+
+
+<!--more-->
+
+
+<p>Water Rings Simulator is the new version of the classic toy game on Unity3d exlusive for Android.</p>
+
+<p>This game features:</p>
+
+<ul>
+<li>Realisitc underwater physics</li>
+<li>3D graphics</li>
+<li>Mobile movement detection</li>
+<li>Realistic visual effects</li>
+<li>Transparent phone background (using camera to see behind it)</li>
+<li>It&rsquo;s FREE!</li>
+</ul>
+
+
+<p><img src="/images/posts/2017-04-20-water-rings-simulator/transparent.png" alt="game screenshot" /></p>
+
+<p>Download the game for free on the <a href="https://play.google.com/store/apps/details?id=net.coconauts.water3d">Android Play Store</a></p>
+
+<p>Do you want us to keep expanding the game? let us know in the comments</p>
+]]></content>
+</entry>
+
+</feed>

@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: watchduino | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/watchduino/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2017-05-31T21:55:38+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Honey, I shrunk the Watchduino]]></title>
+<link href="http://coconauts.net/blog/2015/10/20/honey-i-shrunk-the-watchduino/"/>
+<updated>2015-10-20T21:40:34+00:00</updated>
+<id>http://coconauts.net/blog/2015/10/20/honey-i-shrunk-the-watchduino</id>
+<content type="html"><![CDATA[<p>Last weekend we attended
+<a href="http://hackathon.pchintl.com/hackathons/london/2015/10/16/">a hardware hackathon organised by PCH in London</a>.
+The theme of the hackathon was &ldquo;Take your prototype to the
+next stage in 54 hours&rdquo;, so in our case we brought our
+Watchduino prototype and focused on trying to make it closer
+to how it would look if it were a commercial product.</p>
+
+<p>The best part is that at the hackathon there was a set of
+mentors, people who are experts in different areas of IoT,
+which were giving us useful advice about our product
+direction, design optimizations or the ins and outs of
+manufacturing.</p>
+
+<p>By the end of the hackathon, we had a functional (at least
+theorethically) design for Watchduino that looks this
+awesome:</p>
+
+<p><img src=https://farm1.staticflickr.com/772/22314247456_e69a4e1275_z_d.jpg' /></p>
+
+<!-- more -->
+
+
+<p>The first step to getting a hardware product into manufacturing is integrating all the electronics into a PCB. This not only makes the system easier to put together, it&rsquo;s also smaller, and likely to be more energetically efficient.</p>
+
+<p>So we designed a PCB that would mainly replace the Arduino
+Mini, breaking out the pins of the ATMega processor and
+leaving space to surface mount the rest of the components.
+To completely replace the Arduino board, a 8Mhz crystal
+oscillator needs to be added on top of our current
+components, as well as breaking out the RX and TX pins for
+reprogrammation. It&rsquo;s pretty similar to
+<a href="https://bitbucket.org/rephus/watchduino/src/master/docs/how_to_replicate.md">the process we  were following in our first Watchduino</a>.</p>
+
+<p>The board was designed with
+<a href="http://fritzing.org">Fritzing</a>,
+which we were already
+using for our schematic. We were recommended Eagle, which
+appears to be the industry standard software, and has
+a bigger component library and tons of support online.
+But Fritzing is simpler and open source, so it suited
+our purposes for the time being. You can find the file
+<a href="https://github.com/coconauts/watchduino2/tree/master/schema">on the Github repo</a>.
+In the future we would like to try out Eagle though.</p>
+
+<p>By sacrificing the buzzer (which is not really very useful having the vibrator motor) and the USB charching module (to be replaced by a custom connector, as commercial smartwatches usually have) we were able to make our PCB exactly 1 square inch in area. Pretty sweet!</p>
+
+<p><img src='https://farm6.staticflickr.com/5788/21719276463_73d93089ea_o_d.png'/></p>
+
+<p>Being able to mount all the electronics in this small
+area mean there&rsquo;s no longer the need to spread them across the strap as they were before. The whole design is
+completely compact, and small enough to fit in it&rsquo;s
+entirety into a watch head; battery and everything.</p>
+
+<p>In consequence, we redesigned our 3D case into a simpler
+shape, looking now very much like a conventional watch!</p>
+
+<p><img src=https://farm6.staticflickr.com/5640/21719246863_26ed9e4423_m_d.jpg' /></p>
+
+<p>We are cheating a little bit, because we are reusing
+<a href="https://www.decathlon.co.uk/strap-m-swip-watch-strap-black-id_8243023.html">an existing strap from a Geonaute watch</a>.
+These watches are sold at Decathlon stores, and just
+happen to have a so handy sliding mechanism for
+interchangeable straps.</p>
+
+<p><img src=https://farm6.staticflickr.com/5660/22154594199_2a668aec02_m_d.jpg' /></p>
+
+<p>So we designed our new 3D case
+with the same shape, and made it compatible with the
+Geonatue straps. Once we figure out how to print with
+flexible filament we&rsquo;ll replicate the strap with the
+same connector.</p>
+
+<p>There&rsquo;s just one thing missing: our sexy new prototype
+can&rsquo;t be functional until the PCB is printed (the image
+above I&rsquo;m afraid is a dramatization with a screenshot
+pasted on it). Printing PCBs can be done manually, but it&rsquo;s handier, better, and often cheaper to just
+<a href="http://hackaday.com/2015/09/21/why-are-you-still-making-pcbs/">get a manufacturer to do the job</a>.</p>
+
+<p>When you design a PCB, either with Fritzing, Eagle, or
+other software, you can export the result as <em>Gerber files</em>,
+which contain all the different layers of your design.
+You can provide any PCB manufacturer with this format,
+and they&rsquo;ll be able to fabricate a production-quality
+version of your board.</p>
+
+<p>So we&rsquo;ve done just that: we ordered a 3-board batch of PCBs to
+<a href="https://oshpark.com/">OSH Park</a>, for the outrageous price of just £1 each. We can&rsquo;t wait for them to arrive and see if we can get our first mini production-run of Watchduinos!</p>
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[Hackaday price 2015 retrospective]]></title>
+<link href="http://coconauts.net/blog/2015/10/06/hackaday-price-2015-retrospective/"/>
+<updated>2015-10-06T21:40:34+00:00</updated>
+<id>http://coconauts.net/blog/2015/10/06/hackaday-price-2015-retrospective</id>
+<content type="html"><![CDATA[<p><img src='https://farm1.staticflickr.com/584/21381222983_a64f947c8d_o_d.png' align='right'/></p>
+
+<p>You may have noticed that the blog has been quite quiet during the last month.
+The reason being we were focusing our efforts on doing some epic Watchduino
+development, as <a href="https://hackaday.io/project/7244-watchduino2">contestants for the Hackaday Prize 2015</a>.
+Sad news in the end though, as we didn&rsquo;t make it to the finals.</p>
+
+<p>But that&rsquo;s ok though. Regardless of the result, this has been a good excercise
+for us, and the contest has pushed us to keep working hard on the
+<a href="/projects/watchduino2">Watchduino</a> project. That&rsquo;s why we want to
+sum up all we have learned and all we have improved on the project during
+the course of the contest.</p>
+
+<!-- more -->
+
+
+<h3>3D Case</h3>
+
+<p><img class='screenshot' src='https://farm1.staticflickr.com/760/21814249490_2bfe5bf2b9_z_d.jpg'/>
+<img class='screenshot' src='https://farm6.staticflickr.com/5717/21815509489_5531e2b080_z_d.jpg'/></p>
+
+<p>One of the things in our TODO list was to build a proper 3D case for our watch,
+and thanks to our <a href="https://twitter.com/rephus/status/571811583602647040">3D printer</a> we managed to build a wearable prototype.</p>
+
+<p>We also introduced the Smart Strap design which allows us to keep some of the
+electronic components spread along the strap, keeping the watch face smaller.</p>
+
+<p>Our first case design, from a few months ago, was done in <a href="https://www.blender.org/">Blender</a>,
+however we&rsquo;ve now switched to <a href="https://tinkercad.com/things/gG641gG1b4c">Tinkercad</a> as it&rsquo;s a great web platform for doing
+awesome 3D models really quickly.</p>
+
+<p>We also designed an additional strap prototype using a flexible strap, that we
+plan to 3D print soon enough.</p>
+
+<h3>Migration to Cordova</h3>
+
+<p><img class='screenshot' src='https://farm1.staticflickr.com/694/21815557799_9d65cd5172_z_d.jpg'/>
+<img class='screenshot' src='https://farm1.staticflickr.com/668/21814312750_9f80cebaa1_b_d.jpg'/></p>
+
+<p>A few weeks before we joined the contest, we started migrating the existing
+Android companion app, written natively, to the Cordova framework.</p>
+
+<p>The reason for this is because Cordova seems a better platform for us, based
+on HTML5 + JS, and multiplatform. It&rsquo;s easier and faster to develop with,
+the codebase is smaller, and in general we are quite happy with it!</p>
+
+<p>We finally migrated all the code with a better design by the end of August,
+and we even introduced new functionality.</p>
+
+<h3>Showcase videos</h3>
+
+<p>We made two videos to showcase the capabilities of the watch.</p>
+
+<iframe width="100%" height="500" src="https://www.youtube.com/embed/n-ubg1R2e-A" frameborder="0" allowfullscreen></iframe>
+
+
+
+
+<iframe width="100%" height="500" src="https://www.youtube.com/embed/LVE85OxWGzs" frameborder="0" allowfullscreen></iframe>
+
+
+<h3>Open source code and documentation</h3>
+
+<p>One of the requirements of the project was to release our code and build our
+documentation so everyone can create a new Watchduino from scratch.</p>
+
+<p>This has been in our roadmap for ages, so it was a good excuse to clean up
+the code a bit an make it public.</p>
+
+<p>Feel free to <a href="https://github.com/coconauts/watchduino2">clone our project</a>, and to make pull request to improve our own.</p>
+
+<p>Be warned though: the codebase is still under heavy development, so things
+might change drastically from one day to the next!</p>
+
+<h3>Next steps</h3>
+
+<p>The community also helped us to improve our watch architecture and we are keen on
+trying different approaches so Watchduino can be even better than it&rsquo;s now.</p>
+
+<p>One of the main objectives is to improve the Bluetooth connectivity and
+the power consumption. Another one is to make an app creation framework that is
+lean and easy to use.</p>
+
+<p>Stay tuned for more updates, are we are definitely not done with our
+Watchduino development!</p>
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[WatchDuino 2 is semifinalist on the 2015 Hackaday Prize]]></title>
+<link href="http://coconauts.net/blog/2015/08/24/watchduino-2-is-semifinalist-on-the-2015-hackaday-prize/"/>
+<updated>2015-08-24T19:18:35+00:00</updated>
+<id>http://coconauts.net/blog/2015/08/24/watchduino-2-is-semifinalist-on-the-2015-hackaday-prize</id>
+<content type="html"><![CDATA[<p><img src="http://coconauts.net/images/posts/hackaday_semifinal.png" /></p>
+
+<p>We are really excited to announce that <a href="https://www.coconauts.net/projects/watchduino2/">WatchDuino 2</a> has passed to
+<a href="http://hackaday.com/2015/08/24/100-semifinalists-for-the-2015-hackaday-prize/">the semi-finals of the 2015 edition of the Hackaday Prize</a>!
+It was selected amongst the best 100 of a total of more than 900 projects.
+To see this kind of recognition out of a community that we admire is
+absolutely thrilling, thank you so much =)</p>
+
+<p>This means that now we will have to give our best we want to be good enough
+to be in the finals. Many other excellent projects are competing!</p>
+
+<p>Keep an eye on the <a href="https://hackaday.io/project/7244-watchduino2">project page on Hackaday</a>,
+as it is likely to be holding exciting updates and advancements during the
+following month. And give us your skulls and likes if you have an account! =)</p>
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[Watchduino 2 first prototype]]></title>
+<link href="http://coconauts.net/blog/2015/02/26/watchduino2-first-prototype/"/>
+<updated>2015-02-26T20:42:14+00:00</updated>
+<id>http://coconauts.net/blog/2015/02/26/watchduino2-first-prototype</id>
+<content type="html"><![CDATA[<p>Five weeks have passed since I built the first wearable prototype of Watchduino 2,
+and I would like to share with you my impressions, its current features and its possible improvements.</p>
+
+<p><img src="http://coconauts.net/images/posts/watchduino2-prototype/all-3.jpg" /></p>
+
+<!--more-->
+
+
+<h2>Software</h2>
+
+<p>The software is running in an Arduino Mini Pro v2 3.3v 8Mhz and spans across 1588 lines of code, 17 files and 9 different classes.</p>
+
+<p>This code takes 28.212 bytes of the ATMega328&rsquo;s ROM and everything uses 1200 bytes of RAM when running.</p>
+
+<p>Apart from that, there is an Android app for comunication which provides cool features like a a Twitter client for our smartwatch.</p>
+
+<h2>Hardware</h2>
+
+<p>We need to talk about new hardware for Watchduino 2,
+as it is very different from its <a href="http://www.coconauts.net/projects/watchduino/">first version</a>
+which makes this new version smaller, prettier and more useful.</p>
+
+<ul>
+<li>Arduino mini pro 2 8Mhz 3.3v</li>
+<li>LIPO battery 240mah</li>
+<li>0.96" I2C 128X64 OLED (Various colors)</li>
+<li>3 x 6 x 4.3mm Push Button 2 Pin</li>
+<li>0.06A Micro Vibrator Motor</li>
+<li>Micro USB LIPO charger</li>
+<li>Bluetooth 3.0 module HC-06</li>
+</ul>
+
+
+<p>We have built 2 (and a half) prototypes following the same specification.</p>
+
+<h2>Features</h2>
+
+<p>Thanks to this new hardware, we managed to add new features to this new version.
+Most of them were mentioned in the <a href="http://www.coconauts.net/blog/2014/11/22/watchduino-2-dot-0-roadmap/">Watchduino roadmap post</a>,
+but you can have another look here:</p>
+
+<h3>Companion app (Android)</h3>
+
+<p><img src="http://coconauts.net/images/posts/watchduino2-prototype/manager.png" class="screenshot" /></p>
+
+<p>This is a big one, thanks to the bluetooth module we are able to send and receive messages from and to Android
+in realtime. This is a list of the features already available.</p>
+
+<ul>
+<li>Time sync: Set up the time sending a short message from the phone with the current timestamp, bye bye RTC.</li>
+<li>Weather information: Use weather APIs in the phone to get weather information (temperature, sky, humidity, etc)</li>
+<li>Twitter client: Read your twitter timeline from your watch (Awesome!!)</li>
+</ul>
+
+
+<p><img src="http://coconauts.net/images/posts/watchduino2-prototype/twitter.jpg" class="screenshot" /></p>
+
+<ul>
+<li>Notifications: Get notifications on your watch (emails, twits, whatsapp&hellip;)
+using the recent NotificationListener feature in Android.</li>
+<li>Debug: Great for debugging, send any message from the watch to your phone.</li>
+<li>Battery: Send battery messages from the watch to the phone to watch how the battery decreases with time</li>
+</ul>
+
+
+<p><img src="http://coconauts.net/images/posts/watchduino2-prototype/battery.png" class="screenshot" /></p>
+
+<p>But honestly, you can build whatever feature you want using your phone and a few APIs.
+Facebook client maybe ? Automatic whatsapp responses ?</p>
+
+<p>Actually, we are working in the following features:</p>
+
+<ul>
+<li>Bus notifications (see how long does your bus take to arrive, using the Transport For London APIs)</li>
+<li>Settings: Managed from the android app, and stored in the phone.</li>
+</ul>
+
+
+<h3>Screens</h3>
+
+<p>New screens, new resolution (128x64) and new style, with dynamic in-screen information for the buttons.</p>
+
+<p><img src="http://coconauts.net/images/posts/watchduino2-prototype/watch.jpg" class="screenshot"/></p>
+
+<p>Screen navigation is easier now with this simple menu.</p>
+
+<p><img src="http://coconauts.net/images/posts/watchduino2-prototype/menu.jpg" class="screenshot" /></p>
+
+<h3>Notifications</h3>
+
+<p>A vibrator and a tiny buzzer will alert you when a notification arrives.</p>
+
+<p>Also, the buzzer can play short melodies for alarms and whatnot.</p>
+
+<h3>Battery life</h3>
+
+<p>Using a tiny 240mah battery and without any kind of energy optimization (on-screen, bluetooth always on)
+a single charge last around 10 hours.</p>
+
+<p>Also, you can always look at your remaining battery in the top bar of the screen (like in phones).</p>
+
+<p>The charging time is less than 20 minutes.</p>
+
+<p>The problem here is the bluetooth module (HC-06), I was able to reduce its consumption to 4mA in sleep mode,
+but even so, the device would last up to 40 hours, which is not enough.
+No more optimisations can be performed from our side,
+so at this point I think the only option would be to try with <a href="http://en.wikipedia.org/wiki/Bluetooth_low_energy">Bluetooth BLE</a>.</p>
+
+<h2>Possible improvements</h2>
+
+<p>It works cool so far, but it can be improved a lot (there are still a few bugs).
+However that may require some time and maybe a new prototype.
+In short term, this are the things we are going to focus in the next weeks.</p>
+
+<ul>
+<li>Better case (3D printed?).</li>
+<li>Fix missing characters from Watchduino to Android.</li>
+<li>New charging system.</li>
+<li>Improve Battery life with Bluetooth BLE.</li>
+<li>Save settings in Android.</li>
+<li>Bring back the alarm / countdown features from Watchduino v1.</li>
+<li>Memory ROM and RAM can be optimized.</li>
+</ul>
+
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[Watchduino 2.0 roadmap]]></title>
+<link href="http://coconauts.net/blog/2014/11/22/watchduino-2-dot-0-roadmap/"/>
+<updated>2014-11-22T19:52:37+00:00</updated>
+<id>http://coconauts.net/blog/2014/11/22/watchduino-2-dot-0-roadmap</id>
+<content type="html"><![CDATA[<p><img src="http://coconauts.net/images/posts/watchduino-roadmap/components.jpeg" /></p>
+
+<p>It&rsquo;s been some time since we gave you some updates about Watchduino,
+but we haven&rsquo;t forgotten about the project. In fact, we can&rsquo;t stop
+planning what will be the next exciting feature that we want to try to
+develop. For this reason, we&rsquo;ve put together a roadmap of the set of
+features we want the next version of Watchduino to include:</p>
+
+<!--more-->
+
+
+<p>Watchduino 2.0 roadmap:</p>
+
+<ul>
+<li>Bluetooth communication between Watchduino and Android phones
+
+<ul>
+<li>Android phone refers all notifications to Watchduino</li>
+<li>Watchduino to show notifications</li>
+<li>Dismiss notifications from Watchduino, they will be dismissed from phone as well</li>
+<li>Ping utility to check connection</li>
+<li>Time sync from phone</li>
+<li>Once Bluetooth is working, more exciting features will come!</li>
+</ul>
+</li>
+<li>Vibration
+
+<ul>
+<li>Vibrate with notifications and alarms</li>
+<li>Can be disabled through options</li>
+</ul>
+</li>
+<li>Better screen
+
+<ul>
+<li>Choose a better screen with more resolution. And perhaps even colors?</li>
+<li>Current candidates:</li>
+<li>0.9'&lsquo; 128x64 B&amp;W OLED display</li>
+<li>1.8'&lsquo; 128x160 color TFT display</li>
+</ul>
+</li>
+<li>Better speaker</li>
+<li>Better design
+
+<ul>
+<li>Integrated PCB (more compact design)</li>
+<li>3D printed case?</li>
+</ul>
+</li>
+<li>Programming framework improvements</li>
+</ul>
+
+
+<p>In essence, we would like to make Watchduino as useful as other commercial
+smartwatches. We have in fact already started to work on some of this. For instance&hellip;</p>
+
+<p><img src="http://coconauts.net/images/posts/watchduino-roadmap/notifications-bluetooth.jpeg" /></p>
+
+<p>We are already able to refer Android notifications to Watchduino via Bluetooth.</p>
+
+<p><img src="http://coconauts.net/images/posts/watchduino-roadmap/bluetooth.jpeg" /></p>
+
+<p>We have a prototype management Android app to aid with testing and setting up the
+Bluetooth connection.</p>
+
+<p><img src="http://coconauts.net/images/posts/watchduino-roadmap/screens.jpg" /></p>
+
+<p>An we&rsquo;ve also started tinkering with new screen models.</p>
+
+<p>To make all of this possible, we first invested some effort in doing a huge memory
+optimization to the code, that gives us a lot more room for programming customizations.</p>
+
+<p>We are also planning to do a little bit of research in the following areas,
+though some of these may turn out to be unachievable for Watchduino&rsquo;s requirements:</p>
+
+<ul>
+<li>Wireless charging
+
+<ul>
+<li>Watchduino to integrate a wireless charging receiver module, instead of USB port</li>
+<li>This opens the door to having a water proof case</li>
+</ul>
+</li>
+<li>Memory extension
+
+<ul>
+<li>Integrate a 23K256 SRAM module</li>
+</ul>
+</li>
+<li>Voice control</li>
+<li>Touchscreen</li>
+</ul>
+
+
+<p>So keep an eye on the blog, as we will be posting advancements and interesting results
+as we go through the development of the features. Each step will bring us closer to
+the ultimate hacker smartwatch!</p>
+]]></content>
+</entry>
+
+</feed>
