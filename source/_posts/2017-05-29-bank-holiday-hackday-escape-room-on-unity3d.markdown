@@ -48,7 +48,7 @@ as otherwise we wouldn't have had time to implement it all in a day.
 The end result is a short, but we hope that also clever escape room.
 You can play right [here from your browser!](http://unity3d.coconauts.net/escaperoom/)
 
-![door](/images/posts/2017-05-29-escape-room/door.png)
+<a href="http://unity3d.coconauts.net/escaperoom/"><img src="/images/posts/2017-05-29-escape-room/door.png"/></a>
 
 We are quite happy with the result. It's the first time we make a puzzler game
 and it turns out it is very rewarding: usually physics is the most frustrating
@@ -61,3 +61,5 @@ generated randomly), but we plan to pick this project again to try to turn
 it into something generative next time. Stay tuned!
 
 ![TV](/images/posts/2017-05-29-escape-room/tv.png)
+
+UPDATE: now [also ported to Android!](https://play.google.com/store/apps/details?id=net.coconauts.escaperoomhack)
