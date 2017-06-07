@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: screensaver | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/screensaver/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2017-06-07T12:17:43+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Web screensaver]]></title>
+<link href="http://coconauts.net/blog/2014/08/01/web-screensaver/"/>
+<updated>2014-08-01T23:00:00+00:00</updated>
+<id>http://coconauts.net/blog/2014/08/01/web-screensaver</id>
+<content type="html"><![CDATA[<p>We have just started a new project similar to our music player, <a href="/projects/gramola">Gramola</a>,
+to show our photos in a web browser, after our disappointment with existing solutions such as Piwigo or Gallery2.
+We hope that you&rsquo;ll hear some more about it in the future.</p>
+
+<p>In the meantime, while deciding about features to implement, a slideshow mode obviously came out as part of them.
+And we though about how cool would it be to be able to have the photo slideshow as an screensaver for your desktop.</p>
+
+<!--more-->
+
+
+<p>So in order to achieve this, Javier wrote a tiny bash script that will open any webpage in a fullscreen browser after a certain time of inactivity,
+and it will close itself when it detects activity again. So effectively it&rsquo;s a screensaver that shows websites.</p>
+
+<p>We use <code>xprintidle</code> to get the time of inactivity and <code>chromium-browser</code> (not google-chrome) to open the web as an app with some chromium specific features like &mdash;start-maximized</p>
+
+<p>Here&rsquo;s the code:</p>
+
+<p>``` bash</p>
+
+<pre><code>#!/bin/bash
+
+app="http://www.google.com/trends/hottrends/visualize?nrow=5&amp;ncol=5"
+wait=10000 #Time in miliseconds
+
+chromium_id=""
+while true; do 
+idle=`xprintidle`
+if [ $idle -gt $wait ]; then
+    if [ -z $chromium_id ]; then
+
+    chromium-browser --app=$app --start-maximized --fast-start &amp;&gt;&gt; chromium.log &amp;
+    chromium_id="$!"
+    echo "Away, running screensaver (id:$chromium_id)"
+    fi
+elif [ $chromium_id ]; then #Screensaver is running
+    echo "Welcome back, closing screensaver (id:$chromium_id)"
+    kill "$chromium_id"
+    chromium_id=""
+fi
+sleep 1
+done 
+</code></pre>
+
+<p>```</p>
+
+<p>Here&rsquo;s a demo of what will happen if you run it. Notice how the screensaver stops once you move the cursor:</p>
+
+<iframe width="100%" height="450" src="//www.youtube.com/embed/FSFB_Lx41Hs" frameborder="0" allowfullscreen></iframe>
+
+
+<p>So, once we finish the photo app with the slideshow feature, we will be able to use it as an screensaver for our desktop computer/rasbperry pi/laptop&hellip;</p>
+
+<p>Get the latest version of this code in <a href="http://bitbucket.org/coconauts/chromium-screensaver/">our project page in bitbucket</a>.</p>
+]]></content>
+</entry>
+
+</feed>

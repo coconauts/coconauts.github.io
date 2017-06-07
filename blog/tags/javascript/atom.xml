@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: javascript | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/javascript/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2017-06-07T12:17:43+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Infinify: an infinite discovery mode for Spotify]]></title>
+<link href="http://coconauts.net/blog/2017/05/01/infinify-an-infinite-discovery-mode-for-spotify/"/>
+<updated>2017-05-01T18:13:37+00:00</updated>
+<id>http://coconauts.net/blog/2017/05/01/infinify-an-infinite-discovery-mode-for-spotify</id>
+<content type="html"><![CDATA[<p>I&rsquo;m a Spotify user. I&rsquo;m not the greatest fan of the user experience they offer, but it&rsquo;s definitely the &ldquo;lesser evil&rdquo; when it comes to music streaming.</p>
+
+<p>You see, I&rsquo;m the kind of person that just cant be bothered to choose, I <em>loathe</em>
+choosing. Deciding albums to hear? What are we, in the 90s? with phisical CDs that
+need popping into a player? It&rsquo;s the digital age! I just want to open Spotify
+and be presented with a continuous stream of non-stop music,
+wihout having the choose an album, or a genre, or a playlist.
+They even require my constant feedback when in radio mode!
+(don&rsquo;t even get me started on the Spotify radio, <em>yuck</em>).
+I just want a big &ldquo;play&rdquo; button and let Spotify use a teeny bit of
+machine intelligence to feed me stuff that it thinks I might like.
+Considering the app is sitting on top of a pile of data from me
+(listening history, saved collection)&hellip; is it really that hard?</p>
+
+<p>Because Spotify is not giving that to me though, we at Coconauts decided to
+build it ourselves, using their API and Javascript. The result: Infinify.</p>
+
+<p><img src="/images/posts/2017-05-01-infinify/infinify.png" alt="Infinify" /></p>
+
+<!-- more-->
+
+
+<h2>What is it?</h2>
+
+<p>Infinify is a website with a huge &ldquo;play&rdquo; button, that feeds on your
+Spotify saved collection to produce a continuous mix of tracks from your
+own music plus recommendations.</p>
+
+<h2>How does it work?</h2>
+
+<p>Spotify exposes <a href="https://developer.spotify.com/web-api/get-recommendations/">a very powerful <code>/recommendations</code> endpoint on their API</a>,
+which I reckon plugs into <a href="https://qz.com/571007/the-magic-that-makes-spotifys-discover-weekly-playlists-so-damn-good/">the same magic that is powering their discovery modes</a>.</p>
+
+<p>The <code>/recommendations</code> endpoint instantly gives you a list of recommended tracks,
+given a seed of a list of songs, artists or genres. You can even tune a bunch of
+crazy parameters, such as <em>danceability</em>, <em>energy</em> or <em>popularity</em>. It&rsquo;s quite amazing.</p>
+
+<p>The problem though is that the recommendations output is finite (capped at 100 results),
+whereas we want a continuous flow of recommendations.</p>
+
+<p>Another problem with it, which is also noticiable in their discovery modes,
+is that it tries too hard to give you music that is similar to <em>all</em> of your seeds.
+Wha this means is: if you seed it with some classical music, heavy metal and jazz,
+it&rsquo;s going to try to return tracks that are strange chimaeras mixing all of those
+traits, rather than giving you a mixed bag of more conventional tracks in those genres.
+In other words: it&rsquo;s an <em>and</em>, not an <em>or</em>. Now, this might actually be what you want
+in some occasions, but when it comes to recommending music to people it doesn&rsquo;t work:
+if I like John Williams and Queen I want to be recommended Danny Elfman and Van Halen,
+not &ldquo;Some Orchestra Plays Very Bland Rock Classics&rdquo;.</p>
+
+<p><img src="/images/posts/2017-05-01-infinify/epicrock.png" alt="Infinify" /></p>
+
+<p>So our solution involves working around the endpoint, using in a bit unorthodox way:</p>
+
+<ol>
+<li>Fetch a random single song from the user&rsquo;s saved music collection.</li>
+<li>Use this song&rsquo;s artist as a seed to the <code>/recommendations</code> endpoint. Get a small X number of songs back.</li>
+<li>Pick a random song from the response, and add it to a playlist.</li>
+<li>Repeat the above every 2 minutes.</li>
+</ol>
+
+
+<p>In this fashion, the result is a Spotify playlist that is continuously growing
+with fresh recommendations (for as long as the the website remains open).</p>
+
+<p>We use the artist as a seed, rather than the song, so that you can still get
+a chance of getting the songs you already have in your library and love.</p>
+
+<p>The seed is started from a single song to try to get purer recommendations, rather
+than strange blends. We then produce X recommendations and pick one. Why?
+Well, we experienced that the first item in the results is always a song by the
+same artist that your seed, and this doesn&rsquo;t give you much variety. So by producing
+several and then picking one of them, you get a delicious balance: you&rsquo;ll get a
+certain chance to get songs by the same artists in your library, but them a slightly
+bigger chance to get related artists (that may or not be in your library).</p>
+
+<p>This X number of tracks is what we call the <em>discoverability</em> parameter, and
+you can toggle it between 1 (&ldquo;I just want the artists I know and love&rdquo;) and 10
+(in which approximately 9 in every 10 songs will be new, and 1 will be familiar).</p>
+
+<p><img src="/images/posts/2017-05-01-infinify/discoverability.png" alt="Infinify" /></p>
+
+<h2>The ugly bits</h2>
+
+<p>Unfortunately there are some limitations that make the user experience a bit rough.
+For starters, the fact that you need to have an external web application to start
+the infinfy playlist. Spotify <a href="https://developer.spotify.com/technologies/apps/">scrapped their in-app extensions</a> some years ago,
+so the only way to add integration nowdays is by keeping them completely external.</p>
+
+<p>It would be possible to stream the audio directly to the webapp, but only 30-second
+samples: not acceptable. So you need Spotify for playback, and the webapp for the
+integration.</p>
+
+<p>You can at least <a href="https://developer.spotify.com/web-api/start-a-users-playback/">control the playback on a device via the API</a>, you need to
+have a premium account for that. So if you don&rsquo;t, you need to hit the play button
+twice: once on infinify, once on the app.</p>
+
+<p>Another uglyness is that we found no way via the API to be able to track the
+listening progress of the user on the playlist. This made it quite difficult to
+determine when we should add and remove tracks from the playlist.
+After trying some nasty kludges, we decided for a straigghtforward solution:
+just add new songs every 2 minutes, and keep the old ones there. They don&rsquo;t
+bother you after all! (in fact, its kinda nice to have a record of your
+listening session) and there&rsquo;s no problem on Spotify even if the playlist
+gets absurdly long.</p>
+
+<p>The only edge case is if you run out of songs in the
+playlist: for this eventuality we added a little <code>(+)</code> button to force a manual
+generation. When you start a new session the playlist gets reset, as it would be
+confusing to have the long list of tracks from last time.</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_ge4n9zmTRQ" frameborder="0" allowfullscreen></iframe>
+
+
+<p>Because the way we are abusing the <code>/recommendations</code> endpoint, ours is
+not the most rate-friendly solution. However, it&rsquo;s also not that bad: our load
+is 4 or 5 requests every 2 minutes, which still falls within reasonable limits,
+at least if we keep it to only one user.</p>
+
+<h2>Final remarks</h2>
+
+<p>For recommender engines, and in general many AI problems, there&rsquo;s usually
+a rule: a naive, straightforward solution can take you 60-80% there.
+Then any increases on that number will require years of PhD research.</p>
+
+<p>Infinify is a very simple solution, but surprisingly, also very effective! I was
+very pleased with the quality of recommendations, and how you can still get
+a mix of familiar and new. Of course, most of the
+heavy lifting comes from the magic behind the <code>/recommendations</code> engine,
+but I&rsquo;m happy that we could bend it to overcome it&rsquo;s limitations.</p>
+
+<p>For now, I intend to use it heavily for a while and see if it still satisfy me,
+or if recommendations start getting a bit repetitive. In such case, I might start
+tunning the algorithim to try more variability (for instance, going for
+multi-level recommendations from recommendations).</p>
+
+<p>You can get the code for Infinify <a href="https://github.com/coconauts/infinify">on Github</a>.</p>
+]]></content>
+</entry>
+
+</feed>

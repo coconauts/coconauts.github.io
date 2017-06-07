@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: astroship | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/astroship/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2017-06-07T12:17:43+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Astroship for Android released]]></title>
+<link href="http://coconauts.net/blog/2013/08/26/astroship-for-android-released/"/>
+<updated>2013-08-26T19:57:38+00:00</updated>
+<id>http://coconauts.net/blog/2013/08/26/astroship-for-android-released</id>
+<content type="html"><![CDATA[<p>We are proud to present our first Reverse Game for Android, available right now to download for free from the Google Play store.</p>
+
+<p>Find more information on the <a href="http://www.coconauts.net/web/?page_id=19">project page</a>,
+or on the <a href="https://play.google.com/store/apps/details?id=net.coconauts.reverse.asteroids">Google Play page</a>.</p>
+
+<h2>Update (2014-05-01)</h2>
+
+<p>The app has been removed from the Google Play Store for an alleged copyright infringement.
+It is true that the game was a tribute to the original Asteroids game from Atari with a
+<strong>completely different gameplay</strong> and without any kind of <strong>profit</strong>.</p>
+
+<p>Maybe we should feel honored that Atari and it&rsquo;s efficient team of attorneys have considered
+Astroship to be a worthy competitor for their game.</p>
+]]></content>
+</entry>
+
+</feed>

@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: plugin | Coconauts]]></title>
+<link href="http://coconauts.net/blog/tags/plugin/atom.xml" rel="self"/>
+<link href="http://coconauts.net/"/>
+<updated>2017-06-07T12:17:43+00:00</updated>
+<id>http://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Notification Listener plugin for Android with Cordova]]></title>
+<link href="http://coconauts.net/blog/2015/10/13/notification-listener-android-cordova/"/>
+<updated>2015-10-13T20:16:34+00:00</updated>
+<id>http://coconauts.net/blog/2015/10/13/notification-listener-android-cordova</id>
+<content type="html"><![CDATA[<p>When we were developing <a href="/projects/watchduino2">Watchduino2</a> we required to forward messages for all notifications we receive in our phone by using
+the <a href="https://developer.android.com/reference/android/service/notification/NotificationListenerService.html">NotificationListenerService</a> available on Android.</p>
+
+<p>We managed to do this in the first version of our companion app on native code, unfortunatelly, we realised this feature was not available <em>yet</em> on Cordova, the new framework we use for building
+our cool responsive companion app.</p>
+
+<p>The solution? Roll our own Cordova plugin to provide this functionality!</p>
+
+<!-- more-->
+
+
+<h3>How it works</h3>
+
+<p>The basic idea of this plugin is to create a callback from JavaScript that will be triggered everytime you get a notification
+on Android.</p>
+
+<h3>How to install</h3>
+
+<p>Installing this plugin is really simple, and it&rsquo;s like installing any other plugin on Cordova.</p>
+
+<pre><code>cordova plugin add https://github.com/coconauts/NotificationListener-cordova
+</code></pre>
+
+<h3>How to use</h3>
+
+<p>Simply  create a listener from javascript using this method inside the Cordova initialization code.</p>
+
+<pre><code>notificationListener.listen(onNotification,onError);
+</code></pre>
+
+<p>Sample code:</p>
+
+<p>```
+var app = {</p>
+
+<pre><code>initialize: function() {
+    this.bindEvents();
+},
+bindEvents: function() {
+  document.addEventListener('deviceready', this.onDeviceReady, false);
+},
+onDeviceReady: function() {
+  log("Cordova start", "Device ready");
+
+  notificationListener.listen(function(n){
+      console.log("Received notification " + JSON.stringify(n) );
+    }, function(e){
+      console.log("Notification Error " + e);
+    })
+}
+</code></pre>
+
+<p>};</p>
+
+<p>app.initialize();</p>
+
+<p>```</p>
+
+<h3>Disclaimer</h3>
+
+<p>As far as I know, listening for notifications is only supported by Android phones (from version 4.0), and we haven&rsquo;t done any IOS development in the past, so I don&rsquo;t thing is
+possible to port this plugin to IOS. But feel free to contribute to our project if you think it can be extended to other platforms.</p>
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[Add list of featured posts to Octopress]]></title>
+<link href="http://coconauts.net/blog/2015/09/08/add-featured-posts-to-octopress/"/>
+<updated>2015-09-08T19:03:19+00:00</updated>
+<id>http://coconauts.net/blog/2015/09/08/add-featured-posts-to-octopress</id>
+<content type="html"><![CDATA[<p>A few months ago we were requested to add a list of featured posts to an index page in Octopress.
+So we did a bit of research about how Octopress + Jekyll + Lyquid template internally works.
+And we ended up with a nice solution that you can easily replicate in your own blog.</p>
+
+<p>In this post we will show you how to add your own custom list of featured octopress posts like in <a href="http://coconauts.net#featured-posts">Coconauts</a></p>
+
+<!--more-->
+
+
+<p>The first thing you need to do is to add a new custom tag to your posts, we will call it <code>featured</code></p>
+
+<h2>```</h2>
+
+<p>layout: post
+author: Javier Rengel
+published: true</p>
+
+<h2>featured: true</h2>
+
+<p>```</p>
+
+<p>Create a new template file called <code>featured_posts.html</code> inside your <code>source/_includes</code> folder,
+with this content:</p>
+
+<p>
+```</p>
+
+<div class="row">
+   {% assign featured_count = '' %}
+   {% for post in site.posts %}
+       {% if post.featured and featured_count.size < 3 %}
+          {% capture featured_count %}{{ featured_count }}*{% endcapture %}
+           <div class="col-sm-4 col-lg-4 column featured-post">
+              <a class='post-link' href="{{ root_url }}{{ post.url }}">{{ post.title | titlecase }}</a>
+              <p>{{ post.content | strip_html | condense_spaces | truncate:300 }}</p>
+           </div>
+       {% endif %}
+   {% endfor %}
+</div>
+
+
+<p>```
+</p>
+
+<p>Then you can list your three most recent featured posts in every page you want just by adding this code to your markdown or HTML file:</p>
+
+<p>
+<code>
+{% include featured_posts.html %}
+</code>
+</p>
+
+<p>Just remember to adapt your HTML code and your CSS to your needs (this one is based on <a href="http://getbootstrap.com/">bootstrap</a>).</p>
+
+<h3>Featured posts</h3>
+
+<p><div class="row">
+   
+   
+       
+          
+           <div class="col-sm-4 col-lg-4 column">
+              <a class='post-link' href="/blog/2017/05/29/bank-holiday-hackday-escape-room-on-unity3d/">Bank Holiday Hackday: Escape Room on Unity3D</a>
+              <p>It&rsquo;s another bank holiday in England, and in Coconauts this means: hackday! Last time we did an infinite recommender for Spotify,
+and this time we wanted to get started with a game concept that has been in our heads for a while: a escape room. Our idea came after playing the Unlock! board &hellip;</p>
+           </div>
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+          
+           <div class="col-sm-4 col-lg-4 column">
+              <a class='post-link' href="/blog/2016/09/08/smartwatch-prototype-with-esp8266/">Smartwatch Prototype With ESP8266: ESPmartwatch</a>
+              <p>It&rsquo;s been a while since we built and deprecated our Watchduino 2 smartwatch built with Arduino and BLE technology. The reason why we stopped developing the prototype was because it was not as optimal as we expected, and the bluetooth communication was unstable in practice; this is probably &hellip;</p>
+           </div>
+       
+   
+       
+          
+           <div class="col-sm-4 col-lg-4 column">
+              <a class='post-link' href="/blog/2016/08/01/retrophies/">Retrophies: Achievements System for Emulators</a>
+              <p>Play now at retrophies.win! If there’s one thing that has become a de-facto standard in the gaming industry during the last decade this is game achievements, trophies, or whatever you may call them. Not only on console games, but Apple and Android also provide facilities to integrate this features &hellip;</p>
+           </div>
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+       
+   
+</div>
+</p>
+]]></content>
+</entry>
+
+</feed>
