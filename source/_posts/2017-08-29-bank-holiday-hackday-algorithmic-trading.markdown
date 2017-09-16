@@ -33,7 +33,7 @@ in exchange for "real money" (eg, dollars or euros). In the last years several o
 have surged and become stablished, most notably perhaps [Coinbase](https://www.coinbase.com/)
 and [Kraken](https://www.kraken.com/).
 
-And the best news: these exchanges offer a public API, that you can use in your
+And the best news - these exchanges offer a public API, that you can use in your
 algorithms for automatic trading. Sweet!
 
 ### Simulate first
@@ -57,7 +57,7 @@ against each other:
 - *simple algorithm*: keeps a constant amount invested in stock at all time.
   If the price goes up, it extracts the profit difference with the original amount.
   If the price goes down, it buys up new stock until it reaches the investment amount.
-- *pirate algoritm*: based on (this algorithm that we found on github)[https://github.com/pirate/bitcoin-trader/]. It keeps track of
+- *pirate algoritm*: based on [this algorithm that we found on github](https://github.com/pirate/bitcoin-trader/). It keeps track of
   the value at which you bought or sold a bit of stock. If the price goes further down that you bought it for, it will sell it to avoid loss. If it goes up it will rebuy it.
 - *static algorithm*: buys full amount of funds and simply waits. No fuss investment!
   It will basically produce profit or loss depending on the longterm evolution of the market.
@@ -74,9 +74,9 @@ We simulated the run of these algorithms over the last year of bitcoin
 historical data, over an investment amount of $1000. The resulting benefit
 in USD was a follows:
 
-| static     | simple    | pirate      | random (3-run average) |
-|------------|-----------|-------------|------------------------|
-| 252.244923 | 486.14863 | -999.957644 | 1204670.35464          |
+ static     | simple    | pirate      | random (3-run average) 
+------------|-----------|-------------|------------------------
+ 252.244923 | 486.14863 | -999.957644 | 1204670.35464          
 
 Interestingly, it seems that the best strategy is by a huge margin the random
 one! Our simple algorithm turned to be a slight improvement over the
@@ -103,9 +103,9 @@ but not a noticeable diff in the exchange rate.
 
 <img src="/images/posts/2017-08-29-bitcoin/GDAX.jun.png"/>
 
-| static   | simple   | pirate   | random (3-run average) |
-|----------|----------|----------|------------------------|
-| -41.3003 | -31.1976 | -81.3840 | -18.3573               |
+ static   | simple   | pirate   | random (3-run average) 
+----------|----------|----------|------------------------
+ -41.3003 | -31.1976 | -81.3840 | -18.3573               
 
 There was indeed a small loss in the value of bicoin, which is reflected by
 the static strategy. Our simple algorithm was not a huge improvement here, it
