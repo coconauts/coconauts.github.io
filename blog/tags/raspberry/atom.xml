@@ -71,7 +71,7 @@ controlled with a single Raspberry Pi.</p>
 <link href="http://coconauts.net/blog/2014/10/17/arduino-radio-improvements-low-consumption/"/>
 <updated>2014-10-17T23:00:00+00:00</updated>
 <id>http://coconauts.net/blog/2014/10/17/arduino-radio-improvements-low-consumption</id>
-<content type="html"><![CDATA[<p>In our previous post about how to <a href="http://www.coconauts.net/blog/2014/09/03/send-readings-from-arduino-to-raspberry-via-radio/">send Readings From Arduino to a Raspberry Pi via radio</a>
+<content type="html"><![CDATA[<p>In our previous post about how to <a href="http://coconauts.net/blog/2014/09/03/send-readings-from-arduino-to-raspberry-via-radio/">send Readings From Arduino to a Raspberry Pi via radio</a>
 we explained the basics of the Arduino-Raspberry Pi comunication and we shared a simple code.</p>
 
 <p>But there is more, with a mix of hardware and software, we managed to reduce its power

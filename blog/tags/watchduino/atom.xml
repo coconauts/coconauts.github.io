@@ -206,7 +206,7 @@ Watchduino development!</p>
 <id>http://coconauts.net/blog/2015/08/24/watchduino-2-is-semifinalist-on-the-2015-hackaday-prize</id>
 <content type="html"><![CDATA[<p><img src="http://coconauts.net/images/posts/hackaday_semifinal.png" /></p>
 
-<p>We are really excited to announce that <a href="https://www.coconauts.net/projects/watchduino2/">WatchDuino 2</a> has passed to
+<p>We are really excited to announce that <a href="https://coconauts.net/projects/watchduino2/">WatchDuino 2</a> has passed to
 <a href="http://hackaday.com/2015/08/24/100-semifinalists-for-the-2015-hackaday-prize/">the semi-finals of the 2015 edition of the Hackaday Prize</a>!
 It was selected amongst the best 100 of a total of more than 900 projects.
 To see this kind of recognition out of a community that we admire is
@@ -245,7 +245,7 @@ and I would like to share with you my impressions, its current features and its 
 <h2>Hardware</h2>
 
 <p>We need to talk about new hardware for Watchduino 2,
-as it is very different from its <a href="http://www.coconauts.net/projects/watchduino/">first version</a>
+as it is very different from its <a href="http://coconauts.net/projects/watchduino/">first version</a>
 which makes this new version smaller, prettier and more useful.</p>
 
 <ul>
@@ -264,7 +264,7 @@ which makes this new version smaller, prettier and more useful.</p>
 <h2>Features</h2>
 
 <p>Thanks to this new hardware, we managed to add new features to this new version.
-Most of them were mentioned in the <a href="http://www.coconauts.net/blog/2014/11/22/watchduino-2-dot-0-roadmap/">Watchduino roadmap post</a>,
+Most of them were mentioned in the <a href="http://coconauts.net/blog/2014/11/22/watchduino-2-dot-0-roadmap/">Watchduino roadmap post</a>,
 but you can have another look here:</p>
 
 <h3>Companion app (Android)</h3>

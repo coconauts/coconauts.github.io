@@ -16,7 +16,7 @@
 <link href="http://coconauts.net/blog/2015/07/06/easily-create-8-bit-sound-effects/"/>
 <updated>2015-07-06T20:10:17+00:00</updated>
 <id>http://coconauts.net/blog/2015/07/06/easily-create-8-bit-sound-effects</id>
-<content type="html"><![CDATA[<p>In a past post we&rsquo;ve shown you <a href="https://www.coconauts.net/blog/2015/02/02/creating-chiptune-style-music-with-ubuntu/">how to make 8-bit music</a>,
+<content type="html"><![CDATA[<p>In a past post we&rsquo;ve shown you <a href="https://coconauts.net/blog/2015/02/02/creating-chiptune-style-music-with-ubuntu/">how to make 8-bit music</a>,
 which you might want to use in a game. But of course, if you are having
 8-bit music, you&rsquo;ll want your game sound effects to match as well.</p>
 
@@ -73,7 +73,7 @@ development.</p>
 <updated>2015-04-19T19:34:31+00:00</updated>
 <id>http://coconauts.net/blog/2015/04/19/creating-trve-chiptune-with-a-tracker</id>
 <content type="html"><![CDATA[<p>Following up with the
-<a href="https://www.coconauts.net/blog/2015/02/02/creating-chiptune-style-music-with-ubuntu/">previous post about chiptune music</a>,
+<a href="https://coconauts.net/blog/2015/02/02/creating-chiptune-style-music-with-ubuntu/">previous post about chiptune music</a>,
 remember what I said about those purists only considering to be TRVE
 CHIPTUNE that in the format of Amiga MOD files created with an old
 school tracker software? Well, guess what, you can do just that to
@@ -116,7 +116,7 @@ of tutorials and documentation about all things chiptune and tracking.</li>
 
 
 <p>Don&rsquo;t forget though that there&rsquo;s a saner way to do it, we&rsquo;ve shown you how in the
-<a href="https://www.coconauts.net/blog/2015/02/02/creating-chiptune-style-music-with-ubuntu/">previous post</a>!</p>
+<a href="https://coconauts.net/blog/2015/02/02/creating-chiptune-style-music-with-ubuntu/">previous post</a>!</p>
 ]]></content>
 </entry>
 
