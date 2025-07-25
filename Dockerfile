@@ -1,7 +1,7 @@
 #FROM octopress/octopress
 #FROM ruby:2.3-alpine
 #FROM ruby:1.9.3
-FROM ruby:2.3
+FROM ruby:1.9.3
 
 RUN mkdir /code
 WORKDIR /code
@@ -12,9 +12,9 @@ ADD . /code
 ENV RUBYOPT="-KU -E utf-8:utf-8"
 
 # Install guide http://octopress.org/docs/setup/
-RUN gem install bundler
+RUN gem install bundler -v 1.17.3
 RUN bundle install
 
 # RUN rake install
 
-CMD rake preview
+CMD bundle exec rake preview

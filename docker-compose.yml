@@ -1,6 +1,7 @@
-blog:
-  build:  .
-  volumes:
-    - .:/code
-  ports:
-    - "4000:4000"
+services:
+  blog:
+    build: .
+    volumes:
+      - .:/code
+    ports:
+      - "4000:4000"
