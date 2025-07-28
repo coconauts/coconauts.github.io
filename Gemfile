@@ -1,20 +1,28 @@
 source "https://rubygems.org"
 
-group :development do
-  gem 'rake', '~> 0.9'
-  gem 'jekyll', '~> 0.12'
-  gem 'rdiscount', '~> 2.0.7'
-  gem 'pygments.rb', '~> 0.3.4'
-  gem 'RedCloth', '~> 4.2.9'
-  gem 'haml', '~> 3.1.7'
-  gem 'compass', '~> 0.12.2'
-  gem 'sass', '3.2.19'
-  gem 'sass-globbing', '~> 1.0.0'
-  gem 'rubypants', '~> 0.2.0'
-  gem 'rb-fsevent', '~> 0.9'
-  gem 'stringex', '~> 1.4.0'
-  gem 'liquid', '~> 2.3.0'
-  gem 'directory_watcher', '1.4.1'
+gem "jekyll", "~> 4.3"
+gem "minima", "~> 2.5"
+
+group :jekyll_plugins do
+  gem "jekyll-feed", "~> 0.12"
+  gem "jekyll-sitemap"
+  gem "jekyll-seo-tag"
+  gem "jekyll-paginate"
 end
 
-gem 'sinatra', '~> 1.4.2'
+# Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem
+# and associated library.
+platforms :mingw, :x64_mingw, :mswin, :jruby do
+  gem "tzinfo", ">= 1", "< 3"
+  gem "tzinfo-data"
+end
+
+# Performance-booster for watching directories on Windows
+gem "wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]
+
+# Lock `http_parser.rb` gem to `v0.6.x` on JRuby builds since newer versions of the gem
+# do not have a Java counterpart.
+gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
+
+# Webrick for Ruby 3.0+
+gem "webrick", "~> 1.7"
