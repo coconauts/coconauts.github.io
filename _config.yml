@@ -1,0 +1,40 @@
+# Site settings
+title: "Coconauts"
+description: "Hardware and software projects"
+url: "https://coconauts.net"
+
+# Posts settings
+collections_dir: blog
+permalink: /blog/:year/:month/:day/:title/
+
+# Excerpt settings
+excerpt_separator: "<!--more-->"
+
+# Jekyll 4 settings
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-paginate
+
+# Pagination
+paginate: 10
+paginate_path: "/blog/page:num/"
+
+# Build settings
+sass:
+  sass_dir: _sass
+  style: compressed
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - convert_img_tags.py
+  - cleanup_posts.py
