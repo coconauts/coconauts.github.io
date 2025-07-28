@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: unity3d | Coconauts]]></title>
+<link href="https://coconauts.net/blog/tags/unity3d/atom.xml" rel="self"/>
+<link href="https://coconauts.net/"/>
+<updated>2017-11-30T13:41:40+00:00</updated>
+<id>https://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Spaceroads demo]]></title>
+<link href="https://coconauts.net/blog/2017/11/06/spaceroads-demo/"/>
+<updated>2017-11-06T14:14:46+00:00</updated>
+<id>https://coconauts.net/blog/2017/11/06/spaceroads-demo</id>
+<content type="html"><![CDATA[<p>We announced a few months ago we were working on a remake of <a href="http://www.bluemoon.ee/history/skyroads/">Skyroads</a>, a 1993 arcade game, on Unity3D. We called it <a href="http://coconauts.net/blog/2017/07/25/spaceroads/">Spaceroads</a>.</p>
+
+<p>Today we announce we have released a demo version you can play directly on your <a href="http://unity3d.coconauts.net/spaceroads-v10/">browser</a></p>
+
+<p><img src="/images/posts/2017-11-06-spaceroads-demo/v10-gameplay.gif" alt="gameplay" /></p>
+
+<!--more-->
+
+
+<h2>Features</h2>
+
+<h3>Three adventure levels</h3>
+
+<p>We built the first 3 level of the original Skyroads in our editor, with the same layout, blocks and feels (the color might be different).</p>
+
+<p><img src="/images/posts/2017-11-06-spaceroads-demo/v10-gameplay.png" alt="gameplay" /></p>
+
+<h2>Level editor</h2>
+
+<p>We built a fully featured 3D editor for the game. You can add different block types, change start point, undo, preview levels or  publish them online.</p>
+
+<p><img src="/images/posts/2017-11-06-spaceroads-demo/v10-editor.gif" alt="gameplay" /></p>
+
+<p>It has everything you need to build levels like in the original skyroads.</p>
+
+<p><img src="/images/posts/2017-11-06-spaceroads-demo/v10-editor.png" alt="editor" /></p>
+
+<p>You can even add effects (burning floor, recharge, speed up/down, etc)</p>
+
+<p><img src="/images/posts/2017-11-06-spaceroads-demo/v10-editor-effects.png" alt="effects" /></p>
+
+<p>Or color to the blocks</p>
+
+<p><img src="/images/posts/2017-11-06-spaceroads-demo/v10-color.png" alt="color" /></p>
+
+<p>Note: Saving levels or publishing online is built
+but not supported on the demo version</p>
+
+<h2>Multiverse</h2>
+
+<p>Multiverse is not available on the demo, but this feature will allow players to list their built levels, and levels available online.</p>
+
+<p><img src="/images/posts/2017-11-06-spaceroads-demo/v10-multiverse.png" alt="multiverse" /></p>
+
+<p><a href="http://unity3d.coconauts.net/spaceroads-v10/">This version</a>
+ is not complete and it can be a bit buggy, but we want you to test it and give us feedback before we continue with its development. So let us know what you think in the comments.</p>
+
+<p> <img src="/images/posts/2017-11-06-spaceroads-demo/v10-main-menu.png" alt="spaceroads" /></p>
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[Escaperoom early access]]></title>
+<link href="https://coconauts.net/blog/2017/08/07/escaperoom-v3/"/>
+<updated>2017-08-07T20:00:14+00:00</updated>
+<id>https://coconauts.net/blog/2017/08/07/escaperoom-v3</id>
+<content type="html"><![CDATA[<p>A couple of months ago, we showed you <a href="https://coconauts.net/blog/2017/05/29/bank-holiday-hackday-escape-room-on-unity3d/">Escaperoom</a>,
+a puzzle game we developed during a hackday. We&rsquo;ve continued improving the game after that,
+and today we want to show you a first polished prototype.</p>
+
+<p><img src="/images/posts/2017-08-07-escaperoom/3dview-1.png" alt="3dview" /></p>
+
+<p>This is not the finished game yet, but it&rsquo;s a version we consider polished enough
+for playtesting. Give it a go here! <a href="http://unity3d.coconauts.net/escaperoom-v3/.">http://unity3d.coconauts.net/escaperoom-v3/.</a>
+And read on for the geeky details&hellip;</p>
+
+<!--more-->
+
+
+<h2>The procedural puzzles puzzle</h2>
+
+<p>After developing the hack, we tried to focus on the final goal of having dinamically generated rooms filled with parametric puzzles and multiple inputs/outputs; a sort of &ldquo;roghelike puzzler&rdquo;. We successfully wrote a first pass at an algoritm to
+generate puzzle dependency charts, which was kind of convincing. However, we soon realized that it was difficult to
+integrate the puzzles in a contextually coherent way.</p>
+
+<p>Allow me to expand on this. Imagine you have a locked laptop, and to get the password you need to call a certain
+telephone number, and the phone number shows up on a phone guide. If order for the player to make the connection, we
+need to provide some context in the phone guide, such as the logo of your laptop. This is easy to do if you are
+designing a static puzzle. However, in our case we have a generative algorithm that picks and matches clues and keys
+with containers to hold them. In that way, the phone guide might be used to display any phone number, be it one to give out
+the laptop password or another one to give you the color of a cable to cut.</p>
+
+<p><img src="/images/posts/2017-08-07-escaperoom/phoneguide.png" alt="phoneguide" /></p>
+
+<p>However, it&rsquo;s not a simple as it sounds. If you simply see a phone number with no context, you won&rsquo;t be able to know
+where to use it, and the puzzle won&rsquo;t be fun. That&rsquo;s why we need to provide context alongside the phone number, that
+will change depending on the generating puzzle (eg, the tech support service or the electrician), which might several
+levels above in the puzzle dependency graph.</p>
+
+<p>Our algorithm is not that smart yet. So we can get numbers and keys distributed, but without context, it is not fun.
+To bring back the fun, we decided to step back and design a static puzzle to begin with, and we&rsquo;ll see into randomizing it later (or not!).</p>
+
+<h2>Improvements</h2>
+
+<p>So eventually, we decided reuse the puzzle design we crafted for the hackday, with mainly UI improvements.</p>
+
+<p><img src="/images/posts/2017-08-07-escaperoom/graph.png" alt="room graph" /></p>
+
+<p>These are all the new features of this new version:</p>
+
+<ul>
+<li>Text dialogs: usually by clicking in objects you will see some text , describing the object, and sometimes clues.</li>
+<li>First person view and movement for the main room.</li>
+<li>Puzzle hierarchy models, code refactoring, unity3d housekeeping&hellip;</li>
+</ul>
+
+
+<p><img src="/images/posts/2017-08-07-escaperoom/3dview-2.png" alt="3dview" /></p>
+
+<p>We&rsquo;ve also experimented with some ideas that didn&rsquo;t make it into this version&hellip;</p>
+
+<ul>
+<li>New puzzles: gears, simon, keypad&hellip;</li>
+<li>Augmented reality puzzles: QR codes</li>
+<li>Rotating objects</li>
+<li>Jigsaw generator (also works with qr codes)</li>
+<li>Zooming objects</li>
+<li>Dinamically generated room</li>
+</ul>
+
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Dynamically generated gears puzzle for our escape game <a href="https://twitter.com/hashtag/madewithunity?src=hash">#madewithunity</a> <a href="https://twitter.com/hashtag/gamedev?src=hash">#gamedev</a> Very happy with how it&#39;s progressing =D <a href="https://t.co/L3Ycdms7fz">pic.twitter.com/L3Ycdms7fz</a></p>&mdash; Javi Rengel (@rephus) <a href="https://twitter.com/rephus/status/875480874833367040">June 15, 2017</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<h2>Conclussions</h2>
+
+<p>Is funny how we spent a single day to develop the hackday version, but nearly two monthts (not full time) just on improving the current status and getting rid of the bugs.</p>
+
+<p>Many of our trials and ideas didn&rsquo;t cut it into this version in the end, but might make it into future ones. We also
+want to extend the puzzle to make it approximately one hour long, as escape room games usually are.</p>
+
+<p>What do you think about the game? Were you able to escape the room? What did you like and what would you improve or change?
+Your feedback is really valuable to us! so please let us know on the comments or <a href="http://twitter.com/coconauts">on twitter</a>.</p>
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[Bank Holiday Hackday: Escape Room on Unity3D]]></title>
+<link href="https://coconauts.net/blog/2017/05/29/bank-holiday-hackday-escape-room-on-unity3d/"/>
+<updated>2017-05-29T20:00:14+00:00</updated>
+<id>https://coconauts.net/blog/2017/05/29/bank-holiday-hackday-escape-room-on-unity3d</id>
+<content type="html"><![CDATA[<p>It&rsquo;s another bank holiday in England, and in Coconauts this means: hackday!</p>
+
+<p>Last time we did an <a href="http://coconauts.net/blog/2017/05/01/infinify-an-infinite-discovery-mode-for-spotify/">infinite recommender for Spotify</a>,
+and this time  we wanted to get started with a game concept that has been in our heads for a while: <a href="https://en.wikipedia.org/wiki/Escape_room">a escape room</a>.</p>
+
+<p><img src="/images/posts/2017-05-29-escape-room/room.png" alt="Room" /></p>
+
+<p>Our idea came after playing the <a href="https://boardgamegeek.com/boardgame/213460/unlock"><em>Unlock!</em> board game</a>,
+which quite successfully recreates the experience of a scape room using just cards.
+The only downside of the game is that after you&rsquo;ve solved each of the 3 rooms,
+it looses the fun, as you already know the solution to the puzzles. So we though,
+wouldn&rsquo;t it be cool to use this idea on a videogame, and have autogenerated puzzles
+so that the fun never ends?</p>
+
+<!-- more-->
+
+
+<p>Lets not get overexcited though: we set as our first goal to design and implement a
+static escape room puzzle, just to get familiar with the concept and the mechanics.
+So that was the goal of today&rsquo;s hackday.</p>
+
+<p>We started by brainstorming some ideas for items and fixtures in a possible
+escape room. Then we started linking some of them together as dependencies,
+following the <a href="http://grumpygamer.com/puzzle_dependency_charts">puzzle dependency graph technique</a>, that the good people at Lucasarts use to design their adventure games. It&rsquo;s surprisingly easy to start
+doodling puzzles with this method!</p>
+
+<p><img src="/images/posts/2017-05-29-escape-room/puzzle_whiteboard.png" alt="Puzzle whiteboarding" /></p>
+
+<p>Then we got into implementing. We went for Unity3D, using fixed camera scenes for
+the main room and each of the fixtures that we need to interact with. We
+ended up having to dumb down a bit our original puzzle grahp design,
+as otherwise we wouldn&rsquo;t have had time to implement it all in a day.</p>
+
+<p>The end result is a short, but we hope that also clever escape room.
+You can play right <a href="http://unity3d.coconauts.net/escaperoom/">here from your browser!</a></p>
+
+<p><a href="http://unity3d.coconauts.net/escaperoom/"><img src="https://coconauts.net/images/posts/2017-05-29-escape-room/door.png"/></a></p>
+
+<p>We are quite happy with the result. It&rsquo;s the first time we make a puzzler game
+and it turns out it is very rewarding: usually physics is the most frustrating
+part of game development, and you have none of that in here. Your mind can focus
+on designing and thinking puzzles rather than on tricky implementations. And
+the game is fun without having to spend a lot of time polishing the mechanics.</p>
+
+<p>As stated, our MVP is linear (except for a couple of passwords which are
+generated randomly), but we plan to pick this project again to try to turn
+it into something generative next time. Stay tuned!</p>
+
+<p><img src="/images/posts/2017-05-29-escape-room/tv.png" alt="TV" /></p>
+
+<p>UPDATE: now <a href="https://play.google.com/store/apps/details?id=net.coconauts.escaperoomhack">also ported to Android!</a></p>
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[Water Ring Simulator]]></title>
+<link href="https://coconauts.net/blog/2017/03/27/water-rings-simulator/"/>
+<updated>2017-03-27T10:12:19+00:00</updated>
+<id>https://coconauts.net/blog/2017/03/27/water-rings-simulator</id>
+<content type="html"><![CDATA[<p>We have more projects that posts in the blog, that&rsquo;s why a long ago we created a new new version of our first-game-ever: Water Rings.</p>
+
+<iframe width="560" height="560" src="https://www.youtube.com/embed/5VBlgFSvP_w" frameborder="0" allowfullscreen></iframe>
+
+
+
+
+<!--more-->
+
+
+<p>Water Rings Simulator is the new version of the classic toy game on Unity3d exlusive for Android.</p>
+
+<p>This game features:</p>
+
+<ul>
+<li>Realisitc underwater physics</li>
+<li>3D graphics</li>
+<li>Mobile movement detection</li>
+<li>Realistic visual effects</li>
+<li>Transparent phone background (using camera to see behind it)</li>
+<li>It&rsquo;s FREE!</li>
+</ul>
+
+
+<p><img src="/images/posts/2017-04-20-water-rings-simulator/transparent.png" alt="game screenshot" /></p>
+
+<p>Download the game for free on the <a href="https://play.google.com/store/apps/details?id=net.coconauts.water3d">Android Play Store</a></p>
+
+<p>Do you want us to keep expanding the game? let us know in the comments</p>
+]]></content>
+</entry>
+
+<entry>
+<title type="html"><![CDATA[We built our house with Unity3D and Blender]]></title>
+<link href="https://coconauts.net/blog/2016/05/19/build-house-in-3d-with-blender-unity3d/"/>
+<updated>2016-05-19T22:51:00+00:00</updated>
+<id>https://coconauts.net/blog/2016/05/19/build-house-in-3d-with-blender-unity3d</id>
+<content type="html"><![CDATA[<p>We moved home a few months ago to a beautiful house in the country side in UK,
+outside the expensive area of London, but close enough to commute daily.</p>
+
+<p>As soon as we moved in, we built a simple version of our home in 3D on Blender
+ to help us decorate. And then we integrated the 3D model into Unity3D and build
+a game on top of it, on this case, a FPS or more like a FPW: First Person Walker,
+a FPS without shooting, not as fun as it sounds.</p>
+
+<p>We posted an image on Twitter a few months ago about our first prototype:</p>
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">I finally created a First person game of my new home with <a href="https://twitter.com/hashtag/unity3D?src=hash">#unity3D</a> and <a href="https://twitter.com/hashtag/blender?src=hash">#blender</a> . Looks better than real life! <a href="https://t.co/JjSPPP1835">pic.twitter.com/JjSPPP1835</a></p>&mdash; Javi Rengel (@rephus) <a href="https://twitter.com/rephus/status/698998470280089600">February 14, 2016</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+
+<!-- more -->
+
+
+<p>And this is how our place looks after we bought all the furniture.</p>
+
+<p><img src='https://farm8.staticflickr.com/7236/26513350403_4ac3cc142c_z_d.jpg'/>
+<img src='https://farm8.staticflickr.com/7714/27083818276_36950ff772_z_d.jpg'/></p>
+
+<p><img src='https://farm8.staticflickr.com/7715/27083819056_acb9ae8fa5_z_d.jpg'/>
+<img src='https://farm8.staticflickr.com/7348/27083818686_12b5f68383_z_d.jpg'/></p>
+
+<p><img src='https://farm8.staticflickr.com/7211/27083819206_727a82707c_z_d.jpg'/>
+<img src='https://farm8.staticflickr.com/7434/26513349443_4d9df59b0d_z_d.jpg'/></p>
+
+<p><img src='https://farm8.staticflickr.com/7750/27083819266_15ca7674e5_z_d.jpg'/>
+<img src='https://farm8.staticflickr.com/7054/27083818506_f84f07ba12_z_d.jpg'/></p>
+
+<p>The game is also a good chance to try out VR, perfect to use with Google VR to feel
+like you are at home.</p>
+
+<p><img src='https://farm8.staticflickr.com/7554/27083819136_dd3a9a50d3_z_d.jpg'/></p>
+
+<p>If you are interested, you can play on our 3D model we made, please feel at home.</p>
+
+<p><a href="http://unity3d.coconauts.net/welwyn">Play it here!</a></p>
+]]></content>
+</entry>
+
+</feed>

@@ -1,0 +1,9 @@
+services:
+  blog:
+    build: .
+    volumes:
+      - .:/code
+    ports:
+      - "4000:4000"
+    environment:
+      - RUBYOPT=-KU -E utf-8:utf-8

@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Software | Coconauts]]></title>
+  <link href="https://coconauts.net/blog/categories/software/atom.xml" rel="self"/>
+  <link href="https://coconauts.net/"/>
+  <updated>2017-11-30T13:41:40+00:00</updated>
+  <id>https://coconauts.net/</id>
+  <author>
+    <name><![CDATA[Coconauts]]></name>
+    <email><![CDATA[admin@coconauts.net]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Websocket vs REST]]></title>
+    <link href="https://coconauts.net/blog/2017/11/20/websocket-vs-rest/"/>
+    <updated>2017-11-20T14:14:46+00:00</updated>
+    <id>https://coconauts.net/blog/2017/11/20/websocket-vs-rest</id>
+    <content type="html"><![CDATA[<p>We, as web backend software developers, have enoguh experience with RESTful APIs for web services, because they are clear, easy to implement, and scalable.</p>
+
+<p>However, websockets are since some time ago becoming a viable alternative
+for communicating between a web browser and a server. But what are good
+usecases for them? Can the replace REST completely?</p>
+
+<p>In this post we&rsquo;ll take a look at both architectures from their definitions to their implementations, and we will see which one is the best for building the future of web apps.</p>
+
+<!--more-->
+
+
+<h2>What is a REST API ?</h2>
+
+<p>A <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a> API (Representational state transfer, application programming interface) is a simple set of rules for making communication on web applications over the Internet, and probably the most popular at the moment; in contrast with other approaches, like the older WSDL or <a href="https://en.wikipedia.org/wiki/SOAP">SOAP</a> or the more recent <a href="https://en.wikipedia.org/wiki/Protocol_Buffers">Protocol Buffers</a>.</p>
+
+<p>REST leans on the HTTP protocol a uses many of it&rsquo;s inherent features as part of the API structure.</p>
+
+<h3>URL structure</h3>
+
+<p>It defines the URL structure based on &ldquo;resources&rdquo; like <code>/resource/</code> or <code>/resource/id</code>. For example, if we provide users on our web interface, we might get a list of users if we hit <code>/user</code> endpoint, or retrieve an specific user by asking for his id <code>/user/1234</code>. This is in contrast to other approaches like SOAP which use a single endpoint for everything.</p>
+
+<h3>HTTP methods</h3>
+
+<p>The method defines the action to do on the URL previously mentioned, such as <code>GET</code>, <code>POST</code>, <code>PUT</code> or <code>DELETE</code>. For example, to get the information for the users, do you <code>GET /user</code>, this method doesn&rsquo;t have any other side effect. However, if you want to introduce a new user for your app, you will do <code>POST /user</code>, etc.</p>
+
+<p><img src="/images/posts/2017-11-20-websocket-vs-rest/rest-example.png" alt="rest-example" /></p>
+
+<h3>Request and response</h3>
+
+<p>For every request in HTTP, we always get back a response, even if the connection is unsuccessful, so you know which response is associated with the request you make. Another important part of the response is their response codes like 200 for OK or 404 error for Not found.</p>
+
+<p>Although you can use XML or HTML on REST, the most common format is <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> for both the request and the response. Following our example from earlier, to add a user with some specific data, you might want to do  <code>POST /user { "name": 'Javier" }</code> and you will get back a response in the same format <code>{id: 1234, "name": "Javier"}</code> after it gets insterted into database with it&rsquo;s own unique ID.</p>
+
+<p>The communication is always initialized from the client to the server, which will respond based on the request made. If you want to constantly fetch information (eg: get tweets on your timeline) you can use a technique called polling which consist in constantly make requests (like every 5 seconds or 1 minute) to get the updated data.</p>
+
+<p>Some solutions exist to overcome this, for example webhooks, in which you try to prevent polling by storing a callback url to call after an operation is complete (for example: <a href="https://developer.github.com/v3/repos/hooks/">github webhooks</a> pinging your CI system).</p>
+
+<h2>What is a Websocket ?</h2>
+
+<blockquote><p>WebSocket is a computer communications protocol, providing full-duplex communication channels over a single TCP connection. [&hellip;] The WebSocket protocol enables interaction between a browser and a web server with lower overheads, facilitating real-time data transfer from and to the server. <a href="https://en.wikipedia.org/wiki/WebSocket">Wikipedia</a></p></blockquote>
+
+<p>If you&rsquo;re familiar with classic unix sockets, it&rsquo;s basically the same concept, translated to the web world.</p>
+
+<p>Unlike REST, the communication is bidirectional, which means the server can send information to the client directly, as soon as the client creates the connection (called  handshake). For example, a client could query for a feed on tweets, and leave an open channel with the server. The server would then feed the client with new data as soon as it&rsquo;s available.</p>
+
+<p>This offers some functionality that REST is unable to provide in an easy way.</p>
+
+<p>Because of this, the communication needs to be asynchronous, which needs to be taken into consideration when handling the responses.</p>
+
+<h2>Differences between Websockets and REST</h2>
+
+<p>The first difference, is that they can&rsquo;t be compared directly: Websocket is a protocol, while REST is an architectural style. So in terms of comparing them, it would be fairer to compare WS to HTTP in general rather than REST (which which it shares many points regardless)</p>
+
+<p>For the communication, you have resource based URLs and HTTP methods in REST, and for each request, you get a response. On websockets you just send plain string messages with the data you want to the server, and it will translate and process the data, and optionally one or many replies back.</p>
+
+<p><img src="/images/posts/2017-11-20-websocket-vs-rest/protocols.png" alt="protocols" /></p>
+
+<p>Websocket communication is a lot more efficient in terms of message size and speed than HTTP protocol, specially for large, repetitive messages. On HTTP you have to send the headers on every request (minimum of 2 bytes per message after initial request on websockets vs 8KB per request on HTTP) <a href="http://blog.arungupta.me/rest-vs-websocket-comparison-benchmarks/">Full benchmark</a></p>
+
+<p><img src="/images/posts/2017-11-20-websocket-vs-rest/websocket-graph.png" alt="websocket-graph" /></p>
+
+<p>Let&rsquo;s see an example of an HTTP request vs a websocket request. When using client libraries, they become quite similar for a simple use case.</p>
+
+<h4>Authenticating an user on REST</h4>
+
+<p>Fetch your user using a POST message with user and password (using <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request">Request</a> )</p>
+
+<p>```
+var myRequest = new Request(&lsquo;/user&rsquo;, {</p>
+
+<pre><code>method: 'POST', 
+body: '{"name": "myname", "password": "mypassword"}'
+</code></pre>
+
+<p>});
+fetch(myRequest).then(function(response) {</p>
+
+<pre><code>if(response.status == 200) myUser = response.json();
+else throw new Error('Something went wrong on api server!');
+</code></pre>
+
+<p>})
+```</p>
+
+<h4>Authenticating an user on Websocket</h4>
+
+<p>We&rsquo;ll try to do the same method on Websockets (using [Socket.io]](<a href="https://socket.io/docs/client-api/">https://socket.io/docs/client-api/</a>) library)</p>
+
+<p>```
+socket.emit(&ldquo;auth user&rdquo;, {&ldquo;name&rdquo;: &ldquo;myname&rdquo;, &ldquo;password&rdquo;: &ldquo;mypassword&rdquo;})</p>
+
+<p>socket.on(&ldquo;auth user response&rdquo;, function(user) {</p>
+
+<pre><code>myUser = user;
+</code></pre>
+
+<p>})
+```</p>
+
+<p>The method <code>.emit</code> sends a JSON from the client to the server. The werver will then reply to that message that will be processed in the client on the <code>.on</code> method.</p>
+
+<h3>A real world example: Updating game player data</h3>
+
+<p>If we are building a multiplayer real time game, we will want to update the position of every player on everyone&rsquo;s game, which means one player (client) will have to send the new position to the server, and every client will have to update this player&rsquo;s position on their own game instance.</p>
+
+<p><img src="/images/posts/2017-11-20-websocket-vs-rest/websocket-diagram.png" alt="websocket-diagram" /></p>
+
+<p>This request won&rsquo;t be optimal using REST, specially on a fast paced real time game. The only option is to use the polling technique previously mentioned to fetch the status / position of all the players (or maybe filter by those recently updated) and make changes on them in the game.</p>
+
+<p>But websockets are particularly good on this kind of requests, as the server gets A notification from a client when it changes, the server can then send that status change back to the rest of the clients really fast.</p>
+
+<p>```
+// Client side player 1, on move send new position to the server
+function move(position){</p>
+
+<pre><code>socket.emit("update player", { "position": position }
+</code></pre>
+
+<p>}
+// Client side other players, update other players
+socket.on(&ldquo;update player response&rdquo;, function(player) {</p>
+
+<pre><code>otherPlayer.position = player.position; 
+</code></pre>
+
+<p>})</p>
+
+<p>//Server side, update player and broadcast
+socket.on(&lsquo;update player&rsquo;, function (data) {</p>
+
+<pre><code>//console.log("update player ", data);
+players[socket.id].position = data; 
+socket.broadcast.emit('update player', players[socket.id]);
+</code></pre>
+
+<p>});
+```</p>
+
+<p>Also, the <code>.on</code> methods only get triggered when a message is sent from the server, so with no changes, no communication will be performed between client and server.</p>
+
+<p>We used this approach on our latest <a href="http://coconauts.net/blog/2017/10/30/proc-websockets/">videogame prototype</a>.</p>
+
+<h2>Conclussions</h2>
+
+<p>A full Websocket API can replace a REST api, however it can&rsquo;t happen the other way around, as websockets offer realtime data stream that can&rsquo;t be implemented on REST (efficiently).</p>
+
+<p>The asynchronous and undeterministic character of websockets, can lead to race conditions, when you make multiple requests. On the other hand, for every request in REST, you always get a single response.</p>
+
+<p>The Internet at the moment is built on top of HTTP, like for example DNS, load balancing, security or even SEO analytics are not fully compatible with Websockets (yet).</p>
+
+<p>Another big difference is that while Websockets are stateful protocols, which means they create a connection that needs to live in the server until the socket is closed. HTTP connections are stateless, so they could be hitting different servers everytime and still work, which make them easier to scale horizontally.</p>
+
+<p>Implementing a full Websocket API means reinventing similar standards already implemented on REST but with a different protocol, which might not be ideal.</p>
+
+<p>So I&rsquo;d still recommend to use REST for non real time data, because REST is the most popular architecture at the moment with loads of frameworks and tools, and it doesn&rsquo;t look like is going to change. But at least, it&rsquo;s fun to play with alternatives and most importantly, always pick the best tool for the job.</p>
+
+<p>What do you think ? Have you ever tried to make a Websocket API instead of using REST ? let us know in the comments.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Infinify Service]]></title>
+    <link href="https://coconauts.net/blog/2017/10/16/infinify-service/"/>
+    <updated>2017-10-16T14:57:46+00:00</updated>
+    <id>https://coconauts.net/blog/2017/10/16/infinify-service</id>
+    <content type="html"><![CDATA[<p>A few months ago, we implemented, during one of our hackdays, an <a href="/blog/2017/05/01/infinify-an-infinite-discovery-mode-for-spotify/">infinite recommender for Spotify</a> for private usage.</p>
+
+<p>Today, we announce we&rsquo;ve just published this service to the public for FREE, allowing multi-user accounts using OAUTH, so you can use Infinify without installing or configuring the service by yourself.</p>
+
+<p><img src="/images/posts/2017-05-01-infinify/infinify.png" alt="Infinify" /></p>
+
+<p>This service is available on <a href="http://infinify.coconauts.net">infinify.coconauts.net</a> and you just need to identify in the app using your Spotify account.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Bank Holiday Hackday: Algorithmic Trading]]></title>
+    <link href="https://coconauts.net/blog/2017/08/29/bank-holiday-hackday-algorithmic-trading/"/>
+    <updated>2017-08-29T19:57:46+00:00</updated>
+    <id>https://coconauts.net/blog/2017/08/29/bank-holiday-hackday-algorithmic-trading</id>
+    <content type="html"><![CDATA[<p>As it is becoming tradition, we dedicated the last UK bank holiday to hacking activities.
+In this occassion we wanted to something bitcoint-related, as it is lately all the rage.
+We developed on the idea of an automated investing algorithm that would use an API to
+buy/sell bitcoin automatically, trying to maximize earnings and minize losses.
+Read on to find out our results!</p>
+
+<p><img src="https://coconauts.net/images/posts/2017-08-29-bitcoin/bitcoin.png"/></p>
+
+<!-- more-->
+
+
+<h3>The idea</h3>
+
+<p>Algorithmic trading is not a novel idea. In fact it seems to be quite a researched topic,
+and it&rsquo;s not difficult to find resources about it online. From strategies, to code
+libraries, to people sharing algorithms on github.</p>
+
+<p>In or case, we wanted to use it to invest on bitcoin or other cryptocurrencies.
+To invest you need an exchange: a place that you let you buy and sell bitcoin
+in exchange for &ldquo;real money&rdquo; (eg, dollars or euros). In the last years several of them
+have surged and become established, most notably perhaps <a href="https://www.coinbase.com/">Coinbase</a>
+and <a href="https://www.kraken.com/">Kraken</a>.</p>
+
+<p>And the best news &ndash; these exchanges offer a public API, that you can use in your
+algorithms for automatic trading. Sweet!</p>
+
+<h3>Simulate first</h3>
+
+<p>Playing with the exchanges themselves however would require investing real money.
+Also, they charge a rate for every transaction, so before recklessly toying around
+we should first find a decent algorithm while testing on a simulated environment.</p>
+
+<p>And so, we set ourselves to the task. We made a little python script that would
+simulate the interface with the stock exchange to buy or sell. You can feed a CSV file
+to the script with the historical exchange rate, so that it can replay it.</p>
+
+<p>You just need to search google to quickly find some historical data for stocks.
+For bitcoin data a good source is the <a href="https://bitcoincharts.com/about/markets-api/">Bitcoincharts API</a>.</p>
+
+<h3>The algorithms</h3>
+
+<p>On top of that toy environment we set to build a couple algorithms, and set them to compete
+against each other:</p>
+
+<ul>
+<li><em>simple algorithm</em>: keeps a constant amount invested in stock at all time.
+If the price goes up, it extracts the profit difference with the original amount.
+If the price goes down, it buys up new stock until it reaches the investment amount.</li>
+<li><em>pirate algorithm</em>: based on <a href="https://github.com/pirate/bitcoin-trader/">this algorithm that we found on github</a>. It keeps track of
+the value at which you bought or sold a bit of stock. If the price goes further down that you bought it for, it will sell it to avoid loss. If it goes up it will rebuy it.</li>
+<li><em>static algorithm</em>: buys full amount of funds and simply waits. No fuss investment!
+It will basically produce profit or loss depending on the longterm evolution of the market.</li>
+<li><em>random algorithm</em>: it will randomly buy or sell a fixed amount.</li>
+</ul>
+
+
+<p>These are not very sophisticated strategies, but they are a starting point. Now the next
+step would be to simulate them running against the historical exchange rate data for
+bitcoin, and see if they would have made us any money had we set the algorithm to run
+some time ago in the past.</p>
+
+<h3>Results</h3>
+
+<p>We simulated the run of these algorithms over the last year of bitcoin
+historical data, over an investment amount of $1000. The resulting benefit
+in USD was a follows:</p>
+
+<table>
+<thead>
+<tr>
+<th> static     </th>
+<th> simple    </th>
+<th> pirate      </th>
+<th> random (3-run average) </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> 252.244923 </td>
+<td> 486.14863 </td>
+<td> -999.957644 </td>
+<td> 1204670.35464          </td>
+</tr>
+</tbody>
+</table>
+
+
+<p>Interestingly, it seems that the best strategy is by a huge margin the random
+one! Our simple algorithm turned to be a slight improvement over the
+static &ldquo;invest and forget&rdquo; strategy, yielding double the amount of benefits.
+The pirate algorithm turned out a huge disappointment and made us loss
+practically all of our investment amount. The surprising results come
+from the random algorithm, which yielded a x1000 ROI.</p>
+
+<p>Is our conclussion then that the best investment strategy for the stock
+market is to buy and sell randomly? Well, let&rsquo;s not go that fast. Consider
+that the shape of the exchange rate curve might have much to explain.</p>
+
+<p><img src="https://coconauts.net/images/posts/2017-08-29-bitcoin/DGAX.1y.png"/></p>
+
+<p>Notice how bitcoin has had an exponential growth during the last year.
+Under this sort of conditions, no matter what you do, the market is going
+to be on your favor. Under this kind of curve, constant mindless selling
+and buying is of course what is going to make you right, rather than being
+more conservative with your money.</p>
+
+<p>Lets see what&rsquo;s the difference when running the same set of algorithms
+over just the last month of June, in which there was a strong volatility
+but not a noticeable diff in the exchange rate.</p>
+
+<p><img src="https://coconauts.net/images/posts/2017-08-29-bitcoin/GDAX.jun.png"/></p>
+
+<table>
+<thead>
+<tr>
+<th> static   </th>
+<th> simple   </th>
+<th> pirate   </th>
+<th> random (3-run average) </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> -41.3003 </td>
+<td> -31.1976 </td>
+<td> -81.3840 </td>
+<td> -18.3573               </td>
+</tr>
+</tbody>
+</table>
+
+
+<p>There was indeed a small loss in the value of bitcoin, which is reflected by
+the static strategy. Our simple algorithm was not a huge improvement here, it
+managed to mitigate the loss a little bit but not in a significant way.
+The pirate algorithm proves to be just as terrible, while the random
+one now shows its limitations.</p>
+
+<h3>Conclusions</h3>
+
+<p>Algorithmic trading is easy to implement, but difficult to come up with
+a strategy that will make you rich. If there existed a way, be sure that
+the best data scientists in the world would have already found it, and
+everyone would be using it. Predicting when is the best time to sell and buy
+is difficult even for expert human stock traders after all!</p>
+
+<p>Even with one strategy, there&rsquo;s lots of fine tunning to do in terms of
+amounts, timings and optimizations that we didn&rsquo;t try in our experiments.
+Also not all stock shapes look the same, and different algorithms might
+perfom differently depending on the characteristics of the stock type.
+For example, some stocks might exhibit more volatility, others are more stable,
+some have a higher price than others and might perform better if you algorithm
+is willing to invest bigger rather than smaller amount.</p>
+
+<p>Even having this into account, what is for sure going to make you money is
+picking a market that goes up rather than down! It is unlikely that an
+algorithm can create a profit when prices are going down. At most, it can
+try to mitigate the losses, but picking a winning stock is the only way
+to generating benefits.</p>
+
+<p>And last but not least: in our setup we didn&rsquo;t consider the particularities
+of the exchange services, namely, the fees. An exchange service will
+charge fees normally per transaction, so having this into account is
+fundamental when designing your algorithm, or you might loose any earnings
+simply paying for fees. The fees are different with every exchange service,
+but normally they are expensive for small quantities and after a level they
+even out. Exchanges that are friendlier and more accessible for beginners
+(for instance <a href="https://www.coinbase.com/">coinbase</a>)
+are also more expensive than others.</p>
+
+<p>You can find our algorithms and the sandbox code in <a href="https://github.com/coconauts/algotrade">our github</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Infinify: An Infinite Discovery Mode for Spotify]]></title>
+    <link href="https://coconauts.net/blog/2017/05/01/infinify-an-infinite-discovery-mode-for-spotify/"/>
+    <updated>2017-05-01T18:13:37+00:00</updated>
+    <id>https://coconauts.net/blog/2017/05/01/infinify-an-infinite-discovery-mode-for-spotify</id>
+    <content type="html"><![CDATA[<p>I&rsquo;m a Spotify user. I&rsquo;m not the greatest fan of the user experience they offer, but it&rsquo;s definitely the &ldquo;lesser evil&rdquo; when it comes to music streaming.</p>
+
+<p>You see, I&rsquo;m the kind of person that just cant be bothered to choose, I <em>loathe</em>
+choosing. Deciding albums to hear? What are we, in the 90s? with phisical CDs that
+need popping into a player? It&rsquo;s the digital age! I just want to open Spotify
+and be presented with a continuous stream of non-stop music,
+wihout having the choose an album, or a genre, or a playlist.
+They even require my constant feedback when in radio mode!
+(don&rsquo;t even get me started on the Spotify radio, <em>yuck</em>).
+I just want a big &ldquo;play&rdquo; button and let Spotify use a teeny bit of
+machine intelligence to feed me stuff that it thinks I might like.
+Considering the app is sitting on top of a pile of data from me
+(listening history, saved collection)&hellip; is it really that hard?</p>
+
+<p>Because Spotify is not giving that to me though, we at Coconauts decided to
+build it ourselves, using their API and Javascript. The result: Infinify.</p>
+
+<p><img src="/images/posts/2017-05-01-infinify/infinify.png" alt="Infinify" /></p>
+
+<!-- more-->
+
+
+<h2>What is it?</h2>
+
+<p>Infinify is a website with a huge &ldquo;play&rdquo; button, that feeds on your
+Spotify saved collection to produce a continuous mix of tracks from your
+own music plus recommendations.</p>
+
+<h2>How does it work?</h2>
+
+<p>Spotify exposes <a href="https://developer.spotify.com/web-api/get-recommendations/">a very powerful <code>/recommendations</code> endpoint on their API</a>,
+which I reckon plugs into <a href="https://qz.com/571007/the-magic-that-makes-spotifys-discover-weekly-playlists-so-damn-good/">the same magic that is powering their discovery modes</a>.</p>
+
+<p>The <code>/recommendations</code> endpoint instantly gives you a list of recommended tracks,
+given a seed of a list of songs, artists or genres. You can even tune a bunch of
+crazy parameters, such as <em>danceability</em>, <em>energy</em> or <em>popularity</em>. It&rsquo;s quite amazing.</p>
+
+<p>The problem though is that the recommendations output is finite (capped at 100 results),
+whereas we want a continuous flow of recommendations.</p>
+
+<p>Another problem with it, which is also noticiable in their discovery modes,
+is that it tries too hard to give you music that is similar to <em>all</em> of your seeds.
+Wha this means is: if you seed it with some classical music, heavy metal and jazz,
+it&rsquo;s going to try to return tracks that are strange chimaeras mixing all of those
+traits, rather than giving you a mixed bag of more conventional tracks in those genres.
+In other words: it&rsquo;s an <em>and</em>, not an <em>or</em>. Now, this might actually be what you want
+in some occasions, but when it comes to recommending music to people it doesn&rsquo;t work:
+if I like John Williams and Queen I want to be recommended Danny Elfman and Van Halen,
+not &ldquo;Some Orchestra Plays Very Bland Rock Classics&rdquo;.</p>
+
+<p><img src="/images/posts/2017-05-01-infinify/epicrock.png" alt="Infinify" /></p>
+
+<p>So our solution involves working around the endpoint, using in a bit unorthodox way:</p>
+
+<ol>
+<li>Fetch a random single song from the user&rsquo;s saved music collection.</li>
+<li>Use this song&rsquo;s artist as a seed to the <code>/recommendations</code> endpoint. Get a small X number of songs back.</li>
+<li>Pick a random song from the response, and add it to a playlist.</li>
+<li>Repeat the above every 2 minutes.</li>
+</ol>
+
+
+<p>In this fashion, the result is a Spotify playlist that is continuously growing
+with fresh recommendations (for as long as the the website remains open).</p>
+
+<p>We use the artist as a seed, rather than the song, so that you can still get
+a chance of getting the songs you already have in your library and love.</p>
+
+<p>The seed is started from a single song to try to get purer recommendations, rather
+than strange blends. We then produce X recommendations and pick one. Why?
+Well, we experienced that the first item in the results is always a song by the
+same artist that your seed, and this doesn&rsquo;t give you much variety. So by producing
+several and then picking one of them, you get a delicious balance: you&rsquo;ll get a
+certain chance to get songs by the same artists in your library, but them a slightly
+bigger chance to get related artists (that may or not be in your library).</p>
+
+<p>This X number of tracks is what we call the <em>discoverability</em> parameter, and
+you can toggle it between 1 (&ldquo;I just want the artists I know and love&rdquo;) and 10
+(in which approximately 9 in every 10 songs will be new, and 1 will be familiar).</p>
+
+<p><img src="/images/posts/2017-05-01-infinify/discoverability.png" alt="Infinify" /></p>
+
+<h2>The ugly bits</h2>
+
+<p>Unfortunately there are some limitations that make the user experience a bit rough.
+For starters, the fact that you need to have an external web application to start
+the infinfy playlist. Spotify <a href="https://developer.spotify.com/technologies/apps/">scrapped their in-app extensions</a> some years ago,
+so the only way to add integration nowdays is by keeping them completely external.</p>
+
+<p>It would be possible to stream the audio directly to the webapp, but only 30-second
+samples: not acceptable. So you need Spotify for playback, and the webapp for the
+integration.</p>
+
+<p>You can at least <a href="https://developer.spotify.com/web-api/start-a-users-playback/">control the playback on a device via the API</a>, you need to
+have a premium account for that. So if you don&rsquo;t, you need to hit the play button
+twice: once on infinify, once on the app.</p>
+
+<p>Another uglyness is that we found no way via the API to be able to track the
+listening progress of the user on the playlist. This made it quite difficult to
+determine when we should add and remove tracks from the playlist.
+After trying some nasty kludges, we decided for a straigghtforward solution:
+just add new songs every 2 minutes, and keep the old ones there. They don&rsquo;t
+bother you after all! (in fact, its kinda nice to have a record of your
+listening session) and there&rsquo;s no problem on Spotify even if the playlist
+gets absurdly long.</p>
+
+<p>The only edge case is if you run out of songs in the
+playlist: for this eventuality we added a little <code>(+)</code> button to force a manual
+generation. When you start a new session the playlist gets reset, as it would be
+confusing to have the long list of tracks from last time.</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_ge4n9zmTRQ" frameborder="0" allowfullscreen></iframe>
+
+
+<p>Because the way we are abusing the <code>/recommendations</code> endpoint, ours is
+not the most rate-friendly solution. However, it&rsquo;s also not that bad: our load
+is 4 or 5 requests every 2 minutes, which still falls within reasonable limits,
+at least if we keep it to only one user.</p>
+
+<h2>Final remarks</h2>
+
+<p>For recommender engines, and in general many AI problems, there&rsquo;s usually
+a rule: a naive, straightforward solution can take you 60-80% there.
+Then any increases on that number will require years of PhD research.</p>
+
+<p>Infinify is a very simple solution, but surprisingly, also very effective! I was
+very pleased with the quality of recommendations, and how you can still get
+a mix of familiar and new. Of course, most of the
+heavy lifting comes from the magic behind the <code>/recommendations</code> engine,
+but I&rsquo;m happy that we could bend it to overcome it&rsquo;s limitations.</p>
+
+<p>For now, I intend to use it heavily for a while and see if it still satisfy me,
+or if recommendations start getting a bit repetitive. In such case, I might start
+tunning the algorithim to try more variability (for instance, going for
+multi-level recommendations from recommendations).</p>
+
+<p>You can get the code for Infinify <a href="https://github.com/coconauts/infinify">on Github</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Github PR Tracker]]></title>
+    <link href="https://coconauts.net/blog/2017/03/27/github-pr-tracker/"/>
+    <updated>2017-03-27T10:12:19+00:00</updated>
+    <id>https://coconauts.net/blog/2017/03/27/github-pr-tracker</id>
+    <content type="html"><![CDATA[<p>Sometimes I feel like following changes on PRs on Github is a bit confusing and/or verbose, even with the existing <a href="https://github.com/notifications">Github notifications</a>
+ or <a href="https://github.com/pulls">Github pulls</a> interfaces, sometimes the best way was to check your email inbox.</p>
+
+<p>So I decided to create my own <a href="https://github.com/rephus/Github-PR-tracker">Github PR tracker</a>
+for my own Pull Requests, but also for those that I&rsquo;m assigned to.</p>
+
+<p><img src="/images/posts/2017-03-27-github-pr-tracker/screen.png" alt="github pr tracker" /></p>
+
+<!-- more-->
+
+
+<h2>Features</h2>
+
+<ul>
+<li><p>Group pull requests by title, that will allow me to easily visualize changes related between microservices (in different github repos)</p></li>
+<li><p>Visual &ldquo;Red dot&rdquo; on those Pull requests that have been updated since you refreshed the page:
+comment added, commit made, opened pull request&hellip;</p></li>
+<li><p>Get quick access to all your relevant PRs, only pin this page on your browser,
+and forget about dozens of opened tabs or bookmarks.</p></li>
+</ul>
+
+
+<h2>How to use</h2>
+
+<p>First pull the repo from <a href="https://github.com/rephus/Github-PR-tracker">here</a>.</p>
+
+<p>Then you need to create a
+<a href="https://github.com/settings/tokens">Github personal access token</a>
+and use it on the input text on the search (or modify the index.html to add the default value)</p>
+
+<p>Easy and simple.</p>
+]]></content>
+  </entry>
+  
+</feed>

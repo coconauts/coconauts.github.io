@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title><![CDATA[Tag: websocket | Coconauts]]></title>
+<link href="https://coconauts.net/blog/tags/websocket/atom.xml" rel="self"/>
+<link href="https://coconauts.net/"/>
+<updated>2017-11-30T13:41:40+00:00</updated>
+<id>https://coconauts.net/</id>
+<author>
+<name><![CDATA[Coconauts]]></name>
+<email><![CDATA[admin@coconauts.net]]></email>
+</author>
+<generator uri="http://octopress.org/">Octopress</generator>
+
+<entry>
+<title type="html"><![CDATA[Websocket vs REST]]></title>
+<link href="https://coconauts.net/blog/2017/11/20/websocket-vs-rest/"/>
+<updated>2017-11-20T14:14:46+00:00</updated>
+<id>https://coconauts.net/blog/2017/11/20/websocket-vs-rest</id>
+<content type="html"><![CDATA[<p>We, as web backend software developers, have enoguh experience with RESTful APIs for web services, because they are clear, easy to implement, and scalable.</p>
+
+<p>However, websockets are since some time ago becoming a viable alternative
+for communicating between a web browser and a server. But what are good
+usecases for them? Can the replace REST completely?</p>
+
+<p>In this post we&rsquo;ll take a look at both architectures from their definitions to their implementations, and we will see which one is the best for building the future of web apps.</p>
+
+<!--more-->
+
+
+<h2>What is a REST API ?</h2>
+
+<p>A <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a> API (Representational state transfer, application programming interface) is a simple set of rules for making communication on web applications over the Internet, and probably the most popular at the moment; in contrast with other approaches, like the older WSDL or <a href="https://en.wikipedia.org/wiki/SOAP">SOAP</a> or the more recent <a href="https://en.wikipedia.org/wiki/Protocol_Buffers">Protocol Buffers</a>.</p>
+
+<p>REST leans on the HTTP protocol a uses many of it&rsquo;s inherent features as part of the API structure.</p>
+
+<h3>URL structure</h3>
+
+<p>It defines the URL structure based on &ldquo;resources&rdquo; like <code>/resource/</code> or <code>/resource/id</code>. For example, if we provide users on our web interface, we might get a list of users if we hit <code>/user</code> endpoint, or retrieve an specific user by asking for his id <code>/user/1234</code>. This is in contrast to other approaches like SOAP which use a single endpoint for everything.</p>
+
+<h3>HTTP methods</h3>
+
+<p>The method defines the action to do on the URL previously mentioned, such as <code>GET</code>, <code>POST</code>, <code>PUT</code> or <code>DELETE</code>. For example, to get the information for the users, do you <code>GET /user</code>, this method doesn&rsquo;t have any other side effect. However, if you want to introduce a new user for your app, you will do <code>POST /user</code>, etc.</p>
+
+<p><img src="/images/posts/2017-11-20-websocket-vs-rest/rest-example.png" alt="rest-example" /></p>
+
+<h3>Request and response</h3>
+
+<p>For every request in HTTP, we always get back a response, even if the connection is unsuccessful, so you know which response is associated with the request you make. Another important part of the response is their response codes like 200 for OK or 404 error for Not found.</p>
+
+<p>Although you can use XML or HTML on REST, the most common format is <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> for both the request and the response. Following our example from earlier, to add a user with some specific data, you might want to do  <code>POST /user { "name": 'Javier" }</code> and you will get back a response in the same format <code>{id: 1234, "name": "Javier"}</code> after it gets insterted into database with it&rsquo;s own unique ID.</p>
+
+<p>The communication is always initialized from the client to the server, which will respond based on the request made. If you want to constantly fetch information (eg: get tweets on your timeline) you can use a technique called polling which consist in constantly make requests (like every 5 seconds or 1 minute) to get the updated data.</p>
+
+<p>Some solutions exist to overcome this, for example webhooks, in which you try to prevent polling by storing a callback url to call after an operation is complete (for example: <a href="https://developer.github.com/v3/repos/hooks/">github webhooks</a> pinging your CI system).</p>
+
+<h2>What is a Websocket ?</h2>
+
+<blockquote><p>WebSocket is a computer communications protocol, providing full-duplex communication channels over a single TCP connection. [&hellip;] The WebSocket protocol enables interaction between a browser and a web server with lower overheads, facilitating real-time data transfer from and to the server. <a href="https://en.wikipedia.org/wiki/WebSocket">Wikipedia</a></p></blockquote>
+
+<p>If you&rsquo;re familiar with classic unix sockets, it&rsquo;s basically the same concept, translated to the web world.</p>
+
+<p>Unlike REST, the communication is bidirectional, which means the server can send information to the client directly, as soon as the client creates the connection (called  handshake). For example, a client could query for a feed on tweets, and leave an open channel with the server. The server would then feed the client with new data as soon as it&rsquo;s available.</p>
+
+<p>This offers some functionality that REST is unable to provide in an easy way.</p>
+
+<p>Because of this, the communication needs to be asynchronous, which needs to be taken into consideration when handling the responses.</p>
+
+<h2>Differences between Websockets and REST</h2>
+
+<p>The first difference, is that they can&rsquo;t be compared directly: Websocket is a protocol, while REST is an architectural style. So in terms of comparing them, it would be fairer to compare WS to HTTP in general rather than REST (which which it shares many points regardless)</p>
+
+<p>For the communication, you have resource based URLs and HTTP methods in REST, and for each request, you get a response. On websockets you just send plain string messages with the data you want to the server, and it will translate and process the data, and optionally one or many replies back.</p>
+
+<p><img src="/images/posts/2017-11-20-websocket-vs-rest/protocols.png" alt="protocols" /></p>
+
+<p>Websocket communication is a lot more efficient in terms of message size and speed than HTTP protocol, specially for large, repetitive messages. On HTTP you have to send the headers on every request (minimum of 2 bytes per message after initial request on websockets vs 8KB per request on HTTP) <a href="http://blog.arungupta.me/rest-vs-websocket-comparison-benchmarks/">Full benchmark</a></p>
+
+<p><img src="/images/posts/2017-11-20-websocket-vs-rest/websocket-graph.png" alt="websocket-graph" /></p>
+
+<p>Let&rsquo;s see an example of an HTTP request vs a websocket request. When using client libraries, they become quite similar for a simple use case.</p>
+
+<h4>Authenticating an user on REST</h4>
+
+<p>Fetch your user using a POST message with user and password (using <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request">Request</a> )</p>
+
+<p>```
+var myRequest = new Request(&lsquo;/user&rsquo;, {</p>
+
+<pre><code>method: 'POST', 
+body: '{"name": "myname", "password": "mypassword"}'
+</code></pre>
+
+<p>});
+fetch(myRequest).then(function(response) {</p>
+
+<pre><code>if(response.status == 200) myUser = response.json();
+else throw new Error('Something went wrong on api server!');
+</code></pre>
+
+<p>})
+```</p>
+
+<h4>Authenticating an user on Websocket</h4>
+
+<p>We&rsquo;ll try to do the same method on Websockets (using [Socket.io]](<a href="https://socket.io/docs/client-api/">https://socket.io/docs/client-api/</a>) library)</p>
+
+<p>```
+socket.emit(&ldquo;auth user&rdquo;, {&ldquo;name&rdquo;: &ldquo;myname&rdquo;, &ldquo;password&rdquo;: &ldquo;mypassword&rdquo;})</p>
+
+<p>socket.on(&ldquo;auth user response&rdquo;, function(user) {</p>
+
+<pre><code>myUser = user;
+</code></pre>
+
+<p>})
+```</p>
+
+<p>The method <code>.emit</code> sends a JSON from the client to the server. The werver will then reply to that message that will be processed in the client on the <code>.on</code> method.</p>
+
+<h3>A real world example: Updating game player data</h3>
+
+<p>If we are building a multiplayer real time game, we will want to update the position of every player on everyone&rsquo;s game, which means one player (client) will have to send the new position to the server, and every client will have to update this player&rsquo;s position on their own game instance.</p>
+
+<p><img src="/images/posts/2017-11-20-websocket-vs-rest/websocket-diagram.png" alt="websocket-diagram" /></p>
+
+<p>This request won&rsquo;t be optimal using REST, specially on a fast paced real time game. The only option is to use the polling technique previously mentioned to fetch the status / position of all the players (or maybe filter by those recently updated) and make changes on them in the game.</p>
+
+<p>But websockets are particularly good on this kind of requests, as the server gets A notification from a client when it changes, the server can then send that status change back to the rest of the clients really fast.</p>
+
+<p>```
+// Client side player 1, on move send new position to the server
+function move(position){</p>
+
+<pre><code>socket.emit("update player", { "position": position }
+</code></pre>
+
+<p>}
+// Client side other players, update other players
+socket.on(&ldquo;update player response&rdquo;, function(player) {</p>
+
+<pre><code>otherPlayer.position = player.position; 
+</code></pre>
+
+<p>})</p>
+
+<p>//Server side, update player and broadcast
+socket.on(&lsquo;update player&rsquo;, function (data) {</p>
+
+<pre><code>//console.log("update player ", data);
+players[socket.id].position = data; 
+socket.broadcast.emit('update player', players[socket.id]);
+</code></pre>
+
+<p>});
+```</p>
+
+<p>Also, the <code>.on</code> methods only get triggered when a message is sent from the server, so with no changes, no communication will be performed between client and server.</p>
+
+<p>We used this approach on our latest <a href="http://coconauts.net/blog/2017/10/30/proc-websockets/">videogame prototype</a>.</p>
+
+<h2>Conclussions</h2>
+
+<p>A full Websocket API can replace a REST api, however it can&rsquo;t happen the other way around, as websockets offer realtime data stream that can&rsquo;t be implemented on REST (efficiently).</p>
+
+<p>The asynchronous and undeterministic character of websockets, can lead to race conditions, when you make multiple requests. On the other hand, for every request in REST, you always get a single response.</p>
+
+<p>The Internet at the moment is built on top of HTTP, like for example DNS, load balancing, security or even SEO analytics are not fully compatible with Websockets (yet).</p>
+
+<p>Another big difference is that while Websockets are stateful protocols, which means they create a connection that needs to live in the server until the socket is closed. HTTP connections are stateless, so they could be hitting different servers everytime and still work, which make them easier to scale horizontally.</p>
+
+<p>Implementing a full Websocket API means reinventing similar standards already implemented on REST but with a different protocol, which might not be ideal.</p>
+
+<p>So I&rsquo;d still recommend to use REST for non real time data, because REST is the most popular architecture at the moment with loads of frameworks and tools, and it doesn&rsquo;t look like is going to change. But at least, it&rsquo;s fun to play with alternatives and most importantly, always pick the best tool for the job.</p>
+
+<p>What do you think ? Have you ever tried to make a Websocket API instead of using REST ? let us know in the comments.</p>
+]]></content>
+</entry>
+
+</feed>
