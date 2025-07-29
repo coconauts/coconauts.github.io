@@ -12,7 +12,8 @@ footer: true
 
 <script languaje='javascript' >
   function getIcon(tag){
-    return "<a target='_self' href='/projects/"+tag+"' class='circular  project-"+tag+"'></a>";
+    return `<img src='/images/projects/${tag}.png' />`
+   // return "<a target='_self' href='/projects/"+tag+"' class='circular  project-"+tag+"'></a>";
 }
 
 function add(tag, year, type, title, desc, tech ){
@@ -24,13 +25,17 @@ function add(tag, year, type, title, desc, tech ){
 function addProject(icon, year, type, title, desc, tech, tag ){
 
     var project =
+    "<tr>"+
    // "<tr><td class='iconCell'> "+icon+"</td>"+
+
       "<td class='title'><a href='/projects/"+tag+".html'>"+title+"</a></td>"+
+    //  "<td >"+icon+"</td>"+
+
         "<td class='year'>"+year+"</td>"+
         "<td class='type "+type+"'>"+type+"</td>"+
         "<td class='description'>"+
             "<p>"+desc+"</p>"+
-            "<p class='gray'>"+tech+"</p>"+
+            "<span style='color:gray'>"+tech+"</span>"+
         "</td>"+
      "</tr>";
      document.getElementById('projects').innerHTML += project;
@@ -68,8 +73,8 @@ add("infinify", 2017, "software",
 
 add("github-pr-tracker", 2017, "software",
     "Github PR tracker",
-    "Podcast about games, hardware and stuff (in spanish)",
-    "Audacity, Ivoox, Itunes");
+    "Productivity tool for Github Pull Requests",
+    "NodeJS, Github API");
 
 add("podcast", 2017, "general",
     "Podcast",
