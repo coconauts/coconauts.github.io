@@ -4,17 +4,11 @@ services:
   jekyll:
     build:
       context: .
-      dockerfile: Dockerfile
     ports:
       - "4000:4000"
-      - "35729:35729"  # LiveReload port
     volumes:
       - .:/app
-      - gem_cache:/usr/local/bundle  # Cache gems
     environment:
       - JEKYLL_ENV=development
     stdin_open: true
     tty: true
-
-volumes:
-  gem_cache:
