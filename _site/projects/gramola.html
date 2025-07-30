@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Coconauts | Hardware and software projects</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Coconauts" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Hardware and software projects" />
+<meta property="og:description" content="Hardware and software projects" />
+<link rel="canonical" href="http://0.0.0.0:4000/projects/gramola.html" />
+<meta property="og:url" content="http://0.0.0.0:4000/projects/gramola.html" />
+<meta property="og:site_name" content="Coconauts" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Coconauts" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Hardware and software projects","headline":"Coconauts","url":"http://0.0.0.0:4000/projects/gramola.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/feed.xml" title="Coconauts" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Coconauts</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/projects/">Projects</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title"></h1>
+  </header>
+
+  <div class="post-content">
+    <h2 id="description">Description</h2>
+
+<p>Gramola is an lightweight online music player, written in pure Javascript.
+It plays the music files directly from your server’s hard drive,
+and relies only on the directory structure to catalogue them
+(not using ID3 tags).</p>
+
+<p><img src="https://farm2.staticflickr.com/1513/24000467331_46d15821da_b_d.jpg" class="screenshot" /></p>
+
+<h2 id="technologies">Technologies</h2>
+
+<h3 id="frontend">Frontend</h3>
+
+<ul>
+  <li>Javascript</li>
+  <li>Jquery</li>
+  <li>Jplayer</li>
+  <li>Materialize</li>
+  <li>JQuery Open carousel</li>
+</ul>
+
+<h3 id="backend">Backend</h3>
+
+<ul>
+  <li>NodeJS</li>
+  <li>ExpresJS</li>
+  <li>Sqlite</li>
+</ul>
+
+<h2 id="features">Features</h2>
+
+<h3 id="lightweight">Lightweight</h3>
+
+<p>Gramola doesn’t require you to have anything else than the NodeJS runtime
+to execute. You don’t need a database (other than Sqlite, managed by Gramola,
+and kept in a single file), you don’t need a standalone web server. Gramola’s
+memory footprint is small enough to run on a Raspberry Pi comfortably.</p>
+
+<h3 id="file-structure-before-id3-tags">File structure before ID3 tags</h3>
+
+<p>If there’s something true about ID3 tags is that they are most of the time
+wrong. We thing relying on them to sort your music collection is not a good
+idea. You know how your music is sorted in files and folders, and Gramola
+won’t mess with that.</p>
+
+<h3 id="ready-for-large-collections">Ready for large collections</h3>
+
+<p>Do you have a huge music collection? So do we. And we think a music player
+should be able to handle them. Gramola won’t take more than a couple seconds
+to index several gigabytes of music, and searches or other features will
+be snappy as well.</p>
+
+<h3 id="multiuser">Multiuser</h3>
+
+<p>Several users can create accounts for a Gramola instance. The music
+collection is common for everyone, but each user will keep it’s own lists
+of favourites, blacklists, buckets…</p>
+
+<h3 id="responsive-interface">Responsive interface</h3>
+
+<p>Gramola will look neat and be functional no matter your screen size,
+even on mobile browsers.</p>
+
+<p><img src="https://farm6.staticflickr.com/5823/23715269479_f08a124a5f_b_d.jpg" class="screenshot" /></p>
+
+<h3 id="restful-api">RESTful API</h3>
+
+<p>Everything is built in javascript using the built-in rest api,
+providing a friendly and fast front-end experience.</p>
+
+<h3 id="quick-search">Quick search</h3>
+
+<p>Filter songs and directories in your collection matching a search term.
+And it’s really quick!</p>
+
+<h3 id="favourites-blacklist-and-buckets">Favourites, blacklist, and buckets</h3>
+
+<p>You can tag your songs in arbitrary “buckets” (for instance:
+“party”, or “songs from my teens”). Two buckets come by default: Favourites
+and blacklist. Blacklisted songs won’t come up on infinite modes, but you
+can still add them manually to your playlist.</p>
+
+<h3 id="random-infinite-mode">Random infinite mode</h3>
+
+<p>Pick a folder at any level in your directory tree, and start a random
+session that will autopopulate the playlist with songs down in the tree as you
+go along. You can also start infinite mode from a bucket.</p>
+
+<h3 id="share">Share</h3>
+
+<p>Share songs and folders using a shortlink parameter (e.g: <code class="language-plaintext highlighter-rouge">?l=29</code>).
+Anyone with the link will be able to reach the song, even if it’s not a
+user in your Gramola instance.</p>
+
+<h3 id="what-others-are-listening">What others are listening</h3>
+
+<p>The songs others are listening to are recorded in the system,
+so you can see what they are listening in your server.</p>
+
+<h3 id="desktop-notifications">Desktop notifications</h3>
+
+<p>If you activate desktop notifications you will get a popup everytime
+the song changes.</p>
+
+<h3 id="slide-show-covers">Slide show covers</h3>
+
+<p>If you have any album covers on your local collection, Gramola will
+display them in a slideshow. If you haven’t, Gramola will fetch them
+from Google, and allow you to download them locally to your collection.</p>
+
+<h2 id="download-and-source-code">Download and source code</h2>
+
+<p>Find code and installation instructions on the
+<a href="https://github.com/coconauts/gramola">Github repository</a></p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Coconauts</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Coconauts</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Hardware and software projects</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Coconauts | Coconauts is a team of geeks building cool stuff, like games, web and mobile apps, or hardware projects. We also post tech tutorials regularly on our blog.</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Coconauts" />
+<meta name="author" content="Coconauts" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Coconauts is a team of geeks building cool stuff, like games, web and mobile apps, or hardware projects. We also post tech tutorials regularly on our blog." />
+<meta property="og:description" content="Coconauts is a team of geeks building cool stuff, like games, web and mobile apps, or hardware projects. We also post tech tutorials regularly on our blog." />
+<link rel="canonical" href="http://0.0.0.0:4000/projects/sea-life.html" />
+<meta property="og:url" content="http://0.0.0.0:4000/projects/sea-life.html" />
+<meta property="og:site_name" content="Coconauts" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Coconauts" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Coconauts"},"description":"Coconauts is a team of geeks building cool stuff, like games, web and mobile apps, or hardware projects. We also post tech tutorials regularly on our blog.","headline":"Coconauts","url":"http://0.0.0.0:4000/projects/sea-life.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/feed.xml" title="Coconauts" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Coconauts</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/projects.html">Projects</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title"></h1>
+  </header>
+
+  <div class="post-content">
+    <p>Play the game <a href="http://html5.coconauts.net/sealife/">here</a> or check the <a href="https://github.com/coconauts/sea-life">Github repo</a></p>
+
+<p><img src="https://pbs.twimg.com/media/CTe-hdHWsAAEDQy.png" alt="" /></p>
+
+<h2 id="description">Description</h2>
+
+<p>This game attempted to be an iteration on a similar idea that we did for a Ludum Dare, <a href="http://ludumdare.com/compo/ludum-dare-24/?action=preview&amp;uid=16605">“Sea Evolution”</a></p>
+
+<p>In the game you are sea creature that needs to survive in your ecosystem. You get hungry, you need to eat, and you can lay eggs to perpetuate your species. Different sea creatures have different attributes, which determine who can eat and get eaten by.</p>
+
+<p>Unfortunately we didn’t have a lot of time during this week, so we couldn’t develop or polish as much as we wanted! Here’s what we managed to do:</p>
+
+<h2 id="infinite-game-world">Infinite game world</h2>
+
+<p>In the original sea evolution there was no scrolling. But we wanted to make it feel like the endless sea, so in this one we made a scrolling world that gets autopopulated with new fishes as you advance through it.</p>
+
+<p>Our original plan was to emulate a sea bottom, which we would also autopopulate with seaweeds, reefs, or even dark abyss areas, or polluted areas where only poison-resistant fishes would be able to habitate. But we didn’t have time for all this! So instead you are just traversing the boring open ocean.</p>
+
+<h2 id="100-canvas-randomized-fish-shapes">100% canvas, randomized fish shapes</h2>
+
+<p>Everything is drawn with canvas, no sprites! It’s the first time we actually do this sort of thing, and it was challenging but quite fun. This allows for some fun features, such as being able to alter the shape of the fishes programatically. Each fish will randomly be given a distinct color and shape.</p>
+
+<h2 id="autogenerated-fish-statistics">Autogenerated fish statistics</h2>
+
+<p>Fishes are created with a set of stats: speed, attack power and defense. These are represented by the gauge meters below the fish. Normally you should be safe to attack a fish if it has less attack and defense than you do (otherwise the other fish might kill you!). The stats are balanced, so that if you get more of one you’ll get less of the others.</p>
+
+<h2 id="fish-growth">Fish growth</h2>
+
+<p>In the original Sea Evolution, fishes went through several life stages, from egg to adult. On each life stage their stats were bumped. You were always able to survive by eating the fishes that were in lower life stages, beacause they had lower stats. On adult form, fishes can lay eggs to perpetuate there species.</p>
+
+<p>In this game we have implemented the life stages, and you can notice that after a certain amount of time the stats are bumped. However we didn’t have timeto alter the appearance of the fishes when this happens.</p>
+
+<h2 id="controls">Controls</h2>
+
+<p>You can move with the arrow keys or the mouse. The enemy fishes randomly pick where to go, or if they are close to other fish they will chase it to eat it. Sometimes this results in all of the enemies gathering together in one point eating each other out.</p>
+
+<p>The player fish also follows the same behavior if you don’t tell it where to go. This is a bit confusing, yes, but we didn’t have time to change it.</p>
+
+<h2 id="descendants">Descendants</h2>
+
+<p>The original idea for Sea Life was to be able to perpetuate your species over the rest. You would be able to lay eggs and have descendancy, and your success in life (ie, your game score) would be measured to how many descendants did you managed to get until you died. How successful you would be in your species conquering the sea world would depend in both your ability and the statistics autogenerated for your sea species.</p>
+
+<p>So we did implement this… partially. You will have children from time to time, and they will follow you along. But actually they don’t really have any stats, or count as real fishes. But they make you feel less lonely, no?</p>
+
+<h2 id="websockets">Websockets</h2>
+
+<p>Yay! Another experiment. We wanted to make this a multiplayer experience, using websockets. When you join the game you will connect to a server keeping track of all the players, and you will receive their possitions. So you might cross another human while playing!</p>
+
+<p>It’s easy to identify a human: they will have no stats displaying (because you can’t really eat them), and they would have an autogenerated name, in the pattern “adjective + sea animal” (in the spirit of Metal Gear Solid troop names, or Ubuntu distributions)</p>
+
+<p>And that is basically it. Probably too buggy to be playable for a long time, but a fun experiment with some forms of procedural generation =)</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Coconauts</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Coconauts</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/coconauts"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">coconauts</span></a></li><li><a href="https://www.twitter.com/coconauts"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">coconauts</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Coconauts is a team of geeks building cool stuff, like games, web and mobile apps, or hardware projects. We also post tech tutorials regularly on our blog.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

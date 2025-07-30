@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Live picture frame | Coconauts</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Live picture frame" />
+<meta name="author" content="Javier Rengel" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Live picture frame" />
+<meta property="og:description" content="Live picture frame" />
+<link rel="canonical" href="http://0.0.0.0:4000/blog/2017/11/27/live-picture/" />
+<meta property="og:url" content="http://0.0.0.0:4000/blog/2017/11/27/live-picture/" />
+<meta property="og:site_name" content="Coconauts" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-11-27T14:14:46+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Live picture frame" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Javier Rengel"},"dateModified":"2017-11-27T14:14:46+00:00","datePublished":"2017-11-27T14:14:46+00:00","description":"Live picture frame","headline":"Live picture frame","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/blog/2017/11/27/live-picture/"},"url":"http://0.0.0.0:4000/blog/2017/11/27/live-picture/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/feed.xml" title="Coconauts" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Coconauts</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/projects/">Projects</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Live picture frame</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2017-11-27T14:14:46+00:00" itemprop="datePublished">Nov 27, 2017
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Javier Rengel</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>I recently moved from UK back to Spain to work remotely, and since then, I’ve been curious about how the weather is there, specially when talking with people on the other country. Is it raining today ? Is the sun gone already ?</p>
+
+<p>To address that problem, I found a few live videos/webcams about london like <a href="http://www.earthtv.com/en/webcam/london-millennium-bridge">earthtv</a> or <a href="https://www.youtube.com/watch?v=SMOb9d9s_mI">London Tower Bridge</a> so I kept those videos on one of the tabs of my browser.</p>
+
+<p>But, wouldn’t be cool to have it on a separate picture frame, always  there, just like a normal picture, but live.</p>
+
+<p><img src="/images/posts/2017-11-27-live-picture/picture.gif" alt="picture-gif" /></p>
+
+<p>That’s why I built a slim picture frame from old recycled components. To see the Tower Bridge at day and at night.</p>
+
+<p><img src="/images/posts/2017-11-27-live-picture/picture-day.jpg" alt="picture-day" /></p>
+
+<p><img src="/images/posts/2017-11-27-live-picture/picture-night.jpg" alt="picture-night" /></p>
+
+<!--more-->
+
+<h2 id="materials">Materials</h2>
+
+<p>These are the materials I used to create the live picture. All these items were already on my inventory:</p>
+
+<ul>
+  <li>Old ultra-thin LCD screen from a broken laptop (10 years old)</li>
+  <li>12v LCD controller board with VGA output</li>
+  <li>Raspberry PI Zero</li>
+  <li>HDMI to VGA adaptor</li>
+  <li>12v to 5v converter regulator</li>
+  <li>Ikea <a href="http://www.ikea.com/us/en/catalog/products/00297440/">KNOPPANG</a> picture frame for A4</li>
+  <li>Sonoff wireless switch (optional)</li>
+  <li>VGA cable, micro usb cable, 12v splitter cable</li>
+</ul>
+
+<h2 id="adjusting-the-picture-frame">Adjusting the picture frame</h2>
+
+<p>The Ikea picture frame was made for A4 pictures, however, my 15’’ LCD screen is slightly bigger than that, therefore we need to make some adjustments, first, increasing the hole in the white inner frame to 15’’.</p>
+
+<p>Then, cutting the back of the frame to the same size</p>
+
+<p><img src="/images/posts/2017-11-27-live-picture/cutting-board.jpg" alt="cutting-board" /></p>
+
+<p>Everything should fit together, so you should be able to see all the screen inside the inner frame</p>
+
+<p><img src="/images/posts/2017-11-27-live-picture/picture-screen.jpg" alt="picture-screen" /></p>
+
+<h2 id="lcd-screen">LCD screen</h2>
+
+<p>Since a few years ago, I had an ultra thin LCD screen from an old broken laptop. After finding and using a controller board, I’ve been able to use it as extra screen for my desktop computer sugin a VGA connection.</p>
+
+<p><img src="/images/posts/2017-11-27-live-picture/screen-front.jpg" alt="screen-front" /></p>
+
+<p>Controller boards are specific to the LCD screen, you need to use an specific model for the serial number of your screen, you can find it on the back. Then it’s a matter of searching ebay/aliexpress for a controller board listing compatibility with your screen model.</p>
+
+<p><img src="/images/posts/2017-11-27-live-picture/controller-board.png" alt="controller-board" /></p>
+
+<p>So I decided to recycle this screen now to create the canvas, because it’s thin and lightweight.</p>
+
+<p>I removed the front case, but left the back side to protect the screen, isolate the components and glue the cables and raspberry pi to it.</p>
+
+<p><img src="/images/posts/2017-11-27-live-picture/assembling-back.jpg" alt="assembling-back" /></p>
+
+<p>The Raspberry PI zero, glued to the back of the screen, is powered by the same power adaptor that powers the LCD screen, using a 12v to 5v conversor. So we don’t need another extra cable connected into the screen. This is how it looks from the back.</p>
+
+<p><img src="/images/posts/2017-11-27-live-picture/back.jpg" alt="back" /></p>
+
+<h2 id="wall-mounting">Wall mounting</h2>
+
+<p>After everything has been assembled together, and tested, we’re ready to hang it into the wall. For this I’ve just added two L shape hooks into the wall, and another two round hooks screwed into the plastic back of the screen.</p>
+
+<p><img src="/images/posts/2017-11-27-live-picture/wall-hooks.jpg" alt="wall-hooks" /></p>
+
+<p>After hanging it to the wall, I connected the 12v cable, and try to hide it using white tape.</p>
+
+<p><img src="/images/posts/2017-11-27-live-picture/picture-wall.jpg" alt="picture-wall" /></p>
+
+<h2 id="automatically-schedule-screen">Automatically schedule screen</h2>
+
+<p>I’d like to schedule the frame, so it runs from 10AM to 7PM on weekdays, my working hours, so I can see London while I work remotely.</p>
+
+<p>My first approach was to add some scripts on the Raspberry PI (cronjobs) to automatically switch ON/OFF the video output  using <code class="language-plaintext highlighter-rouge">tvservice --off</code> or <code class="language-plaintext highlighter-rouge">xset dpms force off</code> however it didn’t work pretty well in my case, because my LCD controller was not going into standby after turning off the HDMI signal.</p>
+
+<p>So I decided to use a cheap wireless smart switch I’ve been using for a while, which can be scheduled and controlled by the phone, called <a href="http://sonoff.itead.cc/en/">Sonoff</a>. You could be using an <a href="https://coconauts.net/blog/2016/04/15/energinie-and-raspberry-pi-setup/">Energenie</a>, Xiaomi or something similar if you like.</p>
+
+<p><img src="/images/posts/2017-11-27-live-picture/sonoff.png" alt="sonoff" /></p>
+
+<p>This device needs to be connected in between your power cable, then you can configure it via the phone app.</p>
+
+<p><img src="/images/posts/2017-11-27-live-picture/sonoff-cable.jpg" alt="sonoff" /></p>
+
+<p><img src="/images/posts/2017-11-27-live-picture/sonoff-menu.jpeg" alt="sonoff" /></p>
+
+<p>Then you can add the schedule so the Sonoff, and the Raspberry PI and the screen will be turned ON and OFF automatically.</p>
+
+<p><img src="/images/posts/2017-11-27-live-picture/sonoff-schedule.jpeg" alt="sonoff" /></p>
+
+<h2 id="software">Software</h2>
+
+<p>Because I have now a Raspberry PI powered LCD screen hanging in the wall, I can pretty much display whatever I want. Like for example:</p>
+
+<ul>
+  <li>
+    <p>Web page using chrome <code class="language-plaintext highlighter-rouge">chromium-browser --kiosk $url</code></p>
+  </li>
+  <li>
+    <p>Video using omxplayer <code class="language-plaintext highlighter-rouge">omxplayer video.mp4</code></p>
+  </li>
+  <li>
+    <p>Use Kodi to display videos or other plugins.</p>
+  </li>
+  <li>
+    <p>Youtube, twitch live video using the Livestreamer</p>
+  </li>
+  <li>
+    <p>etc.</p>
+  </li>
+</ul>
+
+<p><img src="/images/posts/2017-11-27-live-picture/raspberry.jpg" alt="raspberry" /></p>
+
+<h3 id="display-live-video-using-livestreamer">Display live video using livestreamer</h3>
+
+<p>For this project, I chose to display the London Tower Bridge from a live stream in youtube.</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/SMOb9d9s_mI" frameborder="0"></iframe>
+
+<p>This can be easily achieved using <a href="https://github.com/chrippa/livestreamer">livestreamer</a> open source app, which allow us to display any live content from Youtube, twitch, livestream, dailymotion, etc… into a local video player, without using a web browser.</p>
+
+<p>This is the command I’m using to display a Youtube link using omxplayer on fullscreen.</p>
+
+<p><code class="language-plaintext highlighter-rouge">livestreamer $youtube_url 720p -n -p "omxplayer --no-osd --win '0 0 1280 800' "</code></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">$youtube_url</code> is a variable with the url of the livestream on youtube</li>
+  <li><code class="language-plaintext highlighter-rouge">720</code> is to select the resolution of the video, you can also use best or worst.</li>
+  <li><code class="language-plaintext highlighter-rouge">-n</code> or <code class="language-plaintext highlighter-rouge">--fifo</code> Make the player read the stream through a named pipe instead of the stdin pipe</li>
+  <li><code class="language-plaintext highlighter-rouge">-p</code> player to use</li>
+  <li><code class="language-plaintext highlighter-rouge">--no-osd</code> hide the UI from omxplayer</li>
+  <li><code class="language-plaintext highlighter-rouge">--win</code> display video on full screen (my screen resolution) on omxplayer</li>
+</ul>
+
+<p><a href="https://github.com/popcornmix/omxplayer">Omxplayer</a> is the best open source video player on Raspberry PI, you could try using VLC, but it will not work or display anything because of the lack of native hardware acceleration on Raspberry PI.</p>
+
+<h3 id="script-to-display-on-startup">Script to display on startup</h3>
+
+<p>I wanted to automatically run the video on startup, without any manual interaction.</p>
+
+<p>There are a few ways to do it, but the best I found is using the <code class="language-plaintext highlighter-rouge">autostart</code> script located in <code class="language-plaintext highlighter-rouge">/home/pi/.config/lxsession/LXDE-pi/autostart</code>. On this script, you need to add <code class="language-plaintext highlighter-rouge">@</code> before every command.</p>
+
+<p>If you want to keep the display ON, you’ll need to add these lines to prevent the screen going OFF after a few minutes.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@xset s off
+@xset -dpms
+@xset s noblank
+</code></pre></div></div>
+
+<p>Then you can add the command from before to start the livestream on startup. This is all you need to add into the <code class="language-plaintext highlighter-rouge">/home/pi/.config/lxsession/LXDE-pi/autostart</code> script:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@xset s off
+@xset -dpms
+@xset s noblank
+@livestreamer https://youtu.be/SMOb9d9s_mI 720p -n -p "omxplayer --no-osd --win '0 0 1280 800' "
+</code></pre></div></div>
+
+<h2 id="conclussions-and-improvements">Conclussions and improvements</h2>
+
+<p>This was an easy and cheap project to build, if you have an old screen, or you get a cheap one. The picture frame looks very nice hanging on the wall, and thanks to youtube and livestreamer, we can display any video very easily.</p>
+
+<p>It took me some time to find the best streaming combination on Raspberry PI Zero. I tried using <code class="language-plaintext highlighter-rouge">chromium-browser --kiosk</code> but after sometime the browser was crashing; I tried using VLC to display M3U8 streaming video, but VLC was not efficient enough. Some links did not play on omxplayer, so at the end, I decided to use livestreamer, which works pretty well, and you can use it with other sources too.</p>
+
+<p>I’d like to have a better LCD screen, maybe LED, with a direct HDMI connection and better viewing angle.</p>
+
+<p>You could use the spare 12v connector to add a LED strip on the back of the frame, if you want to have some extra light effect.</p>
+
+<p>Let me know what you think about this project, and if you’ve built your own.</p>
+
+  </div><a class="u-url" href="/blog/2017/11/27/live-picture/" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Coconauts</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Coconauts</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Hardware and software projects</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

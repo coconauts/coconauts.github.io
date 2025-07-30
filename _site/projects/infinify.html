@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Coconauts | Hardware and software projects</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Coconauts" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Hardware and software projects" />
+<meta property="og:description" content="Hardware and software projects" />
+<link rel="canonical" href="http://0.0.0.0:4000/projects/infinify.html" />
+<meta property="og:url" content="http://0.0.0.0:4000/projects/infinify.html" />
+<meta property="og:site_name" content="Coconauts" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Coconauts" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Hardware and software projects","headline":"Coconauts","url":"http://0.0.0.0:4000/projects/infinify.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/feed.xml" title="Coconauts" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Coconauts</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/projects/">Projects</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title"></h1>
+  </header>
+
+  <div class="post-content">
+    <p><img src="/images/posts/2017-05-01-infinify/infinify.png" alt="Infinify" /></p>
+
+<!-- more-->
+
+<p>Use it: http://infinify.coconauts.net</p>
+
+<h2 id="what-is-it">What is it?</h2>
+
+<p>Infinify is a website with a huge “play” button, that feeds on your
+Spotify saved collection to produce a continuous mix of tracks from your
+own music plus recommendations.</p>
+
+<h2 id="how-does-it-work">How does it work?</h2>
+
+<p>Spotify exposes <a href="https://developer.spotify.com/web-api/get-recommendations/">a very powerful <code class="language-plaintext highlighter-rouge">/recommendations</code> endpoint on their API</a>,
+which I reckon plugs into <a href="https://qz.com/571007/the-magic-that-makes-spotifys-discover-weekly-playlists-so-damn-good/">the same magic that is powering their discovery modes</a>.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">/recommendations</code> endpoint instantly gives you a list of recommended tracks,
+given a seed of a list of songs, artists or genres. You can even tune a bunch of
+crazy parameters, such as <em>danceability</em>, <em>energy</em> or <em>popularity</em>. It’s quite amazing.</p>
+
+<p>The problem though is that the recommendations output is finite (capped at 100 results),
+whereas we want a continuous flow of recommendations.</p>
+
+<p>Another problem with it, which is also noticiable in their discovery modes,
+is that it tries too hard to give you music that is similar to <em>all</em> of your seeds.
+Wha this means is: if you seed it with some classical music, heavy metal and jazz,
+it’s going to try to return tracks that are strange chimaeras mixing all of those
+traits, rather than giving you a mixed bag of more conventional tracks in those genres.
+In other words: it’s an <em>and</em>, not an <em>or</em>. Now, this might actually be what you want
+in some occasions, but when it comes to recommending music to people it doesn’t work:
+if I like John Williams and Queen I want to be recommended Danny Elfman and Van Halen,
+not “Some Orchestra Plays Very Bland Rock Classics”.</p>
+
+<p><img src="/images/posts/2017-05-01-infinify/epicrock.png" alt="Infinify" /></p>
+
+<p>So our solution involves working around the endpoint, using in a bit unorthodox way:</p>
+
+<ol>
+  <li>Fetch a random single song from the user’s saved music collection.</li>
+  <li>Use this song’s artist as a seed to the <code class="language-plaintext highlighter-rouge">/recommendations</code> endpoint. Get a small X number of songs back.</li>
+  <li>Pick a random song from the response, and add it to a playlist.</li>
+  <li>Repeat the above every 2 minutes.</li>
+</ol>
+
+<p>In this fashion, the result is a Spotify playlist that is continuously growing
+with fresh recommendations (for as long as the the website remains open).</p>
+
+<p>We use the artist as a seed, rather than the song, so that you can still get
+a chance of getting the songs you already have in your library and love.</p>
+
+<p>The seed is started from a single song to try to get purer recommendations, rather
+than strange blends. We then produce X recommendations and pick one. Why?
+Well, we experienced that the first item in the results is always a song by the
+same artist that your seed, and this doesn’t give you much variety. So by producing
+several and then picking one of them, you get a delicious balance: you’ll get a
+certain chance to get songs by the same artists in your library, but them a slightly
+bigger chance to get related artists (that may or not be in your library).</p>
+
+<p>This X number of tracks is what we call the <em>discoverability</em> parameter, and
+you can toggle it between 1 (“I just want the artists I know and love”) and 10
+(in which approximately 9 in every 10 songs will be new, and 1 will be familiar).</p>
+
+<p><img src="/images/posts/2017-05-01-infinify/discoverability.png" alt="Infinify" /></p>
+
+<h2 id="the-ugly-bits">The ugly bits</h2>
+
+<p>Unfortunately there are some limitations that make the user experience a bit rough.
+For starters, the fact that you need to have an external web application to start
+the infinfy playlist. Spotify <a href="https://developer.spotify.com/technologies/apps/">scrapped their in-app extensions</a> some years ago,
+so the only way to add integration nowdays is by keeping them completely external.</p>
+
+<p>It would be possible to stream the audio directly to the webapp, but only 30-second
+samples: not acceptable. So you need Spotify for playback, and the webapp for the
+integration.</p>
+
+<p>You can at least <a href="https://developer.spotify.com/web-api/start-a-users-playback/">control the playback on a device via the API</a>, you need to
+have a premium account for that. So if you don’t, you need to hit the play button
+twice: once on infinify, once on the app.</p>
+
+<p>Another uglyness is that we found no way via the API to be able to track the
+listening progress of the user on the playlist. This made it quite difficult to
+determine when we should add and remove tracks from the playlist.
+After trying some nasty kludges, we decided for a straigghtforward solution:
+just add new songs every 2 minutes, and keep the old ones there. They don’t
+bother you after all! (in fact, its kinda nice to have a record of your
+listening session) and there’s no problem on Spotify even if the playlist
+gets absurdly long.</p>
+
+<p>The only edge case is if you run out of songs in the
+playlist: for this eventuality we added a little <code class="language-plaintext highlighter-rouge">(+)</code> button to force a manual
+generation. When you start a new session the playlist gets reset, as it would be
+confusing to have the long list of tracks from last time.</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_ge4n9zmTRQ" frameborder="0" allowfullscreen=""></iframe>
+
+<p>Because the way we are abusing the <code class="language-plaintext highlighter-rouge">/recommendations</code> endpoint, ours is
+not the most rate-friendly solution. However, it’s also not that bad: our load
+is 4 or 5 requests every 2 minutes, which still falls within reasonable limits,
+at least if we keep it to only one user.</p>
+
+<h2 id="final-remarks">Final remarks</h2>
+
+<p>For recommender engines, and in general many AI problems, there’s usually
+a rule: a naive, straightforward solution can take you 60-80% there.
+Then any increases on that number will require years of PhD research.</p>
+
+<p>Infinify is a very simple solution, but surprisingly, also very effective! I was
+very pleased with the quality of recommendations, and how you can still get
+a mix of familiar and new. Of course, most of the
+heavy lifting comes from the magic behind the <code class="language-plaintext highlighter-rouge">/recommendations</code> engine,
+but I’m happy that we could bend it to overcome it’s limitations.</p>
+
+<p>For now, I intend to use it heavily for a while and see if it still satisfy me,
+or if recommendations start getting a bit repetitive. In such case, I might start
+tunning the algorithim to try more variability (for instance, going for
+multi-level recommendations from recommendations).</p>
+
+<p>You can get the code for Infinify <a href="https://github.com/coconauts/infinify">on Github</a>.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Coconauts</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Coconauts</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Hardware and software projects</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

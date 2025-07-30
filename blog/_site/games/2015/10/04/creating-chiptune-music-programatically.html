@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Synthesizing chiptune music programatically | Coconauts</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Synthesizing chiptune music programatically" />
+<meta name="author" content="Mar Bartolome" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A 101 on sound synthesis, applicable to gamedev" />
+<meta property="og:description" content="A 101 on sound synthesis, applicable to gamedev" />
+<link rel="canonical" href="http://0.0.0.0:4000/games/2015/10/04/creating-chiptune-music-programatically.html" />
+<meta property="og:url" content="http://0.0.0.0:4000/games/2015/10/04/creating-chiptune-music-programatically.html" />
+<meta property="og:site_name" content="Coconauts" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2015-10-04T21:35:34+02:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Synthesizing chiptune music programatically" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Mar Bartolome"},"dateModified":"2015-10-04T21:35:34+02:00","datePublished":"2015-10-04T21:35:34+02:00","description":"A 101 on sound synthesis, applicable to gamedev","headline":"Synthesizing chiptune music programatically","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/games/2015/10/04/creating-chiptune-music-programatically.html"},"url":"http://0.0.0.0:4000/games/2015/10/04/creating-chiptune-music-programatically.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/feed.xml" title="Coconauts" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Coconauts</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/projects.html">Projects</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Synthesizing chiptune music programatically</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2015-10-04T21:35:34+02:00" itemprop="datePublished">Oct 4, 2015
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Mar Bartolome</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>We’ve shown you in the past how to create chiptune-style music both
+<a href="https://coconauts.net/blog/2015/02/02/creating-chiptune-style-music-with-ubuntu/">with a DAW program</a>,
+and <a href="https://coconauts.net/blog/2015/04/19/creating-trve-chiptune-with-a-tracker/">with old-school trackers</a>.</p>
+
+<p>There’s still another way to do it: via code. Particularly suitable for
+videogame music in particular, as you can have fine-grained control
+over the music that you autogenerate, giving it the ability to be
+dynamic.</p>
+
+<p>Every programming language worth their name will have a basic sound
+synthesizing library, which will be more than what to need to
+make chiptune sounds.</p>
+
+<!--more-->
+
+<p>The basics are these: you’ll need something called an oscillator,
+which is nothing more than a device (in our case it will be a software
+device, but a device nonetheless) capable of generating <a href="http://public.wsu.edu/~jkrug/MUS364/audio/Waveforms.htm">basic sound
+waves</a>:
+sine, square, triangle and sawtooth.</p>
+
+<p><img src="/images/posts/chiptune/waveforms.png" /></p>
+
+<p>Then’ you’ll combine several sound waves together to form your sound.
+This technique is known as additive synthesis, and it’s illustrated
+just below.</p>
+
+<p><img src="/images/posts/chiptune/additive.jpg" /></p>
+
+<p>Once you have a timbre that you like, the synthesizing library should
+have functions to alter its frequency, which will result in
+different tones being produced (this is called FM, or frequency modulation,
+synthesis), and then you have all you need to make any melody.</p>
+
+<p>There’s something that you have to take into account, and is that you
+should limit yourself a bit with the kind and number of waves that
+you’re using, to try to replicate the limitations of the hardware of
+old, and thus achieve convincing chiptune sounds.
+In <a href="http://opengameart.org/forumtopic/kickin-it-old-school-setting-up-nes-style-chiptunes">this forum post</a>
+the author recommends using nothing more than square, triangle and
+sawtooth waves (avoiding sine), and limiting yourself to four
+simultaneous instruments (as old sound cards didn’t come with many
+audio channels). Have in mind though that these are just guidelines,
+in practice you should experiment with everything and pick whatever
+you think sounds good and convincingly chiptuneish.</p>
+
+<p>Synthesizing your
+own game music programatically has several important advantages:
+you wont waste any space storing your music assets (when your game is
+going on mobile phones this is an important aspect to consider!), and
+it allows for unlimited flexibility if your music is going to be
+dynamic. So we personally are keen in exploring this approach in a
+future game.</p>
+
+  </div><a class="u-url" href="/games/2015/10/04/creating-chiptune-music-programatically.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Coconauts</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Coconauts</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/coconauts"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">coconauts</span></a></li><li><a href="https://www.twitter.com/coconauts"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">coconauts</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Coconauts is a team of geeks building cool stuff, like games, web and mobile apps, or hardware projects. We also post tech tutorials regularly on our blog.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

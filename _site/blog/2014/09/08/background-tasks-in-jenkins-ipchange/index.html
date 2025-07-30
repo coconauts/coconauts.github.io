@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Background tasks in jenkins and IP-change script example | Coconauts</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Background tasks in jenkins and IP-change script example" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Background periodic tasks in jenkins, Ip-change script example" />
+<meta property="og:description" content="Background periodic tasks in jenkins, Ip-change script example" />
+<link rel="canonical" href="http://0.0.0.0:4000/blog/2014/09/08/background-tasks-in-jenkins-ipchange/" />
+<meta property="og:url" content="http://0.0.0.0:4000/blog/2014/09/08/background-tasks-in-jenkins-ipchange/" />
+<meta property="og:site_name" content="Coconauts" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2014-09-08T23:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Background tasks in jenkins and IP-change script example" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2014-09-08T23:00:00+00:00","datePublished":"2014-09-08T23:00:00+00:00","description":"Background periodic tasks in jenkins, Ip-change script example","headline":"Background tasks in jenkins and IP-change script example","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/blog/2014/09/08/background-tasks-in-jenkins-ipchange/"},"url":"http://0.0.0.0:4000/blog/2014/09/08/background-tasks-in-jenkins-ipchange/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/feed.xml" title="Coconauts" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Coconauts</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/projects/">Projects</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Background tasks in jenkins and IP-change script example</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2014-09-08T23:00:00+00:00" itemprop="datePublished">Sep 8, 2014
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>There are a few ways to schedule tasks to run periodically, from building our own scheduler in whatever language we want, 
+to use <a href="https://github.com/chrisspen/django-chroniker">chroniker</a> in Django, or even use the built-in cron utility in Unix systems.</p>
+
+<p>However, I found out that Jenkins is quite good with that, even though that is not its main objective as CI system.
+These are the advantages of Jenkins over cron.</p>
+
+<!--more-->
+
+<ul>
+  <li>Embedded email system on failures.</li>
+  <li>See logs (and embedded log rotation).</li>
+  <li>See clearly when they ran for the last time.</li>
+  <li>Friendly web interface.</li>
+  <li>Keep a history of all runs.</li>
+  <li>Take the latest version directly from git/cvs/etc.</li>
+  <li>Lot of plugins.</li>
+  <li>Setup a different number of executors so it doesn’t overload the system (best for low-priority processes).</li>
+</ul>
+
+<p>Since all of those features come out of the box, you simply need to setup a job specifying the script you want to run and it’s frequency, as you would do with Cron.</p>
+
+<h2 id="sample-configuration-ip-change">Sample configuration: IP change</h2>
+
+<p>We are going to show one of our background scripts we have running on Jenkins and its configuration. This is just a sample, and you can modify it in any way you want 
+(e.g. using git directly rather than downloading the project first in a different task).</p>
+
+<p>The script we want to show is a simple python script that checks if the IP has changed locally (useful for dynamic IP environments).
+As the script is returning an error when it changes, we get an email everytime it happens,
+but we could also update our dynamic DNS using services like changeip.com if your router doesn’t provide that feature.</p>
+
+<p>In order to run that script, we have a lot of options here:</p>
+
+<ul>
+  <li>Write the script directly in the Jenkins task in the default Jenkins terminal (<code class="language-plaintext highlighter-rouge">sh</code> by default).</li>
+  <li>Copy the script to any folder and just run it from Jenkins (like <code class="language-plaintext highlighter-rouge">python $FOLDER/run.py</code>)</li>
+  <li>Fetch from a git and run it.</li>
+  <li>Create a task to fetch the project (based on git changes), and another task to run it (from the previous fetched folder).</li>
+</ul>
+
+<p>In this case we are going to use the last option (the one with 2 tasks), the reason to do this is  because we don’t update that script very often, so it is better to fetch it once and run it 1 hundred times; 
+and another reason is because sometimes the command <code class="language-plaintext highlighter-rouge">git fetch</code> sometimes fails in jenkins, generating a false positive (apparently this is a <a href="https://issues.jenkins-ci.org/browse/JENKINS-20750">bug</a> in the jenkins git plugin)</p>
+
+<h3 id="configuring-the-fetch-task">Configuring the fetch task</h3>
+
+<p>This part is basic if you have set up a Jenkins job before using git, if not, just copy the following config using our <a href="https://github.com/coconauts/IP-change">IP Change repo available in GitHub</a></p>
+
+<p><a target="_blank" href="/images/posts/background-task-in-jenkins/jenkins-fetch.png">
+<img src="/images/posts/background-task-in-jenkins/jenkins-fetch.png" />
+</a></p>
+
+<p>This project doesn’t require any aditional config, as the emails are sent by Jenkins and your files and IPs are generated by the script itself.</p>
+
+<p>Once the task has ran, your <code class="language-plaintext highlighter-rouge">ip_change.py</code> script should be located in <code class="language-plaintext highlighter-rouge">/var/lib/jenkins/jobs/IP Change fetch/workspace</code>, 
+and you could try to run it directly from the terminal using the jenkins user (<code class="language-plaintext highlighter-rouge">sudo -u jenkins python ip_change.py</code>)</p>
+
+<h3 id="configuring-the-background-task">Configuring the background task</h3>
+
+<p>Now is time to setup your background task using this configuration.</p>
+
+<p><a target="_blank" href="/images/posts/background-task-in-jenkins/jenkins-background.png">
+<img src="/images/posts/background-task-in-jenkins/jenkins-background.png" />
+</a></p>
+
+<p>Where <code class="language-plaintext highlighter-rouge">$HOME</code> or <code class="language-plaintext highlighter-rouge">$JENKINS_HOME</code> is an environment variable that contains <code class="language-plaintext highlighter-rouge">/var/lib/jenkins</code> by default</p>
+
+<p>Then try to run the new background task to see any of the following results:</p>
+
+<ul>
+  <li>Running the task for the first time:
+```</li>
+  <li>cd ‘/var/lib/jenkins/jobs/IP Change fetch/workspace’</li>
+  <li>python ip_change.py</li>
+  <li>Requesting current ip with ‘icanhazip’</li>
+  <li>Request took 0 seconds</li>
+  <li>
+    <p>This is the first time to run the ip_change script, I will create a file in /tmp/ip.log to store your current address: 86.185.119.138 
+Finished: SUCCESS
+```</p>
+  </li>
+  <li>IP is still the same:</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+ cd '/var/lib/jenkins/jobs/IP Change fetch/workspace'
++ python ip_change.py
+* Requesting current ip with 'icanhazip'
+* Request took 0 seconds 
+* IP is still the same: 86.185.119.138
+Finished: SUCCESS
+</code></pre></div></div>
+
+<ul>
+  <li>IP has changed (it will send an email):</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+ cd '/var/lib/jenkins/jobs/IP Change fetch/workspace'
++ python ip_change.py
+* Requesting current ip with 'icanhazip'
+* Request took 0 seconds 
+* IP has changed from 86.185.224.178 to 86.185.119.138
+Build step 'Execute shell' marked build as failure
+Sending e-mails to: &lt;your-email&gt;@&lt;your-domain&gt;
+Finished: FAILURE
+</code></pre></div></div>
+
+<h2 id="conclussions">Conclussions</h2>
+
+<p>There are also a lot of useful things you can run this way like daily backups or server health-checks.</p>
+
+<p>So if you already have a Jenkins server for your common CI tasks, why are you not using it for job schedulling too ?</p>
+
+  </div><a class="u-url" href="/blog/2014/09/08/background-tasks-in-jenkins-ipchange/" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Coconauts</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Coconauts</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Hardware and software projects</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

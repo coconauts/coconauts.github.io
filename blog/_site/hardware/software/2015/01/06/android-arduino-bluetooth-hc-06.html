@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Communicating Android and Arduino via Bluetooth using HC-06 Module | Coconauts</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Communicating Android and Arduino via Bluetooth using HC-06 Module" />
+<meta name="author" content="Coconauts" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Communicating Android and Arduino via Bluetooth using HC-06 Module" />
+<meta property="og:description" content="Communicating Android and Arduino via Bluetooth using HC-06 Module" />
+<link rel="canonical" href="http://0.0.0.0:4000/hardware/software/2015/01/06/android-arduino-bluetooth-hc-06.html" />
+<meta property="og:url" content="http://0.0.0.0:4000/hardware/software/2015/01/06/android-arduino-bluetooth-hc-06.html" />
+<meta property="og:site_name" content="Coconauts" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2015-01-06T22:00:43+01:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Communicating Android and Arduino via Bluetooth using HC-06 Module" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Coconauts"},"dateModified":"2015-01-06T22:00:43+01:00","datePublished":"2015-01-06T22:00:43+01:00","description":"Communicating Android and Arduino via Bluetooth using HC-06 Module","headline":"Communicating Android and Arduino via Bluetooth using HC-06 Module","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/hardware/software/2015/01/06/android-arduino-bluetooth-hc-06.html"},"url":"http://0.0.0.0:4000/hardware/software/2015/01/06/android-arduino-bluetooth-hc-06.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/feed.xml" title="Coconauts" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Coconauts</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/projects.html">Projects</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Communicating Android and Arduino via Bluetooth using HC-06 Module</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2015-01-06T22:00:43+01:00" itemprop="datePublished">Jan 6, 2015
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Are you sad that Santa didn’t get you that phone-controlled quadcopter 
+that you wanted for Christmas?</p>
+
+<p>How about building your own?</p>
+
+<p>It is not as difficult as it seems, 
+in Coconauts we will show you how to do it. Or at least, we’ll show you 
+how to get started with building a small Bluetooth controlled device.</p>
+
+<!--more-->
+
+<table class="summary" border="1">
+<tr><th>Description</th><th>Materials</th></tr>
+<tr>
+<td>
+
+  In this tutorial we will create the simplest ever mobile controlled hellicopter. 
+  It will feature an Arduino attached to a motor, that will be listening for speed values
+  over a Bluetooth channel. Depending on the speed value received, our Aduino program
+  will vary the the rotation speed of the motor accordingly.
+  <br />
+  On the other side of the Bluetooth channel, sending the speed values, will be an 
+  Android app, that will feature a graphic interface with a slide to select the desired
+  values.
+
+</td>
+<td>
+
+<ul>
+  <li>A phone (with Android)</li>
+  <li>An Arduino (any model: UNO, mini, Lylipad, ATMega, etc)</li>
+  <li>A DC Motor</li>
+  <li>A Bluetooth module (we will use HC-06 in this example)</li>
+</ul>
+
+<strong> Links </strong><br />
+
+<ul>
+  <li><a href="https://github.com/coconauts/Arduino-Android-Bluetooth">Source</a></li>
+  <li><a href="https://play.google.com/store/apps/details?id=net.coconauts.quadcopter">Play store</a></li>
+</ul>
+
+<strong> Difficulty </strong>
+
+<div class="rating-2"></div>
+
+</td>
+</tr>
+</table>
+<p><br /></p>
+
+<p>Here is a video demostrating the usage of the whole setup:</p>
+
+<iframe width="100%" height="450" src="//www.youtube.com/embed/B-lNE8wwka4" frameborder="0" allowfullscreen=""></iframe>
+
+<h3 id="schema">Schema</h3>
+
+<p>First of all, connect your Arduino to your DC motor and the HC-06 module as indicated by the schema.</p>
+
+<p>Only 3 digital pins are required in this simple project. 
+Pins for the DC motor are exchangeable, but do not mix TX and RX for the Bluetooth module.</p>
+
+<p><img src="/images/posts/quadcopter-hc06/schema.png" /></p>
+
+<h3 id="arduino-code">Arduino code</h3>
+
+<p>Then, upload the following code to your Arduino (also available 
+<a href="https://github.com/coconauts/Arduino-Android-Bluetooth/blob/master/arduino/arduino.ino">here</a>).</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#include &lt;SoftwareSerial.h&gt;
+ 
+SoftwareSerial bluetooth(10, 11); // TX, RX
+
+#define MAX_BUFFER 4
+ 
+int motor = 9;    
+int speed = 0;
+char data;
+char* buffer;
+boolean receiving = false;
+int pos;
+
+void setup()  { 
+  bluetooth.begin(9600);
+  bluetooth.println("Bluetooth On");
+  pinMode(motor, OUTPUT);
+  
+   buffer = new char[MAX_BUFFER];
+} 
+
+void loop()  { 
+  
+   if (bluetooth.available()){
+        
+        data=bluetooth.read();
+        
+         switch(data) {
+            //3: End of transmission
+            case 3:  receiving = false;  
+                    speed = buffer2int(buffer);
+                               
+                    bluetooth.print("Received: ");
+                    bluetooth.print(buffer);
+                    bluetooth.print(", Speed: ");
+                    bluetooth.println(speed);
+
+                     break; //end message
+            default: if (receiving == false) resetData();
+                    buffer[pos] = data;
+                    pos++;
+                     receiving = true;          
+          }
+   }  
+  analogWrite(motor, speed); 
+  delay(10);                            
+}
+
+ void resetData(){
+   for (int i=0; i&lt;=pos; i++) buffer[i] = 0; 
+   pos = 0;
+}
+    
+int buffer2int(char* buffer){
+  int i;
+  sscanf(buffer, "%d", &amp;i);
+  return i;
+  
+}
+</code></pre></div></div>
+
+<p>We are using the <a href="http://arduino.cc/en/pmwiki.php?n=Reference/Serial">SoftwareSerial</a> library for receiving Bluetooth messages.
+On the <code class="language-plaintext highlighter-rouge">setup</code> we hook it to the serial connection using a 9600 baud rate, and then we can read and write from it in a file-handle fashion.</p>
+
+<p>The code inside the loop will read the data coming from Bluetooth 
+one character at a time, and it will append all received characters to a string buffer,
+until we reach EOT (End Of Transmission, ASCII character number 3).</p>
+
+<p>Then the numeric value of the string will be converted using <a href="http://www.cplusplus.com/reference/cstdio/sscanf/">sscanf</a>
+and passed to the motor’s pin as a analog value using <a href="http://arduino.cc/en/pmwiki.php?n=Reference/analogWrite">analogWrite</a>.</p>
+
+<p>However, when you first run this code, it will keep waiting until the other end of the 
+transmission is connected. If you are you are using a Bluetooth board equipped with a LED,
+like this one:</p>
+
+<p><img src="/images/posts/quadcopter-hc06/hc06.jpg" /></p>
+
+<p>then the LED will start blinking (that means is not connected yet). So lets fix this.</p>
+
+<h3 id="connecting-bluetooth-to-android">Connecting Bluetooth to Android</h3>
+
+<p>Before you start toying with the Android app, you first need to connect your Bluetooth device and your Android.</p>
+
+<p>In order to do so, and test that your Bluetooth module is working properly, 
+go to the Bluetooth manager screen in your Android device, and enable it if it’s not enabled.</p>
+
+<p>If you now search for devices, you should see our friend HC-06. click on it and follow the steps until it gets paired.</p>
+
+<h3 id="android-app">Android app</h3>
+
+<p>Now is time to run the Android app. Our code is making use of the very known BluetoothService class
+from <a href="http://developer.android.com/samples/index.html">Bluetooth chat example</a>, with a few tiny modifications
+to allow HC-06 and EOT ending character.</p>
+
+<p>The full code for the Android app is available <a href="https://github.com/coconauts/Arduino-Android-Bluetooth/tree/master/android">here</a>. If you feel brave enough, you can import our app from gradle, build and upload
+the app to your phone, or you can cheat and directly grab a version we conveniently uploaded to the <a href="https://play.google.com/store/apps/details?id=net.coconauts.quadcopter">Play Store</a>.</p>
+
+<p>The moment you open the app, a Bluetooh connection shoud be stablished
+with the paired HC-06 (at this point, if your HC-06 module is LED-equipped, it should not blink anymore). If you loose the connection
+there is a button for reconnecting on the interface.</p>
+
+<p>Congratulations, your Bluetooth app is set. 
+You can now togge the slider on the android app, and inmediately
+see how the motor rotates at different speeds, as shown in the video.</p>
+
+
+  </div><a class="u-url" href="/hardware/software/2015/01/06/android-arduino-bluetooth-hc-06.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Coconauts</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Coconauts</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/coconauts"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">coconauts</span></a></li><li><a href="https://www.twitter.com/coconauts"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">coconauts</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Coconauts is a team of geeks building cool stuff, like games, web and mobile apps, or hardware projects. We also post tech tutorials regularly on our blog.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

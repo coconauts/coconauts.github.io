@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2025-07-30T13:26:59+02:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Coconauts</title><subtitle>Coconauts is a team of geeks building cool stuff, like games, web and mobile apps, or hardware projects. We also post tech tutorials regularly on our blog.</subtitle><author><name>Coconauts</name></author><entry><title type="html">Hiring Demystified</title><link href="http://0.0.0.0:4000/software/2020/11/25/hiring-demystified.html" rel="alternate" type="text/html" title="Hiring Demystified" /><published>2020-11-25T13:00:14+01:00</published><updated>2020-11-25T13:00:14+01:00</updated><id>http://0.0.0.0:4000/software/2020/11/25/hiring-demystified</id><content type="html" xml:base="http://0.0.0.0:4000/software/2020/11/25/hiring-demystified.html"><![CDATA[<p>It’s not secret that the hardest problems in computer science are cache invalidation and naming things… oh, and hiring. In our industry we’ve developed a culture and a mysticism around hiring, with certain rituals and practices which are often so detached from reality that you see numerous jokes and memes about the subject.</p>
+
+<p>Hiring is a difficult problem, yet important to get right. Many developers are faced with the challenge of hiring other team members, without much clue into how to proceed, and end up just copying the well known rituals without stopping to analyse their effectiveness or implications. Often, this results in hindering both companies and candidates, especially those of under represented demographics.</p>
+
+<p>In this talk I gave at PyconES2020, I share my experiences and personal opinions both as a candidate and as an interviewer, analyze the implications of popular hiring tactics, and discuss what I consider effective ones, in order to hire the right developers for your team with minimum hassle for both sides.</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UBLTaQ_tRl4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>]]></content><author><name>Mar Bartolome</name></author><category term="software" /><category term="speaking" /><category term="talks" /><category term="hiring" /><category term="companies" /><category term="pycon" /><summary type="html"><![CDATA[A talk at pyconES 2020 about engineering hiring practices]]></summary></entry><entry><title type="html">Microservices: the small print</title><link href="http://0.0.0.0:4000/software/2020/11/18/microservices-the-small-print.html" rel="alternate" type="text/html" title="Microservices: the small print" /><published>2020-11-18T13:00:14+01:00</published><updated>2020-11-18T13:00:14+01:00</updated><id>http://0.0.0.0:4000/software/2020/11/18/microservices-the-small-print</id><content type="html" xml:base="http://0.0.0.0:4000/software/2020/11/18/microservices-the-small-print.html"><![CDATA[<p>Microservices get a lot of sales talk, which leads many teams to adopt them eagerly. However, people are not always aware that they come at a price.</p>
+
+<p>In this talk I gave at PyconES 2018 I discuss the basic theory around microservices architectures, and go over the common pain points that they bring, and how they often get you in the opposite direction than you intended with them.</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ch0A_lcaPG0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>]]></content><author><name>Mar Bartolome</name></author><category term="software" /><category term="microservices" /><category term="speaking" /><category term="talks" /><category term="pycon" /><summary type="html"><![CDATA[A talk at pyconES 2018 about the hidden cost of microservices]]></summary></entry><entry><title type="html">Paint walls in VR</title><link href="http://0.0.0.0:4000/software/2019/01/19/paint-rooms-vr.html" rel="alternate" type="text/html" title="Paint walls in VR" /><published>2019-01-19T02:00:14+01:00</published><updated>2019-01-19T02:00:14+01:00</updated><id>http://0.0.0.0:4000/software/2019/01/19/paint-rooms-vr</id><content type="html" xml:base="http://0.0.0.0:4000/software/2019/01/19/paint-rooms-vr.html"><![CDATA[<p>Have you ever wanted to paint a room but did not decide which color to choose ?</p>
+
+<p>We found an easy and cool solution, all you need is a phone (mainly an Android, but if you IOS, just replace the apps and locations with the IOS equivalent) and an image editor to paint your room in Virtual Reality.</p>
+
+<p><img src="/images/posts/2019-01-19-paint-rooms-vr/before.vr.jpg" alt="before" />
+<img src="/images/posts/2019-01-19-paint-rooms-vr/after.vr.jpg" alt="after" /></p>
+
+<!--more-->
+
+<h2 id="create-your-360-picture">Create your 360 picture</h2>
+
+<p>First, download the <a href="https://play.google.com/store/apps/details?id=com.google.samples.apps.cardboarddemo">Google cardboard</a> app for Android.</p>
+
+<p>Open the app, (after a few configuration steps), and go to <code class="language-plaintext highlighter-rouge">cardboard camera</code> and take the picture by rotating the phone slowly.</p>
+
+<p>The picture will be stored in <code class="language-plaintext highlighter-rouge">sdcard/DCIM/CarboardCamera</code> with a .vr.jpg extension. Copy that file into your computer.</p>
+
+<p><img src="/images/posts/2019-01-19-paint-rooms-vr/before.vr.jpg" alt="before" /></p>
+
+<h2 id="export-_left-and-_right-images">Export <code class="language-plaintext highlighter-rouge">_left</code> and <code class="language-plaintext highlighter-rouge">_right</code> images</h2>
+
+<p>Although the image taken by the cardboard camera looks like a normal jpg image, it contains some metadata that allows the app to support VR.</p>
+
+<p>Because of this, we need to export the .vr.jpg into two separate images using https://cctoolkit.vectorcult.com/#, this step is key to the whole process.</p>
+
+<p>Upload your picture into that website and it will get splitted into two (one for each eye). Right click on the images and save them on your computer with <code class="language-plaintext highlighter-rouge">_left</code> and <code class="language-plaintext highlighter-rouge">_right</code> names.</p>
+
+<p><img src="/images/posts/2019-01-19-paint-rooms-vr/split.png" alt="split" /></p>
+
+<h2 id="editing-the-vr-picture">Editing the VR picture</h2>
+
+<p>We used GIMP to edit the image, but you can use photoshop or any other image editor, just open both <code class="language-plaintext highlighter-rouge">_left</code> and <code class="language-plaintext highlighter-rouge">_right</code> images you exported before with it and you will see a plain wide image.</p>
+
+<p><img src="/images/posts/2019-01-19-paint-rooms-vr/gimp.png" alt="gimp" /></p>
+
+<p>Now you can edit the images in any way you want, what I did was to use the different select tools to select just (and only) the walls on the room, then move it to another layer (for easier management) and then used the <code class="language-plaintext highlighter-rouge">colourise</code> tool to change the color.</p>
+
+<p><img src="/images/posts/2019-01-19-paint-rooms-vr/colourise.png" alt="colourise" /></p>
+
+<p>You need to repeat this operation for both images. Once you’re done, save both images and be ready to combine them together again.</p>
+
+<h2 id="generate-new-vr-image">Generate new VR image</h2>
+
+<p>Go back to the same website as before https://cctoolkit.vectorcult.com/# and join both images this time, remember to keep the <code class="language-plaintext highlighter-rouge">_left</code> and <code class="language-plaintext highlighter-rouge">_right</code> names before uploading.</p>
+
+<p>This will generate a new .vr.jpg page. Copy the image back on <code class="language-plaintext highlighter-rouge">DCIM/CardboardCamera</code>. If you did everything correctly, you will see both pictures (the new one and the old one) on the cardboard. If you upload a non-vr image, it won’t show on the app.</p>
+
+<p><img src="/images/posts/2019-01-19-paint-rooms-vr/cardboard.png" alt="cardboard" /></p>
+
+<p>Click on the image and you will see it on VR. That’s it, enjoy.</p>
+
+<p><img src="/images/posts/2019-01-19-paint-rooms-vr/vr.png" alt="vr" /></p>]]></content><author><name>Javier Rengel</name></author><category term="software" /><category term="vr" /><summary type="html"><![CDATA[Paint room walls in virtual reality]]></summary></entry><entry><title type="html">Escaperoom x unlock</title><link href="http://0.0.0.0:4000/games/2018/09/07/escape-room-demo.html" rel="alternate" type="text/html" title="Escaperoom x unlock" /><published>2018-09-07T16:00:14+02:00</published><updated>2018-09-07T16:00:14+02:00</updated><id>http://0.0.0.0:4000/games/2018/09/07/escape-room-demo</id><content type="html" xml:base="http://0.0.0.0:4000/games/2018/09/07/escape-room-demo.html"><![CDATA[<p>A year ago we showed you a <a href="">generative escaperoom</a> game on Unity3D. Based on that formula, we decided to create some manually-crafted levels to make the game even better. So we decided to copy the first level design of a card based escaperoom game called <a href="https://boardgamegeek.com/boardgame/213460/unlock-escape-adventures">Unlock</a>. And the result was as good as we expected.</p>
+
+<p><img src="/images/posts/2018-09-07-escape-room-demo/unlock-cards.jpg" alt="unlock" /></p>
+
+<p><img src="/images/posts/2018-09-07-escape-room-demo/overview.png" alt="uniy3d-design" /></p>
+
+<p>The game is not yet finished, but because we are going to move to a different project, we thought about showing you a demo of what we’ve built so far.</p>
+
+<!--more-->
+
+<h2 id="demo">Demo</h2>
+
+<p>This is a first look of the mechanics of the game</p>
+
+<p><img src="/images/posts/2018-09-07-escape-room-demo/level1.gif" alt="demo" /></p>
+
+<p>You can play this demo in here http://unity3d.coconauts.net/escaperoom-unlock/. Remember, it is not finished so it could be buggy and you will not be able to finish the level.</p>
+
+<h2 id="level-design">Level design</h2>
+
+<p>We copied the gameplay of the first level of the unlock game, with the same clues, same objects, similar text entries  and even the similar wall textures.</p>
+
+<p><img src="/images/posts/2018-09-07-escape-room-demo/main-room.png" alt="main-room" /></p>
+
+<h2 id="the-inventory-system">The inventory system</h2>
+
+<p>We added to this game a new inventory wheel system, where you pick items and you use them on any other object in the scene using the right click, showing all the items you have on a wheel.</p>
+
+<p><img src="/images/posts/2018-09-07-escape-room-demo/inventory.gif" alt="uniy3d-design" /></p>
+
+<p>But of course, different items will have a different effect on the item you’re trying to use it on.</p>
+
+<h2 id="conclussions">Conclussions</h2>
+
+<p>It takes a lot to generate the 3d models, implement the logic and replace the card-only mechanics into a 3D videogame; but the result is worth it.</p>
+
+<p>I think, (now that we have proved the concept with a working level design) we could start building our own  levels, adding more interactive puzzles (like the laptop one in our previous game).</p>
+
+<p>However, we will pause this project for a while to start working on different stuff, but let us know if you have any interest on playing a game like this at some point in the future.</p>
+
+<p>What do you think about the game?
+Your feedback is really valuable to us! so please let us know on the comments or <a href="http://twitter.com/coconauts">on twitter</a>.</p>]]></content><author><name>Javier Rengel</name></author><category term="games" /><category term="unity3d" /><category term="escaperoom" /><category term="unlock" /><summary type="html"><![CDATA[Escaperoom game on unity3d based on unlock! level design]]></summary></entry><entry><title type="html">Coconauts 2017 Retrospective</title><link href="http://0.0.0.0:4000/general/2018/01/18/coconauts-2017-retrospective.html" rel="alternate" type="text/html" title="Coconauts 2017 Retrospective" /><published>2018-01-18T20:14:46+01:00</published><updated>2018-01-18T20:14:46+01:00</updated><id>http://0.0.0.0:4000/general/2018/01/18/coconauts-2017-retrospective</id><content type="html" xml:base="http://0.0.0.0:4000/general/2018/01/18/coconauts-2017-retrospective.html"><![CDATA[<p>It’s the fourth year we’re doing this, my, time flies!</p>
+
+<p>2017 was an incredibly packed year for us at a personal level, and the fun is still to continue in 2018. We still managed to scratch a bit of time for Coconauts, with highlights being:</p>
+
+<ul>
+  <li>The start of a <a href="http://coconauts.net/blog/categories/podcast/">podcast</a>. 
+We only recorded three episodes, but each of them managed a listener count of over 100 on
+<a href="https://www.ivoox.com/podcast-coconauts_sq_f1385224_1.html">ivoox</a> alone.</li>
+  <li>We started setting up <a href="https://coconauts.net/blog/tags/hackday/">hackdays</a>
+during the local bank holidays, which brought us: 
+<a href="https://coconauts.net/blog/2017/05/29/bank-holiday-hackday-escape-room-on-unity3d/">a escape room game</a> 
+and <a href="https://coconauts.net/blog/2017/08/29/bank-holiday-hackday-algorithmic-trading/">algorithmic trading experiments</a>.</li>
+  <li>On the hardware front, <a href="https://coconauts.net/blog/tags/energenie/">energenies</a> 
+have been our favorite toys. Worthy of mention are also a 
+<a href="https://coconauts.net/blog/2017/11/27/live-picture/">live picture frame</a> (featured on 
+<a href="http://www.instructables.com/id/Live-Picture-Frame-With-Raspberry-PI/">Instructables</a>) and a 
+<a href="https://coconauts.net/blog/2017/02/21/stair-lights/">smart LED-illuminated staircase</a>.</li>
+  <li>Gamedev didn’t stop this year either. We did a bit of fiddling with 
+<a href="https://coconauts.net/projects/rps/">Phaser</a> and 
+<a href="https://coconauts.net/blog/2017/10/30/proc-websockets/">Cocos2D</a>, 
+but in the end we keep coming back to Unity3D for anything serious. 
+Aside from the already mentioned <a href="https://coconauts.net/projects/escaperoom/">Escape Room</a>,
+ we’ve done a <a href="https://coconauts.net/projects/spaceroads/">Skyroads remake</a>.</li>
+  <li>What about purely software projects? Two little handy utilities: a 
+<a href="https://coconauts.net/projects/github-pr-tracker/">Github PR tracker</a> and an 
+<a href="https://coconauts.net/projects/infinify/">infinite playlist generator for Spotify</a>.</li>
+  <li>And last but not least: we’ve broken a record of blogposts this year! 
+with 21 of them, almost two per month.</li>
+</ul>
+
+<p>Hoping all of our readers enjoyed following us during 2017. It’s still not
+too late to whish everyone a happy 2018, and stay tuned for more exciting 
+stuff to happen over at Coconauts!</p>]]></content><author><name>Mar Bartolome</name></author><category term="general" /><category term="coconauts" /><category term="retrospective" /><summary type="html"><![CDATA[A look back at 2017, and plans for the year ahead]]></summary></entry><entry><title type="html">Live picture frame</title><link href="http://0.0.0.0:4000/hardware/2017/11/27/live-picture.html" rel="alternate" type="text/html" title="Live picture frame" /><published>2017-11-27T15:14:46+01:00</published><updated>2017-11-27T15:14:46+01:00</updated><id>http://0.0.0.0:4000/hardware/2017/11/27/live-picture</id><content type="html" xml:base="http://0.0.0.0:4000/hardware/2017/11/27/live-picture.html"><![CDATA[<p>I recently moved from UK back to Spain to work remotely, and since then, I’ve been curious about how the weather is there, specially when talking with people on the other country. Is it raining today ? Is the sun gone already ?</p>
+
+<p>To address that problem, I found a few live videos/webcams about london like <a href="http://www.earthtv.com/en/webcam/london-millennium-bridge">earthtv</a> or <a href="https://www.youtube.com/watch?v=SMOb9d9s_mI">London Tower Bridge</a> so I kept those videos on one of the tabs of my browser.</p>
+
+<p>But, wouldn’t be cool to have it on a separate picture frame, always  there, just like a normal picture, but live.</p>
+
+<p><img src="/images/posts/2017-11-27-live-picture/picture.gif" alt="picture-gif" /></p>
+
+<p>That’s why I built a slim picture frame from old recycled components. To see the Tower Bridge at day and at night.</p>
+
+<p><img src="/images/posts/2017-11-27-live-picture/picture-day.jpg" alt="picture-day" /></p>
+
+<p><img src="/images/posts/2017-11-27-live-picture/picture-night.jpg" alt="picture-night" /></p>
+
+<!--more-->
+
+<h2 id="materials">Materials</h2>
+
+<p>These are the materials I used to create the live picture. All these items were already on my inventory:</p>
+
+<ul>
+  <li>Old ultra-thin LCD screen from a broken laptop (10 years old)</li>
+  <li>12v LCD controller board with VGA output</li>
+  <li>Raspberry PI Zero</li>
+  <li>HDMI to VGA adaptor</li>
+  <li>12v to 5v converter regulator</li>
+  <li>Ikea <a href="http://www.ikea.com/us/en/catalog/products/00297440/">KNOPPANG</a> picture frame for A4</li>
+  <li>Sonoff wireless switch (optional)</li>
+  <li>VGA cable, micro usb cable, 12v splitter cable</li>
+</ul>
+
+<h2 id="adjusting-the-picture-frame">Adjusting the picture frame</h2>
+
+<p>The Ikea picture frame was made for A4 pictures, however, my 15’’ LCD screen is slightly bigger than that, therefore we need to make some adjustments, first, increasing the hole in the white inner frame to 15’’.</p>
+
+<p>Then, cutting the back of the frame to the same size</p>
+
+<p><img src="/images/posts/2017-11-27-live-picture/cutting-board.jpg" alt="cutting-board" /></p>
+
+<p>Everything should fit together, so you should be able to see all the screen inside the inner frame</p>
+
+<p><img src="/images/posts/2017-11-27-live-picture/picture-screen.jpg" alt="picture-screen" /></p>
+
+<h2 id="lcd-screen">LCD screen</h2>
+
+<p>Since a few years ago, I had an ultra thin LCD screen from an old broken laptop. After finding and using a controller board, I’ve been able to use it as extra screen for my desktop computer sugin a VGA connection.</p>
+
+<p><img src="/images/posts/2017-11-27-live-picture/screen-front.jpg" alt="screen-front" /></p>
+
+<p>Controller boards are specific to the LCD screen, you need to use an specific model for the serial number of your screen, you can find it on the back. Then it’s a matter of searching ebay/aliexpress for a controller board listing compatibility with your screen model.</p>
+
+<p><img src="/images/posts/2017-11-27-live-picture/controller-board.png" alt="controller-board" /></p>
+
+<p>So I decided to recycle this screen now to create the canvas, because it’s thin and lightweight.</p>
+
+<p>I removed the front case, but left the back side to protect the screen, isolate the components and glue the cables and raspberry pi to it.</p>
+
+<p><img src="/images/posts/2017-11-27-live-picture/assembling-back.jpg" alt="assembling-back" /></p>
+
+<p>The Raspberry PI zero, glued to the back of the screen, is powered by the same power adaptor that powers the LCD screen, using a 12v to 5v conversor. So we don’t need another extra cable connected into the screen. This is how it looks from the back.</p>
+
+<p><img src="/images/posts/2017-11-27-live-picture/back.jpg" alt="back" /></p>
+
+<h2 id="wall-mounting">Wall mounting</h2>
+
+<p>After everything has been assembled together, and tested, we’re ready to hang it into the wall. For this I’ve just added two L shape hooks into the wall, and another two round hooks screwed into the plastic back of the screen.</p>
+
+<p><img src="/images/posts/2017-11-27-live-picture/wall-hooks.jpg" alt="wall-hooks" /></p>
+
+<p>After hanging it to the wall, I connected the 12v cable, and try to hide it using white tape.</p>
+
+<p><img src="/images/posts/2017-11-27-live-picture/picture-wall.jpg" alt="picture-wall" /></p>
+
+<h2 id="automatically-schedule-screen">Automatically schedule screen</h2>
+
+<p>I’d like to schedule the frame, so it runs from 10AM to 7PM on weekdays, my working hours, so I can see London while I work remotely.</p>
+
+<p>My first approach was to add some scripts on the Raspberry PI (cronjobs) to automatically switch ON/OFF the video output  using <code class="language-plaintext highlighter-rouge">tvservice --off</code> or <code class="language-plaintext highlighter-rouge">xset dpms force off</code> however it didn’t work pretty well in my case, because my LCD controller was not going into standby after turning off the HDMI signal.</p>
+
+<p>So I decided to use a cheap wireless smart switch I’ve been using for a while, which can be scheduled and controlled by the phone, called <a href="http://sonoff.itead.cc/en/">Sonoff</a>. You could be using an <a href="https://coconauts.net/blog/2016/04/15/energinie-and-raspberry-pi-setup/">Energenie</a>, Xiaomi or something similar if you like.</p>
+
+<p><img src="/images/posts/2017-11-27-live-picture/sonoff.png" alt="sonoff" /></p>
+
+<p>This device needs to be connected in between your power cable, then you can configure it via the phone app.</p>
+
+<p><img src="/images/posts/2017-11-27-live-picture/sonoff-cable.jpg" alt="sonoff" /></p>
+
+<p><img src="/images/posts/2017-11-27-live-picture/sonoff-menu.jpeg" alt="sonoff" /></p>
+
+<p>Then you can add the schedule so the Sonoff, and the Raspberry PI and the screen will be turned ON and OFF automatically.</p>
+
+<p><img src="/images/posts/2017-11-27-live-picture/sonoff-schedule.jpeg" alt="sonoff" /></p>
+
+<h2 id="software">Software</h2>
+
+<p>Because I have now a Raspberry PI powered LCD screen hanging in the wall, I can pretty much display whatever I want. Like for example:</p>
+
+<ul>
+  <li>
+    <p>Web page using chrome <code class="language-plaintext highlighter-rouge">chromium-browser --kiosk $url</code></p>
+  </li>
+  <li>
+    <p>Video using omxplayer <code class="language-plaintext highlighter-rouge">omxplayer video.mp4</code></p>
+  </li>
+  <li>
+    <p>Use Kodi to display videos or other plugins.</p>
+  </li>
+  <li>
+    <p>Youtube, twitch live video using the Livestreamer</p>
+  </li>
+  <li>
+    <p>etc.</p>
+  </li>
+</ul>
+
+<p><img src="/images/posts/2017-11-27-live-picture/raspberry.jpg" alt="raspberry" /></p>
+
+<h3 id="display-live-video-using-livestreamer">Display live video using livestreamer</h3>
+
+<p>For this project, I chose to display the London Tower Bridge from a live stream in youtube.</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/SMOb9d9s_mI" frameborder="0"></iframe>
+
+<p>This can be easily achieved using <a href="https://github.com/chrippa/livestreamer">livestreamer</a> open source app, which allow us to display any live content from Youtube, twitch, livestream, dailymotion, etc… into a local video player, without using a web browser.</p>
+
+<p>This is the command I’m using to display a Youtube link using omxplayer on fullscreen.</p>
+
+<p><code class="language-plaintext highlighter-rouge">livestreamer $youtube_url 720p -n -p "omxplayer --no-osd --win '0 0 1280 800' "</code></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">$youtube_url</code> is a variable with the url of the livestream on youtube</li>
+  <li><code class="language-plaintext highlighter-rouge">720</code> is to select the resolution of the video, you can also use best or worst.</li>
+  <li><code class="language-plaintext highlighter-rouge">-n</code> or <code class="language-plaintext highlighter-rouge">--fifo</code> Make the player read the stream through a named pipe instead of the stdin pipe</li>
+  <li><code class="language-plaintext highlighter-rouge">-p</code> player to use</li>
+  <li><code class="language-plaintext highlighter-rouge">--no-osd</code> hide the UI from omxplayer</li>
+  <li><code class="language-plaintext highlighter-rouge">--win</code> display video on full screen (my screen resolution) on omxplayer</li>
+</ul>
+
+<p><a href="https://github.com/popcornmix/omxplayer">Omxplayer</a> is the best open source video player on Raspberry PI, you could try using VLC, but it will not work or display anything because of the lack of native hardware acceleration on Raspberry PI.</p>
+
+<h3 id="script-to-display-on-startup">Script to display on startup</h3>
+
+<p>I wanted to automatically run the video on startup, without any manual interaction.</p>
+
+<p>There are a few ways to do it, but the best I found is using the <code class="language-plaintext highlighter-rouge">autostart</code> script located in <code class="language-plaintext highlighter-rouge">/home/pi/.config/lxsession/LXDE-pi/autostart</code>. On this script, you need to add <code class="language-plaintext highlighter-rouge">@</code> before every command.</p>
+
+<p>If you want to keep the display ON, you’ll need to add these lines to prevent the screen going OFF after a few minutes.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@xset s off
+@xset -dpms
+@xset s noblank
+</code></pre></div></div>
+
+<p>Then you can add the command from before to start the livestream on startup. This is all you need to add into the <code class="language-plaintext highlighter-rouge">/home/pi/.config/lxsession/LXDE-pi/autostart</code> script:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@xset s off
+@xset -dpms
+@xset s noblank
+@livestreamer https://youtu.be/SMOb9d9s_mI 720p -n -p "omxplayer --no-osd --win '0 0 1280 800' "
+</code></pre></div></div>
+
+<h2 id="conclussions-and-improvements">Conclussions and improvements</h2>
+
+<p>This was an easy and cheap project to build, if you have an old screen, or you get a cheap one. The picture frame looks very nice hanging on the wall, and thanks to youtube and livestreamer, we can display any video very easily.</p>
+
+<p>It took me some time to find the best streaming combination on Raspberry PI Zero. I tried using <code class="language-plaintext highlighter-rouge">chromium-browser --kiosk</code> but after sometime the browser was crashing; I tried using VLC to display M3U8 streaming video, but VLC was not efficient enough. Some links did not play on omxplayer, so at the end, I decided to use livestreamer, which works pretty well, and you can use it with other sources too.</p>
+
+<p>I’d like to have a better LCD screen, maybe LED, with a direct HDMI connection and better viewing angle.</p>
+
+<p>You could use the spare 12v connector to add a LED strip on the back of the frame, if you want to have some extra light effect.</p>
+
+<p>Let me know what you think about this project, and if you’ve built your own.</p>]]></content><author><name>Javier Rengel</name></author><category term="hardware" /><category term="raspberry" /><category term="picture" /><category term="live" /><category term="youtube" /><summary type="html"><![CDATA[Live picture frame]]></summary></entry><entry><title type="html">Websocket vs REST</title><link href="http://0.0.0.0:4000/software/2017/11/20/websocket-vs-rest.html" rel="alternate" type="text/html" title="Websocket vs REST" /><published>2017-11-20T15:14:46+01:00</published><updated>2017-11-20T15:14:46+01:00</updated><id>http://0.0.0.0:4000/software/2017/11/20/websocket-vs-rest</id><content type="html" xml:base="http://0.0.0.0:4000/software/2017/11/20/websocket-vs-rest.html"><![CDATA[<p>We, as web backend software developers, have enoguh experience with RESTful APIs for web services, because they are clear, easy to implement, and scalable.</p>
+
+<p>However, websockets are since some time ago becoming a viable alternative
+for communicating between a web browser and a server. But what are good
+usecases for them? Can the replace REST completely?</p>
+
+<p>In this post we’ll take a look at both architectures from their definitions to their implementations, and we will see which one is the best for building the future of web apps.</p>
+
+<!--more-->
+
+<h2 id="what-is-a-rest-api-">What is a REST API ?</h2>
+
+<p>A <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a> API (Representational state transfer, application programming interface) is a simple set of rules for making communication on web applications over the Internet, and probably the most popular at the moment; in contrast with other approaches, like the older WSDL or <a href="https://en.wikipedia.org/wiki/SOAP">SOAP</a> or the more recent <a href="https://en.wikipedia.org/wiki/Protocol_Buffers">Protocol Buffers</a>.</p>
+
+<p>REST leans on the HTTP protocol a uses many of it’s inherent features as part of the API structure.</p>
+
+<h3 id="url-structure">URL structure</h3>
+<p>It defines the URL structure based on “resources” like <code class="language-plaintext highlighter-rouge">/resource/</code> or <code class="language-plaintext highlighter-rouge">/resource/id</code>. For example, if we provide users on our web interface, we might get a list of users if we hit <code class="language-plaintext highlighter-rouge">/user</code> endpoint, or retrieve an specific user by asking for his id <code class="language-plaintext highlighter-rouge">/user/1234</code>. This is in contrast to other approaches like SOAP which use a single endpoint for everything.</p>
+
+<h3 id="http-methods">HTTP methods</h3>
+
+<p>The method defines the action to do on the URL previously mentioned, such as <code class="language-plaintext highlighter-rouge">GET</code>, <code class="language-plaintext highlighter-rouge">POST</code>, <code class="language-plaintext highlighter-rouge">PUT</code> or <code class="language-plaintext highlighter-rouge">DELETE</code>. For example, to get the information for the users, do you <code class="language-plaintext highlighter-rouge">GET /user</code>, this method doesn’t have any other side effect. However, if you want to introduce a new user for your app, you will do <code class="language-plaintext highlighter-rouge">POST /user</code>, etc.</p>
+
+<p><img src="/images/posts/2017-11-20-websocket-vs-rest/rest-example.png" alt="rest-example" /></p>
+
+<h3 id="request-and-response">Request and response</h3>
+
+<p>For every request in HTTP, we always get back a response, even if the connection is unsuccessful, so you know which response is associated with the request you make. Another important part of the response is their response codes like 200 for OK or 404 error for Not found.</p>
+
+<p>Although you can use XML or HTML on REST, the most common format is <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> for both the request and the response. Following our example from earlier, to add a user with some specific data, you might want to do  <code class="language-plaintext highlighter-rouge">POST /user { "name": 'Javier" }</code> and you will get back a response in the same format <code class="language-plaintext highlighter-rouge">{id: 1234, "name": "Javier"}</code> after it gets insterted into database with it’s own unique ID.</p>
+
+<p>The communication is always initialized from the client to the server, which will respond based on the request made. If you want to constantly fetch information (eg: get tweets on your timeline) you can use a technique called polling which consist in constantly make requests (like every 5 seconds or 1 minute) to get the updated data.</p>
+
+<p>Some solutions exist to overcome this, for example webhooks, in which you try to prevent polling by storing a callback url to call after an operation is complete (for example: <a href="https://developer.github.com/v3/repos/hooks/">github webhooks</a> pinging your CI system).</p>
+
+<h2 id="what-is-a-websocket-">What is a Websocket ?</h2>
+
+<blockquote>
+  <p>WebSocket is a computer communications protocol, providing full-duplex communication channels over a single TCP connection. […] The WebSocket protocol enables interaction between a browser and a web server with lower overheads, facilitating real-time data transfer from and to the server. <a href="https://en.wikipedia.org/wiki/WebSocket">Wikipedia</a></p>
+</blockquote>
+
+<p>If you’re familiar with classic unix sockets, it’s basically the same concept, translated to the web world.</p>
+
+<p>Unlike REST, the communication is bidirectional, which means the server can send information to the client directly, as soon as the client creates the connection (called  handshake). For example, a client could query for a feed on tweets, and leave an open channel with the server. The server would then feed the client with new data as soon as it’s available.</p>
+
+<p>This offers some functionality that REST is unable to provide in an easy way.</p>
+
+<p>Because of this, the communication needs to be asynchronous, which needs to be taken into consideration when handling the responses.</p>
+
+<h2 id="differences-between-websockets-and-rest">Differences between Websockets and REST</h2>
+
+<p>The first difference, is that they can’t be compared directly: Websocket is a protocol, while REST is an architectural style. So in terms of comparing them, it would be fairer to compare WS to HTTP in general rather than REST (which which it shares many points regardless)</p>
+
+<p>For the communication, you have resource based URLs and HTTP methods in REST, and for each request, you get a response. On websockets you just send plain string messages with the data you want to the server, and it will translate and process the data, and optionally one or many replies back.</p>
+
+<p><img src="/images/posts/2017-11-20-websocket-vs-rest/protocols.png" alt="protocols" /></p>
+
+<p>Websocket communication is a lot more efficient in terms of message size and speed than HTTP protocol, specially for large, repetitive messages. On HTTP you have to send the headers on every request (minimum of 2 bytes per message after initial request on websockets vs 8KB per request on HTTP) <a href="http://blog.arungupta.me/rest-vs-websocket-comparison-benchmarks/">Full benchmark</a></p>
+
+<p><img src="/images/posts/2017-11-20-websocket-vs-rest/websocket-graph.png" alt="websocket-graph" /></p>
+
+<p>Let’s see an example of an HTTP request vs a websocket request. When using client libraries, they become quite similar for a simple use case.</p>
+
+<h4 id="authenticating-an-user-on-rest">Authenticating an user on REST</h4>
+
+<p>Fetch your user using a POST message with user and password (using <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request">Request</a> )</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var myRequest = new Request('/user', {
+    method: 'POST', 
+    body: '{"name": "myname", "password": "mypassword"}'
+});
+fetch(myRequest).then(function(response) {
+    if(response.status == 200) myUser = response.json();
+    else throw new Error('Something went wrong on api server!');
+})
+</code></pre></div></div>
+
+<h4 id="authenticating-an-user-on-websocket">Authenticating an user on Websocket</h4>
+
+<p>We’ll try to do the same method on Websockets (using [Socket.io]](https://socket.io/docs/client-api/) library)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>socket.emit("auth user", {"name": "myname", "password": "mypassword"})
+
+socket.on("auth user response", function(user) {
+    myUser = user;
+})
+</code></pre></div></div>
+
+<p>The method <code class="language-plaintext highlighter-rouge">.emit</code> sends a JSON from the client to the server. The werver will then reply to that message that will be processed in the client on the <code class="language-plaintext highlighter-rouge">.on</code> method.</p>
+
+<h3 id="a-real-world-example-updating-game-player-data">A real world example: Updating game player data</h3>
+
+<p>If we are building a multiplayer real time game, we will want to update the position of every player on everyone’s game, which means one player (client) will have to send the new position to the server, and every client will have to update this player’s position on their own game instance.</p>
+
+<p><img src="/images/posts/2017-11-20-websocket-vs-rest/websocket-diagram.png" alt="websocket-diagram" /></p>
+
+<p>This request won’t be optimal using REST, specially on a fast paced real time game. The only option is to use the polling technique previously mentioned to fetch the status / position of all the players (or maybe filter by those recently updated) and make changes on them in the game.</p>
+
+<p>But websockets are particularly good on this kind of requests, as the server gets A notification from a client when it changes, the server can then send that status change back to the rest of the clients really fast.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Client side player 1, on move send new position to the server
+function move(position){ 
+    socket.emit("update player", { "position": position }
+}
+// Client side other players, update other players 
+socket.on("update player response", function(player) {
+    otherPlayer.position = player.position; 
+})
+
+//Server side, update player and broadcast
+socket.on('update player', function (data) {
+    //console.log("update player ", data);
+    players[socket.id].position = data; 
+    socket.broadcast.emit('update player', players[socket.id]);
+});
+</code></pre></div></div>
+
+<p>Also, the <code class="language-plaintext highlighter-rouge">.on</code> methods only get triggered when a message is sent from the server, so with no changes, no communication will be performed between client and server.</p>
+
+<p>We used this approach on our latest <a href="http://coconauts.net/blog/2017/10/30/proc-websockets/">videogame prototype</a>.</p>
+
+<h2 id="conclussions">Conclussions</h2>
+
+<p>A full Websocket API can replace a REST api, however it can’t happen the other way around, as websockets offer realtime data stream that can’t be implemented on REST (efficiently).</p>
+
+<p>The asynchronous and undeterministic character of websockets, can lead to race conditions, when you make multiple requests. On the other hand, for every request in REST, you always get a single response.</p>
+
+<p>The Internet at the moment is built on top of HTTP, like for example DNS, load balancing, security or even SEO analytics are not fully compatible with Websockets (yet).</p>
+
+<p>Another big difference is that while Websockets are stateful protocols, which means they create a connection that needs to live in the server until the socket is closed. HTTP connections are stateless, so they could be hitting different servers everytime and still work, which make them easier to scale horizontally.</p>
+
+<p>Implementing a full Websocket API means reinventing similar standards already implemented on REST but with a different protocol, which might not be ideal.</p>
+
+<p>So I’d still recommend to use REST for non real time data, because REST is the most popular architecture at the moment with loads of frameworks and tools, and it doesn’t look like is going to change. But at least, it’s fun to play with alternatives and most importantly, always pick the best tool for the job.</p>
+
+<p>What do you think ? Have you ever tried to make a Websocket API instead of using REST ? let us know in the comments.</p>]]></content><author><name>Javier Rengel</name></author><category term="software" /><category term="rest" /><category term="websocket" /><category term="api" /><summary type="html"><![CDATA[Websocket vs REST api]]></summary></entry><entry><title type="html">Spaceroads demo</title><link href="http://0.0.0.0:4000/games/2017/11/06/spaceroads-demo.html" rel="alternate" type="text/html" title="Spaceroads demo" /><published>2017-11-06T15:14:46+01:00</published><updated>2017-11-06T15:14:46+01:00</updated><id>http://0.0.0.0:4000/games/2017/11/06/spaceroads-demo</id><content type="html" xml:base="http://0.0.0.0:4000/games/2017/11/06/spaceroads-demo.html"><![CDATA[<p>We announced a few months ago we were working on a remake of <a href="http://www.bluemoon.ee/history/skyroads/">Skyroads</a>, a 1993 arcade game, on Unity3D. We called it <a href="http://coconauts.net/blog/2017/07/25/spaceroads/">Spaceroads</a>.</p>
+
+<p>Today we announce we have released a demo version you can play directly on your <a href="http://unity3d.coconauts.net/spaceroads-v10/">browser</a></p>
+
+<p><img src="/images/posts/2017-11-06-spaceroads-demo/v10-gameplay.gif" alt="gameplay" /></p>
+
+<!--more-->
+
+<h2 id="features">Features</h2>
+
+<h3 id="three-adventure-levels">Three adventure levels</h3>
+
+<p>We built the first 3 level of the original Skyroads in our editor, with the same layout, blocks and feels (the color might be different).</p>
+
+<p><img src="/images/posts/2017-11-06-spaceroads-demo/v10-gameplay.png" alt="gameplay" /></p>
+
+<h2 id="level-editor">Level editor</h2>
+
+<p>We built a fully featured 3D editor for the game. You can add different block types, change start point, undo, preview levels or  publish them online.</p>
+
+<p><img src="/images/posts/2017-11-06-spaceroads-demo/v10-editor.gif" alt="gameplay" /></p>
+
+<p>It has everything you need to build levels like in the original skyroads.</p>
+
+<p><img src="/images/posts/2017-11-06-spaceroads-demo/v10-editor.png" alt="editor" /></p>
+
+<p>You can even add effects (burning floor, recharge, speed up/down, etc)</p>
+
+<p><img src="/images/posts/2017-11-06-spaceroads-demo/v10-editor-effects.png" alt="effects" /></p>
+
+<p>Or color to the blocks</p>
+
+<p><img src="/images/posts/2017-11-06-spaceroads-demo/v10-color.png" alt="color" /></p>
+
+<p>Note: Saving levels or publishing online is built
+but not supported on the demo version</p>
+
+<h2 id="multiverse">Multiverse</h2>
+
+<p>Multiverse is not available on the demo, but this feature will allow players to list their built levels, and levels available online.</p>
+
+<p><img src="/images/posts/2017-11-06-spaceroads-demo/v10-multiverse.png" alt="multiverse" /></p>
+
+<p><a href="http://unity3d.coconauts.net/spaceroads-v10/">This version</a>
+ is not complete and it can be a bit buggy, but we want you to test it and give us feedback before we continue with its development. So let us know what you think in the comments.</p>
+
+<p><img src="/images/posts/2017-11-06-spaceroads-demo/v10-main-menu.png" alt="spaceroads" /></p>]]></content><author><name>Javier Rengel</name></author><category term="games" /><category term="unity3d" /><category term="spaceroads" /><category term="demo" /><summary type="html"><![CDATA[Spaceroads demo, skyroads remake on Unity3d]]></summary></entry><entry><title type="html">Procedurally generated engine with websockets</title><link href="http://0.0.0.0:4000/games/2017/10/30/proc-websockets.html" rel="alternate" type="text/html" title="Procedurally generated engine with websockets" /><published>2017-10-30T13:23:46+01:00</published><updated>2017-10-30T13:23:46+01:00</updated><id>http://0.0.0.0:4000/games/2017/10/30/proc-websockets</id><content type="html" xml:base="http://0.0.0.0:4000/games/2017/10/30/proc-websockets.html"><![CDATA[<p>We have been working for some time on an engine for cocos2d for 
+persistent procedurally generated 2D worlds, for building a few ideas based on this concept, like a Zelda-like RPG multiplayer game.</p>
+
+<p><img src="/images/posts/2017-10-30-proc-websockets/sector-cocos.png" alt="screenshot" /></p>
+
+<p>The engine is built in NodeJS, and the server-client communication is fully implemented with websockets (using Socket.io), cocos2d in the frontend and built together with docker.</p>
+
+<h2 id="engine-features">Engine features</h2>
+
+<ul>
+  <li>The client will only render the sectors around you, not the whole world.</li>
+  <li>When the player discovers a new sector, the server will populate that sector (new discovered sectors apperars brighter to the user)</li>
+  <li>The currenct sector will appear as red</li>
+  <li>Supports multiplayer (you can see other players next to you)</li>
+  <li>Random name generator for players</li>
+  <li>Move the player using the keyboard, the camera will follow.</li>
+</ul>
+
+<p><img src="/images/posts/2017-10-30-proc-websockets/sector-cocos-description.png" alt="description" /></p>
+
+<h2 id="try-it-out-docker">Try it out (docker)</h2>
+
+<p>If you want to use it for your own game, You can find the code on the repo https://github.com/rephus/proc-cocos and share your creation in the comments.</p>
+
+<p>so all you need to run it is to install docker and then <code class="language-plaintext highlighter-rouge">docker-compose up</code>.</p>
+
+<p>Open the client on a browser in http://localhost:8000</p>
+
+<p>We may use this engine eventually to build our own game, stay tuned for more details.</p>]]></content><author><name>Javier Rengel</name></author><category term="games" /><category term="websockets" /><category term="games" /><category term="nodejs" /><category term="2d" /><category term="html5" /><category term="cocos2d" /><summary type="html"><![CDATA[Procedurally generated engine with websockets]]></summary></entry><entry><title type="html">Infinify service</title><link href="http://0.0.0.0:4000/software/2017/10/16/infinify-service.html" rel="alternate" type="text/html" title="Infinify service" /><published>2017-10-16T16:57:46+02:00</published><updated>2017-10-16T16:57:46+02:00</updated><id>http://0.0.0.0:4000/software/2017/10/16/infinify-service</id><content type="html" xml:base="http://0.0.0.0:4000/software/2017/10/16/infinify-service.html"><![CDATA[<p>A few months ago, we implemented, during one of our hackdays, an <a href="/blog/2017/05/01/infinify-an-infinite-discovery-mode-for-spotify/">infinite recommender for Spotify</a> for private usage.</p>
+
+<p>Today, we announce we’ve just published this service to the public for FREE, allowing multi-user accounts using OAUTH, so you can use Infinify without installing or configuring the service by yourself.</p>
+
+<p><img src="/images/posts/2017-05-01-infinify/infinify.png" alt="Infinify" /></p>
+
+<p>This service is available on <a href="http://infinify.coconauts.net">infinify.coconauts.net</a> and you just need to identify in the app using your Spotify account.</p>]]></content><author><name>Javier Rengel</name></author><category term="software" /><category term="infinify" /><category term="spotify" /><category term="nodejs" /><category term="music" /><summary type="html"><![CDATA[Infinify service spotify recommender]]></summary></entry></feed>

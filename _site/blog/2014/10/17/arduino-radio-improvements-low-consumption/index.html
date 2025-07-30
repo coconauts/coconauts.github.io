@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Arduino radio improvements - low consumption | Coconauts</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Arduino radio improvements - low consumption" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Low consumption improvements for Arduino and Raspberry comunication using radio RF24" />
+<meta property="og:description" content="Low consumption improvements for Arduino and Raspberry comunication using radio RF24" />
+<link rel="canonical" href="http://0.0.0.0:4000/blog/2014/10/17/arduino-radio-improvements-low-consumption/" />
+<meta property="og:url" content="http://0.0.0.0:4000/blog/2014/10/17/arduino-radio-improvements-low-consumption/" />
+<meta property="og:site_name" content="Coconauts" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2014-10-17T23:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Arduino radio improvements - low consumption" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2014-10-17T23:00:00+00:00","datePublished":"2014-10-17T23:00:00+00:00","description":"Low consumption improvements for Arduino and Raspberry comunication using radio RF24","headline":"Arduino radio improvements - low consumption","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/blog/2014/10/17/arduino-radio-improvements-low-consumption/"},"url":"http://0.0.0.0:4000/blog/2014/10/17/arduino-radio-improvements-low-consumption/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/feed.xml" title="Coconauts" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Coconauts</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/projects/">Projects</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Arduino radio improvements - low consumption</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2014-10-17T23:00:00+00:00" itemprop="datePublished">Oct 17, 2014
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>In our previous post about how to <a href="http://www.coconauts.net/blog/2014/09/03/send-readings-from-arduino-to-raspberry-via-radio/">send Readings From Arduino to a Raspberry Pi via radio</a> 
+we explained the basics of the Arduino-Raspberry Pi comunication and we shared a simple code.</p>
+
+<p>But there is more, with a mix of hardware and software, we managed to reduce its power 
+consumption down to the minimum (between 1mAh and 0mAh while sleeping).
+Which means, your portable sensor will be able to function autonomously with an external
+battery for the longest time possible.</p>
+
+<p><img src="/images/posts/arduino-rf24-low-consumption/consumption.jpg" /></p>
+
+<!--more-->
+
+<h2 id="things-we-improved">Things we improved</h2>
+
+<p>The key to this improvement is not only to sleep the Arduino for as much time as possible,
+but also to turn off all the devices we don’t require while it’s sleeping, things like the
+RF24 or even the Analog sensor.
+In order to achieve that, we need to change its configuration and use an additional digital pin to disable them all.</p>
+
+<h3 id="hardware">Hardware</h3>
+
+<p>First, lets have a look at the new schema</p>
+
+<p><img src="/images/posts/arduino-rf24-low-consumption/schema.png" /></p>
+
+<p>What’s new: All VCC pins for our components (led, RF24, sensor) are connected
+to digital pin 8. This way we can enable and disable them via code by sending
+a LOW or HIGH signal through that pin. We will turn them on only when we need
+them, and disable them when the Arduino is in sleep mode.</p>
+
+<h3 id="software">Software</h3>
+
+<p>Our goal here is to turn down the RF24 device completely. As it turns out, when
+we start the radio via code with radio.begin(), some extra digital pins are
+automatically enabled by the library, and they stay like that even if we go
+to sleep mode.
+So what we’ll do is to manually disable them before going to sleep, to lower
+the consumption. When we wake up again, at the beginning of the loop, we restart
+the radio by repeating the startup steps.</p>
+
+<p>Check the following code for more details or download it from the <a href="https://github.com/coconauts/light-rf24/blob/master/arduino_lowpower/arduino_lowpower.ino">GIT repository</a></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#include &lt;SPI.h&gt;
+#include &lt;nRF24L01.h&gt;
+#include &lt;RF24.h&gt;
+#include &lt;JeeLib.h&gt;
+
+#define LDR 0 // Select input pin for the photocell light sensor.
+#define FREQ 60000 //Frequency of readings (in ms)
+
+#define POWER 8 //power pin to reduce consumption while sleeping
+
+int val = 0; // Variable to store the value coming from the sensor.
+
+//rf24
+#define DEVICE_ID 1
+#define CHANNEL 1 //MAX 127
+RF24 radio(9,10);
+byte pipe[]= {"light"};
+ 
+ISR(WDT_vect) { Sleepy::watchdogEvent(); }
+
+#define MAX_SENSOR_VALUE 1023
+#define MAX_RADIO_VALUE 254
+
+void setup() {
+    
+  pinMode(LDR, INPUT); // Declare LDR as an input pin.
+  pinMode(POWER, OUTPUT);  
+}
+ 
+void loop() {
+  digitalWrite(POWER, HIGH);
+  val = analogRead(LDR); // Read current value from the sensor.
+  
+  restartRadio();
+  radio.write(&amp;val , sizeof(val) ); //Send via radio
+  stopRadio();
+  
+  digitalWrite(POWER, LOW);
+  Sleepy::loseSomeTime(FREQ);
+}
+
+void stopRadio(){
+  
+  radio.powerDown();
+  
+  pinMode(13, LOW);
+  pinMode(12, LOW);
+  pinMode(11, LOW);
+  pinMode(10, LOW);
+  pinMode(9, LOW);
+}
+
+void restartRadio(){
+  radio.begin(); // Start up the radio
+  radio.setChannel(CHANNEL);
+  radio.setAutoAck(1);     // Ensure autoACK is enabled
+  radio.setRetries(15,15); // Max delay between retries &amp; number of retries
+  radio.openWritingPipe(pipe);
+  radio.stopListening();
+}
+</code></pre></div></div>
+
+<h2 id="conclussions">Conclussions</h2>
+
+<p>This new version drastically improves the power consumption, allowing you to not having to worry about
+having to recharge your batteries in a very long time. Or you could even use cell batteries.</p>
+
+<p>We also created a fully assembled version for the sensor, with an optional led, removable RF24, and exchangeable
+sensors (so you can use any other analog sensor, like temperature); and this is the result.</p>
+
+<p><img src="/images/posts/arduino-rf24-low-consumption/assembled.jpg" /></p>
+
+<p>And just to prove the point we were mentioning just before, this assembled device has been running with the
+same battery charge for about a month now!</p>
+
+  </div><a class="u-url" href="/blog/2014/10/17/arduino-radio-improvements-low-consumption/" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Coconauts</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Coconauts</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Hardware and software projects</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

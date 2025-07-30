@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Websocket vs REST | Coconauts</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Websocket vs REST" />
+<meta name="author" content="Javier Rengel" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Websocket vs REST api" />
+<meta property="og:description" content="Websocket vs REST api" />
+<link rel="canonical" href="http://0.0.0.0:4000/software/2017/11/20/websocket-vs-rest.html" />
+<meta property="og:url" content="http://0.0.0.0:4000/software/2017/11/20/websocket-vs-rest.html" />
+<meta property="og:site_name" content="Coconauts" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-11-20T15:14:46+01:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Websocket vs REST" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Javier Rengel"},"dateModified":"2017-11-20T15:14:46+01:00","datePublished":"2017-11-20T15:14:46+01:00","description":"Websocket vs REST api","headline":"Websocket vs REST","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/software/2017/11/20/websocket-vs-rest.html"},"url":"http://0.0.0.0:4000/software/2017/11/20/websocket-vs-rest.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/feed.xml" title="Coconauts" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Coconauts</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/projects.html">Projects</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Websocket vs REST</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2017-11-20T15:14:46+01:00" itemprop="datePublished">Nov 20, 2017
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Javier Rengel</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>We, as web backend software developers, have enoguh experience with RESTful APIs for web services, because they are clear, easy to implement, and scalable.</p>
+
+<p>However, websockets are since some time ago becoming a viable alternative
+for communicating between a web browser and a server. But what are good
+usecases for them? Can the replace REST completely?</p>
+
+<p>In this post we’ll take a look at both architectures from their definitions to their implementations, and we will see which one is the best for building the future of web apps.</p>
+
+<!--more-->
+
+<h2 id="what-is-a-rest-api-">What is a REST API ?</h2>
+
+<p>A <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a> API (Representational state transfer, application programming interface) is a simple set of rules for making communication on web applications over the Internet, and probably the most popular at the moment; in contrast with other approaches, like the older WSDL or <a href="https://en.wikipedia.org/wiki/SOAP">SOAP</a> or the more recent <a href="https://en.wikipedia.org/wiki/Protocol_Buffers">Protocol Buffers</a>.</p>
+
+<p>REST leans on the HTTP protocol a uses many of it’s inherent features as part of the API structure.</p>
+
+<h3 id="url-structure">URL structure</h3>
+<p>It defines the URL structure based on “resources” like <code class="language-plaintext highlighter-rouge">/resource/</code> or <code class="language-plaintext highlighter-rouge">/resource/id</code>. For example, if we provide users on our web interface, we might get a list of users if we hit <code class="language-plaintext highlighter-rouge">/user</code> endpoint, or retrieve an specific user by asking for his id <code class="language-plaintext highlighter-rouge">/user/1234</code>. This is in contrast to other approaches like SOAP which use a single endpoint for everything.</p>
+
+<h3 id="http-methods">HTTP methods</h3>
+
+<p>The method defines the action to do on the URL previously mentioned, such as <code class="language-plaintext highlighter-rouge">GET</code>, <code class="language-plaintext highlighter-rouge">POST</code>, <code class="language-plaintext highlighter-rouge">PUT</code> or <code class="language-plaintext highlighter-rouge">DELETE</code>. For example, to get the information for the users, do you <code class="language-plaintext highlighter-rouge">GET /user</code>, this method doesn’t have any other side effect. However, if you want to introduce a new user for your app, you will do <code class="language-plaintext highlighter-rouge">POST /user</code>, etc.</p>
+
+<p><img src="/images/posts/2017-11-20-websocket-vs-rest/rest-example.png" alt="rest-example" /></p>
+
+<h3 id="request-and-response">Request and response</h3>
+
+<p>For every request in HTTP, we always get back a response, even if the connection is unsuccessful, so you know which response is associated with the request you make. Another important part of the response is their response codes like 200 for OK or 404 error for Not found.</p>
+
+<p>Although you can use XML or HTML on REST, the most common format is <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> for both the request and the response. Following our example from earlier, to add a user with some specific data, you might want to do  <code class="language-plaintext highlighter-rouge">POST /user { "name": 'Javier" }</code> and you will get back a response in the same format <code class="language-plaintext highlighter-rouge">{id: 1234, "name": "Javier"}</code> after it gets insterted into database with it’s own unique ID.</p>
+
+<p>The communication is always initialized from the client to the server, which will respond based on the request made. If you want to constantly fetch information (eg: get tweets on your timeline) you can use a technique called polling which consist in constantly make requests (like every 5 seconds or 1 minute) to get the updated data.</p>
+
+<p>Some solutions exist to overcome this, for example webhooks, in which you try to prevent polling by storing a callback url to call after an operation is complete (for example: <a href="https://developer.github.com/v3/repos/hooks/">github webhooks</a> pinging your CI system).</p>
+
+<h2 id="what-is-a-websocket-">What is a Websocket ?</h2>
+
+<blockquote>
+  <p>WebSocket is a computer communications protocol, providing full-duplex communication channels over a single TCP connection. […] The WebSocket protocol enables interaction between a browser and a web server with lower overheads, facilitating real-time data transfer from and to the server. <a href="https://en.wikipedia.org/wiki/WebSocket">Wikipedia</a></p>
+</blockquote>
+
+<p>If you’re familiar with classic unix sockets, it’s basically the same concept, translated to the web world.</p>
+
+<p>Unlike REST, the communication is bidirectional, which means the server can send information to the client directly, as soon as the client creates the connection (called  handshake). For example, a client could query for a feed on tweets, and leave an open channel with the server. The server would then feed the client with new data as soon as it’s available.</p>
+
+<p>This offers some functionality that REST is unable to provide in an easy way.</p>
+
+<p>Because of this, the communication needs to be asynchronous, which needs to be taken into consideration when handling the responses.</p>
+
+<h2 id="differences-between-websockets-and-rest">Differences between Websockets and REST</h2>
+
+<p>The first difference, is that they can’t be compared directly: Websocket is a protocol, while REST is an architectural style. So in terms of comparing them, it would be fairer to compare WS to HTTP in general rather than REST (which which it shares many points regardless)</p>
+
+<p>For the communication, you have resource based URLs and HTTP methods in REST, and for each request, you get a response. On websockets you just send plain string messages with the data you want to the server, and it will translate and process the data, and optionally one or many replies back.</p>
+
+<p><img src="/images/posts/2017-11-20-websocket-vs-rest/protocols.png" alt="protocols" /></p>
+
+<p>Websocket communication is a lot more efficient in terms of message size and speed than HTTP protocol, specially for large, repetitive messages. On HTTP you have to send the headers on every request (minimum of 2 bytes per message after initial request on websockets vs 8KB per request on HTTP) <a href="http://blog.arungupta.me/rest-vs-websocket-comparison-benchmarks/">Full benchmark</a></p>
+
+<p><img src="/images/posts/2017-11-20-websocket-vs-rest/websocket-graph.png" alt="websocket-graph" /></p>
+
+<p>Let’s see an example of an HTTP request vs a websocket request. When using client libraries, they become quite similar for a simple use case.</p>
+
+<h4 id="authenticating-an-user-on-rest">Authenticating an user on REST</h4>
+
+<p>Fetch your user using a POST message with user and password (using <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request">Request</a> )</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var myRequest = new Request('/user', {
+    method: 'POST', 
+    body: '{"name": "myname", "password": "mypassword"}'
+});
+fetch(myRequest).then(function(response) {
+    if(response.status == 200) myUser = response.json();
+    else throw new Error('Something went wrong on api server!');
+})
+</code></pre></div></div>
+
+<h4 id="authenticating-an-user-on-websocket">Authenticating an user on Websocket</h4>
+
+<p>We’ll try to do the same method on Websockets (using [Socket.io]](https://socket.io/docs/client-api/) library)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>socket.emit("auth user", {"name": "myname", "password": "mypassword"})
+
+socket.on("auth user response", function(user) {
+    myUser = user;
+})
+</code></pre></div></div>
+
+<p>The method <code class="language-plaintext highlighter-rouge">.emit</code> sends a JSON from the client to the server. The werver will then reply to that message that will be processed in the client on the <code class="language-plaintext highlighter-rouge">.on</code> method.</p>
+
+<h3 id="a-real-world-example-updating-game-player-data">A real world example: Updating game player data</h3>
+
+<p>If we are building a multiplayer real time game, we will want to update the position of every player on everyone’s game, which means one player (client) will have to send the new position to the server, and every client will have to update this player’s position on their own game instance.</p>
+
+<p><img src="/images/posts/2017-11-20-websocket-vs-rest/websocket-diagram.png" alt="websocket-diagram" /></p>
+
+<p>This request won’t be optimal using REST, specially on a fast paced real time game. The only option is to use the polling technique previously mentioned to fetch the status / position of all the players (or maybe filter by those recently updated) and make changes on them in the game.</p>
+
+<p>But websockets are particularly good on this kind of requests, as the server gets A notification from a client when it changes, the server can then send that status change back to the rest of the clients really fast.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Client side player 1, on move send new position to the server
+function move(position){ 
+    socket.emit("update player", { "position": position }
+}
+// Client side other players, update other players 
+socket.on("update player response", function(player) {
+    otherPlayer.position = player.position; 
+})
+
+//Server side, update player and broadcast
+socket.on('update player', function (data) {
+    //console.log("update player ", data);
+    players[socket.id].position = data; 
+    socket.broadcast.emit('update player', players[socket.id]);
+});
+</code></pre></div></div>
+
+<p>Also, the <code class="language-plaintext highlighter-rouge">.on</code> methods only get triggered when a message is sent from the server, so with no changes, no communication will be performed between client and server.</p>
+
+<p>We used this approach on our latest <a href="http://coconauts.net/blog/2017/10/30/proc-websockets/">videogame prototype</a>.</p>
+
+<h2 id="conclussions">Conclussions</h2>
+
+<p>A full Websocket API can replace a REST api, however it can’t happen the other way around, as websockets offer realtime data stream that can’t be implemented on REST (efficiently).</p>
+
+<p>The asynchronous and undeterministic character of websockets, can lead to race conditions, when you make multiple requests. On the other hand, for every request in REST, you always get a single response.</p>
+
+<p>The Internet at the moment is built on top of HTTP, like for example DNS, load balancing, security or even SEO analytics are not fully compatible with Websockets (yet).</p>
+
+<p>Another big difference is that while Websockets are stateful protocols, which means they create a connection that needs to live in the server until the socket is closed. HTTP connections are stateless, so they could be hitting different servers everytime and still work, which make them easier to scale horizontally.</p>
+
+<p>Implementing a full Websocket API means reinventing similar standards already implemented on REST but with a different protocol, which might not be ideal.</p>
+
+<p>So I’d still recommend to use REST for non real time data, because REST is the most popular architecture at the moment with loads of frameworks and tools, and it doesn’t look like is going to change. But at least, it’s fun to play with alternatives and most importantly, always pick the best tool for the job.</p>
+
+<p>What do you think ? Have you ever tried to make a Websocket API instead of using REST ? let us know in the comments.</p>
+
+  </div><a class="u-url" href="/software/2017/11/20/websocket-vs-rest.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Coconauts</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Coconauts</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/coconauts"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">coconauts</span></a></li><li><a href="https://www.twitter.com/coconauts"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">coconauts</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Coconauts is a team of geeks building cool stuff, like games, web and mobile apps, or hardware projects. We also post tech tutorials regularly on our blog.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

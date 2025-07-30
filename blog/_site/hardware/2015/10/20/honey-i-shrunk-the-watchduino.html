@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Honey, I shrunk the Watchduino | Coconauts</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Honey, I shrunk the Watchduino" />
+<meta name="author" content="Mar Bartolome" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="We designed a Watchduino PCB and made it smaller" />
+<meta property="og:description" content="We designed a Watchduino PCB and made it smaller" />
+<link rel="canonical" href="http://0.0.0.0:4000/hardware/2015/10/20/honey-i-shrunk-the-watchduino.html" />
+<meta property="og:url" content="http://0.0.0.0:4000/hardware/2015/10/20/honey-i-shrunk-the-watchduino.html" />
+<meta property="og:site_name" content="Coconauts" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2015-10-20T23:40:34+02:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Honey, I shrunk the Watchduino" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Mar Bartolome"},"dateModified":"2015-10-20T23:40:34+02:00","datePublished":"2015-10-20T23:40:34+02:00","description":"We designed a Watchduino PCB and made it smaller","headline":"Honey, I shrunk the Watchduino","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/hardware/2015/10/20/honey-i-shrunk-the-watchduino.html"},"url":"http://0.0.0.0:4000/hardware/2015/10/20/honey-i-shrunk-the-watchduino.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/feed.xml" title="Coconauts" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Coconauts</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/projects.html">Projects</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Honey, I shrunk the Watchduino</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2015-10-20T23:40:34+02:00" itemprop="datePublished">Oct 20, 2015
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Mar Bartolome</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Last weekend we attended
+<a href="http://hackathon.pchintl.com/hackathons/london/2015/10/16/">a hardware hackathon organised by PCH in London</a>.
+The theme of the hackathon was “Take your prototype to the
+next stage in 54 hours”, so in our case we brought our
+Watchduino prototype and focused on trying to make it closer
+to how it would look if it were a commercial product.</p>
+
+<p>The best part is that at the hackathon there was a set of
+mentors, people who are experts in different areas of IoT,
+which were giving us useful advice about our product
+direction, design optimizations or the ins and outs of
+manufacturing.</p>
+
+<p>By the end of the hackathon, we had a functional (at least
+theorethically) design for Watchduino that looks this
+awesome:</p>
+
+<p>&lt;img src=https://farm1.staticflickr.com/772/22314247456_e69a4e1275_z_d.jpg’ /&gt;</p>
+
+<!-- more -->
+
+<p>The first step to getting a hardware product into manufacturing is integrating all the electronics into a PCB. This not only makes the system easier to put together, it’s also smaller, and likely to be more energetically efficient.</p>
+
+<p>So we designed a PCB that would mainly replace the Arduino
+Mini, breaking out the pins of the ATMega processor and
+leaving space to surface mount the rest of the components.
+To completely replace the Arduino board, a 8Mhz crystal
+oscillator needs to be added on top of our current
+components, as well as breaking out the RX and TX pins for
+reprogrammation. It’s pretty similar to
+<a href="https://bitbucket.org/rephus/watchduino/src/master/docs/how_to_replicate.md">the process we  were following in our first Watchduino</a>.</p>
+
+<p>The board was designed with
+<a href="http://fritzing.org">Fritzing</a>,
+which we were already
+using for our schematic. We were recommended Eagle, which
+appears to be the industry standard software, and has
+a bigger component library and tons of support online.
+But Fritzing is simpler and open source, so it suited
+our purposes for the time being. You can find the file
+<a href="https://github.com/coconauts/watchduino2/tree/master/schema">on the Github repo</a>.
+In the future we would like to try out Eagle though.</p>
+
+<p>By sacrificing the buzzer (which is not really very useful having the vibrator motor) and the USB charching module (to be replaced by a custom connector, as commercial smartwatches usually have) we were able to make our PCB exactly 1 square inch in area. Pretty sweet!</p>
+
+<p><img src="https://farm6.staticflickr.com/5788/21719276463_73d93089ea_o_d.png" /></p>
+
+<p>Being able to mount all the electronics in this small
+area mean there’s no longer the need to spread them across the strap as they were before. The whole design is
+completely compact, and small enough to fit in it’s
+entirety into a watch head; battery and everything.</p>
+
+<p>In consequence, we redesigned our 3D case into a simpler
+shape, looking now very much like a conventional watch!</p>
+
+<p>&lt;img src=https://farm6.staticflickr.com/5640/21719246863_26ed9e4423_m_d.jpg’ /&gt;</p>
+
+<p>We are cheating a little bit, because we are reusing
+<a href="https://www.decathlon.co.uk/strap-m-swip-watch-strap-black-id_8243023.html">an existing strap from a Geonaute watch</a>.
+These watches are sold at Decathlon stores, and just
+happen to have a so handy sliding mechanism for
+interchangeable straps.</p>
+
+<p>&lt;img src=https://farm6.staticflickr.com/5660/22154594199_2a668aec02_m_d.jpg’ /&gt;</p>
+
+<p>So we designed our new 3D case
+with the same shape, and made it compatible with the
+Geonatue straps. Once we figure out how to print with
+flexible filament we’ll replicate the strap with the
+same connector.</p>
+
+<p>There’s just one thing missing: our sexy new prototype
+can’t be functional until the PCB is printed (the image
+above I’m afraid is a dramatization with a screenshot
+pasted on it). Printing PCBs can be done manually, but it’s handier, better, and often cheaper to just
+<a href="http://hackaday.com/2015/09/21/why-are-you-still-making-pcbs/">get a manufacturer to do the job</a>.</p>
+
+<p>When you design a PCB, either with Fritzing, Eagle, or
+other software, you can export the result as <em>Gerber files</em>,
+which contain all the different layers of your design.
+You can provide any PCB manufacturer with this format,
+and they’ll be able to fabricate a production-quality
+version of your board.</p>
+
+<p>So we’ve done just that: we ordered a 3-board batch of PCBs to
+<a href="https://oshpark.com/">OSH Park</a>, for the outrageous price of just £1 each. We can’t wait for them to arrive and see if we can get our first mini production-run of Watchduinos!</p>
+
+  </div><a class="u-url" href="/hardware/2015/10/20/honey-i-shrunk-the-watchduino.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Coconauts</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Coconauts</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/coconauts"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">coconauts</span></a></li><li><a href="https://www.twitter.com/coconauts"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">coconauts</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Coconauts is a team of geeks building cool stuff, like games, web and mobile apps, or hardware projects. We also post tech tutorials regularly on our blog.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

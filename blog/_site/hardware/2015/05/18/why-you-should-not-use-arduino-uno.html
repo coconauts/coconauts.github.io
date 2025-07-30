@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Why you shouldn’t use Arduino UNO | Coconauts</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Why you shouldn’t use Arduino UNO" />
+<meta name="author" content="Javier Rengel" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Why you shouldn’t use Arduino UNO" />
+<meta property="og:description" content="Why you shouldn’t use Arduino UNO" />
+<link rel="canonical" href="http://0.0.0.0:4000/hardware/2015/05/18/why-you-should-not-use-arduino-uno.html" />
+<meta property="og:url" content="http://0.0.0.0:4000/hardware/2015/05/18/why-you-should-not-use-arduino-uno.html" />
+<meta property="og:site_name" content="Coconauts" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2015-05-18T23:53:19+02:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Why you shouldn’t use Arduino UNO" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Javier Rengel"},"dateModified":"2015-05-18T23:53:19+02:00","datePublished":"2015-05-18T23:53:19+02:00","description":"Why you shouldn’t use Arduino UNO","headline":"Why you shouldn’t use Arduino UNO","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/hardware/2015/05/18/why-you-should-not-use-arduino-uno.html"},"url":"http://0.0.0.0:4000/hardware/2015/05/18/why-you-should-not-use-arduino-uno.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/feed.xml" title="Coconauts" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Coconauts</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/projects.html">Projects</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Why you shouldn&#39;t use Arduino UNO</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2015-05-18T23:53:19+02:00" itemprop="datePublished">May 18, 2015
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Javier Rengel</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Arduino is an awesome platform, that allows you to create almost
+everything you can imagine with a really tiny investment and some
+basic hardware knowledge.</p>
+
+<p>Everyone starts using Arduino UNO for development, and we see
+<em>a lot</em> of projects using this board, but there are a few good
+reasons why you shouldn’t use UNO…</p>
+
+<p><img src="/images/posts/why-not-uno/arduino_hand.jpg" /></p>
+
+<!--more-->
+
+<h2 id="arduino-uno-is-expensive">Arduino UNO is expensive</h2>
+
+<p>Arduino UNO is one of the most expensive boards that features the
+ATMega328 compared with other Arduino models like Mini, Micro,
+or Lilypad. There are
+<a href="http://www.arduino.cc/en/Main/Products">tons of them to choose from</a>)!</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>Price (on store.arduino.cc)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>UNO</td>
+      <td>20€</td>
+    </tr>
+    <tr>
+      <td>Micro</td>
+      <td>18€</td>
+    </tr>
+    <tr>
+      <td>Mini</td>
+      <td>14€</td>
+    </tr>
+    <tr>
+      <td>Lillypad</td>
+      <td>16€</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Note that these prices come from the
+<a href="http://store.arduino.cc">oficial Arduino store</a>. However you can
+easily find compatible clonic boards on Amazon, Ebay or Aliexpress,
+at a fraction of the price.</p>
+
+<p>You could also use a bare ATMega328 like we did in our
+<a href="https://www.coconauts.net/projects/watchduino/">first Watchduino</a>
+or in our
+<a href="https://www.coconauts.net/blog/2014/10/18/arduino-radio-improvements-low-consumption/">light sensor with RF24 radio module</a>.</p>
+
+<h2 id="arduino-uno-is-big">Arduino UNO is big</h2>
+
+<p>Arduino UNO is a big board, and you probably going to use a bread board
+next to it, which makes your whole development prototype really complex.</p>
+
+<p>Instead of that, use a Nano or Micro attached to a bread board directly.</p>
+
+<p><img src="/images/posts/why-not-uno/uno_vs_nano.jpeg" /></p>
+
+<h2 id="arduino-uno-is-not-power-efficient">Arduino UNO is not power-efficient</h2>
+
+<p>Most of the projects built with Arduino will be wireless and
+battery-powered, so the device should be power-efficient,
+but Arduino UNO is not.</p>
+
+<p>Because Arduino UNO has a lot of hardware you don’t need, it consumes
+<em>a lot</em> more than its brothers:</p>
+
+<ul>
+  <li>USB controller</li>
+  <li>Too many leds</li>
+</ul>
+
+<p>However, boards like Lilypad or Mini don’t have a USB controller,
+which reduces its normal consumption a few mAh, eg:</p>
+
+<ul>
+  <li>Standalone consumption for UNO: 28mAh</li>
+  <li>Standalone consumption for Mini: 13mAh</li>
+</ul>
+
+<p>This measures have been taken when running a dummy sketch
+that does nothing (not even blinking a LED). If you make
+heavier computations or put the Arduino to sleep, measurements
+will vary.</p>
+
+<h2 id="arduino-uno-uses-usb-b-connector">Arduino UNO uses USB-B connector</h2>
+
+<p>Seriously?? in this day and age?</p>
+
+<h2 id="arduino-uno-is-not-designed-for-production">Arduino UNO is not designed for production</h2>
+
+<p>Because it’s big, and has a very high consumption, you shouldn’t
+ever use it in a prototype, like a remote controlled device, or a
+batery-powered-sensor, or a
+ <a href="https://www.coconauts.net/projects/watchduino2/">smartwatch</a>.</p>
+
+<p>Also, you probably don’t want to develop in a hardware that won’t
+match the final product specs, do you ?</p>
+
+<h2 id="conclussions">Conclussions</h2>
+
+<p>The only reason why you could want to use UNO is to use a shield,
+but in most of the cases they’re not worth it.</p>
+
+<p>Our personal preference is Arduino Mini: it’s small, cheap and has
+the lowest consumption in its family.</p>
+
+<p>So do yourself a favor and use any of the other boards available
+instead of using UNO again.</p>
+
+<p><img src="/images/posts/why-not-uno/arduino_family.jpg" /></p>
+
+  </div><a class="u-url" href="/hardware/2015/05/18/why-you-should-not-use-arduino-uno.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Coconauts</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Coconauts</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/coconauts"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">coconauts</span></a></li><li><a href="https://www.twitter.com/coconauts"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">coconauts</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Coconauts is a team of geeks building cool stuff, like games, web and mobile apps, or hardware projects. We also post tech tutorials regularly on our blog.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

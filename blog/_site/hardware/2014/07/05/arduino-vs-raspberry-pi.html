@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Arduino vs Raspberry Pi | Coconauts</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Arduino vs Raspberry Pi" />
+<meta name="author" content="Coconauts" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Arduino vs Raspberry Pi comparison for development, strengths and weakness" />
+<meta property="og:description" content="Arduino vs Raspberry Pi comparison for development, strengths and weakness" />
+<link rel="canonical" href="http://0.0.0.0:4000/hardware/2014/07/05/arduino-vs-raspberry-pi.html" />
+<meta property="og:url" content="http://0.0.0.0:4000/hardware/2014/07/05/arduino-vs-raspberry-pi.html" />
+<meta property="og:site_name" content="Coconauts" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2014-07-05T18:37:00+02:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Arduino vs Raspberry Pi" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Coconauts"},"dateModified":"2014-07-05T18:37:00+02:00","datePublished":"2014-07-05T18:37:00+02:00","description":"Arduino vs Raspberry Pi comparison for development, strengths and weakness","headline":"Arduino vs Raspberry Pi","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/hardware/2014/07/05/arduino-vs-raspberry-pi.html"},"url":"http://0.0.0.0:4000/hardware/2014/07/05/arduino-vs-raspberry-pi.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/feed.xml" title="Coconauts" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Coconauts</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/projects.html">Projects</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Arduino vs Raspberry Pi</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2014-07-05T18:37:00+02:00" itemprop="datePublished">Jul 5, 2014
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Sometimes, when you want to build a project, you need to think which is the best platform for you, weather server, desktop, Raspberry Pi or Arduino.
+If you have no experience at all, you may think you want to build a weareable device (like our <a href="/projects/watchduino">WatchDuino</a> project) using a Raspberry Pi, or a webpage or a smart robot with light and sounds using an Arduino, when in fact these are not the optimal choices.
+That’s why we would like to point out the main differences between Rasbperry Pi and Arduino, and which makes them the best or the worst depending on the kind of project.</p>
+
+<!--more-->
+
+<h2 id="size">Size</h2>
+
+<p>Lets start with something obvious, the size.</p>
+
+<p>If you want to build something small, wearable, or hidden in a hat, you need to use Arduino.</p>
+
+<p>Your first impression might be that Arduino Uno and Raspberry Pi are actually similar in size, but the difference relies in that you can shrink Arduino as much as you want (up to chip size), or use a different smaller model, like Arduino Nano or Arduino Mini (which is smaller than nano). Whereas you can’t shrink a Raspberry Pi at all.</p>
+
+<p>So Arduino is the obvious choice when size matters. You can always prototype and develop using an Arduino Uno, and then use a smaller version when you need to integrate it into your project.</p>
+
+<h2 id="power-consumption">Power consumption</h2>
+
+<p>The consumption is, in some way, related with the size. The Raspberry Pi is big because it has a lot of controllers and better processor, which means it needs more power to work.
+However, Arduino can reduce its consumption a lot if you remove all the useless inboard components (like leds and the USB controller).</p>
+
+<p>For instance, our <a href="/projects/watchduino">WatchDuino</a> project used a standalone ATMega chip (so not even an Arduino Mini) to optimize the power consumption as much as possible.</p>
+
+<h2 id="portability">Portability</h2>
+
+<p>Obviously, portability is a mix of consumption and size. You can build a robot for home with a Raspberry Pi, but just keep in mind it will be big and you may need to charge it quite often.</p>
+
+<h2 id="processing">Processing</h2>
+
+<p>Because Raspberry Pi processor is 700MHz (overclokable up to 1Ghz) and Arduino is only 8 or 16Mhz, you shouldn’t use Arduino to do big calculations or run math heavy code. 
+Forget about doing something like image recognition, fast fourier transform comparisons or something like that (not even the Raspberry Pi can handle that smoothly).</p>
+
+<h2 id="code-complexity">Code complexity</h2>
+
+<p>If your need to code something more complex than just giving a result according to an input, then probably Arduino is not the best platform for you.
+It is not just because it is using C++ (we will talk about this later), it is also because Arduino (ATMega) has a very limited code space (up to 32Kb), 
+so you can’t use all the libraries you want as they won’t fit your flash program memory.</p>
+
+<h2 id="c">C++</h2>
+
+<p>If you don’t want to have the chance to choose between different languages (Java, NodeJs, Python, Ruby, Perl, Bash…) and just want to use C++, then you’ll feel at home with Arduino.
+You cannot use anything else, only C++, and don’t try to use <code class="language-plaintext highlighter-rouge">pip</code> or <code class="language-plaintext highlighter-rouge">npm</code> or <code class="language-plaintext highlighter-rouge">maven</code> as it won’t work.</p>
+
+<p>Thankfully, the guys at <a href="http://biicode.com">biicode</a> made our life a bit easier building a platform to reuse some C++ code, so if you want to use some community libraries (like in pip), you should have a look.</p>
+
+<h2 id="inputs">Inputs</h2>
+
+<p>Both Arduino and Raspberry Pi are good at reading digital inputs (although it’s a bit confusing in the Raspberry Pi), and both also have a 3v and 5v output, which is good.
+However, Raspberry Pi doesn’t have analog inputs, which is a disadvantage when using resistances or any kind of analog device. But it doesn’t mean you can’t use them, there are
+two popular techniques for reading analog inputs, you can either use a capacitor or an ADC chip (analog to digital converter) like the MCP3008 (we will talk about this important topic in a future post).</p>
+
+<h2 id="web-server">Web server</h2>
+
+<p>Do you want to host a webpage or webserver ? then go for the Raspberry Pi, and use whatever language you prefer, like Python+Flask, NodeJs, Apache+PHP, etc. 
+At this point of the post I think it’s not worth explaining why you cannot host a web server on an Arduino.</p>
+
+<h2 id="advanced-audiovideo-support">Advanced Audio/Video support</h2>
+
+<p>Of course you can get an Arduino Mega and connect 20 pins to a powerful LCD screen and show some fancy graphic effects using C++ with Adafruit GFX, 
+but I am pretty sure it is going to be easier for you if you go for the Raspberry Pi and use the HDMI or video output, right? 
+Actually, if you are going to use a full color LCD, it means the consumption is not that important in your project.</p>
+
+<p>The same goes for complex audio support (rather than just playing some sounds with a buzzer).
+If you want to play MP3, WAV or OGG files, it’s much easier to use <code class="language-plaintext highlighter-rouge">aplay</code> or <code class="language-plaintext highlighter-rouge">from pygame import mixer</code> in Python than stacking some Arduino shields.</p>
+
+<p>If you still want to make your Raspberry Pi portable, you can use a portable USB-powered-speaker like the X-Mini or get one for <a href="http://www.amazon.co.uk/DIGIFLEX-Portable-Travel-Speaker-iPhone/dp/B003TKTUUY/ref=sr_1_4?ie=UTF8&amp;qid=1404482399&amp;sr=8-4&amp;keywords=portable+speaker">less than 3 pounds</a></p>
+
+
+  </div><a class="u-url" href="/hardware/2014/07/05/arduino-vs-raspberry-pi.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Coconauts</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Coconauts</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/coconauts"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">coconauts</span></a></li><li><a href="https://www.twitter.com/coconauts"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">coconauts</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Coconauts is a team of geeks building cool stuff, like games, web and mobile apps, or hardware projects. We also post tech tutorials regularly on our blog.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

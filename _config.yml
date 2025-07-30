@@ -4,13 +4,15 @@ description: "Hardware and software projects"
 url: "https://coconauts.net"
 
 # Posts settings
-collections_dir: blog
 permalink: /blog/:year/:month/:day/:title/
 
 # Excerpt settings
 excerpt_separator: "<!--more-->"
 
-theme: jekyll-theme-minimal
+# Base URL for assets
+baseurl: ""
+
+theme: minima
 
 # Jekyll 4 settings
 markdown: kramdown

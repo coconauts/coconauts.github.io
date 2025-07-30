@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Easily create 8-bit sound effects | Coconauts</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Easily create 8-bit sound effects" />
+<meta name="author" content="Mar Bartolome" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="In a past post we’ve shown you how to make 8-bit music, which you might want to use in a game. But of course, if you are having 8-bit music, you’ll want your game sound effects to match as well." />
+<meta property="og:description" content="In a past post we’ve shown you how to make 8-bit music, which you might want to use in a game. But of course, if you are having 8-bit music, you’ll want your game sound effects to match as well." />
+<link rel="canonical" href="http://0.0.0.0:4000/games/2015/07/06/easily-create-8-bit-sound-effects.html" />
+<meta property="og:url" content="http://0.0.0.0:4000/games/2015/07/06/easily-create-8-bit-sound-effects.html" />
+<meta property="og:site_name" content="Coconauts" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2015-07-06T22:10:17+02:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Easily create 8-bit sound effects" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Mar Bartolome"},"dateModified":"2015-07-06T22:10:17+02:00","datePublished":"2015-07-06T22:10:17+02:00","description":"In a past post we’ve shown you how to make 8-bit music, which you might want to use in a game. But of course, if you are having 8-bit music, you’ll want your game sound effects to match as well.","headline":"Easily create 8-bit sound effects","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/games/2015/07/06/easily-create-8-bit-sound-effects.html"},"url":"http://0.0.0.0:4000/games/2015/07/06/easily-create-8-bit-sound-effects.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/feed.xml" title="Coconauts" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Coconauts</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/projects.html">Projects</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Easily create 8-bit sound effects</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2015-07-06T22:10:17+02:00" itemprop="datePublished">Jul 6, 2015
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Mar Bartolome</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>In a past post we’ve shown you <a href="https://www.coconauts.net/blog/2015/02/02/creating-chiptune-style-music-with-ubuntu/">how to make 8-bit music</a>,
+which you might want to use in a game. But of course, if you are having
+8-bit music, you’ll want your game sound effects to match as well.</p>
+
+<p>In this post we’ll show you how to generate 8-bit style sound effects for
+for games using a very simple free tool called <a href="http://www.bfxr.net/">bfxr</a>.
+No audio or DSP knowledge needed!</p>
+
+<!--more-->
+
+<p><a href="http://www.bfxr.net/">bfxr</a> is a generator for 8-bit style sound effects.
+It’s also completely idiot proof, and you don’t even need to install it,
+because it’s available as a web app (though you can if you want to).</p>
+
+<p><img src="/images/posts/chiptune/bfxr.png" /></p>
+
+<p>Simply pick a category to generate a randomized sound that
+will look legit enough, and the parameters used to synthesize it will
+get filled out. In n00b mode you simply keep clicking until just the
+right sound appears, and if you’re audio savvy you can even tune the
+parameters to your will. When you’re satisfied, just save the sound in wav
+format and you’re done.</p>
+
+<p>You’ll probably want to do some format conversion with your bfxr
+generated sounds though, as wav is an uncompressed format that eats up a
+ridiculous amount of space. For this, use any audio converting tool, like
+ffmpeg:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ffmpeg -i audio.wav  -acodec libvorbis audio.ogg
+</code></pre></div></div>
+
+<p>Actually, since we don’t care very much about the quality of the audio
+(if fact, the lower it is, it will look more authentic!), we can use
+the same tool to downsample the track (<code class="language-plaintext highlighter-rouge">-ar</code> flag sets the sample rate,
+and <code class="language-plaintext highlighter-rouge">-ab</code> sets the bitrate) and turn it to mono (<code class="language-plaintext highlighter-rouge">-ac</code> flag sets the
+number of channels):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ffmpeg -i audio.ogg -acodec libvorbis -ac 1 -ab 64000 -ar 22050 output.ogg
+</code></pre></div></div>
+
+<p>In this case we’ve reduced the bitrate to 64k, the sample rate to half the
+usual value, and the channels to just one.</p>
+
+<p>The same downsampling process can also be applied to yor 8-bit game music actually.
+It shouldn’t hurt the music quality and it will noticeably reduce the
+size of your assets, something you surely want if you’re doing mobile
+development.</p>
+
+  </div><a class="u-url" href="/games/2015/07/06/easily-create-8-bit-sound-effects.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Coconauts</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Coconauts</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/coconauts"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">coconauts</span></a></li><li><a href="https://www.twitter.com/coconauts"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">coconauts</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Coconauts is a team of geeks building cool stuff, like games, web and mobile apps, or hardware projects. We also post tech tutorials regularly on our blog.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
