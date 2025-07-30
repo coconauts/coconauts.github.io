@@ -54,7 +54,7 @@ We hooked up a light-dependent resistor to an Arduino and rubber-banded a servo 
 
 ## Light sensor
 
-<img src="/projects/hardware/light-sensor.jpg" class="screenshot" />
+<img src="/images/projects/hardware/light-sensor.jpg" class="screenshot" />
 
 Light sensor is an Arduino project with a radio module that sends a message
 everytime a circuit is closed, or a button is pressed.
@@ -68,7 +68,7 @@ We use it to monitor if we left the light at the bathroom on and we're not at ho
 
 ## Door sensor
 
-<img src="/projects/hardware/door-sensor.jpg" class="screenshot" />
+<img src="/images/projects/hardware/door-sensor.jpg" class="screenshot" />
 
 Door sensor is an Arduino project with a radio module that sends a message
 with light levels at the room.
@@ -82,7 +82,7 @@ We use it to monitor if the main door at home is open.
 
 ## Meteorological station and automatic watering with Raspberry PI
 
-<img src="/projects/hardware/weather.jpg" class="screenshot" />
+<img src="/images/projects/hardware/weather.jpg" class="screenshot" />
 
 Meteorological station built with a Raspberry PI, a bunch of sensors and a water pump for automatic watering.
 
@@ -98,7 +98,7 @@ Simple automatic watering system with Arduino, a water pump and a sensor.
 
 Switch between by frequency or humidity functions.
 
-<img src="/projects/hardware/watering.jpg" class="screenshot" />
+<img src="/images/projects/hardware/watering.jpg" class="screenshot" />
 
 ### Related posts
 
@@ -106,7 +106,7 @@ Switch between by frequency or humidity functions.
 
 ## Turret-pi
 
-<img src="/projects/hardware/turret-pi.jpg" class="screenshot" />
+<img src="/images/projects/hardware/turret-pi.jpg" class="screenshot" />
 
 Turret-pi is an attempt of building a Portal turret using a Raspberry PI,
 a IR presence module, a vibrator and a portable speaker.
@@ -118,7 +118,7 @@ waiting for a proper casing.
 
 ## Simplest wireless powered project
 
-<img src="/projects/hardware/wireless.jpg" class="screenshot" />
+<img src="/images/projects/hardware/wireless.jpg" class="screenshot" />
 
 Running an arduino sketch (blink) without any batteries using wireless charging.
 

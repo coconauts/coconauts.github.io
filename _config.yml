@@ -6,6 +6,12 @@ url: "https://coconauts.net"
 # Posts settings
 permalink: /blog/:year/:month/:day/:title/
 
+nav: 
+  - title: "Blog"
+    url: /blog/
+  - title: "Projects"
+    url: /projects/
+
 # Excerpt settings
 excerpt_separator: "<!--more-->"
 
