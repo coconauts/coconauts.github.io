@@ -38,8 +38,8 @@ Simple QR codes scattered around the room that provided cryptic hints:
 - **Pop the Balloons**: A direct instruction that led to finding sheet music hidden inside a balloon, this clue required you to wear some red-blue 3d glasses to read it. 
 
 
-![pop ballons hint](/images/posts/arcade-escaperoom/pop-baloons.png)
-
+<img src="/images/posts/arcade-escaperoom/pop-baloons.png" alt="pop ballons hint" width="300">
+<img src="/images/posts/arcade-escaperoom/pop-baloons-unlocked.png" alt="pop ballons unlocked" width="300">
 
 
 ### 2. Room Puzzles  
