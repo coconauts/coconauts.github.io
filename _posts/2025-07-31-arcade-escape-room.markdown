@@ -2,34 +2,45 @@
 layout: post
 title: "Building an Arcade-Themed Escape Room at home"
 date: 2025-07-31 12:00:00 +0000
-tags: escape-room arduino hardware retrogaming ai
-published: false 
+tags: escape-room hardware retrogaming
+published: true 
 ---
 
 After years of building digital escape rooms, I decided to take the plunge and create a physical one right in my basement. The concept was ambitious: an evil self-aware AI taking over the real world through videogames, with players needing to find override codes hidden within classic games to stop it.
 
-![Escape Room Graph](../arcade-escaperoom/graph.jpg)
+![prints](/images/posts/arcade-escaperoom/prints.jpg)
+
+<!--more-->
 
 ## The Storyline: When AI Meets Retro Gaming
 
 The premise was simple yet engaging: a malicious AI had begun infiltrating the real world through classic videogames. Players would need the help of a friendly assistant AI to gather override codes from various game cartridges scattered around the basement. The twist? Some of these games were "hacked" - modified to hide clues within their gameplay, this was giving the impression the AI was taking over the videogames. 
 
-TODO add gif about glitchy rom
+![Super mario hacked rom](/images/posts/arcade-escaperoom/super-mario.png)
+
 
 The evil AI wasn't just a silent antagonist. Throughout the experience, it would make random, often hilarious comments through smart speakers placed around the room, creating an atmosphere of being watched and adding unexpected moments of levity to the tension.
 
 <!-- more-->
 
-TODO add graph about the game
 
 ## Game Structure
+
+![Escape Room Graph](/images/posts/arcade-escaperoom/graph.jpg)
+
 
 The escape room featured three distinct types of challenges that worked together to create a cohesive experience:
 
 ### 1. QR Clue Puzzles
+
 Simple QR codes scattered around the room that provided cryptic hints:
 - **Iron Man's Heart**: "The proof that Tony Stark has a heart" (leading players to find a key behind the Iron Man figure)
-- **Pop the Balloons**: A direct instruction that led to finding sheet music hidden inside a balloon
+- **Pop the Balloons**: A direct instruction that led to finding sheet music hidden inside a balloon, this clue required you to wear some red-blue 3d glasses to read it. 
+
+
+![pop ballons hint](/images/posts/arcade-escaperoom/pop-baloons.png)
+
+
 
 ### 2. Room Puzzles  
 Interactive challenges accessed via QR codes that required exploring the physical space:
@@ -38,9 +49,20 @@ Interactive challenges accessed via QR codes that required exploring the physica
 - **Pinball Glitch**: "The glitch took over, but the score remains" (players had to read the score from the physical pinball machine)
 - **Play epona song**: The player was required to play the epona song on a real piano in the room, following a previous note. 
 
+
+![epona song](/images/posts/arcade-escaperoom/epona-song.png)
+
+- **Build QR code with lego** FInd the missing lego piezes and complete the QR code with Lego!
+
+![lego qr](/images/posts/arcade-escaperoom/lego-qr.png)
+
+
 ### 3. Game Cartridge Challenges
 
 The most complex puzzles required deep knowledge of classic games and unlocked cipher fragments, these required people playing on differen consoles around the room, and the games were giving one part of the deactivation code:
+
+![pop ballons hint](/images/posts/arcade-escaperoom/mario-cartridge.png)
+
 
 **Mario Cart #1**: "How many goombas in level 1-3?" 
 **Bubble Bobble Cart #2**: "How many enemies in level 16 for 2 players?" 
@@ -48,8 +70,14 @@ The most complex puzzles required deep knowledge of classic games and unlocked c
 **Pang Cart #4**: "How many balls in level 1-12?" 
 **Super Mario World Cart #5**: Hidden sequence puzzle 
 
+![zelda](/images/posts/arcade-escaperoom/zelda.png)
+
+
 ### The Final Challenge
 All cipher fragments combined to form the deactivation code , entered via keyboard shortcut (found in another hint) on the main glitch terminal to complete the override sequence. 
+
+
+![code](/images/posts/arcade-escaperoom/code.png)
 
 
 ## Technical Implementation
@@ -68,7 +96,7 @@ A glitching background GIF played continuously on screens throughout the room, r
 
 Mutliple screens were spreaded around the room with the same glitchy screen 
 
-TODO add glitchy screen gif 
+![phones](/images/posts/arcade-escaperoom/phones.png)
 
 ### Physical Setup
 The basement was transformed into a retro arcade with multiple game stations:
@@ -82,6 +110,5 @@ The basement was transformed into a retro arcade with multiple game stations:
 
 Players would scan QR codes with their phones to access each game's challenge. Wrong answers resulted in temporary lockouts (adding pressure), while correct solutions revealed both digital cipher fragments and clues to physical hiding spots around the basement.
 
-TODO add gameplay video  or photos
 
 The climax required assembling all the collected override codes into a final password, entered into the main terminal to "defeat" the evil AI and trigger the victory sequence.
