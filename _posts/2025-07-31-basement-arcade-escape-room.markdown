@@ -22,26 +22,46 @@ The evil AI wasn't just a silent antagonist. Throughout the experience, it would
 
 TODO add graph about the game
 
-## Game Cartridges and Hidden Clues
+## Game Structure
 
-Each game cartridge came with its own QR code that led to a custom web interface. These weren't just static puzzles - they were interactive challenges that required knowledge of the original games:
+The escape room featured three distinct types of challenges that worked together to create a cohesive experience:
 
-### Super Mario Bros Challenge
-One of the most creative puzzles involved asking players: "How many goombas are in level 1-3?" The correct answer (3) would reveal a glitch cypher fragment and a physical clue: "Look in the Mario's block, inside the lid."
+### 1. QR Clue Puzzles
+Simple QR codes scattered around the room that provided cryptic hints:
+- **Iron Man's Heart**: "The proof that Tony Stark has a heart" (leading players to find a key behind the Iron Man figure)
+- **Pop the Balloons**: A direct instruction that led to finding sheet music hidden inside a balloon
 
+### 2. Room Puzzles  
+Interactive challenges accessed via QR codes that required exploring the physical space:
+- **Wario's Hobby**: "What is Wario's hobby?" Answer: 32 (coordinates leading to gaming magazines)
+- **One Piece Treasure**: "Find the One Piece" Answer: 356214 (manga volume sequence leading to "treasure under the sea")
+- **Pinball Glitch**: "The glitch took over, but the score remains" (players had to read the score from the physical pinball machine)
+- **Play epona song**: The player was required to play the epona song on a real piano in the room, following a previous note. 
 
-### Real world puzzles 
+### 3. Game Cartridge Challenges
 
-TODO 
+The most complex puzzles required deep knowledge of classic games and unlocked cipher fragments, these required people playing on differen consoles around the room, and the games were giving one part of the deactivation code:
+
+**Mario Cart #1**: "How many goombas in level 1-3?" 
+**Bubble Bobble Cart #2**: "How many enemies in level 16 for 2 players?" 
+**Zelda Cart #3**: "↑ → ↑ ↑ ↑ ↑ ← ← Find the code" 
+**Pang Cart #4**: "How many balls in level 1-12?" 
+**Super Mario World Cart #5**: Hidden sequence puzzle 
+
+### The Final Challenge
+All cipher fragments combined to form the deactivation code , entered via keyboard shortcut (found in another hint) on the main glitch terminal to complete the override sequence. 
+
 
 ## Technical Implementation
 
-### Smart Speaker Integration
-The evil AI's personality came to life through pre-recorded audio files played via smart speakers:
-- Welcome messages and story setup
-- Time warnings ("10 minutes left!", "2 minutes left!")
-- Victory fanfare when codes were entered correctly
-- Random taunts and comments to maintain atmosphere
+### Smart Speaker Integration & AI Narrative
+The experience was guided by "Jill," a benevolent AI assistant that spoke through Google Home speakers:
+
+**Opening**: *"Greetings, players. I am Jill, your guide and ally. Something dangerous lurks in the arcade—a rogue AI called 'The Glitch.' It has awakened, hungry for power, and now it's spreading through every game, every screen, aiming to seize control of all technology…and humanity itself."*
+
+**Progression**: Time warnings ("Only ten minutes left!"), encouragement, and even emergency extensions when players were close to solving it
+
+**Victory**: Final Fantasy fanfare followed by: *"Congratulations, the glitch has been deactivated, you have saved the world. On behalf of Aperture Science, I relay their most sincere gratitude..."*
 
 ### Visual Effects
 A glitching background GIF played continuously on screens throughout the room, reinforcing the "AI takeover" theme. When players solved puzzles correctly, the glitch effect would disappear, symbolizing their progress in fighting back against the AI.
@@ -50,12 +70,13 @@ Mutliple screens were spreaded around the room with the same glitchy screen
 
 TODO add glitchy screen gif 
 
-### Physical Elements
-Beyond the digital components, the room included:
-- Actual game cartridge replicas with hidden compartments
-- QR codes disguised as retro gaming elements
-- Physical clues that connected to the digital puzzles
-- A final override terminal where all collected codes needed to be entered
+### Physical Setup
+The basement was transformed into a retro arcade with multiple game stations:
+- **TV Console**: Controller locked in a box, batteries hidden around the room
+- **Pinball Machine**: Displaying glitch effects with score visible on backglass  
+- **Arcade Cabinet**: "INSERT COIN" message with piggy bank, requiring players to find coins
+- **Piano**: With arrow stickers for playing sheet music sequences
+- **Hidden Items**: Game cartridges in Mario blocks, treasure chests, balloon compartments, and between comic books
 
 ## The Player Experience
 
@@ -64,11 +85,3 @@ Players would scan QR codes with their phones to access each game's challenge. W
 TODO add gameplay video  or photos
 
 The climax required assembling all the collected override codes into a final password, entered into the main terminal to "defeat" the evil AI and trigger the victory sequence.
-
-## Lessons Learned
-
-Building a physical escape room taught me several valuable lessons:
-
-1. **Atmosphere is everything** - The smart speaker commentary and glitch effects created immersion that pure puzzles couldn't achieve alone
-2. **Mix digital and physical** - The best moments came when players had to move between screens and physical objects
-
