@@ -7,7 +7,7 @@ categories: software
 tags: speaking talks hiring companies pycon
 sharing: true
 keywords: hiring
-description: "A talk at pyconES 2020 about engineering hiring practices"
+description: "A talk at EuroPython 2021 about engineering hiring practices"
 author: Mar Bartolome
 featured: false
 published: true
@@ -17,7 +17,11 @@ It's not secret that the hardest problems in computer science are cache invalida
 
 Hiring is a difficult problem, yet important to get right. Many developers are faced with the challenge of hiring other team members, without much clue into how to proceed, and end up just copying the well known rituals without stopping to analyse their effectiveness or implications. Often, this results in hindering both companies and candidates, especially those of under represented demographics. 
 
-In this talk I gave at PyconES2020, I share my experiences and personal opinions both as a candidate and as an interviewer, analyze the implications of popular hiring tactics, and discuss what I consider effective ones, in order to hire the right developers for your team with minimum hassle for both sides.
+In this talk I gave at EuroPython 2021, I share my experiences and personal opinions both as a candidate and as an interviewer, analyze the implications of popular hiring tactics, and discuss what I consider effective ones, in order to hire the right developers for your team with minimum hassle for both sides.
 
+<iframe width="560" height="315" src="https://www.youtube.com/watch?v=mnzX3LhZ0VI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/UBLTaQ_tRl4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+https://www.youtube.com/watch?v=mnzX3LhZ0VI
+
+This talk is actually an updated version of [the one I gave a year earlier at PyConES](https://www.youtube.com/embed/UBLTaQ_tRl4).
+
