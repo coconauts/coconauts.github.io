@@ -2,45 +2,48 @@
 layout: post
 title: "NFC Floppy Disk Game Launcher"
 date: 2025-07-25 10:00:00 +0000
-categories: [Arduino, NFC, Retro Gaming, Hardware Hacking]
+categories: hardware
+tags: arduino nfc retro gaming hardware
+sharing: true
+keywords: hiring
+description: "Using hidden NFC tags and reader to simulate physically loading retro games"
+author: Mar Bartolome
+featured: false
+published: true
 ---
 
-Remember the satisfying *click* of inserting a floppy disk and waiting for your favorite game to load? What if you could recreate that nostalgic experience while launching modern game collections? That's exactly what I built with my NFC Floppy Disk Game Launcher - a system that transforms vintage floppy disks into physical game launchers using NFC technology.
+As retro-gaming enthusiasts, we have a broad collection of old PC game files that we can conveniently play on modern PCs via DOSBox, SCUMMVM, and other utilities. But when playing on modern hardware, you lose some of the "magic" - for the _real_ retro experience, those who are true purists will actually go and find some old hardware, set it up with an old DOS or Windows 3.1 build, and then install the actual games there. But this is very impractical... so, what if there was a way to simulate the retro experience, with modern technology?
 
-<!--more-->
-
-## The Concept
-
-The idea is beautifully simple: take an old floppy disk drive, gut the internals, and replace them with an Arduino and NFC reader. 
-Then if you attach NFC stickers inside floppy disk, you can "read" them, and use this as a trigger to launch any game or application when inserted.
+That is exactly what we've done: we're built ourselves a retro PC, using a 386x case, but with a modern PC inside. On it, we've installed a fake floppy drive that loads games using NFC - but seemingly, it looks as if they are magically loading from the floppy disks. Read on to learn how!
 
 <video width="400" height="600" controls>
   <source src="/images/posts/nfc-floppy/demo.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
-This project bridges the gap between physical and digital gaming, creating a tactile experience that modern gaming has largely lost. Each floppy disk becomes a unique key to unlock specific games, scripts, or applications.
 
-## Hardware Components
+<!--more-->
 
-The beauty of this project lies in its simplicity. You'll need:
+## In a nutshell
 
-- **Arduino Uno** (or compatible microcontroller)
-- **MFRC522 NFC/RFID module** (13.56MHz)
-- **Old floppy disk drive** (for the housing)
-- **NFC stickers/tags** (ISO 14443A compatible)
-- **Floppy disks** (as many as you want games)
-- **Connecting wires** and basic soldering supplies
+As you can imagine, there's nothing more to this than using retro facades to hide modern hardware: we replaced the innards of the floppy drive with an Arduino hooked to an NFC reader module; Then, each floppy disk has an NFC sticker, that when inserted in the drive gets it's ID read. 
 
-![Hardware Components](/images/posts/nfc-floppy/mfrc522.png)
+The Arduino program is continuously reading for IDs, and sends them to the PC through the USB-serial port. On the PC, a python script runs in the background reading this port, and has a hardcoded list of NFC ids, each mapped to an execution command that gets run on a subprocess.
 
-<!-- more -->
+## Hardware
 
-### The MFRC522 Module
+![MFRC522 module](/images/posts/nfc-floppy/mfrc522.png)
 
-The heart of the system is the MFRC522 NFC module. This little board operates at 13.56MHz and supports ISO/IEC 14443 Type A cards, MIFARE, and NTAG formats. With a typical reading range of 1-3cm, it's perfect for detecting tags inside floppy disks.
+We used an *Arduino UNO*, with an MFRC522 NFC/RFID module running at 13.56MHz, which supports ISO/IEC 14443 Type A cards, MIFARE, and NTAG formats and has a reading range of 1-3cm. And most importantly, [there's a community-maintained Arduino library](https://github.com/miguelbalboa/rfid) for these modules.
 
-**Pin Configuration:**
+The MFRC522 module needs to be positioned where it can reliably read NFC tags inside inserted floppy disks. However, we found that the metallic shell holding the disks in place was interfering with the readings, so we had to replace it with a more inert material - including the insertion/ejection button. We made a replacement structure out of **LEGO building blocks** - it was incredibly simple to put together and works like a charm!
+
+<video width="400" height="600" controls>
+  <source src="/images/posts/nfc-floppy/lego.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+The NFC is connected to the Arduino with the following pinage:
 - VCC → 3.3V (important: not 5V!)
 - GND → Ground  
 - RST → Digital Pin 9
@@ -49,35 +52,11 @@ The heart of the system is the MFRC522 NFC module. This little board operates at
 - MISO → Pin 12 (SPI)
 - SCK → Pin 13 (SPI)
 
-## The Build Process
+And the Arduino itself is connected to the computer via USB for both power and serial communication.
 
-### Step 1: Prepare the Floppy Drive
+## Software
 
-First, I carefully disassembled an old 3.5" floppy drive, removing all the mechanical components while preserving the outer shell. The goal is to maintain the authentic look and feel of inserting a floppy disk.
-
-
-### Step 2: Mount the NFC Reader
-
-The MFRC522 module needs to be positioned where it can reliably read NFC tags inside inserted floppy disks. After some experimentation, I noticed the metalic shell for the floppy disk reader was interfering with the readings, so I had to fully remove all the mechanical parts. Because of that, I had to replicate the insertion mechanism, I did this with Lego !
-
-<video width="400" height="600" controls>
-  <source src="/images/posts/nfc-floppy/lego-reader.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-
-### Step 3: Arduino Integration
-
-Then I connected the NFC reader to the Arduino, which is itself connected via USB to the computer for both power and serial communication.
-
-
-
-## The Software
-
-The system consists of two main components: Arduino firmware and a Python script running on the computer.
-
-### Arduino Code
-
-The Arduino continuously polls for NFC tags and sends their unique identifiers via serial communication:
+The Arduino is running a script that continuously polls for NFC tags using the aforementioned [MFRC522 library](https://github.com/miguelbalboa/rfid) (needs installing as a prerequisite) and sends their unique identifiers via serial communication. 
 
 ```cpp
 #include <SPI.h>
@@ -116,8 +95,9 @@ void loop() {
   delay(1000);
 }
 ```
-### Python Game Launcher
-The Python script monitors the serial port and maps NFC tag IDs to specific games or applications:
+
+And the PC is running a Python script that monitors the serial port, mapping the NFC tag IDs to different followup commands, to launch the games or applications. Uses the [pyserial](https://pypi.org/project/pyserial/) library, which you'll need to install too.
+
 ```python
 import serial
 import subprocess
@@ -148,45 +128,28 @@ finally:
     arduino.close()
 ```
 
+We're using Ubuntu on the PC, so these commands are run in the default shell (bash). The script is setup to autoload at system startup using crontab. But we'll leave all the details of the retro-pc for another post.
+
+
 ## Creating Game Disks
 
-The most fun part is creating the game collection! I simply attached the NFC tag on the back of the floppy disk, without removing the internal magnetic disk. Each disk gets:
+Arguably, the most fun part of the project is creating the game collection. We used old floppy disks, and attached an NFC tag on the back of each of them - and of course, a sticker label on the front. We use a mini thermal printer for the stickers, which also give them a clunky retro feel.
 
-1. **Custom label** designed to match the original game
-2. **NFC sticker** positioned for reliable reading
-3. **Registry entry** in the Python script
+For each disk, we'll need to know the NFC tag ID so that we can add it to the hardcoded list on the python script. When the script reads an unknown tag, it prints the ID in the log, so we can copy and then paste it in the mapping list with the adequate command.
 
-
-I created disks for classics like:
+Some of the disks we created are:
 - **Starcraft** - Wine launcher for the Windows version
 - **Theme hospital** - DOSBox integration  
-- **Custom scripts** - Microsoft Paint, etc.
+- **Microsoft Paint** - launched with a custom script
 
-![Hardware Components](/images/posts/nfc-floppy/concept.jpg)
-
-
-## The Experience
-
-The final result is magical. You hear the familiar mechanical sound of inserting a floppy disk, followed by your game launching instantly.
-
-![Floppy Drive Disassembly](/images/posts/nfc-floppy/final.jpg)
-
-The tactile experience brings back memories while the instant loading provides modern convenience. Friends visiting are always amazed - it looks like retro gaming but works better than the originals ever did.
+![Floppy disks](/images/posts/nfc-floppy/disks.jpg)
 
 
-## Conclusion
+## Final experience
 
-The complete source code is available on [GitHub](https://github.com/rephus/nfc-floppy-disk-reader). The project is designed to be easily reproducible with common components.
+The whole thing is mounted on an old 386x case, keeping the floppy drive frontal panel, so it looks completely inconspicuous. We have the experience of the look and feel of a retro-PC, with the games magically loading instantly. And with the convenience of a modern OS with emulators for installation and maintenance.
 
-The NFC Floppy Disk Game Launcher proves that sometimes the best new ideas come from combining old and new technologies in unexpected ways. It creates a bridge between the tactile satisfaction of retro gaming and the convenience of modern digital libraries.
+![How it looks](/images/posts/nfc-floppy/final.jpg)
 
-More importantly, it demonstrates that innovation doesn't always mean adding complexity - sometimes it means thoughtfully removing it. By stripping away the mechanical complexity of floppy drives while preserving their physical interaction model, we get the best of both worlds.
+For reference, you can find [the updated source code for this project on GitHub](https://github.com/rephus/nfc-floppy-disk-reader). We'd love to know if you build your own!
 
-Whether you're a retro gaming enthusiast, an Arduino hobbyist, or just someone who misses the physicality of old computing, this project offers a fun way to bring some of that tactile magic back to modern gaming.
-
----
-
-**Resources:**
-- [Complete source code on GitHub](https://github.com/rephus/nfc-floppy-disk-reader)
-- [MFRC522 Arduino library](https://github.com/miguelbalboa/rfid)
-- [PySerial documentation](https://pyserial.readthedocs.io/)
