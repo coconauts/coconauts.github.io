@@ -36,9 +36,9 @@ The Arduino program is continuously reading for IDs, and sends them to the PC th
 
 We used an *Arduino UNO*, with an MFRC522 NFC/RFID module running at 13.56MHz, which supports ISO/IEC 14443 Type A cards, MIFARE, and NTAG formats and has a reading range of 1-3cm. And most importantly, [there's a community-maintained Arduino library](https://github.com/miguelbalboa/rfid) for these modules.
 
-The MFRC522 module needs to be positioned where it can reliably read NFC tags inside inserted floppy disks. However, we found that the metallic shell holding the disks in place was interfering with the readings, so we had to replace it with a more inert material - including the insertion/ejection button. We made a replacement structure out of **LEGO building blocks** - it was incredibly simple to put together and works like a charm!
+The MFRC522 module needs to be positioned where it can reliably read NFC tags inside inserted floppy disks. However, we found that the metallic shell holding the disks in place was interfering with the readings, so we had to replace it with a more inert material - including the insertion/ejection button. We made a replacement structure out of LEGO building blocks - it was incredibly simple to put together and works like a charm!
 
-<video width="400" height="600" controls>
+<video width="600" height="400" controls>
   <source src="/images/posts/nfc-floppy/lego.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
@@ -128,6 +128,8 @@ finally:
     arduino.close()
 ```
 
+This approach allows for maximun flexibility: a game can use wine, while another can run on DosBOX, or even if you need a sequence of commands, you can map to a custom shell script. The script spawns a subprocess shell to run the game launch command, and that's it. 
+
 We're using Ubuntu on the PC, so these commands are run in the default shell (bash). The script is setup to autoload at system startup using crontab. But we'll leave all the details of the retro-pc for another post.
 
 
@@ -136,11 +138,6 @@ We're using Ubuntu on the PC, so these commands are run in the default shell (ba
 Arguably, the most fun part of the project is creating the game collection. We used old floppy disks, and attached an NFC tag on the back of each of them - and of course, a sticker label on the front. We use a mini thermal printer for the stickers, which also give them a clunky retro feel.
 
 For each disk, we'll need to know the NFC tag ID so that we can add it to the hardcoded list on the python script. When the script reads an unknown tag, it prints the ID in the log, so we can copy and then paste it in the mapping list with the adequate command.
-
-Some of the disks we created are:
-- **Starcraft** - Wine launcher for the Windows version
-- **Theme hospital** - DOSBox integration  
-- **Microsoft Paint** - launched with a custom script
 
 ![Floppy disks](/images/posts/nfc-floppy/disks.jpg)
 
