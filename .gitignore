@@ -1,4 +1,4 @@
 gem_cache
-_site
+/blog/_site
 .jekyll-cache
 .sass-cache
