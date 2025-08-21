@@ -2,22 +2,23 @@
  	General
 -------------*/
 
-*{
+* {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
 
-html{
+html {
 	font: normal 16px sans-serif;
 	color: #555;
 }
 
-ul, nav{
+ul,
+nav {
 	list-style: none;
 }
 
-a{
+a {
 	text-decoration: none;
 	color: inherit;
 	cursor: pointer;
@@ -25,11 +26,11 @@ a{
 	opacity: 0.9;
 }
 
-a:hover{
+a:hover {
 	opacity: 1;
 }
 
-a.btn{
+a.btn {
 	color: #fff;
 	border-radius: 4px;
 	text-transform: uppercase;
@@ -38,7 +39,7 @@ a.btn{
 	text-align: center;
 }
 
-hr{
+hr {
 	width: 150px;
 	height: 2px;
 	background-color: #2196F3;
@@ -46,7 +47,7 @@ hr{
 	margin-bottom: 80px;
 }
 
-section{
+section {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -54,31 +55,31 @@ section{
 	padding: 125px 100px;
 }
 
-@media (max-width: 1000px){
+@media (max-width: 1000px) {
 
-	section{
+	section {
 		padding: 100px 50px;
 	}
 
 }
 
-@media (max-width: 600px){
+@media (max-width: 600px) {
 
-	section{
+	section {
 		padding: 80px 30px;
 	}
 
 }
 
-section h3.title{
+section h3.title {
 	color: #414a4f;
-	text-transform: capitalize; 
+	text-transform: capitalize;
 	font: bold 32px 'Open Sans', sans-serif;
 	margin-bottom: 35px;
 	text-align: center;
 }
 
-section p{
+section p {
 	max-width: 800px;
 	text-align: center;
 	margin-bottom: 35px;
@@ -86,7 +87,7 @@ section p{
 	line-height: 2;
 }
 
-ul.grid{
+ul.grid {
 	width: 100%;
 	display: flex;
 	flex-wrap: wrap;
@@ -98,7 +99,7 @@ ul.grid{
  	Header
 -------------*/
 
-header{
+header {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -111,41 +112,41 @@ header{
 	padding: 35px 100px 0;
 }
 
-header h2{
+header h2 {
 	font-family: 'Quicksand', sans-serif;
 }
 
-header nav{
+header nav {
 	display: flex;
 }
 
-header nav li{
+header nav li {
 	margin: 0 15px;
 }
 
-header nav li:first-child{
-	margin-left: 0;	
+header nav li:first-child {
+	margin-left: 0;
 }
 
-header nav li:last-child{
-	margin-right: 0;	
+header nav li:last-child {
+	margin-right: 0;
 }
 
 
 
-@media (max-width: 1000px){
-	header{
+@media (max-width: 1000px) {
+	header {
 		padding: 20px 50px;
 	}
 }
 
 
-@media (max-width: 700px){
-	header{
-		flex-direction: column;		
+@media (max-width: 700px) {
+	header {
+		flex-direction: column;
 	}
 
-	header h2{
+	header h2 {
 		margin-bottom: 15px;
 	}
 }
@@ -156,7 +157,7 @@ header nav li:last-child{
  	Hero Section
 ----------------*/
 
-.hero{
+.hero {
 	position: relative;
 	justify-content: center;
 	min-height: 100vh;
@@ -164,7 +165,7 @@ header nav li:last-child{
 	text-align: center;
 }
 
-.hero .background-image{
+.hero .background-image {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -175,7 +176,7 @@ header nav li:last-child{
 	z-index: -1;
 }
 
-.hero .background-image:after{
+.hero .background-image:after {
 	content: '';
 	position: absolute;
 	top: 0;
@@ -186,35 +187,35 @@ header nav li:last-child{
 	opacity: 0.75;
 }
 
-.hero h1{
+.hero h1 {
 	font: bold 60px 'Open Sans', sans-serif;
 	margin-bottom: 15px;
 }
 
-.hero h3{
+.hero h3 {
 	font: normal 28px 'Open Sans', sans-serif;
 	margin-bottom: 40px;
 }
 
-.hero a.btn{
+.hero a.btn {
 	padding: 20px 46px;
 }
 
-@media (max-width: 800px){
+@media (max-width: 800px) {
 
-	.hero{
+	.hero {
 		min-height: 600px;
 	}
 
-	.hero h1{
+	.hero h1 {
 		font-size: 48px;
 	}
 
-	.hero h3{
+	.hero h3 {
 		font-size: 24px;
 	}
 
-	.hero a.btn{
+	.hero a.btn {
 		padding: 15px 40px;
 	}
 
@@ -226,11 +227,11 @@ header nav li:last-child{
  	Our Work Section
 ---------------------*/
 
-.оur-work{
+.оur-work {
 	background-color: #fff;
 }
 
-.our-work .grid li{
+.our-work .grid li {
 	padding: 20px;
 	height: 350px;
 	border-radius: 3px;
@@ -242,19 +243,19 @@ header nav li:last-child{
 	/*background-color: #333;*/
 }
 
-.our-work .grid li.small{
+.our-work .grid li.small {
 	flex-basis: 30%;
 }
 
-.our-work .grid li.large{
+.our-work .grid li.large {
 	flex-basis: 60%;
 }
 
 
-@media (max-width: 1000px){
+@media (max-width: 1000px) {
 
 	.our-work .grid li.small,
-	.our-work .grid li.large{
+	.our-work .grid li.large {
 		flex-basis: 100%;
 	}
 
@@ -266,49 +267,49 @@ header nav li:last-child{
  	Features Section
 ----------------------*/
 
-.features{
+.features {
 	background-color: #fff;
 }
 
-.features .grid li{
+.features .grid li {
 	padding: 0 30px;
 	flex-basis: 33%;
 	text-align: center;
 }
 
-.features .grid li i{
-    font-size: 50px;
-    color: #2196F3;
-    margin-bottom: 25px;
+.features .grid li i {
+	font-size: 50px;
+	color: #2196F3;
+	margin-bottom: 25px;
 }
 
-.features .grid li h4{
+.features .grid li h4 {
 	color: #555;
-    font-size: 20px;
-    margin-bottom: 25px;
+	font-size: 20px;
+	margin-bottom: 25px;
 }
 
-.features .grid li p{
-    margin: 0;
+.features .grid li p {
+	margin: 0;
 }
 
-@media (max-width: 1000px){
+@media (max-width: 1000px) {
 
-	.features .grid li{
+	.features .grid li {
 		flex-basis: 70%;
 		margin-bottom: 65px;
 	}
 
-	.features .grid li:last-child{
+	.features .grid li:last-child {
 		margin-bottom: 0;
 	}
 
 }
 
 
-@media (max-width: 600px){
+@media (max-width: 600px) {
 
-	.features .grid li{
+	.features .grid li {
 		flex-basis: 100%;
 	}
 
@@ -319,23 +320,23 @@ header nav li:last-child{
  	The Team Section
 ----------------------*/
 
-.us{
+.us {
 	background-color: #f7f7f7;
 }
 
 .team {
-	width:80px;
-	height:80px;
-	margin:10px 10px;
+	width: 80px;
+	height: 80px;
+	margin: 10px 10px;
 }
 
 .circular {
-    border-radius: 150px;
-    -webkit-border-radius: 150px;
-    -moz-border-radius: 150px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, .8);
-    -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
-    -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	border-radius: 150px;
+	-webkit-border-radius: 150px;
+	-moz-border-radius: 150px;
+	box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	-webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	-moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
 }
 
 .us li {
@@ -347,37 +348,37 @@ header nav li:last-child{
  	Reviews Section
 --------------------*/
 
-.reviews{
+.reviews {
 	background-color: #fff;
 }
 
-.reviews .quote{
+.reviews .quote {
 	text-align: center;
 	width: 80%;
-    font-size: 22px;
-    font-weight: 300;
-    line-height: 1.5;
-    margin-bottom: 20px;
-    padding: 0;
+	font-size: 22px;
+	font-weight: 300;
+	line-height: 1.5;
+	margin-bottom: 20px;
+	padding: 0;
 }
 
-.reviews .author{
-    font-size: 18px;
-    margin-bottom: 50px;
+.reviews .author {
+	font-size: 18px;
+	margin-bottom: 50px;
 }
 
-.reviews .author:last-child{
-    margin-bottom: 0;
+.reviews .author:last-child {
+	margin-bottom: 0;
 }
 
-@media (max-width: 1000px){
+@media (max-width: 1000px) {
 
-	.reviews .quote{
+	.reviews .quote {
 		font-size: 20px;
 	}
 
-	.reviews .author{
-	    font-size: 16px;
+	.reviews .author {
+		font-size: 16px;
 	}
 
 }
@@ -388,16 +389,16 @@ header nav li:last-child{
  	Contact Section
 ---------------------*/
 
-.contact{
+.contact {
 	color: #fff;
 	background-color: #414a4f;
 }
 
-.contact h3.title{
+.contact h3.title {
 	color: #fff;
 }
 
-.contact form{
+.contact form {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -407,7 +408,7 @@ header nav li:last-child{
 	width: 80%;
 }
 
-.contact form input{
+.contact form input {
 	padding: 15px;
 	flex: 1;
 	margin-right: 30px;
@@ -415,15 +416,15 @@ header nav li:last-child{
 	color: #555;
 }
 
-.contact form .btn{
+.contact form .btn {
 	padding: 18px 42px;
 	text-transform: lowercase;
 }
 
 
-@media (max-width: 800px){
+@media (max-width: 800px) {
 
-	.contact form input{
+	.contact form input {
 		flex-basis: 100%;
 		margin: 0 0 20px 0;
 	}
@@ -437,7 +438,7 @@ header nav li:last-child{
  	Footer
 -------------*/
 
-footer{
+footer {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -447,38 +448,38 @@ footer{
 	padding: 60px 0;
 }
 
-footer ul{
+footer ul {
 	display: flex;
 	margin-bottom: 25px;
 	font-size: 32px;
 }
 
-footer ul li{
-	margin: 0 8px;	
+footer ul li {
+	margin: 0 8px;
 }
 
-footer ul li:first-child{
-	margin-left: 0;	
+footer ul li:first-child {
+	margin-left: 0;
 }
 
-footer ul li:last-child{
-	margin-right: 0;	
+footer ul li:last-child {
+	margin-right: 0;
 }
 
-footer p{
+footer p {
 	text-transform: uppercase;
 	font-size: 14px;
-	color: rgba(255,255,255,0.6);
+	color: rgba(255, 255, 255, 0.6);
 	margin-bottom: 10px;
 }
 
-footer p a{
+footer p a {
 	color: #fff;
 }
 
-@media (max-width: 700px){
+@media (max-width: 700px) {
 
-	footer{
+	footer {
 		padding: 80px 15px;
 	}
 
@@ -488,7 +489,9 @@ footer p a{
 /* -- Demo ads -- */
 
 @media (max-width: 1200px) {
-	#bsaHolder{ display:none;}
+	#bsaHolder {
+		display: none;
+	}
 }
 
 
@@ -496,49 +499,49 @@ footer p a{
  	Followup Section
 ----------------------*/
 
-.followup{
+.followup {
 	background-color: #f7f7f7;
 }
 
-.followup .grid li{
+.followup .grid li {
 	padding: 0 30px;
 	flex-basis: 33%;
 	text-align: center;
 }
 
-.followup .grid li i{
-    font-size: 50px;
-    color: #000;
-    margin-bottom: 25px;
+.followup .grid li i {
+	font-size: 50px;
+	color: #000;
+	margin-bottom: 25px;
 }
 
-.followup .grid li h4{
+.followup .grid li h4 {
 	color: #555;
-    font-size: 20px;
-    margin-bottom: 25px;
+	font-size: 20px;
+	margin-bottom: 25px;
 }
 
-.followup .grid li p{
-    margin: 0;
+.followup .grid li p {
+	margin: 0;
 }
 
-@media (max-width: 1000px){
+@media (max-width: 1000px) {
 
-	.followup .grid li{
+	.followup .grid li {
 		flex-basis: 70%;
 		margin-bottom: 65px;
 	}
 
-	.followup .grid li:last-child{
+	.followup .grid li:last-child {
 		margin-bottom: 0;
 	}
 
 }
 
 
-@media (max-width: 600px){
+@media (max-width: 600px) {
 
-	.followup .grid li{
+	.followup .grid li {
 		flex-basis: 100%;
 	}
 
