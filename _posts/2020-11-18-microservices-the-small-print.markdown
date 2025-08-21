@@ -17,4 +17,4 @@ Microservices get a lot of sales talk, which leads many teams to adopt them eage
 
 In this talk I gave at PyconES 2018 I discuss the basic theory around microservices architectures, and go over the common pain points that they bring, and how they often get you in the opposite direction than you intended with them.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ch0A_lcaPG0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ch0A_lcaPG0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display: block; margin: 20px auto; text-align: center;"></iframe>
