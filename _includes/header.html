@@ -4,22 +4,24 @@ Copied from https://github.com/jekyll/minima/blob/master/_includes/header.html
 
 <header class="site-header">
 
-    <div class="wrapper">
-      {%- assign default_paths = site.pages | map: "path" -%}
-      {%- assign page_paths = site.minima.nav_pages | default: default_paths -%}
-      {%- assign page_titles = site.pages | map: 'title' | compact %}
-      <a class="site-title" rel="author" href="{{ '/' | relative_url }}">{{ site.title | escape }}</a>
-  
-      {%- unless page_titles == empty %}
-        <nav class="site-nav">
-          <label for="nav-trigger">
-            <span class="menu-icon"></span>
-          </label>
-  
-          <div class="nav-items">
-            <a class="nav-item" href="/projects">Projects</a>
-          </div>
-        </nav>
-      {%- endunless %}
-    </div>
-  </header>
+  <div class="wrapper">
+    {%- assign default_paths = site.pages | map: "path" -%}
+    {%- assign page_paths = site.minima.nav_pages | default: default_paths -%}
+    {%- assign page_titles = site.pages | map: 'title' | compact %}
+    <a class="site-title" rel="author" href="{{ '/' | relative_url }}">{{ site.title | escape }}</a>
+
+    {%- unless page_titles == empty %}
+    <nav class="site-nav">
+      <label for="nav-trigger">
+        <span class="menu-icon"></span>
+      </label>
+
+      <div class="nav-items" style="display: flex; gap: 20px;">
+        <a class="nav-item" href="/all">All posts</a>
+        <a class="nav-item" href="/projects">Projects</a>
+        <a class="nav-item" href="/feed.xml">RSS</a>
+      </div>
+    </nav>
+    {%- endunless %}
+  </div>
+</header>

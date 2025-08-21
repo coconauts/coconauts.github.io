@@ -1,7 +1,7 @@
 # Site settings
-title: "Coconauts"
+title: "The Coconauts Blog"
 description: "Hardware and software projects"
-url: "https://coconauts.net"
+url: "https://coconauts.net/blog"
 
 # Posts settings
 permalink: /blog/:year/:month/:day/:title/
@@ -11,6 +11,7 @@ nav:
     url: /blog/
   - title: "Projects"
     url: /projects/
+
 
 # Excerpt settings
 excerpt_separator: "<!--more-->"
