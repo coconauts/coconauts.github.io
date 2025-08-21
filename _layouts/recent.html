@@ -23,7 +23,9 @@ layout: default
       </h3>
       {{ post.excerpt }}
       <p></p>
+      {%- if post.content != post.excerpt -%}
       <a href="{{ post.url | relative_url }}" class="read-more">{{ site.excerpt_link | default: "Read on &rarr;" }}</a>
+      {%- endif -%}
     </li>
     {%- endfor -%}
   </ul>
