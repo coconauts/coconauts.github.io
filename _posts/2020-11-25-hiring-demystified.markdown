@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Hiring Demystified"
-date: 2020-11-25 12:00:14 +0000
+date: 2021-09-28 12:00:14 +0000
 comments: true
 categories: software
 tags: speaking talks hiring companies pycon
