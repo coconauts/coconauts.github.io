@@ -16,7 +16,7 @@ As retro-gaming enthusiasts, we have a broad collection of old PC game files tha
 
 That is exactly what we've done: we're built ourselves a retro PC, using a 386x case, but with a modern PC inside. On it, we've installed a fake floppy drive that loads games using NFC - but seemingly, it looks as if they are magically loading from the floppy disks. Read on to learn how!
 
-<video width="400" height="600" controls>
+<video width="400" height="600" controls style="display: block; margin: 0 auto; text-align: center;">
   <source src="/images/posts/nfc-floppy/demo.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
@@ -32,13 +32,13 @@ The Arduino program is continuously reading for IDs, and sends them to the PC th
 
 ## Hardware
 
-![MFRC522 module](/images/posts/nfc-floppy/mfrc522.png)
+<img src="/images/posts/nfc-floppy/mfrc522.png" alt="MFRC522 module" style="display: block; margin: 0 auto; text-align: center;">
 
 We used an *Arduino UNO*, with an MFRC522 NFC/RFID module running at 13.56MHz, which supports ISO/IEC 14443 Type A cards, MIFARE, and NTAG formats and has a reading range of 1-3cm. And most importantly, [there's a community-maintained Arduino library](https://github.com/miguelbalboa/rfid) for these modules.
 
 The MFRC522 module needs to be positioned where it can reliably read NFC tags inside inserted floppy disks. However, we found that the metallic shell holding the disks in place was interfering with the readings, so we had to replace it with a more inert material - including the insertion/ejection button. We made a replacement structure out of LEGO building blocks - it was incredibly simple to put together and works like a charm!
 
-<video width="600" height="400" controls>
+<video width="600" height="400" controls style="display: block; margin: 0 auto; text-align: center;>
   <source src="/images/posts/nfc-floppy/lego.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
