@@ -39,6 +39,13 @@ sass:
   sass_dir: _sass
   style: compressed
 
+# Author information
+authors:
+  "Mar Bartolome":
+    description: "A fullstack developer who loves open source, videogames, music and writing."
+  "Javier Rengel":
+    description: "I make a living as a fullstack developer, but at heart I'm a geek who loves videogames and hardware."
+
 exclude:
   - Gemfile
   - Gemfile.lock

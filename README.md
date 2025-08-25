@@ -12,6 +12,18 @@ Posts go in `/posts`, assets for posts in `/images`.
 Theme is set up in `_config.yml` and is customized, as per official instructions: https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/adding-a-theme-to-your-github-pages-site-using-jekyll
 
 
+Running:
+
+```bash
+# Using Docker 
+docker-compose up
+
+# Or locally with Jekyll
+bundle install
+bundle exec jekyll serve
+```
+
+
 ## Migration from octoporess
 
 Old coconauts blog was made with octopress, and migrated by javier to use Jekyll4. Process was:
@@ -19,6 +31,12 @@ Old coconauts blog was made with octopress, and migrated by javier to use Jekyll
 - generate a fresh jekyll template as described here https://jekyllrb.com/docs/
 - copy over the posts and assets, modify img tags, which were different
 - add some customizations for the projects page and `<--more-->` tags
+- set up the homepage to be the main company splash site, and the actuall blog to live in /blog
+
+
+## Known issues
+
+The migration was a bit hacky and some things do not work properly: for example, the css and favicon. This is due in part to idiosincrasies of the minima theme that have not been followed (saas structure is not the same as with regular jekyll themes, it would seem), and the fact the the blog does not live in the root (for example: the favicon works at the root, but not in /blog). Also when trying to change the theme via the _config.yml, other themes don't seem to work.
 
 --------
 

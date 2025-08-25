@@ -1,0 +1,14 @@
+{%- if page.author and site.authors[page.author] -%}
+<div style="margin-top: 3em; padding-top: 2em; border-top: 1px solid #e8e8e8;">
+  <div class="author-info">
+    <p>I'm <strong>{{page.author}}</strong>. 👋</p>
+    <p>{{ site.authors[page.author].description }}</p>
+    <p>As a part of Coconauts, I offer my services for hire.
+      Whether you have a software project you need assistance with,
+      a startup idea that needs kickstarting,
+      or extra people to work on your team, we can help out!
+      Get in touch at <a href="mailto:contact@coconauts.net">contact@coconauts.net</a>
+    </p>
+  </div>
+</div>
+{%- endif -%}
