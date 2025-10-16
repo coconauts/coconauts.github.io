@@ -15,5 +15,5 @@ Dynamus was Mar's thesis project for her bachelor's degree at university. It is 
 
 # Links
 
-- [Source code](https://gitorious.org/dynamus)
-- [Thesis document (in Spanish)](http://www.coconauts.net/mar/dynamus_thesis.pdf)
+- [Source code](https://bitbucket.org/marbartolome/dynamus-legacy/src/master/)
+- [Thesis document](https://bitbucket.org/marbartolome/dynamus-legacy/raw/7395ee4c47f3e8deb3369a27733a9da372ec0cd9/memoria/dynamus_thesis.pdf)
