@@ -6,7 +6,8 @@ permalink: /projects/watchduino2.html
 
 A smartwatch powered with Arduino, and a revision our previous [Watchduino project](http://www.coconauts.net/projects/watchduino/).
 
-<img src='https://farm6.staticflickr.com/5717/21815509489_5531e2b080_z_d.jpg'/>
+See project page at [Hackaday](https://hackaday.io/project/7244-watchduino2).
+
 <img src='https://farm1.staticflickr.com/772/22314247456_e69a4e1275_z_d.jpg'/>
 
 ## Featured in
@@ -109,6 +110,3 @@ There is still plenty to do! We have a working prototype with some cool apps, bu
 - We need to improve battery life. Currently Watchduino 2 is able to run for 18 hours after a 20 minute charge. This is not to bad if you compare it to commercial fully fledged smartwatches, but for a device that is using an arduino processor and a really non-fancy screen, we expect that the battery life can be drastically improved. On the original Watchduino we managed to use some clever optimizations to expand the battery life from days to months, and we hope we'll be able to do the same with this one.
 - We need to make it smaller, prettier and easier to assemble. Our current prototypes are hand soldered, and still we managed to make it small enough to be wearable. But we can do better if we manage to integrate the components into a PCB.
 
-# Follow up
-
-- Hackaday project page: https://hackaday.io/project/7244-watchduino2
