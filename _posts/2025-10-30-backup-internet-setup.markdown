@@ -13,6 +13,8 @@ We take so many things for granted in life when they are working fine, but when 
 
 At home, we get our Internet from a fiber connection, which, as it turns out, it's just light pulses coming thru a cable down the street. And this is a single point of failure, ready to be attacked by unlikely adversaries...
 
+<!--more-->
+
 <img src="/images/posts/rat.webp" alt="A cheeky rat" style="display: block; margin: 0 auto; text-align: center;">
 
 Rats! These pesky critters happen to co-live in our neighborhood, and for mysterious reasons they love chewing on the fiber Internet cables - so light pulses no longer reach our home: the LED pilots fade out in our router, and despair looms, for we are now isolated from the digital world. 
