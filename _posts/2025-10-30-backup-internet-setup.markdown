@@ -11,7 +11,7 @@ published: true
 
 We take so many things for granted in life when they are working fine, but when they fail, you suddenly realize they hanging by a thread - like, literally, THE INTERNET.
 
-At home, we get our Internet from a fiber connection, which, as it turns out, it's just light pulses coming thru a cable down the street. And this is a single point of failure, ready to be attacked by unlikely enemies...
+At home, we get our Internet from a fiber connection, which, as it turns out, it's just light pulses coming thru a cable down the street. And this is a single point of failure, ready to be attacked by unlikely adversaries...
 
 <img src="/images/posts/rat.webp" alt="A cheeky rat" style="display: block; margin: 0 auto; text-align: center;">
 
@@ -23,7 +23,7 @@ Rats! These pesky critters happen to co-live in our neighborhood, and for myster
 
 Our Internet provider eventually sends a technician to fix the broken cables and bring us back to civilization, but sometimes they take a few days (or even weeks!). They are nice enough to give us complimentary 100GBs of mobile data per day (ie 4G/5G), so we can get going with our lives as we wait. 
 
-# Panik!
+## But wait, it gets worse
 
 However, this solution is severely limited for our needs. We can only tap into this connection with a mobile phone, and use it to provide a WiFi hotspot using tethering. This is an acceptable solution if you just need temporary internet on a laptop to work, or a tablet to watch Netflix. But in our case, we don't just use the internet for work and leisure: we need it for our house to function.
 
@@ -31,11 +31,11 @@ We're that kind of geeks that are fond of domotics and home automations, and our
 
 <img src="/images/posts/network_broken.png" alt="Broken network diagram" style="display: block; margin: 0 auto; text-align: center;">
 
-# 4G router to the rescue
+## Solution: the single responsibility principle
 
 There was a simple solution to all this: we purchased [a 4G router](https://www.amazon.com/dp/B07RM95YFC) to act as an Internet gateway, in stead of our regular fiber router. This router works by inserting a SIM card, and connects to the Internet via the 4G network, like smartphones do, but other than that it acts like any regular router. 
 
-So just be swapping the entry router, we get to keep the rest of the network setup intact, and our house can keep business as usual during the outage.
+Because the responsibility of the main router in our case is limited to just be a dumb proxy for internet access, it's completely replaceable: we can choose to use the fiber or 4G router as Internet provider as the need arises. The rest of the network setup remains intact, and our house can keep business as usual during the outage with zero effort.
 
 <img src="/images/posts/network_fixed.png" alt="Fixed network diagram" style="display: block; margin: 0 auto; text-align: center;">
 
