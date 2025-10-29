@@ -48,8 +48,6 @@ The 4G connection is obviously not as good as the fiber, and we're still limited
     <p>If you dread spaghetti code, try spaghetti cables</p>
 </div>
 
-[cables] If you dread spaghetti code, try spaghetti cables
-
 Then we simply swap the entry routers again, and it's as if nothing ever happened.
 
 
