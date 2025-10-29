@@ -23,11 +23,11 @@ Rats! These pesky critters happen to co-live in our neighborhood, and for myster
 
 Our Internet provider eventually sends a technician to fix the broken cables and bring us back to civilization, but sometimes they take a few days (or even weeks!). They are nice enough to give us complimentary 100GBs of mobile data per day (ie 4G/5G), so we can get going with our lives as we wait. 
 
-## But wait, it gets worse
+## But the problem escalates...
 
 However, this solution is severely limited for our needs. We can only tap into this connection with a mobile phone, and use it to provide a WiFi hotspot using tethering. This is an acceptable solution if you just need temporary internet on a laptop to work, or a tablet to watch Netflix. But in our case, we don't just use the internet for work and leisure: we need it for our house to function.
 
-We're that kind of geeks that are fond of domotics and home automations, and our house is riddled with smart devices to the point of ridiculous: we have around a hundred devices connected to our WiFi network, each of them with a fixed IP, integrated with [Home Assistant](https://www.home-assistant.io/), [node-red](https://nodered.org/), [kuma](https://uptime.kuma.pet/), and more... They rely on a local DHCP server that lives in a secondary router, so when that router can't get Internet, nothing works: we don't have a doorbell, our blinds don't roll, our garden doesn't get watered, our heat pump does not trigger... Reconfiguring all this would be absolutely hellish.
+We're the kind of geeks that are fond of domotics and home automations, and our house is riddled with smart devices to the point of ridiculous: we have around a hundred devices connected to our network, each of them with a fixed IP, integrated with [Home Assistant](https://www.home-assistant.io/), [node-red](https://nodered.org/), [kuma](https://uptime.kuma.pet/), and more... They rely on a local DHCP server that lives in a secondary router, so when that router can't get Internet, nothing works: we don't have a doorbell, our blinds don't roll, our garden doesn't get watered, our heat pump does not trigger... Reconfiguring all this would be absolutely hellish.
 
 <img src="/images/posts/network_broken.png" alt="Broken network diagram" style="display: block; margin: 0 auto; text-align: center;">
 
