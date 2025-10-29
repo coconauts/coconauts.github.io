@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Backup Internet Setup for Emergencies"
-date: 2025-10-30 10:00:00 +0000
+date: 2025-10-28 10:00:00 +0000
 categories: hardware
 description: ""
 author: Mar Bartolome
