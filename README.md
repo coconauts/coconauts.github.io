@@ -7,7 +7,7 @@ This is the Jekyll-powered website and blog for Coconauts.
 
 The `jekyll4` branch is setup to automatically deploy on every push using github pages.
 
-Posts go in `/posts`, assets for posts in `/images`.
+Posts go in `/_posts`, assets for posts in `/images`.
 
 Theme is set up in `_config.yml` and is customized, as per official instructions: https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/adding-a-theme-to-your-github-pages-site-using-jekyll
 
