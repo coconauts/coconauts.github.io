@@ -1,15 +1,33 @@
 #!/bin/bash
 # Script to find and remove GPS/location EXIF data from images
 
+# Exit on error, undefined variables, and pipe failures
+set -euo pipefail
+
 IMAGE_DIR="images/posts"
 
-if [ "$1" == "--list" ]; then
+# Check for required dependencies
+if ! command -v exiftool &> /dev/null; then
+    echo "ERROR: exiftool is not installed. Please install it first." >&2
+    echo "  On Ubuntu/Debian: sudo apt-get install libimage-exiftool-perl" >&2
+    echo "  On macOS: brew install exiftool" >&2
+    exit 1
+fi
+
+# Check if image directory exists
+if [ ! -d "$IMAGE_DIR" ]; then
+    echo "ERROR: Image directory '$IMAGE_DIR' does not exist!" >&2
+    exit 1
+fi
+
+if [ "${1:-}" == "--list" ]; then
     echo "Scanning images for GPS data..."
     echo ""
 
     # Find images with GPS data
     find "$IMAGE_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) -exec sh -c '
-        gps_data=$(exiftool -GPS* "$1" 2>/dev/null | grep -i "GPS")
+        set -e
+        gps_data=$(exiftool -GPS* "$1" | grep -i "GPS" || true)
         if [ -n "$gps_data" ]; then
             echo "📍 $1"
             echo "$gps_data" | sed "s/^/   /"
@@ -17,13 +35,14 @@ if [ "$1" == "--list" ]; then
         fi
     ' _ {} \;
 
-elif [ "$1" == "--remove" ]; then
+elif [ "${1:-}" == "--remove" ]; then
     echo "Finding images with GPS data..."
     echo ""
 
     # Find and list images with GPS data
     images=$(find "$IMAGE_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) -exec sh -c '
-        gps_data=$(exiftool -GPS* "$1" 2>/dev/null | grep -i "GPS")
+        set -e
+        gps_data=$(exiftool -GPS* "$1" | grep -i "GPS" || true)
         if [ -n "$gps_data" ]; then
             echo "$1"
         fi
@@ -53,7 +72,10 @@ elif [ "$1" == "--remove" ]; then
 
     # Remove GPS data from each image
     echo "$images" | while read -r img; do
-        exiftool -GPS*= -overwrite_original "$img" 2>/dev/null
+        if ! exiftool -GPS*= -overwrite_original "$img"; then
+            echo "ERROR: Failed to remove GPS data from: $img" >&2
+            exit 1
+        fi
         echo "✓ Cleaned: $img"
     done
 
