@@ -4,7 +4,7 @@
 # Exit on error, undefined variables, and pipe failures
 set -euo pipefail
 
-IMAGE_DIR="images/posts"
+IMAGE_DIR="images"
 
 # Check for required dependencies
 if ! command -v exiftool &> /dev/null; then
