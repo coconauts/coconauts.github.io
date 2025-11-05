@@ -17,7 +17,7 @@ But as it turns out, Django has an amazing community and runs a periodic program
 
 <div class="img-with-text" style="display: block; margin: 0 auto; text-align: center;">
     <img src="/images/posts/djangonauts/logo.png" alt="djangonauts logo" >
-    <p>This time, I'm finally contributing to OS, or die trying! (*-dramatization-*)</p>
+    <p>This time, I'm finally contributing to OS, or die trying! (_*dramatization*_)</p>
 </div>
 
 
@@ -33,7 +33,9 @@ The first week of the program is used to familiarise ourselves with the project 
 
 Going through a project onboarding with a contributor mindset is extremely valuable: it's only the first time that you go through the introductory materials that you get to experience them with fresh eyes, and are able to evaluate it's effectiveness. So simply going through this learning process, before writing any code, allowed to identify some areas where the documentation was confusing. And as new contributors, we're encouraged to fix it!
 
-The process of making a change to an Open Source process, even it it's in the docs, goes through **discussion and collaboration with the existing project maintainers**. They need to evaluate your change and help guide the direction taken. So the first step is to [raise tickets](https://github.com/django-cms/django-cms/issues/8361) for [the issues that you encountered](https://github.com/django-cms/djangocms-frontend/issues/312#issuecomment-3442345184). Those tickets might give way into [pull requests implementing the proposed changes](https://github.com/django-cms/djangocms-frontend/pull/317) - which might not necessarily be implemented by the same person! **Publishing an issue** helps current and future contributors become aware of a bug, a possible enhancement, or even feature ideas, and is in essence another useful way of contributing to open source, without writing any code.
+The process of making a change to an Open Source process, even it it's in the docs, goes through **discussion and collaboration with the existing project maintainers**. They need to evaluate your change and help guide the direction taken. So the first step is to [raise tickets](https://github.com/django-cms/django-cms/issues/8361) for [the issues that you encountered](https://github.com/django-cms/djangocms-frontend/issues/312#issuecomment-3442345184). Those tickets (or _issues_, as Github calls them) might give way into [pull requests implementing the proposed changes](https://github.com/django-cms/djangocms-frontend/pull/317) - which might not necessarily be implemented by the same person! **Publishing a ticket/issue** helps current and future contributors become aware of a bug, a possible enhancement, or even feature ideas, and is in essence another useful way of contributing to open source, without writing any code.
+
+<img src="/images/posts/djangonauts/issue.png" alt="Github issue" style="display: block; margin: 0 auto; text-align: center;">
 
 For example, later during the program, we discovered a bug in Django CMS. [I raised a ticket reporting it](https://github.com/django-cms/djangocms-frontend/issues/318), and [our navigator promptly pushed a fix](https://github.com/django-cms/djangocms-frontend/issues/318).
 
@@ -43,7 +45,7 @@ And now comes the time to really get started: our navigator offered a curated li
 
 This is perhaps the biggest barrier of entry for aspiring contributors in most OS projects - when you are lacking the project context, most tickets won't even make any sense to you. And here's where community and curation come to the rescue: many projects use tags for their issues, which can be used for example to tell apart features, from bugs, from documentation. Or a common pattern is to use them to **mark tickets that are friendlier to new contributors**, with names such as **"easy pickings"** or **"good first issue"**.
 
-<img src="/images/posts/djangonauts/issues.png" alt="Tagged github issues" style="display: block; margin: 0 auto; text-align: center;">
+<img src="/images/posts/djangonauts/issuestags.png" alt="Tagged github issues" style="display: block; margin: 0 auto; text-align: center;">
 
 In my case, I went for [a bug ticket](https://github.com/django-cms/djangocms-frontend/issues/250), which was marked as "easy pickings". The ticket had a very clear description on how to reproduce the bug, with even screenshots included - so I settled into doing just that. 
 
@@ -78,4 +80,4 @@ We're still halfway through the program, but already I feel like it's been a rew
 
 I'm really grateful to the Django community for their welcomeness and dedication - it comes to show that when you cultivate a great community, you get a great project! 
 
-This is just the first mission, but I'm sure more adventures in Django an open source await! 🚀
+This is just the first mission, but I'm sure more adventures in Django an open source will follow up! 🚀
