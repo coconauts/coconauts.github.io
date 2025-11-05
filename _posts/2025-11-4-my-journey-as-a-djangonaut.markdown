@@ -20,6 +20,7 @@ But as it turns out, Django has an amazing community and runs a periodic program
     <p>This time, I'm finally contributing to OS, or die trying! (_*dramatization*_)</p>
 </div>
 
+<!--more-->
 
 ## Ready for takeoff
 
