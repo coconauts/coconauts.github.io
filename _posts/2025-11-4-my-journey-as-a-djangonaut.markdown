@@ -17,7 +17,7 @@ But as it turns out, Django has an amazing community and runs a periodic program
 
 <div class="img-with-text" style="display: block; margin: 0 auto; text-align: center;">
     <img src="/images/posts/djangonauts/logo.png" alt="djangonauts logo" >
-    <p>This time, I'm finally contributing to OS, or die trying! (_*dramatization*_)</p>
+    <p>This time, I'm finally contributing to OS, or die trying! (*-dramatization-*)</p>
 </div>
 
 <!--more-->
@@ -66,7 +66,7 @@ Once again, the key takeout is that **collaboration with a project maintainer** 
 
 The Djangonauts is not a solo mission: the spirit of the program is collaboration not only with your mentors, but also with the other Djangonauts. There's a lot of diversity in the participants: not just in terms of geography of demographics, but also there's people from very disparate backgrounds. There's people who are already active members of the Python/django community, as well as people with very little exposure to the project, and there's experienced developers alongside people who are newer to programming. Just like in open source projects in the wild, if you think about it! 
 
-The magic of open source is that every part of the process is open, and anyone can collaborate. So even if a ticket is mainly driven by one contributor, it doesn't mean that others can't collaborate as well. As the famous quote goes: [*given enough eyeballs, all bugs are shallow*](https://en.wikipedia.org/wiki/Linus%27s_law) - i.e., more people have a broader view. 
+The magic of open source is that **every part of the process is open, and anyone can collaborate**. So even if a ticket is mainly driven by one contributor, it doesn't mean that others can't lend a hand as well. As the famous quote goes: [*given enough eyeballs, all bugs are shallow*](https://en.wikipedia.org/wiki/Linus%27s_law) - i.e., more people have a broader view. 
 
 Djangonauts are encouraged to "chip in" into their peer's doings, not just to help, but also to learn further. Peeking into you peer's tickets and pull requests is a great way to learn, but also gives you the necessary context to help them if they get stuck - via chat discussions or even live [pair programming](https://en.wikipedia.org/wiki/Pair_programming) sessions.
 
