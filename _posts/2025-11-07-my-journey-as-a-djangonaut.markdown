@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "My journey as a Djangonaut - from zero to contributor in one space mission"
-date: 2025-10-28 10:00:00 +0000
+date: 2025-11-07 10:00:00 +0000
 categories: software
 description: ""
 author: Mar Bartolome
