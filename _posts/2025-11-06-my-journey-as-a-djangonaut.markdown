@@ -17,7 +17,7 @@ But as it turns out, Django has an amazing community and runs a periodic program
 
 <div class="img-with-text" style="display: block; margin: 0 auto; text-align: center;">
     <img src="/images/posts/djangonauts/logo.png" alt="djangonauts logo" >
-    <p>This time, I'm finally contributing to OS, or die trying! (*-dramatization-*)</p>
+    <p>Similarity to the Coconauts name purely coincidental 😬</p>
 </div>
 
 <!--more-->
