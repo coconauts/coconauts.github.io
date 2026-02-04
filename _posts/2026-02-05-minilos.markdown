@@ -1,0 +1,46 @@
+---
+layout: post
+title: "Minilos: a device for intentional listening in the digital age"
+date: 2025-10-28 10:00:00 +0000
+categories: hardware
+tags: arduino nfc retro gaming hardware
+sharing: true
+keywords: hiring
+description: "The vinyl experience, with digital music"
+author: Mar Bartolome
+featured: false
+published: false
+---
+
+It's funny how in the age of digital music, [vinyl sales are soaring](https://en.wikipedia.org/wiki/Vinyl_revival). Sure, Spotify and the likes put all the music in the world at our grasp - but we've lost something along the way. We end up just listening to whatever the algorithm fancies, rather than curating our own musical choices. Which is why people are turning to the physical experience of collecting records and playing them intentionally.
+
+That's all very romantic, but impractical: vinyls are expensive to buy (and more so now that they have turned into collector's items), and let's be real, they don't have the best sound quality (although some people actually prefer it that way). 
+
+So, we invented our own solution: _minilos_. A device that uses mini vinyls records as triggers to play digital music from a speaker. Read on for all the details about the implementation.
+
+<img src="/images/posts/minilos/minilos.jpg" alt="The minilos device" style="display: block; margin: 0 auto; text-align: center;">
+
+<!--more-->
+
+## First prototype
+
+If you've been following our blog closely, you'll notice a lot of similarities with another project we've shown you before: [the NFC floppy disk launcher](https://coconauts.net/blog/2025/07/25/nfc-floppy-disks/). Indeed, minilos follows exactly the same approach, only applied to music.
+
+We did a first version of this project several years ago actually. At that time, we played music at home through a [Google smart speaker](https://en.wikipedia.org/wiki/Google_Nest_(smart_speakers)), casted from Spotify. The process was kind of a PITA, since it involved opening the Spotify app on the phone, searching for the music you want to listen to, and then casting to the speaker, and praying that it works. 
+
+At some point we discovered [some cute coasters on Aliexpress in the shape of mini vynil records](https://es.aliexpress.com/item/1005003818148615.html), and we thought, wouldn't it be cool to play music from these instead?
+
+And thus, we devised a system to bridge both ends: we sticked NFC tags into the mini-vinyls, and used a Raspberry Pi to read them, match each tag with a spotify album ID, and then tell the Spotify API to play it in our Google Speaker. We made a little plywood case to enclose the Raspberry Pi, and place the "minyl" on top - so it all felt like you were playing an old-school record.
+
+<img src="/images/posts/minilos/old_minilos.jpg" alt="The original minilos prototype" style="display: block; margin: 0 auto; text-align: center;">
+
+The code and full BOM for this version are [on Github](https://github.com/coconauts/minilos).
+
+## Revision
+
+
+
+
+## Future
+
+We are currently reworking the project to turn it into a standalone device, without the need of a Google Speaker or Spotify - stay tuned!
