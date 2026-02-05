@@ -1,0 +1,123 @@
+---
+layout: post
+title: "Minilos: a device for intentional listening in the digital age"
+date: 2026-02-09 00:00:00 +0000
+categories: hardware
+tags: raspberrypi esp32 domotics nfc hardware
+sharing: true
+keywords: hardware
+description: "The vinyl experience, with digital music"
+author: Mar Bartolome
+featured: false
+published: false
+---
+
+It's funny how in the age of digital music, [vinyl sales are soaring](https://en.wikipedia.org/wiki/Vinyl_revival). Sure, Spotify and the likes put all the music in the world at our grasp - but we've lost something along the way. We end up just listening to whatever the algorithm fancies, rather than curating our own musical choices. Which is why people are turning to the physical experience of collecting records and playing them intentionally.
+
+That's all very romantic, but impractical: vinyls are expensive to buy (and more so now that they have turned into collector's items), and let's be real, they don't have the best sound quality (although some people actually prefer it that way). 
+
+So, we invented our own solution: _minilos_. A device that uses mini vinyls records as triggers to play digital music from a speaker. Read on for all the details about the implementation.
+
+<img src="/images/posts/minilos/minilos.jpg" alt="The minilos device" style="display: block; margin: 0 auto; text-align: center;">
+
+<!--more-->
+
+## First prototype, with Raspberry Pi
+
+If you've been following our blog closely, you'll notice a lot of similarities with another project we've shown you before: [the NFC floppy disk launcher](https://coconauts.net/blog/2025/07/25/nfc-floppy-disks/). Indeed, minilos follows exactly the same approach, only applied to music.
+
+We did a first version of this project several years ago actually. At that time, we played music at home through a [Google smart speaker](https://en.wikipedia.org/wiki/Google_Nest_(smart_speakers)), casted from Spotify. The process was kind of a PITA, since it involved opening the Spotify app on the phone, searching for the music you want to listen to, and then casting to the speaker, and praying that it works. 
+
+At some point we discovered [some cute coasters on Aliexpress in the shape of mini vynil records](https://es.aliexpress.com/item/1005003818148615.html), and we thought, wouldn't it be cool to play music from these instead?
+
+And thus, we devised a system to bridge both ends: we sticked NFC tags into the mini-vinyls, and used a [Raspberry Pi](https://www.raspberrypi.com/) running a python script to read them, match each tag with a spotify album ID, and then tell the [Spotify API](https://developer.spotify.com/documentation/web-api) to play it in our Google Speaker. We made a little plywood case to enclose the RPi, and place the _minilo_ on top - so it all felt like you were playing an old-school record.
+
+<img src="/images/posts/minilos/old_minilos.jpg" alt="The original minilos prototype" style="display: block; margin: 0 auto; text-align: center;">
+
+The full code and BOM for this version are [on Github](https://github.com/coconauts/minilos).
+
+
+## Revision, with ESPHome and domotics
+
+The device worked, but it was not very elegant to have it displayed in our living room. The mini-vinyl coasters came with an equally cute storage base in the shape of a record player - this would be perfect! If only we could fit the electronics inside...
+
+So we replaced the Raspberry with an [ESP32 board](https://en.wikipedia.org/wiki/ESP32): smaller, cheaper, and more than capable for our purposes. The electronics now fit seamlessly under the case.
+
+<img src="/images/posts/minilos/ESP32_minilos.jpg" alt="ESP32 and NFC reader concealed under the miniplayer" style="display: block; margin: 0 auto; text-align: center;">
+
+The ESP32 that we had lying around had the [ESPHome firmware](https://esphome.io/) installed, so why not integrate it in our [Home Assistant](https://www.home-assistant.io/) setup while we're at it?
+
+So instead of using a standalone script, now the logic is baked into our home domotics system. The config for the minilos ESPHome device defines a [pn532 component](https://esphome.io/components/binary_sensor/pn532/) (the NFC module that reads the tags), and [a text sensor](https://esphome.io/components/text_sensor/template/) (a text attribute where the value from the NFC tag will get stored).
+
+```yaml
+text_sensor:
+  - platform: template
+    id: last_tag
+    name: "Last NFC Tag"
+
+pn532_i2c:
+  update_interval: 2s
+  on_tag:
+    then:
+      - lambda: |-
+          ESP_LOGI("pn532", "Tag scanned: %s", x.c_str());
+          id(last_tag).publish_state(x);
+  on_tag_removed:
+    then:
+      - lambda: |-
+          ESP_LOGI("pn532", "Tag removed");
+          id(last_tag).publish_state("None");
+```
+
+With this, every time a _minilo_ is placed on the reader, it's NFC tag id will get published to Home Assistant:
+
+<img src="/images/posts/minilos/HA_last_nfc_tag.png" alt="Last NFC Tag value on HA" style="display: block; margin: 0 auto; text-align: center;">
+
+Our system of choice for the logics of our home domotics is [Node-RED](https://nodered.org/). There, we added a workflow that gets triggered when the HA attribute changes.
+
+<img src="/images/posts/minilos/nodered_minilos.png" alt="Minilos workflow in Node-RED" style="display: block; margin: 0 auto; text-align: center;">
+
+The tag ID gets matched to a spotify album ID using a custom function:
+
+```javascript
+function translate (payload) {
+    node.warn(`Reading minilo ID ${msg.payload}`)
+    switch(msg.payload){
+
+        case '04-59-4A-3A-BC-2B-80': return '3ai8NgXP53ehLXGcA839CF'; 
+        case '04-5C-4A-3A-BC-2B-80': return '37i9dQZF1DZ06evO0ENBD2'; 
+        case '04-FB-7F-72-5D-67-80': return '2uQmaiOrGukfHhZAm15x4K'; 
+        case '04-EA-7D-72-5D-67-80': return '1SwyMhnJyMEvpel7ystCEB'; 
+        case '04-2C-C9-6A-28-73-81': return '0lWFpTETkmMBmy5xt1Ujtv'; 
+        case '04-20-C9-6A-28-73-81': return '7fxPnuKXtJ3STCfWcqTLup'; 
+        case '04-5B-4A-3A-BC-2B-80': return '2P5BwSSmpZUgOBLLuSbZzB'; 
+        default: 
+            node.warn(`Missing minilo ID ${msg.payload}`)
+            return null 
+
+    }
+
+}
+const playlist = translate(msg.payload)
+msg.payload = playlist
+return msg;
+```
+
+Then our self-hosted [MusicAssistant](https://www.music-assistant.io/) instance, gets called to play the Spotify album in our Google Speaker (both have been previously configured there as providers [[1]](https://www.music-assistant.io/music-providers/spotify/)[[2]](https://www.music-assistant.io/player-support/google-cast/))
+
+
+## Crafting the _minilos_
+
+Each _minilo_ (mini-vinyl record) has to be individually crafted. Once selected the spotify album, we need to copy the album id and save the cover art image.
+
+Then, we use [a GIMP template](https://github.com/coconauts/minilos/blob/main/cover.xcf) to adapt the cover image to the correct size for the minilo stickers. Then we print it on glossy sticker paper, concealing the NFC tag under the sticker.
+
+<img src="/images/posts/minilos/minilo_records.png" alt="Minilo records" style="display: block; margin: 0 auto; text-align: center;">
+
+The _minilo_ needs to be read at least once, to obtain the NFC id, and then we need to update the mapping function in Node-RED.
+
+## Future
+
+We are currently reworking the project to turn it into a standalone device, without the need of a Google Speaker, Spotify, or domotics - stay tuned!
+
+If you enjoyed this post, you'll also appreciate its cousin project: [the NFC floppy disk launcher](https://coconauts.net/blog/2025/07/25/nfc-floppy-disks/)
