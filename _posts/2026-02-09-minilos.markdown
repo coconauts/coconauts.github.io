@@ -103,7 +103,7 @@ msg.payload = playlist
 return msg;
 ```
 
-Then our self-hosted [MusicAssistant](https://www.music-assistant.io/) instance, gets called to play the Spotify album in our Google Speaker (both have been previously configured there as providers [[1]](https://www.music-assistant.io/music-providers/spotify/)[[2]](https://www.music-assistant.io/player-support/google-cast/))
+Then our self-hosted [MusicAssistant](https://www.music-assistant.io/) instance, gets called to play the Spotify album in our Google Speaker (both have been previously configured there as providers [[1]](https://www.music-assistant.io/music-providers/spotify/)[[2]](https://www.music-assistant.io/player-support/google-cast/)).
 
 
 ## Crafting the _minilos_
@@ -112,7 +112,7 @@ Each _minilo_ (mini-vinyl record) has to be individually crafted. Once selected 
 
 Then, we use [a GIMP template](https://github.com/coconauts/minilos/blob/main/cover.xcf) to adapt the cover image to the correct size for the minilo stickers. Then we print it on glossy sticker paper, concealing the NFC tag under the sticker.
 
-<img src="/images/posts/minilos/minilo_records.png" alt="Minilo records" style="display: block; margin: 0 auto; text-align: center;">
+<img src="/images/posts/minilos/minilo_records.jpg" alt="Minilo records" style="display: block; margin: 0 auto; text-align: center;">
 
 The _minilo_ needs to be read at least once, to obtain the NFC id, and then we need to update the mapping function in Node-RED.
 
@@ -120,4 +120,4 @@ The _minilo_ needs to be read at least once, to obtain the NFC id, and then we n
 
 We are currently reworking the project to turn it into a standalone device, without the need of a Google Speaker, Spotify, or domotics - stay tuned!
 
-If you enjoyed this post, you'll also appreciate its cousin project: [the NFC floppy disk launcher](https://coconauts.net/blog/2025/07/25/nfc-floppy-disks/)
+If you enjoyed this post, you'll also appreciate its cousin project: [the NFC floppy disk game launcher](https://coconauts.net/blog/2025/07/25/nfc-floppy-disks/).
