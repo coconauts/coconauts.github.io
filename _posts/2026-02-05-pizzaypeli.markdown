@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Pizza&Peli: personal movie session planner and tracker"
-date: 2026-02-05 10:00:00 +0000
+date: 2026-02-05 00:00:00 +0000
 categories: software
 tags: django webdev movies
 sharing: true
