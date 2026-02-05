@@ -9,10 +9,10 @@ keywords: webdev
 description: "We built our own personal movie session planner app"
 author: Mar Bartolome
 featured: false
-published: false
+published: true
 ---
 
-At home we do a weekly movie session with the kids, which is met with high anticipation. But we're not the kind of folks that just pop open Netflix of Dinsey+ and watch whatever is there - no, we take our children's education seriously, and as hopeless geeks, that obviously includes carefully curating the selection of movies we consume, so that we expose them to cinematic gems in an age-appropriate rate.
+At home we do a weekly movie session with the kids, which is met with high anticipation. But we're not the kind of folks that just pop open Netflix of Disney+ and watch whatever is there - no, we take our children's education seriously, and as hopeless geeks, that obviously includes carefully curating the selection of movies we consume, so that we expose them to cinematic gems in an age-appropriate rate.
 
 We used to just keep a list in [Obsidian](https://obsidian.md/) with movie ideas as they came along, but this as the list grew longer it became difficult to manage. Also, often other parents ask for recommendations on which movies we've watched and liked, but we had to rely in our memory to recall them.
 
