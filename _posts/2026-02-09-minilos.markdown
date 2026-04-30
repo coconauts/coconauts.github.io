@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Minilos: a device for intentional listening in the digital age"
-date: 2026-02-09 00:00:00 +0000
+date: 2026-04-30 00:00:00 +0000
 categories: hardware
 tags: raspberrypi esp32 domotics nfc hardware
 sharing: true
@@ -9,7 +9,7 @@ keywords: hardware
 description: "The vinyl experience, with digital music"
 author: Mar Bartolome
 featured: false
-published: false
+published: true
 ---
 
 It's funny how in the age of digital music, [vinyl sales are soaring](https://en.wikipedia.org/wiki/Vinyl_revival). Sure, Spotify and the likes put all the music in the world at our grasp - but we've lost something along the way. We end up just listening to whatever the algorithm fancies, rather than curating our own musical choices. Which is why people are turning to the physical experience of collecting records and playing them intentionally.
