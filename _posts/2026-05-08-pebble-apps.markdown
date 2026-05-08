@@ -22,25 +22,30 @@ Recently, there was a [official app-making contest](https://repebble.com/blog/sp
 
 <img src="/images/posts/pebble/neko_IRL.gif" alt="Neko watchface on a pebble watch" style="display: block; margin: 0 auto; text-align: center;">
 
+<div class="img-with-text" style="display: block; margin: 0 auto; text-align: center;">
+    <img src="/images/posts/pebble/neko_IRL.gif" alt="Neko watchface on a pebble watch" style="max-width: 600px; width: 100%;">
+    <p>One of the apps we've build: a Neko _wristmate_</p>
+</div>
+
 <!--more-->
 
 ## Neko wristmate
 
-<img src="/images/posts/pebble/pebble_neko.gif" alt="Neko watchface screenshot" style="display: block; margin: 0 auto; text-align: center;">
-
 Mar built a watchface (ie, an app whose purpose is to run as the main display of the device) featuring an animated [Neko screenmate mascot](https://en.wikipedia.org/wiki/Neko_(software)), alongside the time and date. The Neko will play around for a bit, and fall asleep after a while. It will wake up on a tap event (eg, when you tap the watch or do a wrist-turn movement).
 
-- [Pebble app store](https://apps.repebble.com/neko-wristmate_4c25df439af543d19c98630a)
-- [Source code](https://github.com/coconauts/pebble-neko-watchface)
+<img src="/images/posts/pebble/pebble_neko.gif" alt="Neko watchface screenshot" style="display: block; margin: 0 auto; text-align: center;">
+
+- [Pebble app store.](https://apps.repebble.com/neko-wristmate_4c25df439af543d19c98630a)
+- [Source code.](https://github.com/coconauts/pebble-neko-watchface)
 
 ## 80% battery charged
 
-<img src="/images/posts/pebble/pebble_battery.png" alt="80% battery app screenshot" style="display: block; margin: 0 auto; text-align: center;">
-
 Javi built an app that triggers on charging, and will notify the user when the charge level reaches 80%. This way you can choose to interrupt the charge before reaching 100%, which is useful for preventing long term  battery capacity degradation.
 
-- [Pebble app store](https://apps.repebble.com/80-battery-charged_e7540c9775d545af81ba7f3f)
-- [Source code](https://github.com/rephus/pebble-battery-charged)
+<img src="/images/posts/pebble/pebble_battery.png" alt="80% battery app screenshot" style="display: block; margin: 0 auto; text-align: center;">
+
+- [Pebble app store.](https://apps.repebble.com/80-battery-charged_e7540c9775d545af81ba7f3f)
+- [Source code.](https://github.com/rephus/pebble-battery-charged)
 
 ## Implementation details
 
