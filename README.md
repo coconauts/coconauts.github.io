@@ -16,7 +16,7 @@ Running:
 
 ```bash
 # Using Docker 
-docker-compose up
+docker compose up
 
 # Or locally with Jekyll
 bundle install

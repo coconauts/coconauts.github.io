@@ -20,11 +20,9 @@ Then last year, Pebble's original author announced [that they were resurrecting 
 
 Recently, there was a [official app-making contest](https://repebble.com/blog/spring-2026-pebble-app-contest) which served as the perfect excuse to build [a couple of apps ourselves](https://apps.repebble.com/apps/dev/coconauts_1e79b46fb4a32ceee9259940). 
 
-<img src="/images/posts/pebble/neko_IRL.gif" alt="Neko watchface on a pebble watch" style="display: block; margin: 0 auto; text-align: center;">
-
 <div class="img-with-text" style="display: block; margin: 0 auto; text-align: center;">
-    <img src="/images/posts/pebble/neko_IRL.gif" alt="Neko watchface on a pebble watch" style="max-width: 600px; width: 100%;">
-    <p>One of the apps we've build: a Neko _wristmate_</p>
+    <img src="/images/posts/pebble/neko_IRL.gif" alt="Neko watchface on a pebble watch" style="max-width: 300px; width: 100%;">
+    <p>One of the apps we've build: a Neko wristmate</p>
 </div>
 
 <!--more-->
